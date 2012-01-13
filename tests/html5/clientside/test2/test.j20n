@@ -1,0 +1,17 @@
+this.name = "Name";
+
+this.phone = "Phone";
+
+this.address = "Address";
+
+this.name_input = new Object();
+
+this.name_input._attrs = {placeholder: "Write your name", title: "You can give us your nickname if you prefer"};
+
+this.phone_input = new Object();
+
+this.phone_input._attrs = {placeholder: "(501) 650 231 800"};
+
+this.address_input = new Object();
+
+this.address_input._attrs = {placeholder: "650 Castro St., Suite 300, MtV, CA"};
