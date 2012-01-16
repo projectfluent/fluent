@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
     Components.utils.import("resource://gre/modules/L20n.jsm");
   }
 
+
+
   var ctx = L20n.getContext();
 
   var headNode = null;
@@ -33,49 +35,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
   ctx.onReady = function() {
     var nodes = document.body.getElementsByTagName('*');
-    var l10nId = null;
     for (var i=0, node; node = nodes[i]; i++) {
-      if (l10nId = node.getAttribute('l10n-id')) {
-        var args = node.getAttribute('l10n-args');
-        if (args) {
-          args = JSON.parse(args);
-        }
-        // get attributes from the LO
-        var attrs = ctx.getAttributes(l10nId, args);
-        if (attrs) {
-          for (var j in attrs) {
-            node.setAttribute(j, attrs[j]);
-          }
-        }
-        var valueFromCtx = ctx.get(l10nId, args);
-        if (valueFromCtx === null) {
-          continue;
-        }
-        // deep-copy the original node
-        var origNode = node.cloneNode(true);
-        node.innerHTML = valueFromCtx;
-        // overlay the attributes of descendant nodes
-        var children = node.getElementsByTagName('*');
-        for (var j=0, child; child = children[j]; j++) {
-          var path = child.getAttribute('l10n-path');
-          if ( ! path) {
-            path = getPathTo(child, node);
-          }
-          // match the child node with the equivalent node in origNode
-          var origChild = getElementByPath(path, origNode);
-          if ( ! origChild) {
-            continue;
-          }
-          for (var k=0, origAttr; origAttr = origChild.attributes[k]; k++) {
-            // if ( ! origAttr.specified) continue;  // for IE?
-            if ( ! child.hasAttribute(origAttr.name)) {
-              child.setAttribute(origAttr.nodeName, origAttr.value);
-            }
-          }
-        }
-      }
+      localizeNode(ctx, node);
     }
   }
+
+  HTMLElement.prototype.retranslate = function() {
+    localizeNode(ctx, this);
+  }
+
+  HTMLElement.prototype.__defineGetter__('l10nData', function() {
+    return this.nodeData;
+  });
+
+  HTMLDocument.prototype.__defineGetter__('l10nData', function() {
+    return ctx.data;
+  });
 
   ctx.freeze();
 }, false);
@@ -112,4 +87,52 @@ function getElementByPath(path, context) {
   return xpe.singleNodeValue;
 }
 
+
+function localizeNode(ctx, node) {
+  var l10nId;
+  if (l10nId = node.getAttribute('l10n-id')) {
+    var args;
+    // node.nodeData 
+    // must not be exposed
+    if (node.nodeData) {
+      args = node.nodeData;
+    } else if (node.hasAttribute('l10n-args')) {
+      args = JSON.parse(node.getAttribute('l10n-args'));
+      node.nodeData = args;
+    }
+    // get attributes from the LO
+    var attrs = ctx.getAttributes(l10nId, args);
+    if (attrs) {
+      for (var j in attrs) {
+        node.setAttribute(j, attrs[j]);
+      }
+    }
+    var valueFromCtx = ctx.get(l10nId, args);
+    if (valueFromCtx === null) {
+      return;
+    }
+    // deep-copy the original node
+    var origNode = node.cloneNode(true);
+    node.innerHTML = valueFromCtx;
+    // overlay the attributes of descendant nodes
+    var children = node.getElementsByTagName('*');
+    for (var j=0, child; child = children[j]; j++) {
+      var path = child.getAttribute('l10n-path');
+      if ( ! path) {
+        path = getPathTo(child, node);
+      }
+      // match the child node with the equivalent node in origNode
+      var origChild = getElementByPath(path, origNode);
+      if ( ! origChild) {
+        continue;
+      }
+      for (var k=0, origAttr; origAttr = origChild.attributes[k]; k++) {
+        // if ( ! origAttr.specified) continue;  // for IE?
+        if ( ! child.hasAttribute(origAttr.name)) {
+          child.setAttribute(origAttr.nodeName, origAttr.value);
+        }
+      }
+    }
+  }
+}
 // vim: tw=2 et sw=2 sts=2
