@@ -45,6 +45,10 @@ document.addEventListener("DOMContentLoaded", function() {
     return ctx.data;
   });
 
+  HTMLDocument.prototype.__defineGetter__('l10nCtx', function() {
+    return ctx;
+  });
+
   ctx.freeze();
 });
 

@@ -27,7 +27,7 @@ L20n.Resource.prototype = {
 L20n.Context = function() {
   mFrozen = false;
   mResources = [];
-  mEvents = {'ready': null}
+  mEvents = {'ready': []}
 
   mObjects = {
     'resources': {},
@@ -71,7 +71,10 @@ L20n.Context.prototype = {
     return true;
   },
   set onReady(callback) {
-    mEvents['ready'] = callback;
+    if (!this.isReady())
+      mEvents['ready'].push(callback);
+    else
+      callback();
   },
   set data(data) {
     mObjects['context'] = data
@@ -115,9 +118,10 @@ L20n.Context.prototype = {
     mResources.push(res);
   },
   _fireCallback: function() {
-    if (mEvents['ready']) {
-      mEvents['ready']();
-      mEvents['ready'] = null;
+    if (mEvents['ready'].length) {
+      for (var i in mEvents['ready'])
+        mEvents['ready'][i]();
+      mEvents['ready'] = [];
     }
   }
 }
