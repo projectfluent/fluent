@@ -1,0 +1,10 @@
+<downloaded1 "
+  Pozostało 
+  <span l10n-path='span[2]' title='{{ timeremaining1 / 60 }} min'>
+    {{ timeremaining1 }} sek
+  </span>.
+  Pobrałeś
+  <span l10n-path='span[1]' title='{{ kilobytes1 / 1024 }} MB (megabajtów)'>
+    {{ kilobytes1 }} KB (kilobajtów)
+  </span>.
+">

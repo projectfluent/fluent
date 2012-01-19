@@ -1,0 +1,31 @@
+this.downloaded1 = function (env, sys) {
+    return "\
+  Pobrałeś\
+  <span title='" + (sys.getent(env, sys, "kilobytes1") / 1024 + (" MB (megabajtów)'>\
+    " + (sys.getent(env, sys, "kilobytes1") + " KB (kilobajtów)\
+  </span>.\
+")));
+};
+
+this.downloaded2 = function (env, sys) {
+    return "\
+  Pobrałeś\
+  <span>" + (sys.getent(env, sys, "kilobytes2") + " KB</span>.\
+");
+};
+
+this.downloaded3 = function (env, sys) {
+    return "\
+  Pobrałeś\
+  <span class='red' title='" + (sys.getent(env, sys, "kilobytes3") / 1024 + (" MB (megabajtów)'>\
+    " + (sys.getent(env, sys, "kilobytes3") + " KB (kilobajtów)\
+  </span>.\
+")));
+};
+
+this.downloaded4 = function (env, sys) {
+    return "\
+  Pobrałeś\
+  <span>" + (sys.getent(env, sys, "kilobytes4") + " KB</span>.\
+");
+};

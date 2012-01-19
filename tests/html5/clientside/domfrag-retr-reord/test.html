@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/l20n/js/l20n.js"></script>
+    <script type="text/javascript" src="/l20n/js/l20n-xml.js"></script>
+    <script type="text/javascript">
+      function test(index) {
+        var node = document.getElementById('progress' + index);
+        document.l10nData['kilobytes' + index] += 128;
+        document.l10nData['timeremaining' + index] -= 7;
+        node.retranslate();
+      }
+    </script>
+    <script type="application/l20n">
+    {
+      "kilobytes1": 0,
+      "timeremaining1": 60
+    }
+    </script>
+    <link href="./test.j20n" type="intl/l20n" />
+    <style type="text/css">
+      pre, code {
+        background-color: #eee;
+      }
+      .payload {
+        color: green;
+      }
+      .time {
+        color: red;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <h1>DOM fragments</h1>
+
+    <p>HTML:</p>
+
+    <pre>
+      &lt;td id="progress1" l10n-id="downloaded1"&gt;
+        &lt;span class="payload"&gt;&lt;/span&gt;
+        &lt;span class="time"&gt;&lt;/span&gt;
+      &lt;/td&gt;
+    </pre>
+
+    <p>The developer keeps the non-localizable structure in the HTML, and puts
+    localizable content in the l20n file:</p>
+
+    <pre>
+      &lt;downloaded1 "
+        You've downloaded
+        &lt;span title='{{ kilobytes1 / 1024 }} MB'&gt;
+          {{ kilobytes1 }} KB
+        &lt;/span&gt; so far.
+
+        Time remaining:
+        &lt;span title='{{ timeremaining1 / 60 }} min'&gt;
+          {{ timeremaining1 }} sec
+        &lt;/span&gt;.
+      "&gt;
+    </pre>
+
+    <p>The localizer takes this l20n file and uses it as a base for her 
+    translation:</p>
+
+    <pre>
+      &lt;downloaded1 "
+        Pozostało 
+        &lt;span l10n-path='span[2]' title='{{ timeremaining1 / 60 }} min'&gt;
+          {{ timeremaining1 }} sek
+        &lt;/span&gt;.
+
+        Pobrałeś
+        &lt;span l10n-path='span[1]' title='{{ kilobytes1 / 1024 }} MB (megabajtów)'&gt;
+          {{ kilobytes1 }} KB (kilobajtów)
+        &lt;span&gt;.
+      "&gt;
+    </pre>
+
+    <p>The result:</p>
+
+    <table>
+      <tr>
+        <td id="progress1" l10n-id="downloaded1">
+          <span class="payload"></span>
+          <span class="time"></span>
+        </td>
+        <td>
+          <button onclick="test(1)">download 128 KB</button>
+        </td>
+        <td>
+          payload should be green, time should be red
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>
+
+<!-- vim: set ts=2 et sw=2 sts=2: -->
