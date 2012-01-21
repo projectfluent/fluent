@@ -1,0 +1,36 @@
+this.plural = function (env, sys, data) {
+    return data[0] == 0?"none":data[0] == 1?"one":"many";
+};
+
+this.name = "Name";
+
+this.name_input = new Object();
+
+this.name_input._attrs = {value: function (env, sys) {
+    return sys.getent(env, sys, "user", ["name"]) + "";
+}, placeholder: function (env, sys) {
+    return "Write your name " + (sys.getent(env, sys, "user", ["name"]) + "");
+}, title: "You can give us your nickname if you prefer"};
+
+this.window_title = function (env, sys) {
+    return "Downloading " + (sys.getent(env, sys, "downloadCount") + " files");
+};
+
+this.download_status = let (x = {"none": function (env, sys) {
+    return sys.getent(env, sys, "user", ["name"]) + " is currently downloading no files.";
+}, "one": function (env, sys) {
+    return sys.getent(env, sys, "user", ["name"]) + " is currently downloading one file.";
+}, "many": function (env, sys) {
+    return sys.getent(env, sys, "user", ["name"]) + (" is currently downloading " + (sys.getent(env, sys, "downloadCount") + " files."));
+}}) function (env, sys, index) {
+    if (index !== undefined)
+        return x;
+    return x[sys.getmacro(env, sys, "plural", [sys.getent(env, sys, "downloadCount")])];
+};
+
+this.mood = let (x = {"male": "He's happy!", "female": "She's happy!"}) function (env, sys, index) {
+    if (index !== undefined)
+        return x;
+    return x[sys.getent(env, sys, "user", ["gender"])];
+};
+
