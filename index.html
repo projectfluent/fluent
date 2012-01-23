@@ -2,18 +2,29 @@
   <head>
   </head>
   <body>
-    <ul>
-      <li><a href="/l20n/tests/html5/clientside/basic/index.html">Basic</a></li>
-      <li><a href="/l20n/tests/html5/clientside/attrs/index.html">Attrs</a></li>
-      <li><a href="/l20n/tests/html5/clientside/attrscontrol/index.html">Attrs control</a></li>
-      <li><a href="/l20n/tests/html5/clientside/macro/index.html">Macro</a></li>
-      <li><a href="/l20n/tests/html5/clientside/nodeargs/index.html">Node Args</a></li>
-      <li><a href="/l20n/tests/html5/clientside/noderetrans/index.html">Node retranslate</a></li>
-      <li><a href="/l20n/tests/html5/clientside/docdata/index.html">Document data</a></li>
-      <li><a href="/l20n/tests/html5/clientside/docl10nctx/index.html">Document l10n context access</a></li>
-      <li><a href="/l20n/tests/html5/clientside/domfrag/test.html">DOM Fragments</a></li>
-      <li><a href="/l20n/tests/html5/clientside/domfrag-retr/test.html">DOM Fragments retranslate</a></li>
-      <li><a href="/l20n/tests/html5/clientside/domfrag-retr-reord/test.html">DOM Fragments retranslate with reorder</a></li>
-    </ul>
+    <dl>
+      <dt><a href="/l20n/tests/html5/clientside/basic/index.html">Basic</a></dt>
+      <dd>In this example there are three %lt;span%gt; elements and assign l10n-id attribute which binds them with their respective L20n entities. The value of the entity becomes a text content of the span element</dd>
+      <dt><a href="/l20n/tests/html5/clientside/attrs/index.html">Attrs</a></dt>
+      <dd>This tests expands the concept of entity-node relation to attributes. All attributes set on the entity expand the node attribute list</dd> 
+      <dt><a href="/l20n/tests/html5/clientside/attrscontrol/index.html">Attrs control</a></dt>
+      <dd>This example introduces new attribute "l10n-attrs" which is a space-separated list of attributes that can be localized. By default L20n will have a predefined list of attributes that are localizable (like value, title etc.) but the developer may specifically control which attributes may be localized on the given node via this attribute</dd>
+      <dt><a href="/l20n/tests/html5/clientside/macro/index.html">Macro</a></dt>
+      <dd>This example presents a way that developer may expose to localizer a set of data items that are common accroess the whole UI view. Such information may be useful to the localizers and will enable them to adjust the wording of the whole UI to the data that is represented with it (for example - number of files being downloaded in Download View)</dd>
+      <dt><a href="/l20n/tests/html5/clientside/nodeargs/index.html">Node Args</a></dt>
+      <dd>This example introduces a new attiribute "l10n-args" that is a JSON object that overloads the document level context data with node level context data. It allows the developer to provide specific data items that may impact the localization of the given node</dd>
+      <dt><a href="/l20n/tests/html5/clientside/noderetrans/index.html">Node retranslate</a></dt>
+      <dd>In this example the new "retranslate()" node method is presented. It allows the developer to request a retranslation of a given node. The reason for a retranslation may be a change in context data. Also, "l10nData" property of HTMLElement object is being added which exposes the node level context data to the developer.</dd>
+      <dt><a href="/l20n/tests/html5/clientside/docdata/index.html">Document data</a></dt>
+      <dd>This example introduces a "l10nData" property of the document object that enables the developer to manipulate the document level context data provided to the localizer.</dd>
+      <dt><a href="/l20n/tests/html5/clientside/docl10nctx/index.html">Document l10n context access</a></dt>
+      <dd>This example introduces "l10nCtx" property of the document object. It enabled the developer to reuse the HTML L20n context from JS.</dd>
+      <dt><a href="/l20n/tests/html5/clientside/domfrag/test.html">DOM Fragments</a></dt>
+      <dd>This example presents the concept of DOM Fragment localization, in which a localizer provides localization to the DOM fragment with all children nodes being reused in the order defined by the localizer with a proper separation between HTML attributes and localizable attributes.</dd>
+      <dt><a href="/l20n/tests/html5/clientside/domfrag-retr/test.html">DOM Fragments retranslate</a></dt>
+      <dd>This example presents the combination of DOM Fragment localization and retranslation API</dd>
+      <dt><a href="/l20n/tests/html5/cdtentside/domfrag-retr-reord/test.html">DOM Fragments retranslate with reorder</a></dt>
+      <dd>In this example we combine DOM Fragment localization, retranslation and l10n-path attribute which enables localizers to reorder nodes without ID's within the DOM Fragment.</dd>
+    </dl>
   </body>
 </html>
