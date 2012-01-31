@@ -2,8 +2,14 @@
   <head>
     <script type="text/javascript;version=1.8" src="/l20n/js/l20n.js"></script>
     <script type="text/javascript;version=1.8" src="/l20n/js/l20n-xml.js"></script>
-    <script type="text/javascript" src="../js/tests.js"></script>
-    <script type="text/javascript" src="./tests.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../lib/jasmine/jasmine.css">
+    <script type="text/javascript" src="../lib/jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="../lib/jasmine/jasmine-html.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../lib/test.css">
+    <script type="text/javascript" src="spec.js"></script>
+    <script type="text/javascript" src="../lib/test.js"></script>
 
     <script type="application/l20n">
     {
@@ -27,13 +33,19 @@
     <link href="./index.j20n" type="intl/l20n" />
   </head>
   <body>
+    <p class="intro">
+      In this example the new "retranslate()" node method is presented. It 
+      allows the developer to request a retranslation of a given node. The 
+      reason for a retranslation may be a change in context data. Also, 
+      "l10nData" property of HTMLElement object is being added which exposes 
+      the node level context data to the developer.
+    </p>
     <h1 l10n-id="window_title"></h1>
     <span l10n-id="name"></span><input type="text" l10n-id="name_input"/>
     <br/>
     <br/>
-    <span l10n-id="download_status" l10n-args='{"user":{"name": "Mark"}}'></span>
+    <span l10n-id="download_status" l10n-args='{"user":{"name":"Mark"}}'></span>
     <span id="mood" l10n-id="mood" l10n-args='{"user":{"gender":"male"}}'></span>
     <button onclick="test()">retranslate</button>
   </body>
 </html>
-

@@ -1,13 +1,25 @@
 <html>
   <head>
-    <script type="text/javascript" src="/l20n/js/l20n.js"></script>
-    <script type="text/javascript" src="/l20n/js/l20n-xml.js"></script>
-    <script type="text/javascript" src="../js/tests.js"></script>
-    <script type="text/javascript" src="./tests.js"></script>
+    <script type="text/javascript;version=1.8" src="/l20n/js/l20n.js"></script>
+    <script type="text/javascript;version=1.8" src="/l20n/js/l20n-xml.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../lib/jasmine/jasmine.css">
+    <script type="text/javascript" src="../lib/jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="../lib/jasmine/jasmine-html.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../lib/test.css">
+    <script type="text/javascript" src="spec.js"></script>
+    <script type="text/javascript" src="../lib/test.js"></script>
 
     <link href="./index.j20n" type="intl/l20n" />
   </head>
   <body>
+    <p class="intro">
+      In this example there are three <code>&lt;span&gt;</code> elements and 
+      assign l10n-id attribute which binds them with their respective L20n 
+      entities. The value of the entity becomes a text content of the span 
+      element.
+    </p>
     <span l10n-id="name"></span>
     <span l10n-id="phone"></span>
     <span l10n-id="address"></span>

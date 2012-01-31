@@ -1,8 +1,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="/l20n/js/l20n.js"></script>
-    <script type="text/javascript" src="/l20n/js/l20n-xml.js"></script>
+    <script type="text/javascript;version=1.8" src="/l20n/js/l20n.js"></script>
+    <script type="text/javascript;version=1.8" src="/l20n/js/l20n-xml.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../lib/jasmine/jasmine.css">
+    <script type="text/javascript" src="../lib/jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="../lib/jasmine/jasmine-html.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../lib/test.css">
+    <script type="text/javascript" src="spec.js"></script>
+    <script type="text/javascript" src="../lib/test.js"></script>
+    
+    <link href="./index.j20n" type="intl/l20n" />
+
     <script type="text/javascript">
       function test(index) {
         var node = document.getElementById('progress' + index);
@@ -10,6 +21,7 @@
         node.retranslate();
       }
     </script>
+
     <script type="application/l20n">
     {
       "kilobytes1": 0,
@@ -18,10 +30,11 @@
       "kilobytes4": 0
     }
     </script>
-    <link href="./test.j20n" type="intl/l20n" />
+
     <style type="text/css">
       pre, code {
-        background-color: #eee;
+        color: #333;
+        background-color: #fff;
       }
       .green {
         color: green;
@@ -34,6 +47,11 @@
   </head>
   <body>
 
+    <p class="intro">
+      This example presents the combination of DOM Fragment localization and 
+      retranslation API.
+    </p>
+
     <h1>DOM fragments</h1>
 
     <h2>Example 1</h2>
@@ -43,6 +61,7 @@
     <p>HTML:</p>
 
     <pre>
+
       &lt;td id="progress1" l10n-id="downloaded1"&gt;
         &lt;span class="green"&gt;&lt;/span&gt;
       &lt;/td&gt;
@@ -52,6 +71,7 @@
     localizable content in the l20n file:</p>
 
     <pre>
+
       &lt;downloaded1 "
         You've downloaded
         &lt;span title='{{ kilobytes1 / 1024 }} MB'&gt;
@@ -64,6 +84,7 @@
     translation:</p>
 
     <pre>
+
       &lt;downloaded1 "
         Pobrałeś
         &lt;span title='{{ kilobytes1 / 1024 }} MB (megabajtów)'&gt;
@@ -102,6 +123,7 @@
     <p>HTML:</p>
 
     <pre>
+
       &lt;td id="progress2" l10n-id="downloaded2"&gt;
         &lt;span class="green"&gt;&lt;/span&gt;
       &lt;/td&gt;
@@ -111,6 +133,7 @@
     localizable content in the l20n file:</p>
 
     <pre>
+
       &lt;downloaded2 "
         You've downloaded
         &lt;span title='{{ kilobytes2 / 1024 }} MB'&gt;
@@ -123,6 +146,7 @@
     translation.  However, she leaves out the <code>title</code>.</p>
 
     <pre>
+
       &lt;downloaded2 "
         Pobrałeś
         &lt;span&gt;
@@ -162,6 +186,7 @@
     <p>HTML:</p>
 
     <pre>
+
       &lt;td id="progress3" l10n-id="downloaded3"&gt;
         &lt;span class="green"&gt;&lt;/span&gt;
       &lt;/td&gt;
@@ -171,6 +196,7 @@
     localizable content in the l20n file:</p>
 
     <pre>
+
       &lt;downloaded3 "
         You've downloaded
         &lt;span title='{{ kilobytes3 / 1024 }} MB'&gt;
@@ -184,6 +210,7 @@
     <code>span</code>, thus overwriting the source value.</p>
 
     <pre>
+
       &lt;downloaded3 "
         Pobrałeś
         &lt;span class='red' title='{{ kilobytes3 / 1024 }} MB (megabajtów)'&gt;
@@ -218,6 +245,7 @@
     <p>HTML:</p>
 
     <pre>
+
       &lt;td id="progress4" l10n-id="downloaded4"&gt;
         &lt;span class="green" title="{{ kilobytes4 / 1024 }} MB"&gt;&lt;/span&gt;
       &lt;/td&gt;
@@ -228,6 +256,7 @@
     the HTML.  <strong>This is going to break.</strong></p>
 
     <pre>
+
       &lt;downloaded4 "
         You've downloaded
         &lt;span&gt;
@@ -240,6 +269,7 @@
     translation:</p>
 
     <pre>
+
       &lt;downloaded4 "
         Pobrałeś
         &lt;span&gt;
@@ -269,5 +299,3 @@
 
   </body>
 </html>
-
-<!-- vim: set tw=2 et sw=2 sts=2: -->

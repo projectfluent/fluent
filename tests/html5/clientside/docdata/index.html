@@ -2,8 +2,14 @@
   <head>
     <script type="text/javascript;version=1.8" src="/l20n/js/l20n.js"></script>
     <script type="text/javascript;version=1.8" src="/l20n/js/l20n-xml.js"></script>
-    <script type="text/javascript" src="../js/tests.js"></script>
-    <script type="text/javascript" src="./tests.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../lib/jasmine/jasmine.css">
+    <script type="text/javascript" src="../lib/jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="../lib/jasmine/jasmine-html.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../lib/test.css">
+    <script type="text/javascript" src="spec.js"></script>
+    <script type="text/javascript" src="../lib/test.js"></script>
 
     <script type="application/l20n">
     {
@@ -17,10 +23,8 @@
 
     <script type="text/javascript">
       function test() {
-        var node = document.getElementById('mood');
-
         document.l10nData.user.gender="male";
-
+        var node = document.getElementById('mood');
         node.retranslate();
       }
     </script>
@@ -28,6 +32,11 @@
     <link href="./index.j20n" type="intl/l20n" />
   </head>
   <body>
+    <p class="intro">
+      This example introduces a "l10nData" property of the document object that 
+      enables the developer to manipulate the document level context data 
+      provided to the localizer.
+    </p>
     <h1 l10n-id="window_title" style="color:green" l10n-attrs="title,accesskey"></h1>
     <span l10n-id="name"></span><input type="text" l10n-id="name_input"/>
     <br/>

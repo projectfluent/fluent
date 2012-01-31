@@ -2,8 +2,14 @@
   <head>
     <script type="text/javascript;version=1.8" src="/l20n/js/l20n.js"></script>
     <script type="text/javascript;version=1.8" src="/l20n/js/l20n-xml.js"></script>
-    <script type="text/javascript" src="../js/tests.js"></script>
-    <script type="text/javascript" src="./tests.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../lib/jasmine/jasmine.css">
+    <script type="text/javascript" src="../lib/jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="../lib/jasmine/jasmine-html.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../lib/test.css">
+    <script type="text/javascript" src="spec.js"></script>
+    <script type="text/javascript" src="../lib/test.js"></script>
 
     <script type="application/l20n">
     {
@@ -18,6 +24,13 @@
     <link href="./index.j20n" type="intl/l20n" />
   </head>
   <body>
+    <p class="intro">
+      This example presents a way that developer may expose to localizer a set 
+      of data items that are common accroess the whole UI view. Such 
+      information may be useful to the localizers and will enable them to 
+      adjust the wording of the whole UI to the data that is represented with 
+      it (for example - number of files being downloaded in Download View)
+    </p>
     <h1 l10n-id="window_title"></h1>
     <span l10n-id="name"></span><input type="text" l10n-id="name_input"/>
     <br/>
