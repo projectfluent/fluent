@@ -15,13 +15,13 @@
     <h1 class="intro">L20n Grammar</h1>
 
     <div class="author intro">
-      Axel Hecht
+      Axel Hecht, Zbigniew Braniecki, Stanisław Małolepszy
     </div>
     <div class="license intro">
-      &copy; 2007-2011 Mozilla Foundation
+      &copy; 2007-2012 Mozilla Foundation
     </div>
     <div class="version intro">
-      <b>Version:</b> 0.8
+      <b>Version:</b> 0.9
     </div>
 
 <p>This is briefly annotated version of the grammar used for the proof-of-concept implementation of l20n.</p>
@@ -40,7 +40,7 @@
   <td class="p2cell">:</td>
 
   <td class="p2cell"><a href="#entity">entity</a> | <a href="#macro">macro</a> 
-      | <a href="#comment">comment</a> ;</td>
+      | <a href="#comment">comment</a> | <a href="#statement">statement</a> ;</td>
   </tr></tbody></table>
 
   <p>A entity consists of an <a href="#ID">identifier</a>, a value and an 
@@ -60,7 +60,7 @@
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="ID">identifier</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell">[a-zA-Z]\w* ;</td>
+  <td class="p2cell">[_a-zA-Z]\w* ;</td>
   </tr></tbody></table>
 
 <table class="production"><tbody><tr>
@@ -79,6 +79,19 @@
           href="#WS">WS</a>+ <a href="#keyValuePair">keyValuePair</a> )* ;</td>
 
   </tr></tbody></table>
+  
+<p>Statements are similar to C-style statements.</p>
+<table class="production"><tbody><tr>
+  <td class="p1cell"><a name="statement">statement</a></td>
+  <td class="p2cell">:</td>
+  <td class="p2cell"><a href="#import_statement">import_statement</a> ;</td>  
+  </tr></tbody></table> 
+<table class="production"><tbody><tr>
+  <td class="p1cell"><a name="import_statement">import_statement</a></td>
+  <td class="p2cell">:</td>
+  <td class="p2cell">'import' <a href="#WS">WS</a>? '(' <a href="#WS">WS</a>? <a href="#expression">expression</a> <a href="#WS">WS</a>? ')' ;</td>  
+  </tr></tbody></table> 
+  
 <p>Expressions are closely modeled after C expressions, merely binary operators and some C-specifics have been removed.</p>
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="expression">expression</a></td>
@@ -153,7 +166,7 @@
   <td class="p1cell"><a name="attr_expression">attr_expression</a></td>
   <td class="p2cell">:</td>
   <td class="p2cell"> <a 
-          href="#member_expression">member_expression</a> <a href="#WS">WS</a>? '[.' <a href="#WS">WS</a>? <a 
+          href="#member_expression">member_expression</a> <a href="#WS">WS</a>? '.[' <a href="#WS">WS</a>? <a 
           href="#expression">expression</a> <a href="#WS">WS</a> ']' |
      <a href="#ID">ID</a> '..' <a href="#ID">ID</a> ;</td>
   </tr></tbody></table>
@@ -170,7 +183,38 @@
   <td class="p1cell"><a name="primary_expression">primary_expression</a></td>
   <td class="p2cell">:</td>
   <td class="p2cell"> <a href="#literal">literal</a> | <a href="#value">value</a> |
-      <a href="#id">ID</a> ;</td>
+      <a href="#identifier_expression">identifier_expression</a> ;</td>
+  </tr></tbody></table>
+
+<table class="production"><tbody><tr>
+  <td class="p1cell"><a name="identifier_expression">identifier_expression</a></td>
+  <td class="p2cell">:</td>
+  <td class="p2cell"> <a href="#ID">ID</a> | <a href="#variable">variable</a> |
+      <a href="#macro_argument">macro_argument</a> | <a href="#globals_expression">globals_expression</a> | <a href="#this_expression">this_expression</a> ;</td>
+  </tr></tbody></table>
+
+<table class="production"><tbody><tr>
+  <td class="p1cell"><a name="variable">variable</a></td>
+  <td class="p2cell">:</td>
+  <td class="p2cell"> '$' <a href="#ID">ID</a> ;</td>
+  </tr></tbody></table>
+
+<table class="production"><tbody><tr>
+  <td class="p1cell"><a name="macro_argument">macro_argument</a></td>
+  <td class="p2cell">:</td>
+  <td class="p2cell"> '#' <a href="#ID">ID</a> ;</td>
+  </tr></tbody></table>
+
+<table class="production"><tbody><tr>
+  <td class="p1cell"><a name="globals_expression">globals_expression</a></td>
+  <td class="p2cell">:</td>
+  <td class="p2cell"> '@' <a href="#ID">ID</a> ;</td>
+  </tr></tbody></table>
+
+<table class="production"><tbody><tr>
+  <td class="p1cell"><a name="this_expression">this_expression</a></td>
+  <td class="p2cell">:</td>
+  <td class="p2cell"> '~' ;</td>
   </tr></tbody></table>
 
 <table class="production"><tbody><tr>
@@ -190,9 +234,9 @@
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="macro">macro</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell">'<' <a href="#ID">ID</a> '(' <a href="#WS">WS</a>? ( <a 
-          href="#ID">ID</a> <a href="#WS">WS</a>? ( ',' <a href="#WS">WS</a>? 
-      <a href="#ID">ID</a> <a href="#WS">WS</a>? )* )? ')' <a 
+  <td class="p2cell">'<' <a href="#identifier">ID</a> '(' <a href="#WS">WS</a>? ( <a 
+          href="#macro_argument">macro_argument</a> <a href="#WS">WS</a>? ( ',' <a href="#WS">WS</a>? 
+      <a href="#macro_argument">macro_argument</a> <a href="#WS">WS</a>? )* )? ')' <a 
           href="#WS">WS</a>+ '{' <a href="#WS">WS</a>? <a 
            href="#expression">expression</a> <a href="#WS">WS</a>? '}' <a href="#WS">WS</a>? '>' ;</td>
 
@@ -235,7 +279,7 @@
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="hash">hash</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell">'{' <a href="#WS">WS</a>? <a href="#keyValuePair">keyValuePair</a> <a href="#WS">WS</a>? ( ',' <a href="#WS">WS</a>? <a href="#keyValuePair">keyValuePair</a> <a href="#WS">WS</a>? )* '}' ;</td>
+  <td class="p2cell">'{' <a href="#WS">WS</a>? <a href="#hashItem">hashItem</a> <a href="#WS">WS</a>? ( ',' <a href="#WS">WS</a>? <a href="#hashItem">hashItem</a> <a href="#WS">WS</a>? )* '}' ;</td>
 
   </tr></tbody></table>
 
@@ -243,6 +287,11 @@
   <td class="p1cell"><a name="keyValuePair">keyValuePair</a></td>
   <td class="p2cell">:</td>
   <td class="p2cell"><a href="#ID">ID</a> <a href="#WS">WS</a>? ':' <a href="#WS">WS</a>? <a href="#value">value</a> ;</td>
+
+<table class="production"><tbody><tr>
+  <td class="p1cell"><a name="hashItem">hashItem</a></td>
+  <td class="p2cell">:</td>
+  <td class="p2cell">'*'? <a href="#ID">ID</a> <a href="#WS">WS</a>? ':' <a href="#WS">WS</a>? <a href="#value">value</a> ;</td>
 
   </tr></tbody></table>
 <p>Comments are following doxygen style. The specified set of @-rules is yet to be determined.</p>
