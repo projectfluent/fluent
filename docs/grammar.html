@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title>L20n Grammar</title>
     <style type="text/css">
       .intro {text-align: center;}
@@ -43,14 +44,14 @@
       | <a href="#comment">comment</a> | <a href="#statement">statement</a> ;</td>
   </tr></tbody></table>
 
-  <p>A entity consists of an <a href="#ID">identifier</a>, a value and an 
+  <p>A entity consists of an <a href="#identifier">identifier</a>, a value and an 
   optional set of <a href="#attrs">attributes</a>. The optional <a 
       href="#index">index</a> specifies which value to actually return when askng for the value of this entity, for example, this can specify which plural form to use.</p>
 
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="entity">entity</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell">'<' <a href="#ID">ID</a> <a href="#index">index</a>? <a 
+  <td class="p2cell">'<' <a href="#identifier">identifier</a> <a href="#index">index</a>? <a 
           href="#WS">WS</a>+
         <a href="#value">value</a>
         <a href="#attrs">attributes</a>? <a href="#WS">WS</a>? '>' ;</td>
@@ -58,7 +59,7 @@
   </tr></tbody></table>
 
 <table class="production"><tbody><tr>
-  <td class="p1cell"><a name="ID">identifier</a></td>
+  <td class="p1cell"><a name="identifier">identifier</a></td>
   <td class="p2cell">:</td>
   <td class="p2cell">[_a-zA-Z]\w* ;</td>
   </tr></tbody></table>
@@ -156,19 +157,17 @@
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="property_expression">property_expression</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell"> <a 
-          href="#member_expression">member_expression</a> <a href="#WS">WS</a>? '[' <a href="#WS">WS</a>? <a 
-          href="#expression">expression</a> <a href="#WS">WS</a> ']' | 
-      <a href="#ID">ID</a> '.' <a href="#ID">ID</a>;</td>
+  <td class="p2cell"> <a href="#member_expression">member_expression</a> ( <a href="#WS">WS</a>? '[' <a href="#WS">WS</a>? <a 
+          href="#expression">expression</a> <a href="#WS">WS</a>? ']' | 
+      '.' <a href="#identifier">identifier</a> ) ;</td>
   </tr></tbody></table>
 
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="attr_expression">attr_expression</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell"> <a 
-          href="#member_expression">member_expression</a> <a href="#WS">WS</a>? '.[' <a href="#WS">WS</a>? <a 
-          href="#expression">expression</a> <a href="#WS">WS</a> ']' |
-     <a href="#ID">ID</a> '..' <a href="#ID">ID</a> ;</td>
+  <td class="p2cell"> <a href="#member_expression">member_expression</a> ( <a href="#WS">WS</a>? '.[' <a href="#WS">WS</a>? <a 
+          href="#expression">expression</a> <a href="#WS">WS</a>? ']' |
+    '..' <a href="#identifier">identifier</a> ) ;</td>
   </tr></tbody></table>
 
 <table class="production"><tbody><tr>
@@ -189,26 +188,20 @@
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="identifier_expression">identifier_expression</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell"> <a href="#ID">ID</a> | <a href="#variable">variable</a> |
-      <a href="#macro_argument">macro_argument</a> | <a href="#globals_expression">globals_expression</a> | <a href="#this_expression">this_expression</a> ;</td>
+  <td class="p2cell"> <a href="#identifier">identifier</a> | <a href="#variable">variable</a> |
+    <a href="#globals_expression">globals_expression</a> | <a href="#this_expression">this_expression</a> ;</td>
   </tr></tbody></table>
 
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="variable">variable</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell"> '$' <a href="#ID">ID</a> ;</td>
-  </tr></tbody></table>
-
-<table class="production"><tbody><tr>
-  <td class="p1cell"><a name="macro_argument">macro_argument</a></td>
-  <td class="p2cell">:</td>
-  <td class="p2cell"> '#' <a href="#ID">ID</a> ;</td>
+  <td class="p2cell"> '$' <a href="#identifier">identifier</a> ;</td>
   </tr></tbody></table>
 
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="globals_expression">globals_expression</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell"> '@' <a href="#ID">ID</a> ;</td>
+  <td class="p2cell"> '@' <a href="#identifier">identifier</a> ;</td>
   </tr></tbody></table>
 
 <table class="production"><tbody><tr>
@@ -234,9 +227,9 @@
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="macro">macro</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell">'<' <a href="#identifier">ID</a> '(' <a href="#WS">WS</a>? ( <a 
-          href="#macro_argument">macro_argument</a> <a href="#WS">WS</a>? ( ',' <a href="#WS">WS</a>? 
-      <a href="#macro_argument">macro_argument</a> <a href="#WS">WS</a>? )* )? ')' <a 
+  <td class="p2cell">'<' <a href="#identifier">identifier</a> '(' <a href="#WS">WS</a>? ( <a 
+          href="#variable">variable</a> <a href="#WS">WS</a>? ( ',' <a href="#WS">WS</a>? 
+      <a href="#variable">variable</a> <a href="#WS">WS</a>? )* )? ')' <a 
           href="#WS">WS</a>+ '{' <a href="#WS">WS</a>? <a 
            href="#expression">expression</a> <a href="#WS">WS</a>? '}' <a href="#WS">WS</a>? '>' ;</td>
 
@@ -286,12 +279,12 @@
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="keyValuePair">keyValuePair</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell"><a href="#ID">ID</a> <a href="#WS">WS</a>? ':' <a href="#WS">WS</a>? <a href="#value">value</a> ;</td>
+  <td class="p2cell"><a href="#identifier">identifier</a> <a href="#WS">WS</a>? ':' <a href="#WS">WS</a>? <a href="#value">value</a> ;</td>
 
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="hashItem">hashItem</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell">'*'? <a href="#ID">ID</a> <a href="#WS">WS</a>? ':' <a href="#WS">WS</a>? <a href="#value">value</a> ;</td>
+  <td class="p2cell">'*'? <a href="#identifier">identifier</a> <a href="#WS">WS</a>? ':' <a href="#WS">WS</a>? <a href="#value">value</a> ;</td>
 
   </tr></tbody></table>
 <p>Comments are following doxygen style. The specified set of @-rules is yet to be determined.</p>
