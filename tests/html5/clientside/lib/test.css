@@ -1,0 +1,15 @@
+body {
+    margin: 1em;
+}
+
+p.intro {
+    width: 500px;
+    margin: 1em;
+    padding: 1em;
+    background-color: #e3e3e3;
+}
+
+.jasmine_reporter {
+    margin-top: 5em;
+    border-top: 10px solid #ddd;
+}

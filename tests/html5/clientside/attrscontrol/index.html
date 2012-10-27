@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <script type="text/javascript;version=1.8" src="/l20n/js/l20n.js"></script>
+    <script type="text/javascript;version=1.8" src="/l20n/js/l20n-xml.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../lib/jasmine/jasmine.css">
+    <script type="text/javascript" src="../lib/jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="../lib/jasmine/jasmine-html.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../lib/test.css">
+    <script type="text/javascript" src="spec.js"></script>
+    <script type="text/javascript" src="../lib/test.js"></script>
+
+    <link href="./index.j20n" type="intl/l20n" />
+  </head>
+  <body>
+    <p class="intro">
+      This example introduces new attribute "l10n-attrs" which is 
+      a space-separated list of attributes that can be localized. By default 
+      L20n will have a predefined list of attributes that are localizable (like 
+      value, title etc.) but the developer may specifically control which 
+      attributes may be localized on the given node via this attribute
+    </p>
+    <input l10n-id="test" style="color:green" value="wrong" l10n-attrs="value 
+    title"/>
+  </body>
+</html>
