@@ -1,3 +1,0 @@
-this.test = new Object();
-
-this.test._attrs = {style: "color: red;", value: "passed", title: "color should be green"};

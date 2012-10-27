@@ -1,7 +1,0 @@
-this.DEFAULT = {
-  'hour': function(env, sys) {
-    var cur = new Date();
-    return cur.getHours();
-  },
-}
-
