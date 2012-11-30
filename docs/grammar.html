@@ -90,7 +90,7 @@
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="import_statement">import_statement</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell">'import' <a href="#WS">WS</a>? '(' <a href="#WS">WS</a>? <a href="#expression">expression</a> <a href="#WS">WS</a>? ')' ;</td>  
+  <td class="p2cell">'import(' <a href="#WS">WS</a>? <a href="#expression">expression</a> <a href="#WS">WS</a>? ')' ;</td>  
   </tr></tbody></table> 
   
 <p>Expressions are closely modeled after C expressions, merely binary operators and some C-specifics have been removed.</p>
@@ -149,7 +149,7 @@
   <td class="p1cell"><a name="call_expression">call_expression</a></td>
   <td class="p2cell">:</td>
   <td class="p2cell"> <a 
-          href="#member_expression">member_expression</a> <a href="#WS">WS</a>? '(' <a href="#WS">WS</a>? <a 
+          href="#member_expression">member_expression</a> '(' <a href="#WS">WS</a>? <a 
           href="#expression">expression</a> <a href="#WS">WS</a>? ( ', ' <a href="#WS">WS</a>?  <a 
           href="#expression">expression</a> <a href="#WS">WS</a>? )* ')' ;</td>
   </tr></tbody></table>
@@ -157,7 +157,7 @@
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="property_expression">property_expression</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell"> <a href="#member_expression">member_expression</a> ( <a href="#WS">WS</a>? '[' <a href="#WS">WS</a>? <a 
+  <td class="p2cell"> <a href="#member_expression">member_expression</a> ( '[' <a href="#WS">WS</a>? <a 
           href="#expression">expression</a> <a href="#WS">WS</a>? ']' | 
       '.' <a href="#identifier">identifier</a> ) ;</td>
   </tr></tbody></table>
@@ -165,7 +165,7 @@
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="attr_expression">attr_expression</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell"> <a href="#member_expression">member_expression</a> ( <a href="#WS">WS</a>? '.[' <a href="#WS">WS</a>? <a 
+  <td class="p2cell"> <a href="#member_expression">member_expression</a> ( '.[' <a href="#WS">WS</a>? <a 
           href="#expression">expression</a> <a href="#WS">WS</a>? ']' |
     '..' <a href="#identifier">identifier</a> ) ;</td>
   </tr></tbody></table>
