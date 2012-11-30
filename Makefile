@@ -1,4 +1,3 @@
-gh-pages: docs
+all: docs
 	./_build/gh-pages.sh
 
-.PHONY: gh-pages
