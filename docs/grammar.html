@@ -216,11 +216,11 @@
   <td class="p2cell"> number ;</td>
   </tr></tbody></table>
 
-<p>One of the fundamental elements of l20n are values, which can be plain strings, strings with parameters, arrays or hashes. Both arrays and hashes have values as values, that is, they can be hierarchical.</p>
+<p>One of the fundamental elements of l20n are values, which can be plain strings, strings with parameters or hashes. Hashes have values as values, that is, they can be hierarchical.</p>
 <table class="production"><tbody><tr>
   <td class="p1cell"><a name="value">value</a></td>
   <td class="p2cell">:</td>
-  <td class="p2cell"><a href="#string">string</a> | <a href="#array">array</a> | <a href="#hash">hash</a> ;</td>
+  <td class="p2cell"><a href="#string">string</a> | <a href="#hash">hash</a> ;</td>
 
   </tr></tbody></table>
 
@@ -259,14 +259,6 @@
   <td class="p1cell"><a name="expander">expander</a></td>
   <td class="p2cell">:</td>
   <td class="p2cell">'{{' <a href="#expression">expression</a> '}}' ;</td>
-  </tr></tbody></table>
-
-<table class="production"><tbody><tr>
-  <td class="p1cell"><a name="array">array</a></td>
-
-  <td class="p2cell">:</td>
-  <td class="p2cell">'[' <a href="#WS">WS</a>? <a href="#value">value</a> <a href="#WS">WS</a>? ( ',' <a href="#WS">WS</a>? <a href="#value">value</a> <a href="#WS">WS</a>? )* ']' ;</td>
-
   </tr></tbody></table>
 
 <table class="production"><tbody><tr>
