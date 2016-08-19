@@ -1,9 +1,11 @@
 body                 ::= (__ entry NL)* (__ entry)? EOF;
 entry                ::= comment
+                      | section
                       | message
                       ;
 
 comment              ::= '#' .*;
+section              ::= '[[' keyword ']]';
 __                   ::= [ \t]*
 NL                   ::= [\r\n]+
 
