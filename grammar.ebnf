@@ -6,8 +6,8 @@ entry                ::= comment
 
 comment              ::= '#' .*;
 section              ::= '[[' keyword ']]';
-__                   ::= [ \t]*
-NL                   ::= [\r\n]+
+__                   ::= [ \t]*;
+NL                   ::= [\r\n]+;
 
 identifier           ::= [a-zA-Z_.?-] ([a-zA-Z0-9_.?-])*;
 variable             ::= '$' identifier;
