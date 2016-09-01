@@ -38,7 +38,7 @@ placeable-expression ::= expression
 expression           ::= quoted-pattern
                       |  number
                       |  identifier
-                      |  variable-reference
+                      |  variable
                       |  call-expression
                       |  member-expression
                       ;
