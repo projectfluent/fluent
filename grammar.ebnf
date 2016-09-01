@@ -25,9 +25,9 @@ pattern              ::= unquoted-pattern
                       |  quoted-pattern
                       ;
 unquoted-pattern     ::= (unquoted-text | placeable | block-text)+;
-quoted-pattern       ::= '"' (quoted-text | placeable)+ '"';
-unquoted-text        ::= ([^{] | '\{')*;
-quoted-text          ::= ([^{"] | '\{' | '\"')*;
+quoted-pattern       ::= '"' (quoted-text | placeable)* '"';
+unquoted-text        ::= ([^{] | '\{')+;
+quoted-text          ::= ([^{"] | '\{' | '\"')+;
 block-text           ::= NL __ '|' unquoted-pattern;
 
 placeable            ::= '{' __ placeable-list __ '}';
