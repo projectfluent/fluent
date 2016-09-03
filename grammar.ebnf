@@ -17,7 +17,7 @@ number               ::= [0-9]+ ('.' [0-9]+)?;
 member               ::= '*'? '[' keyword ']' __ pattern NL;
 
 message              ::= identifier __ '=' __ (value | trait-list);
-value                ::= pattern;
+value                ::= pattern trait-list?;
 trait-list           ::= NL (__ trait NL)+ __ trait?;
 trait                ::= member;
 
