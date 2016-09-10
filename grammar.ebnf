@@ -1,4 +1,4 @@
-body                 ::= (__ entry NL)* (__ entry)? EOF;
+body                 ::= (entry NL)* (entry)? EOF;
 entry                ::= comment
                       | section
                       | message
