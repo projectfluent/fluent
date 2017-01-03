@@ -1,4 +1,4 @@
-spec
-====
+FTL Syntax
+==========
 
-Specification and design documents for L20n
+Specification, design and documentation for FTL.
