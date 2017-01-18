@@ -1,0 +1,31 @@
+module Fluent
+{
+    res = Resource(entry* body, comment? comment)
+
+    entry = Message(iden id, pat? value, mem* traits, comment? comment)
+          | Section(key key, entry* body, comment? comment)
+          | Comment(comment)
+          | Junk(string body)
+
+    pat = Pattern(elem* elements, bool quoted)
+    elem = Text(string)
+         | Placeable(expr* expressions)
+
+    expr = MessageReference(iden id)
+         | ExternalArgument(iden id)
+         | CallExpression(iden callee, expr* args)
+         | SelectExpression(expr exp, mem* vars)
+         | MemberExpression(expr obj, memkey key)
+         | KeyValueArgument(iden name, expr* val)
+         | Number(string value)
+         | String(string value)
+
+    mem = Member(memkey key, pat value, bool default)
+    memkey = Number(string value)
+           | Keyword(iden? ns, key name)
+    
+    iden = (string name)
+    key = (string name)
+
+    comment = (string body)
+}
