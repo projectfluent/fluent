@@ -7,9 +7,7 @@ module Fluent
           | Comment(comment)
           | Junk(string body)
 
-    pat = Pattern(elem* elements, bool quoted)
-    elem = Text(string)
-         | Placeable(expr* expressions)
+    pat = Pattern(expr* elements, bool quoted)
 
     expr = MessageReference(iden id)
          | ExternalArgument(iden id)

@@ -361,14 +361,15 @@ Complex Example
     liked-photo = { LEN($people) ->
         [1]     { $people } likes
         [2]     { $people } like
-        [3]     { TAKE(2, $people), "one more person" } like
+        [3]     { LIST(TAKE(2, $people), "one more person") } like
 
-       *[other] { TAKE(2, $people),
-                  "{ LEN(DROP(2, $people)) ->
-                      [1]    one more person like
-                     *[other]  { LEN(DROP(2, $people)) } more people like
-                   }"
-                }
+       *[other] { LIST(
+            TAKE(2, $people),
+            "{ LEN(DROP(2, $people)) ->
+                [1]    one more person like
+               *[other]  { LEN(DROP(2, $people)) } more people like
+            }"
+        )}
     } your photo.
 
 ::
@@ -388,7 +389,10 @@ people.
 
 This example is very sophisticated and in fact could be simplified like so::
 
-    liked-photo = { LEN($people) } like your photo
+    liked-photo = { LEN($people) ->
+        [one] One person likes
+       *[other] { LEN($people) } people like
+    } your photo.
 
 It would work well enough for English and could work for other languages 
 without increasing its complexity.

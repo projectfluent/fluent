@@ -153,9 +153,6 @@ Implicit use
 In order to simplify most common scenarios, FTL will run some default
 functions while resolving placeables.
 
-For the list of implicit functions, the implict example has exactly the same
-result as the explicit one.
-
 ``NUMBER``
     If the variable passed from the developer is a number and is used in
     a placeable, FTL will implicitly call a `NUMBER` function on it.
@@ -198,17 +195,10 @@ result as the explicit one.
       log-time2 = Entry time: { DATETIME($date) }
 
 ``LIST``
-    If the variable passed from the developer is a number and is used in
+    If the variable passed from the developer is an array and is used in
     a placeable, FTL will implicitly call a `LIST` function on it.
 
-    Also, if the placeable is a list of variables, FTL will implicitly
-    call a `LIST` function on it.
-
     Example::
-
-      users = { LIST($user1, $user2, $user3) }
-
-      users2 = { $user1, $user2, $user3 }
 
       users = { LIST($users) }
 

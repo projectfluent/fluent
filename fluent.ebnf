@@ -32,22 +32,19 @@ unquoted-text        ::= ([^{] | '\{')+;
 quoted-text          ::= ([^{"] | '\{' | '\"')+;
 block-text           ::= NL __ '|' unquoted-pattern;
 
-placeable            ::= '{' __ placeable-list __ '}';
-placeable-list       ::= placeable-expression (__ ',' __ placeable-list)?;
-placeable-expression ::= expression
-                      |  select-expression
-                      ;
+placeable            ::= '{' __ expression __ '}';
 expression           ::= quoted-pattern
                       |  number
                       |  identifier
                       |  variable
-                      |  call-expression
+                      |  select-expression
                       |  member-expression
+                      |  call-expression
                       ;
 select-expression    ::= expression __ ' ->' __ variants-list;
+member-expression    ::= identifier '[' keyword ']';
 call-expression      ::= builtin '(' __ arglist? __ ')';
 arglist              ::= argument (__ ',' __ arglist)?;
 argument             ::= expression
                       |  keyword-argument;
 keyword-argument     ::= identifier __ ':' __ quoted-pattern;
-member-expression    ::= identifier '[' keyword ']';
