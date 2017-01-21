@@ -46,5 +46,5 @@ call-expression      ::= builtin '(' __ arglist? __ ')';
 arglist              ::= argument (__ ',' __ arglist)?;
 argument             ::= expression
                       |  keyword-argument;
-keyword-argument     ::= identifier __ '=' __ quoted-pattern;
+keyword-argument     ::= identifier __ ':' __ quoted-pattern;
 member-expression    ::= identifier '[' keyword ']';
