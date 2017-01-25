@@ -15,11 +15,14 @@ variable             ::= '$' identifier;
 keyword              ::= [a-zA-Z_.?-] ([a-zA-Z0-9_.?- ]* [a-zA-Z0-9_.?-])?;
 builtin              ::= [A-Z_.?-]+;
 number               ::= [0-9]+ ('.' [0-9]+)?;
-member               ::= __ '*'? '[' member-key ']' __ pattern NL;
-member-key           ::= number | (identifier '/')? keyword;
-member-list          ::= NL member+;
 
-message              ::= identifier __ '=' __ (pattern | pattern member-list | member-list);
+member-key           ::= number | (identifier '/')? keyword;
+member               ::= '[' member-key ']' __ pattern NL;
+default-member       ::= '*' member;
+variants-list        ::= NL (__ member)* __ default-member (__ member)*;
+traits-list          ::= variants-list | NL (__ member)+;
+
+message              ::= identifier __ '=' __ (pattern | pattern traits-list | traits-list);
 pattern              ::= unquoted-pattern
                       |  quoted-pattern
                       ;
@@ -41,7 +44,7 @@ expression           ::= quoted-pattern
                       |  call-expression
                       |  member-expression
                       ;
-select-expression    ::= expression __ ' ->' __ member-list;
+select-expression    ::= expression __ ' ->' __ variants-list;
 call-expression      ::= builtin '(' __ arglist? __ ')';
 arglist              ::= argument (__ ',' __ arglist)?;
 argument             ::= expression
