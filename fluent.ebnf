@@ -43,8 +43,8 @@ expression           ::= quoted-pattern
                       ;
 select-expression    ::= expression __ ' ->' __ variants-list;
 member-expression    ::= identifier '[' keyword ']';
-call-expression      ::= builtin '(' __ arglist? __ ')';
-arglist              ::= argument (__ ',' __ arglist)?;
+call-expression      ::= builtin '(' __ NL? arglist? __ NL? ')';
+arglist              ::= argument (__ NL? ',' __ NL? arglist)?;
 argument             ::= expression
                       |  keyword-argument;
 keyword-argument     ::= identifier __ ':' __ quoted-pattern;
