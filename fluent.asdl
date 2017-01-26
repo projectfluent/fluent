@@ -9,14 +9,16 @@ module Fluent
 
     pat = Pattern(expr* elements, bool quoted)
 
-    expr = MessageReference(iden id)
-         | ExternalArgument(iden id)
-         | CallExpression(iden callee, expr* args)
-         | SelectExpression(expr exp, mem* vars)
-         | MemberExpression(expr obj, memkey key)
-         | KeyValueArgument(iden name, argval val)
-         | Number(string value)
-         | String(string value)
+    expr = Selector(sel)
+         | SelectExpression(sel sel, mem* vars)
+
+    sel = MessageReference(iden id)
+        | ExternalArgument(iden id)
+        | CallExpression(iden callee, expr* args)
+        | MemberExpression(expr obj, memkey key)
+        | KeyValueArgument(iden name, argval val)
+        | Number(string value)
+        | String(string value)
 
     mem = Member(memkey key, pat value, bool default)
     memkey = Number(string value)
