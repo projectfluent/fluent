@@ -7,12 +7,12 @@ module Fluent
           | Comment(comment)
           | Junk(string body)
 
-    pat = Pattern(expr* elements, bool quoted)
+    pat = Pattern(expr expr, bool quoted)
 
     expr = MessageReference(iden id)
          | ExternalArgument(iden id)
          | CallExpression(iden callee, expr* args)
-         | SelectExpression(expr exp, mem* vars)
+         | SelectExpression(expr expr, mem* vars)
          | MemberExpression(expr obj, memkey key)
          | KeyValueArgument(iden name, argval val)
          | Number(string value)
