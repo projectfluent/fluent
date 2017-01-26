@@ -14,13 +14,15 @@ module Fluent
          | CallExpression(iden callee, expr* args)
          | SelectExpression(expr exp, mem* vars)
          | MemberExpression(expr obj, memkey key)
-         | KeyValueArgument(iden name, expr* val)
+         | KeyValueArgument(iden name, argval val)
          | Number(string value)
          | String(string value)
 
     mem = Member(memkey key, pat value, bool default)
     memkey = Number(string value)
            | Keyword(iden? ns, key name)
+    argval = Number(string value)
+           | String(string value)
     
     iden = (string name)
     key = (string name)
