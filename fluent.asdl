@@ -10,12 +10,12 @@ module Fluent
     pat = Pattern(expr* elements, bool quoted)
 
     expr = Selector(sel)
-         | SelectExpression(sel sel, mem* vars)
+         | SelectExpression(sel? sel, mem* vars)
 
     sel = MessageReference(iden id)
         | ExternalArgument(iden id)
         | CallExpression(iden callee, expr* args)
-        | MemberExpression(expr obj, memkey key)
+        | VariantExpression(expr obj, memkey key)
         | KeyValueArgument(iden name, argval val)
         | Number(string value)
         | String(string value)
