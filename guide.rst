@@ -216,7 +216,7 @@ select a string variant depending on its output. In case of the
 ``available-users`` entity, we used the ``LEN`` builtin and select the variant 
 of the string depending on its output.
 
-In the ``unread-emails`` example ``0`` is used explicitly as a member key to
+In the ``unread-emails`` example ``0`` is used explicitly as a variant key to
 specify a special case for when there are no unread emails.
 
 Additionally, the code specifies the default variant to be used if none of the
@@ -228,41 +228,35 @@ Variants
 
 ::
 
-    brand-name =
+    brand-name = {
        *[nominative] Aurora
         [genitive] Aurore
         [dative] Aurori
         [accusative] Auroro
         [locative] Aurori
         [instrumental] Auroro
+    }
 
-    about-old = O brskalniku { brand-nam }
     about = O { brand-name[locative] }
 
-As we stated at the beginning of this guide, an entity primarely consist 
-a string value. But there are cases, in which it makes sense to store multiple 
-variants of the value. The ``brand-name`` example, in languages that use noun 
-declension, may need to be declined when referred from other entities.
+As we stated at the beginning of this guide, messages primarely consist of
+string values. A single string value can have multiple branches, or variants,
+which are chosen based on the value of a selector. In some cases, however, we
+don't need any selector and instead just want to define multiple variants of
+the message and use them from within other messages.  For instance. in
+languages that use noun declension, ``brand-name`` may need to be declined when
+referred to from other messages.
 
-Select expression, introduced in one of the previous chapters, does not provide 
-a way to easily refer to a particular variant of the value from another entity.  
-Instead, FTL lets you define traits, which are variants of the whole value that 
-can be externally referred to using the ``key[trait]`` syntax.
+FTL lets you define variants without a selector.  Think of them as facets of
+the same message.  You can refer to them using the ``message[variant key]``
+syntax.
 
-For instance, in many inflected languages (e.g. German, Finnish, Hungarian, all 
-Slavic languages), the *about* preposition governs the grammatical case of the 
-complement. It might be the accusative (German), ablative (Latin) or locative 
-(Slavic languages).  In Slovenian, the ideal string would inflect the noun, 
-like so: *O Aurori*.  However, since we want the name of the browser to be 
-stored in the ``brand-name`` entity, we can't modify it.
-
-The work-around is to inflect an auxiliary noun complement, e.g. browser, to 
-give *About the Aurora browser*. Needless to say, this ends up being long and 
-often unnaturally-sounding to the native speakers. See ``about-old`` for the 
-example in Slovenian.
-
-This problem can be easily solved by defining multiple variants of the 
-``brand-name`` entity, to match different grammatical cases of the noun.
+For instance, in many inflected languages (e.g. German, Finnish, Hungarian, all
+Slavic languages), the *about* preposition governs the grammatical case of the
+complement. It might be the accusative (German), the ablative (Latin) or the
+locative (Slavic languages). The grammatical cases can be defined as variants
+without a selector and referred to from other messages, like the ``about``
+message above.
 
 
 Storing Additional Information
@@ -278,8 +272,8 @@ Storing Additional Information
         [feminine] { brand-name } otworzyla nowe okno.
     }
 
-Traits are useful beyond just value variants. They can be also used to describe 
-parameters of the entity that can be then used in other selectors.
+Traits can be used to describe parameters of the entity that can be then
+used in other selectors.
 
 Imagine an entity ``brand-name`` that can be either *Firefox* or *Aurora*.  The 
 former is *masculine*, while the latter is *feminine*, so sentences that refer 
@@ -296,7 +290,7 @@ HTML/XUL Attributes
         [html/aria-label]  Login input value
         [html/title]       Type your login email
 
-Finally, traits can also be very useful when using FTL for localization of more 
+Traits can also be very useful when using FTL for localization of more 
 complex UI elements, such as HTML components.
 
 Those elements often contain multiple translatable messages per one widget. For 
