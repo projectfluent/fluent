@@ -10,19 +10,21 @@ char                 ::= [https://www.w3.org/TR/REC-xml/#NT-Char]
 __                   ::= [#x20#x9]*   /* space, tab */
 NL                   ::= [#xA#xD]+    /* line feed, carriage return */
 
-identifier           ::= [a-zA-Z_.?-] ([a-zA-Z0-9_.?-])*
+identifier           ::= [a-zA-Z_?-] ([a-zA-Z0-9_?-])*
 variable             ::= '$' identifier
 keyword              ::= [a-zA-Z_.?-] ([a-zA-Z0-9_.?- ]* [a-zA-Z0-9_.?-])?
 builtin              ::= [A-Z_.?-]+
 number               ::= [0-9]+ ('.' [0-9]+)?
 
-member-key           ::= number | (identifier '/')? keyword
-member               ::= '[' member-key ']' __ pattern NL
-default-member       ::= '*' member
-variants-list        ::= NL (__ member)* __ default-member (__ member)*
-traits-list          ::= variants-list | NL (__ member)+
+variant-key          ::= number | keyword
+variant              ::= '[' variant-key ']' __ pattern NL
+default-variant      ::= '*' variant
+variant-list         ::= NL (__ variant)* __ default-variant (__ variant)*
 
-message              ::= identifier __ '=' __ (pattern | pattern traits-list | traits-list)
+attribute            ::= '.' identifier __ '=' __ pattern NL
+attribute-list       ::= NL (__ attribute)+
+
+message              ::= identifier __ '=' __ (pattern attribute-list? | attribute-list)
 pattern              ::= unquoted-pattern
                        | quoted-pattern
 unquoted-pattern     ::= (unquoted-text | placeable | block-text)+
@@ -38,11 +40,13 @@ selector-expression  ::= quoted-pattern
                        | number
                        | identifier
                        | variable
-                       | member-expression
+                       | attribute-expression
+                       | variant-expression
                        | call-expression
                        | placeable
 
-select-expression    ::= selector-expression __ ' ->' __ variants-list
+select-expression    ::= selector-expression __ ' ->' __ variant-list
+attribute-expression ::= identifier '.' identifier
 variant-expression   ::= identifier '[' keyword ']'
 call-expression      ::= builtin '(' __ arglist? __ ')'
 arglist              ::= argument (__ ',' __ arglist)?
