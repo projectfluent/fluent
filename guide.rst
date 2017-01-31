@@ -259,41 +259,19 @@ without a selector and referred to from other messages, like the ``about``
 message above.
 
 
-Storing Additional Information
-==============================
-
-::
-
-    brand-name = Firefox
-        [gender] masculine
-
-    opened-new-window = { brand-name[gender] ->
-       *[masculine] { brand-name } otworzyl nowe okno.
-        [feminine] { brand-name } otworzyla nowe okno.
-    }
-
-Traits can be used to describe parameters of the entity that can be then
-used in other selectors.
-
-Imagine an entity ``brand-name`` that can be either *Firefox* or *Aurora*.  The 
-former is *masculine*, while the latter is *feminine*, so sentences that refer 
-to this entity may want to branch depending on the gender of it.
-
-
-HTML/XUL Attributes
-===================
+DOM Attributes
+==============
 
 ::
 
     login-input = Predefined value
-        [html/placeholder] example@email.com
-        [html/aria-label]  Login input value
-        [html/title]       Type your login email
+        .placeholder = example@email.com
+        .aria-label = Login input value
+        .title = Type your login email
 
-Traits can also be very useful when using FTL for localization of more 
-complex UI elements, such as HTML components.
+Use attributes when localizing more complex UI components such as DOM elements.
 
-Those elements often contain multiple translatable messages per one widget. For 
+UI elements often contain multiple translatable messages per one widget. For 
 example, an HTML form input may have a value, but also a ``placeholder`` 
 attribute, ``aria-label`` attribute and maybe a ``title`` attribute.
 

@@ -2,7 +2,7 @@ module Fluent
 {
     res = Resource(entry* body, comment? comment)
 
-    entry = Message(iden id, pat? value, mem* traits, comment? comment)
+    entry = Message(iden id, pat? value, attr* attrs, comment? comment)
           | Section(key key, entry* body, comment? comment)
           | Comment(comment)
           | Junk(string body)
@@ -10,19 +10,22 @@ module Fluent
     pat = Pattern(expr* elements, bool quoted)
 
     expr = Selector(sel)
-         | SelectExpression(sel? sel, mem* vars)
+         | SelectExpression(sel? sel, var* vars)
 
     sel = MessageReference(iden id)
         | ExternalArgument(iden id)
         | CallExpression(iden callee, expr* args)
-        | VariantExpression(expr obj, memkey key)
+        | VariantExpression(iden msg, varkey key)
+        | AttributeExpression(iden msg, iden id)
         | KeyValueArgument(iden name, argval val)
         | Number(string value)
         | String(string value)
 
-    mem = Member(memkey key, pat value, bool default)
-    memkey = Number(string value)
-           | Keyword(iden? ns, key name)
+    attr = Attribute(iden id, pat value)
+    var = Variant(varkey key, pat value, bool default)
+    varkey = Number(string value)
+           | Keyword(key name)
+
     argval = Number(string value)
            | String(string value)
     
