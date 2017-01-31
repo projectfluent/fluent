@@ -34,7 +34,7 @@ quoted-text          ::= ([^{"] | '\{' | '\"')+
 block-text           ::= NL __ '|' unquoted-pattern
 
 placeable            ::= '{' __ expression __ '}'
-expression           ::= selector-expression | select-expression | variants-list
+expression           ::= selector-expression | select-expression | variant-list
 
 selector-expression  ::= quoted-pattern
                        | number
