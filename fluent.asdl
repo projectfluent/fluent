@@ -25,7 +25,7 @@ module Fluent
          | AttributeExpression(iden id, iden name)
          | VariantExpression(iden id, varkey key)
          | CallExpression(fun callee, arg* args)
-      .  | Placeable(plcbl)
+         | Placeable(plcbl)
 
     -- Attributes of Message
     attr = Attribute(iden id, pat value)
