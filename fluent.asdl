@@ -8,24 +8,19 @@ module Fluent
           | Junk(string body)
 
     -- Pattern values
-    pat = Pattern(elem* elements, bool quoted)
-    elem = String(string)
-         | Placeable(plcbl)
+    pat = Pattern(expr* elements, bool quoted)
 
-    -- Expressions allowed inside of braced Placeables
-    plcbl = Expression(expr)
-          | SelectExpression(expr? expr, var* vars)
-
-    -- Expressions allowed as selectors of SelectExpression and
-    -- arguments to CallExpression
+    -- Expressions
     expr = Pattern(pat)
+         | String(string)
          | Number(number)
          | MessageReference(iden id)
          | ExternalArgument(iden id)
+         | SelectExpression(expr? expr, var* vars)
          | AttributeExpression(iden id, iden name)
          | VariantExpression(iden id, varkey key)
          | CallExpression(fun callee, arg* args)
-         | Placeable(plcbl)
+         | Expression(expr)
 
     -- Attributes of Message
     attr = Attribute(iden id, pat value)
