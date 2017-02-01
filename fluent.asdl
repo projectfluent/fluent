@@ -2,35 +2,49 @@ module Fluent
 {
     res = Resource(entry* body, comment? comment)
 
-    entry = Message(iden id, pat? value, attr* attrs, comment? comment)
+    entry = Message(iden id, pat? value, attr* attributes, comment? comment)
           | Section(key key, comment? comment)
           | Comment(comment)
           | Junk(string body)
 
-    pat = Pattern(expr* elements, bool quoted)
+    -- Pattern values
+    pat = Pattern(elem* elements, bool quoted)
+    elem = String(string)
+         | Placeable(plcbl)
 
-    expr = Selector(sel)
-         | SelectExpression(sel? sel, var* vars)
+    -- Expressions allowed inside of braced Placeables
+    plcbl = Expression(expr)
+          | SelectExpression(expr? expr, var* vars)
 
-    sel = MessageReference(iden id)
-        | ExternalArgument(iden id)
-        | CallExpression(iden callee, expr* args)
-        | VariantExpression(iden msg, varkey key)
-        | AttributeExpression(iden msg, iden id)
-        | KeyValueArgument(iden name, argval val)
-        | Number(string value)
-        | String(string value)
+    -- Expressions allowed as selectors of SelectExpression and
+    -- arguments to CallExpression
+    expr = Pattern(pat)
+         | Number(number)
+         | MessageReference(iden id)
+         | ExternalArgument(iden id)
+         | AttributeExpression(iden id, iden name)
+         | VariantExpression(iden id, varkey key)
+         | CallExpression(fun callee, arg* args)
+      .  | Placeable(plcbl)
 
+    -- Attributes of Message
     attr = Attribute(iden id, pat value)
-    var = Variant(varkey key, pat value, bool default)
-    varkey = Number(string value)
-           | Keyword(key name)
 
-    argval = Number(string value)
-           | String(string value)
+    -- Variants of SelectExpression
+    var = Variant(varkey key, pat value, bool default)
+    varkey = Number(number)
+           | Keyword(key)
+
+    -- Arguments to CallExpression
+    arg = Expression(expr)
+        | NamedArgument(iden name, argval val)
+    argval = Number(number)
+           | String(string)
     
     iden = (string name)
     key = (string name)
+    fun = (string name)
+    number = (string value)
 
     comment = (string body)
 }
