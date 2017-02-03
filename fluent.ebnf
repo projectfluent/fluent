@@ -48,5 +48,5 @@ attribute-expression ::= identifier '.' identifier
 variant-expression   ::= identifier '[' keyword ']'
 call-expression      ::= builtin '(' __ (argument ( __ ',' __ argument)*)? __ ')'
 argument             ::= expression
-                       | keyword-argument
-keyword-argument     ::= identifier __ ':' __ ('"' quoted-text? '"' | number)
+                       | named-argument
+named-argument       ::= identifier __ ':' __ ('"' quoted-text? '"' | number)
