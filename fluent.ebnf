@@ -10,7 +10,7 @@ char                 ::= [https://www.w3.org/TR/REC-xml/#NT-Char]
 __                   ::= [#x20#x9]*   /* space, tab */
 NL                   ::= [#xA#xD]+    /* line feed, carriage return */
 
-identifier           ::= [a-zA-Z_?-] ([a-zA-Z0-9_?-])*
+identifier           ::= [a-zA-Z_?-] [a-zA-Z0-9_?-]*
 external             ::= '$' identifier
 keyword              ::= [a-zA-Z_.?-] ([a-zA-Z0-9_.?- ]* [a-zA-Z0-9_.?-])?
 builtin              ::= [A-Z_?-]+
@@ -46,8 +46,7 @@ expression           ::= quoted-pattern
 select-expression    ::= expression __ ' ->' __ variant-list
 attribute-expression ::= identifier '.' identifier
 variant-expression   ::= identifier '[' keyword ']'
-call-expression      ::= builtin '(' __ arglist? __ ')'
-arglist              ::= argument (__ ',' __ arglist)?
+call-expression      ::= builtin '(' __ (argument ( __ ',' __ argument)*)? __ ')'
 argument             ::= expression
                        | keyword-argument
 keyword-argument     ::= identifier __ ':' __ ('"' quoted-text? '"' | number)
