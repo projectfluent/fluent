@@ -7,6 +7,8 @@ Specification, design and documentation for FTL, the syntax for describing
 translation resources in Project Fluent.  FTL stands for _Fluent Translation
 List_.
 
-The grammar is defined using [W3C's EBNF][].
+The grammar is defined using [W3C's EBNF][]. It is also available as [railroad
+diagrams][].
 
 [W3C's EBNF]: https://www.w3.org/TR/REC-xml/#sec-notation
+[railroad diagrams]: https://projectfluent.github.io/syntax/diagram.xhtml
