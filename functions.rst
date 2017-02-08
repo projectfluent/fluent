@@ -34,6 +34,7 @@ Functions may (but don't have to) accept positional and keyword arguments.
 Some keyword parameters are only available to developers and cannot be used
 inside of FTL translations. Instead they can be set on external arguments
 passed into translations by the developer.
+
 See the reference below for more information about the arguments accepted for
 each built-in function.
 
@@ -95,57 +96,6 @@ environment.
 
     See the `Intl.DateTimeFormat`_ for the description of the parameters.
 
-``LIST``
-    Formats a list to a string in a given locale.
-
-    Example::
-
-      users = { LIST($user1, $user2, $user3) }
-
-      users2 = { LIST($users) }
-
-    Parameters::
-
-      ''style''
-
-    Developer parameters::
-
-      ''type''
-
-    See the `Intl.ListFormat`_ for the description of the parameters.
-
-``LEN``
-    Returns the number that represents the length of the list argument.
-    Similar to JS `Array.length`_ API.
-
-    Example::
-
-      unread-emails = Number of unread emails: { LEN($emails) }
-
-``TAKE``
-    Returns a slice of a list starting from the first element.
-    Similar to JS `Array.prototype.slice`_ API.
-
-    Function accepts a single positional parameter which must be a number which
-    defines the number of elements that will be returned from the array.
-
-    Example::
-
-      first-user = Primarely, { TAKE($users, 1) } likes your message.
-
-
-
-``DROP``
-    Returns a slice of the list starting from a given index.
-    Similar to JS `Array.prototype.slice`_ API.
-
-    Function accepts a single positional parameter which must be a number which
-    defines the parameter from which the returned slice begins.
-
-    Example::
-
-      more-users = But ultimately, { DROP($users, 1) } like your message as well.
-
 
 Implicit use
 ============
@@ -194,16 +144,6 @@ functions while resolving placeables.
 
       log-time2 = Entry time: { DATETIME($date) }
 
-``LIST``
-    If the variable passed from the developer is an array and is used in
-    a placeable, FTL will implicitly call a `LIST` function on it.
-
-    Example::
-
-      users = { LIST($users) }
-
-      users2 = { $users }
-
 
 Functions as arguments
 ============================
@@ -245,7 +185,4 @@ to the same Function and overload parameters. Example::
 
 .. _Intl.NumberFormat: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat
 .. _Intl.DateTimeFormat: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat
-.. _Intl.ListFormat: https://rawgit.com/zbraniecki/proposal-intl-list-format/master/index.html
-.. _array.length: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length
-.. _Array.prototype.slice: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
 .. _CLDR plural category: http://www.unicode.org/cldr/charts/30/supplemental/language_plural_rules.html

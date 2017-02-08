@@ -134,8 +134,7 @@ a list of built-in functions that can help with common operations on the
 external arguments.
 
 By default, FTL can guess which formatter to run on each kind of argument:
-``DATE``, ``NUMBER``, ``LIST`` etc., but you can also call the builtin
-explicitly.
+``DATE`` or ``NUMBER``, but you can also call the builtin explicitly.
 
 Explicit calls are useful because they allow you to pass additional formatting
 options that may help make the formatted string look better in the given
@@ -184,43 +183,6 @@ unformatted number::
         [0.0]   You scored zero points. What happened?
        *[other] You scored { NUMBER($score, minimumFractionDigits: 1) } points.
     }
-
-
-Advanced Selectors
-==================
-
-::
-
-    available-users = { LEN($users) ->
-        [0] No users
-        [1] One user.
-        [2] Two users.
-       *[other] { LEN($users) } users.
-    }
-
-    unread-emails = You have { $unreadEmails ->
-        [0] no unread emails.
-        [one] one unread email.
-       *[other] { $unreadEmails } unread emails.
-    }
-
-::
-
-    {
-        "users": ["John", "Mary"],
-        "unreadEmails": 0
-    }
-
-Selectors are pretty powerful. A localizer can use any builtin explicitly and 
-select a string variant depending on its output. In case of the 
-``available-users`` entity, we used the ``LEN`` builtin and select the variant 
-of the string depending on its output.
-
-In the ``unread-emails`` example ``0`` is used explicitly as a variant key to
-specify a special case for when there are no unread emails.
-
-Additionally, the code specifies the default variant to be used if none of the
-others match. It's denoted with a ``*`` operator in front of the variant name.
 
 
 Variants
@@ -326,57 +288,6 @@ Comments in FTL can be either standalone or bound to an entity or section. If
 a comment is located right above section or entity, it belongs to it and 
 localization tools will present it in its context.
 
-
-Complex Example
-===============
-
-::
-
-    liked-photo = { LEN($people) ->
-        [1]     { $people } likes
-        [2]     { $people } like
-        [3]     { LIST(TAKE(2, $people), "one more person") } like
-
-       *[other] { LIST(
-            TAKE(2, $people),
-            "{ LEN(DROP(2, $people)) ->
-                [1]    one more person like
-               *[other]  { LEN(DROP(2, $people)) } more people like
-            }"
-        )}
-    } your photo.
-
-::
-
-    {
-        "people": ["Anna", "Jack", "Mary", "Nick"]
-    }
-
-Here's a final example. It's a pretty complex and one that you will interact 
-with very rarely, but it shows the power of a message that can be localized 
-really well thanks to the flexibility of the syntax.
-
-In this example we branch the string depending on the number of people passed 
-as an external argument up to three people, and then, if the number is higher, 
-we sum up the list and add the variant for one more person, or any number of 
-people.
-
-This example is very sophisticated and in fact could be simplified like so::
-
-    liked-photo = { LEN($people) ->
-        [one] One person likes
-       *[other] { LEN($people) } people like
-    } your photo.
-
-It would work well enough for English and could work for other languages 
-without increasing its complexity.
-
-The power of FTL is that you can use the simple variant and then, later, you 
-can invest time to improve the message. If the message is very visible to the 
-users, it may be worth spending more time to get a better quality of the 
-string, if not, you can leave the simple version.
-
-But with FTL, you have a choice.
 
 Dive deeper
 ===========
