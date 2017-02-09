@@ -1,3 +1,24 @@
+-- ASDL is a small DSL for describing AST data structures.  See this paper for
+-- more information: http://www.cs.princeton.edu/research/techreps/TR-554-97.
+--
+-- Each AST node (representing statements and expressions) is defined by the
+-- ASDL.  The definition is independent of its realization in any particular
+-- programming language.
+--
+-- Definitions in ASDL take the following form:
+--
+--     type = sum_of_constructors
+--
+-- Constructors are defined with typed fields, which may be optionally named:
+--
+--     Constructor(a_type)
+--     Constructor(a_type a_name)
+--
+-- Fluent uses the following convention: constructors with named fields
+-- correspond to actual AST nodes; constructors without named fields are
+-- similar to Rust's 'tuple structs' and allow to define union types. This is
+-- due to ASDL not supporting union types out of the box.
+
 module Fluent
 {
     res = Resource(entry* body, comment? comment)
@@ -5,7 +26,7 @@ module Fluent
     entry = Message(iden id, pat? value, attr* attributes, comment? comment)
           | Section(key key, comment? comment)
           | Comment(comment)
-          | Junk(string body)
+          | Junk(string content)
 
     -- Pattern values
     pat = Pattern(expr* elements, bool quoted)
@@ -16,7 +37,7 @@ module Fluent
          | Number(number)
          | MessageReference(iden id)
          | ExternalArgument(iden id)
-         | SelectExpression(expr? expr, var* vars)
+         | SelectExpression(expr? expression, var* variants)
          | AttributeExpression(iden id, iden name)
          | VariantExpression(iden id, varkey key)
          | CallExpression(fun callee, arg* args)
@@ -36,10 +57,11 @@ module Fluent
     argval = Number(number)
            | String(string)
     
-    iden = (string name)
-    key = (string name)
-    fun = (string name)
-    number = (string value)
+    iden = Identifier(string name)
+    key = Keyword(string name)
+    fun = Function(string name)
+    string = StringExpression(string value)
+    number = NumberExpression(string value)
 
-    comment = (string body)
+    comment = Comment(string content)
 }
