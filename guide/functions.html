@@ -1,0 +1,612 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Functions · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="functions.html" />
+    
+    
+    <link rel="prev" href="comments.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="hello.html">
+            
+                <a href="hello.html">
+            
+                    
+                    Hello world
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="text.html">
+            
+                <a href="text.html">
+            
+                    
+                    Writing Text
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="references.html">
+            
+                <a href="references.html">
+            
+                    
+                    Referencing Messages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="external.html">
+            
+                <a href="external.html">
+            
+                    
+                    External Data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="builtins.html">
+            
+                <a href="builtins.html">
+            
+                    
+                    Built-in Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="selectors.html">
+            
+                <a href="selectors.html">
+            
+                    
+                    Selectors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="variants.html">
+            
+                <a href="variants.html">
+            
+                    
+                    Variants
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="attributes.html">
+            
+                <a href="attributes.html">
+            
+                    
+                    Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="sections.html">
+            
+                <a href="sections.html">
+            
+                    
+                    Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="comments.html">
+            
+                <a href="comments.html">
+            
+                    
+                    Comments
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.12" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    Functions
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="functions.html">
+            
+                <a href="functions.html#using-functions">
+            
+                    
+                    Using Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="functions.html">
+            
+                <a href="functions.html#function-parameters">
+            
+                    
+                    Parameters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="functions.html">
+            
+                <a href="functions.html#built-in-functions">
+            
+                    
+                    Built-in Functions
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.3.1" data-path="functions.html">
+            
+                <a href="functions.html#number">
+            
+                    
+                    NUMBER
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2" data-path="functions.html">
+            
+                <a href="functions.html#datetime">
+            
+                    
+                    DATETIME
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="functions.html">
+            
+                <a href="functions.html#implicit-use">
+            
+                    
+                    Implicit Use
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="functions.html">
+            
+                <a href="functions.html#partial-arguments">
+            
+                    
+                    Partial arguments
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="more.html">
+            
+                <a href="more.html">
+            
+                    
+                    Learn More
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Functions</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="functions-in-ftl">Functions in FTL</h1>
+<p>Functions provide additional functionality available to the localizers. They
+can be either used to format data according to the current language&apos;s rules or
+can provide additional data that the localizer may use (like, the platform, or
+time of the day) to fine tune the translation.</p>
+<p>FTL implementations should ship with a number of built-in functions that can be
+used from within localization messages.</p>
+<p>The list of available functions is extensible and environments may want to add
+additional functions designated to aid localizers writing translations targeted
+for a given environment.</p>
+<h2 id="using-functions">Using Functions</h2>
+<p>FTL Functions can only be called inside of placeables. Use them to return
+a value to be interpolated in the message or as selectors in select
+expressions.</p>
+<p>Example:</p>
+<pre><code>today-is = Today is { DATETIME($date) }
+</code></pre><h2 id="function-parameters">Function parameters</h2>
+<p>Functions may (but don&apos;t have to) accept positional and keyword arguments. Some
+keyword parameters are only available to developers and cannot be used inside
+of FTL translations. Instead they can be set on external arguments passed into
+translations by the developer.</p>
+<p>See the reference below for more information about the arguments accepted for
+each built-in function.</p>
+<h2 id="built-in-functions">Built-in Functions</h2>
+<p>Built-in functions are very generic and should be applicable to any translation
+environment.</p>
+<h3 id="number"><code>NUMBER</code></h3>
+<p>Formats a number to a string in a given locale.</p>
+<p>Example:</p>
+<pre><code>dpi-ratio = Your DPI ratio is { NUMBER($ratio, minimumFractionDigits: 2) }
+</code></pre><p>Parameters:</p>
+<pre><code>currencyDisplay
+useGrouping
+minimumIntegerDigits
+minimumFractionDigits
+maximumFractionDigits
+minimumSignificantDigits
+maximumSignificantDigits
+</code></pre><p>Developer parameters:</p>
+<pre><code>style
+currency
+</code></pre><p>See the
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat" target="_blank">Intl.NumberFormat</a>
+for the description of the parameters.</p>
+<h3 id="datetime"><code>DATETIME</code></h3>
+<p>Formats a date to a string in a given locale.</p>
+<p>Example:</p>
+<pre><code>today-is = Today is { DATETIME($date, month: &quot;long&quot;, year: &quot;numeric&quot;, day: &quot;numeric&quot;) }
+</code></pre><p>Parameters:</p>
+<pre><code>hour12
+weekday
+era
+year
+month
+day
+hour
+minute
+second
+timeZoneName
+</code></pre><p>Developer parameters:</p>
+<pre><code>timeZone
+</code></pre><p>See the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat" target="_blank">Intl.DateTimeFormat</a> for the description of the parameters.</p>
+<h2 id="implicit-use">Implicit use</h2>
+<p>In order to simplify most common scenarios, FTL will run some default functions
+while resolving placeables.</p>
+<h3 id="number"><code>NUMBER</code></h3>
+<p>If the variable passed from the developer is a number and is used in
+a placeable, FTL will implicitly call a NUMBER function on it.</p>
+<p>Example:</p>
+<pre><code>emails = Number of unread emails { $unreadEmails }
+
+emails2 = Number of unread emails { NUMBER($undeadEmails) }
+</code></pre><p>Numbers used as selectors in select expressions will match the number exactly
+of they will match the current language&apos;s <a href="http://www.unicode.org/cldr/charts/30/supplemental/language_plural_rules.html" target="_blank">CLDR plural
+category</a>
+for the number.</p>
+<p>The following examples are equivalent and will both work. The second example
+may be used to pass additional formatting options to the <code>NUMBER</code> formatter for
+the purpose of choosing the correct plural category:</p>
+<pre><code>liked-count = { $num -&gt;
+  [0]     No likes yet.
+  [one]   One person liked your message
+ *[other] { $num } people liked your message
+}
+
+liked-count2 = { NUMBER($num) -&gt;
+  [0]     No likes yet.
+  [one]   One person liked your message
+ *[other] { $num } people liked your message
+}
+</code></pre><h3 id="datetime"><code>DATETIME</code></h3>
+<p>If the variable passed from the developer is a date and is used in a placeable,
+FTL will implicitly call a DATE function on it.</p>
+<p>Example:</p>
+<pre><code>log-time = Entry time: { $date }
+
+log-time2 = Entry time: { DATETIME($date) }
+</code></pre><h2 id="partial-arguments">Partial arguments</h2>
+<p>In most cases users will not have to call out Function explicitly, thanks to
+the implicit calls.</p>
+<p>The cases where implicit doesn&apos;t work will often come when the Function has to
+be called with additional parameters, but even then, majority of scenarios will
+require the parameters to be set by the developer and only in rare cases
+localizer will have to touch them.</p>
+<p>Developers can provide the variable already wrapped in Function as an argument.</p>
+<p>Example:</p>
+<pre><code>main.js:
+
+let date = new Date();
+let s = ctx.format(&apos;key1&apos;, {
+  day: Intl.MessageDateTimeArgument(date, {
+    weekday: &apos;long&apos;
+  })
+})
+
+main.ftl:
+
+key1 = Today is { $day }
+</code></pre><p>If the localizer decide that they have to modify the parameters, for example
+because the string doesn&apos;t fit in the UI, they can pass the variable to the
+same Function and overload parameters. Example:</p>
+<pre><code>main.ftl:
+
+key1 = Today is { DATETIME($day, weekday: &quot;short&quot;) }
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="comments.html" class="navigation navigation-prev " aria-label="Previous page: Comments">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="functions.html#using-functions" class="navigation navigation-next " aria-label="Next page: Using Functions">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Functions","level":"1.12","depth":1,"next":{"title":"Using Functions","level":"1.12.1","depth":2,"anchor":"#using-functions","path":"functions.md","ref":"functions.md#using-functions","articles":[]},"previous":{"title":"Comments","level":"1.11","depth":1,"path":"comments.md","ref":"comments.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"functions.md","mtime":"2017-02-11T18:09:29.056Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-11T18:28:22.921Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
