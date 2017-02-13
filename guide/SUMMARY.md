@@ -6,6 +6,7 @@
 * [External Data](external.md)
 * [Selectors](selectors.md)
 * [Variants](variants.md)
+* [Tags](tags.md)
 * [Attributes](attributes.md)
 * [Sections](sections.md)
 * [Comments](comments.md)

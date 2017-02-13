@@ -23,7 +23,7 @@ module Fluent
 {
     res = Resource(entry* body, comment? comment)
 
-    entry = Message(iden id, pat? value, attr* attributes, comment? comment)
+    entry = Message(iden id, pat? value, attr* attributes, tag* tags, comment? comment)
           | Section(symb name, comment? comment)
           | Comment(comment)
           | Junk(string content)
@@ -44,6 +44,9 @@ module Fluent
 
     -- Attributes of Message
     attr = Attribute(iden id, pat value)
+
+    -- Tags of Message
+    tag = Tag(symb name)
 
     -- Variants of SelectExpression
     var = Variant(varkey key, pat value, bool default)
