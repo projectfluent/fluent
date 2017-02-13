@@ -1,14 +1,14 @@
 Comments
 --------
 
-    # Try to keep all menu entities as single word if possible
+    // Try to keep all menu entities as single word if possible
     [[menu]]
 
     open = Open
     close = Close
 
-    # This button lives in a main toolbar
-    # $user (String) Currently logged in username
+    // This button lives in a main toolbar
+    // $user (String) Currently logged in username
     logout = Logout { $user }
 
     {
