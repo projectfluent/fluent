@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Hello world · GitBook</title>
+        <title>Built-in Functions · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="text.html" />
+    <link rel="next" href="selectors.html" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="external.html" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="hello.html">
+        <li class="chapter " data-level="1.2" data-path="hello.html">
             
                 <a href="hello.html">
             
@@ -154,7 +154,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="builtins.html">
+        <li class="chapter active" data-level="1.6" data-path="builtins.html">
             
                 <a href="builtins.html">
             
@@ -391,7 +391,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Hello world</a>
+        <a href="." >Built-in Functions</a>
     </h1>
 </div>
 
@@ -406,17 +406,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="hello-world">Hello World</h2>
-<p>In FTL, software refers to messages in a given language through unique
-identifiers.</p>
-<pre><code>hello = Hello, World!
-</code></pre><p>This is an entity called <code>hello</code>. Entities are containers for information. You
-use entities to identify, store, and recall information to be used in the
-software&apos;s UI.</p>
-<p>In its simplest form, an entity has just a single string value; here <em>Hello,
-World!</em>. Most of the entities you will work with in FTL will look similar to
-this. Some will be more complex, have more than one value variant, or use
-expressions to select the right variant depending on the circumstances.</p>
+                                <h2 id="builtins">Builtins</h2>
+<pre><code>emails = You have { $unreadEmails } unread emails.
+emails2 = You have { NUMBER($unreadEmails) } unread emails.
+
+last-notice =
+    | Last checked: { DATETIME($lastChecked, day: &quot;numeric&quot;, month: long&quot;) }.
+
+{
+    &quot;lastChecked&quot;: &quot;2016-04-22T08:13:56.354Z&quot;,
+    &quot;unreadEmails&quot;: 5
+}
+</code></pre><p>In some rare cases the data provided by the developer will require some
+additional formatting before it can be placed into the string. FTL provides
+a list of built-in functions that can help with common operations on the
+external arguments.</p>
+<p>By default, FTL can guess which formatter to run on each kind of argument:
+<code>DATE</code> or <code>NUMBER</code>, but you can also call the builtin explicitly.</p>
+<p>Explicit calls are useful because they allow you to pass additional formatting
+options that may help make the formatted string look better in the given
+language. Examples include: defining month as <code>short</code> or <code>long</code> in the <code>DATE</code>
+formatter (using arguments defined in <code>Intl.DateTimeFormat</code>) or whether to use
+grouping separator when displaying a large number.</p>
 
                                 
                                 </section>
@@ -444,12 +455,12 @@ expressions to select the right variant depending on the circumstances.</p>
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="external.html" class="navigation navigation-prev " aria-label="Previous page: External Data">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="text.html" class="navigation navigation-next " aria-label="Next page: Writing Text">
+                <a href="selectors.html" class="navigation navigation-next " aria-label="Next page: Selectors">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -460,7 +471,7 @@ expressions to select the right variant depending on the circumstances.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Hello world","level":"1.2","depth":1,"next":{"title":"Writing Text","level":"1.3","depth":1,"path":"text.md","ref":"text.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"hello.md","mtime":"2017-02-11T17:37:20.935Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-11T18:28:22.921Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Built-in Functions","level":"1.6","depth":1,"next":{"title":"Selectors","level":"1.7","depth":1,"path":"selectors.md","ref":"selectors.md","articles":[]},"previous":{"title":"External Data","level":"1.5","depth":1,"path":"external.md","ref":"external.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"builtins.md","mtime":"2017-02-11T18:03:38.034Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-13T10:46:43.743Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
