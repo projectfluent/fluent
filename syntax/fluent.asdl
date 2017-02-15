@@ -24,7 +24,7 @@ module Fluent
     res = Resource(entry* body, comment? comment)
 
     entry = Message(iden id, pat? value, attr* attributes, comment? comment)
-          | Section(key key, comment? comment)
+          | Section(symb name, comment? comment)
           | Comment(comment)
           | Junk(string content)
 
@@ -49,7 +49,7 @@ module Fluent
     -- Variants of SelectExpression
     var = Variant(varkey key, pat value, bool default)
     varkey = Number(number)
-           | Keyword(key)
+           | Symbol(symb)
 
     -- Arguments to CallExpression
     arg = Expression(expr)
@@ -58,7 +58,7 @@ module Fluent
            | String(string)
     
     iden = Identifier(string name)
-    key = Keyword(string name)
+    symb = Symbol(string name)
     fun = Function(string name)
     string = StringExpression(string value)
     number = NumberExpression(string value)
