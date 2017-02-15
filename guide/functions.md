@@ -126,16 +126,16 @@ the purpose of choosing the correct plural category:
 
 ```
 liked-count = { $num ->
-  [0]     No likes yet.
-  [one]   One person liked your message
- *[other] { $num } people liked your message
-}
+        [0]     No likes yet.
+        [one]   One person liked your message
+       *[other] { $num } people liked your message
+    }
 
 liked-count2 = { NUMBER($num) ->
-  [0]     No likes yet.
-  [one]   One person liked your message
- *[other] { $num } people liked your message
-}
+        [0]     No likes yet.
+        [one]   One person liked your message
+       *[other] { $num } people liked your message
+    }
 ```
 
 ### `DATETIME`  

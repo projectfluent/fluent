@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+  - Require the message body to be indented.
+
+    Quoted strings are now only valid in placeables and cannot contain other
+    placeables.
+
+    Remove `|` for multiline blocks.
+
   - (f176deb) Fix #30. Allow more characters in keys, and trim whitespace
     around them
 

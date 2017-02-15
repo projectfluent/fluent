@@ -32,8 +32,7 @@ module Fluent
     pat = Pattern(expr* elements, bool quoted)
 
     -- Expressions
-    expr = Pattern(pat)
-         | String(string)
+    expr = String(string)
          | Number(number)
          | MessageReference(iden id)
          | ExternalArgument(iden id)
