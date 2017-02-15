@@ -2,9 +2,9 @@
 
 ```
 emails = { $unreadEmails ->
-    [one] You have one unread email.
-   *[other] You have { $unreadEmails } unread emails.
-}
+        [one] You have one unread email.
+       *[other] You have { $unreadEmails } unread emails.
+    }
 ```
 
 ```json
@@ -34,7 +34,7 @@ unformatted number:
 
 ```
 your-score = { NUMBER($score, minimumFractionDigits: 1) ->
-    [0.0]   You scored zero points. What happened?
-   *[other] You scored { NUMBER($score, minimumFractionDigits: 1) } points.
-}
+        [0.0]   You scored zero points. What happened?
+       *[other] You scored { NUMBER($score, minimumFractionDigits: 1) } points.
+    }
 ```

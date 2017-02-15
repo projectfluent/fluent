@@ -2,13 +2,13 @@
 
 ```
 brand-name = {
-   *[nominative] Aurora
-    [genitive] Aurore
-    [dative] Aurori
-    [accusative] Auroro
-    [locative] Aurori
-    [instrumental] Auroro
-}
+       *[nominative] Aurora
+        [genitive] Aurore
+        [dative] Aurori
+        [accusative] Auroro
+        [locative] Aurori
+        [instrumental] Auroro
+    }
 
 about = O { brand-name[locative] }
 ```
