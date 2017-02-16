@@ -504,26 +504,24 @@ FTL will implicitly call a DATE function on it.</p>
 
 log-time2 = Entry time: { DATETIME($date) }
 </code></pre><h2 id="partial-arguments">Partial arguments</h2>
-<p>In most cases users will not have to call out Function explicitly, thanks to
-the implicit calls.</p>
-<p>The cases where implicit doesn&apos;t work will often come when the Function has to
-be called with additional parameters, but even then, majority of scenarios will
-require the parameters to be set by the developer and only in rare cases
-localizer will have to touch them.</p>
-<p>Developers can provide the variable already wrapped in Function as an argument.</p>
-<p>Example:</p>
-<pre><code class="lang-json"><span class="hljs-keyword">let</span> date = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
-<span class="hljs-keyword">let</span> str = ctx.format(<span class="hljs-string">&apos;key1&apos;</span>, {
-  day: <span class="hljs-built_in">Intl</span>.MessageDateTimeArgument(date, {
+<p>In most cases localizers don&apos;t need to call Functions explicitly, thanks to the
+implicit formatting. If the implicit formatting is not sufficient, the Function
+can be called explicitly with additional parameters.  To ease the burden this
+might have on localizers, Fluent allows developers to set the default
+formatting parameters for the external arguments they pass.</p>
+<p>In other words, developers can provide externals which are already wrapped in
+a partial Function call.</p>
+<pre><code>today = Today is { $day }
+</code></pre><pre><code class="lang-javascript">ctx.format(<span class="hljs-string">&apos;today&apos;</span>, {
+  day: <span class="hljs-built_in">Intl</span>.MessageDateTimeArgument(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(), {
     weekday: <span class="hljs-string">&apos;long&apos;</span>
   })
 })
 </code></pre>
-<pre><code>key1 = Today is { $day }
-</code></pre><p>If the localizer decide that they have to modify the parameters, for example
-because the string doesn&apos;t fit in the UI, they can pass the variable to the
-same Function and overload parameters. Example:</p>
-<pre><code>key1 = Today is { DATETIME($day, weekday: &quot;short&quot;) }
+<p>If the localizer wishes to modify the parameters, for example because the
+string doesn&apos;t fit in the UI, they can pass the external argument to the same
+Function and overload the parameters set by the developer.</p>
+<pre><code>today = Today is { DATETIME($day, weekday: &quot;short&quot;) }
 </code></pre>
                                 
                                 </section>
@@ -567,7 +565,7 @@ same Function and overload parameters. Example:</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Functions","level":"1.12","depth":1,"next":{"title":"Using Functions","level":"1.12.1","depth":2,"anchor":"#using-functions","path":"functions.md","ref":"functions.md#using-functions","articles":[]},"previous":{"title":"Built-in Functions","level":"1.11","depth":1,"path":"builtins.md","ref":"builtins.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"functions.md","mtime":"2017-02-16T00:49:47.821Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-16T00:50:36.493Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Functions","level":"1.12","depth":1,"next":{"title":"Using Functions","level":"1.12.1","depth":2,"anchor":"#using-functions","path":"functions.md","ref":"functions.md#using-functions","articles":[]},"previous":{"title":"Built-in Functions","level":"1.11","depth":1,"path":"builtins.md","ref":"builtins.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"functions.md","mtime":"2017-02-16T08:28:09.230Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-16T08:31:05.767Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
