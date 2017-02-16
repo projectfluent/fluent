@@ -406,7 +406,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="variants">Variants</h2>
+                                <h1 id="variants">Variants</h1>
 <pre><code>brand-name = {
    *[nominative] Aurora
     [genitive] Aurore
@@ -417,21 +417,20 @@
 }
 
 about = O { brand-name[locative] }
-</code></pre><p>As we stated at the beginning of this guide, messages primarely consist of
+</code></pre><p>As we stated at the beginning of this guide, messages primarily consist of
 string values. A single string value can have multiple branches, or variants,
 which are chosen based on the value of a selector. In some cases, however, we
 don&apos;t need any selector and instead just want to define multiple variants of
-the message and use them from within other messages. For instance. in languages
+the message and use them from within other messages. For instance, in languages
 that use noun declension, <code>brand-name</code> may need to be declined when referred to
 from other messages.</p>
 <p>FTL lets you define variants without a selector. Think of them as facets of the
 same message. You can refer to them using the <code>message[variant key]</code> syntax.</p>
 <p>For instance, in many inflected languages (e.g. German, Finnish, Hungarian, all
 Slavic languages), the <em>about</em> preposition governs the grammatical case of the
-complement. It might be the accusative (German), the ablative (Latin) or the
-locative (Slavic languages). The grammatical cases can be defined as variants
-without a selector and referred to from other messages, like the <code>about</code>
-message above.</p>
+complement. It might be accusative (German), ablative (Latin), or locative
+(Slavic languages). The grammatical cases can be defined as variants without a
+selector and referred to from other messages, like the <code>about</code> message above.</p>
 
                                 
                                 </section>
@@ -475,7 +474,7 @@ message above.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Variants","level":"1.7","depth":1,"next":{"title":"Attributes","level":"1.8","depth":1,"path":"attributes.md","ref":"attributes.md","articles":[]},"previous":{"title":"Selectors","level":"1.6","depth":1,"path":"selectors.md","ref":"selectors.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"variants.md","mtime":"2017-02-16T08:05:07.224Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-16T08:31:05.767Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Variants","level":"1.7","depth":1,"next":{"title":"Attributes","level":"1.8","depth":1,"path":"attributes.md","ref":"attributes.md","articles":[]},"previous":{"title":"Selectors","level":"1.6","depth":1,"path":"selectors.md","ref":"selectors.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"variants.md","mtime":"2017-02-16T09:01:18.539Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-16T09:09:19.288Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

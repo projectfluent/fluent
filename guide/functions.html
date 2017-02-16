@@ -413,9 +413,9 @@ can provide additional data that the localizer may use (like, the platform, or
 time of the day) to fine tune the translation.</p>
 <p>FTL implementations should ship with a number of built-in functions that can be
 used from within localization messages.</p>
-<p>The list of available functions is extensible and environments may want to add
-additional functions designated to aid localizers writing translations targeted
-for a given environment.</p>
+<p>The list of available functions is extensible and environments may want to
+introduce additional functions, designed to aid localizers writing translations
+targeted for such environments.</p>
 <h2 id="using-functions">Using Functions</h2>
 <p>FTL Functions can only be called inside of placeables. Use them to return
 a value to be interpolated in the message or as selectors in select
@@ -479,7 +479,7 @@ a placeable, FTL will implicitly call a NUMBER function on it.</p>
 
 emails2 = Number of unread emails { NUMBER($undeadEmails) }
 </code></pre><p>Numbers used as selectors in select expressions will match the number exactly
-of they will match the current language&apos;s <a href="http://www.unicode.org/cldr/charts/30/supplemental/language_plural_rules.html" target="_blank">CLDR plural
+or they will match the current language&apos;s <a href="http://www.unicode.org/cldr/charts/30/supplemental/language_plural_rules.html" target="_blank">CLDR plural
 category</a>
 for the number.</p>
 <p>The following examples are equivalent and will both work. The second example
@@ -565,7 +565,7 @@ Function and overload the parameters set by the developer.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Functions","level":"1.12","depth":1,"next":{"title":"Using Functions","level":"1.12.1","depth":2,"anchor":"#using-functions","path":"functions.md","ref":"functions.md#using-functions","articles":[]},"previous":{"title":"Built-in Functions","level":"1.11","depth":1,"path":"builtins.md","ref":"builtins.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"functions.md","mtime":"2017-02-16T08:28:09.230Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-16T08:31:05.767Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Functions","level":"1.12","depth":1,"next":{"title":"Using Functions","level":"1.12.1","depth":2,"anchor":"#using-functions","path":"functions.md","ref":"functions.md#using-functions","articles":[]},"previous":{"title":"Built-in Functions","level":"1.11","depth":1,"path":"builtins.md","ref":"builtins.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"functions.md","mtime":"2017-02-16T09:07:09.716Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-16T09:09:19.288Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
