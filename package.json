@@ -1,0 +1,21 @@
+{
+  "name": "fluent-spec",
+  "description": "Specification and documentation for Fluent",
+  "version": "0.2.0",
+  "private": true,
+  "homepage": "http://projectfluent.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/projectfluent/fluent.git"
+  },
+  "author": "Mozilla <l10n-drivers@mozilla.org>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/projectfluent/fluent/issues"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.12.0",
+    "gitbook-cli": "^2.3.0",
+    "serve": "^3.3.1"
+  }
+}
