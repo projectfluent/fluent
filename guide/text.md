@@ -1,4 +1,4 @@
-# Working With Text: Multiline, Quote Delimited Strings
+# Working With Text: Multiline and Quotes
 
 ```
 about = About Our Software
