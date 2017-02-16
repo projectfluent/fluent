@@ -1,5 +1,5 @@
-Working With Text: Multiline, Quote Delimited Strings
------------------------------------------------------
+# Working With Text: Multiline, Quote Delimited Strings
+
 ```
 about = About Our Software
 description =

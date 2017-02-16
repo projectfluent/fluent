@@ -1,5 +1,5 @@
-Interpolation and External Arguments
-------------------------------------
+# Interpolation and External Arguments
+
 ```
 welcome = Welcome { $user }
 unreadEmails = { $user } has { $emailCount } unread emails.
@@ -10,7 +10,6 @@ unreadEmails = { $user } has { $emailCount } unread emails.
     "emailCount": 5
 }
 ```
-
 
 Another common common use case for a placeable is to put an external argument,
 provided by the developer, into the string.

@@ -1,12 +1,11 @@
-Message References
-------------------
+# Message References
+
 ```
 brandName = Loki
 installing = Installing { brandName }.
 
 menu-save = Save
 help-menu-save = Click "{ menu-save }" to save the file.
-
 ```
 
 Strings in FTL may use special syntax to incorporate small pieces of

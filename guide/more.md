@@ -1,5 +1,4 @@
-Dive deeper
------------
+# Dive deeper
 
 You can experiment with the syntax using [Fluent Playground][], an interactive
 editor available in the web browser.

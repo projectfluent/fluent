@@ -1,11 +1,10 @@
-Fluent Syntax (FTL)
-===================
+# Fluent Syntax (FTL)
 
-_Version 0.2.0._
+## Version 0.2.0
 
 Specification, design and documentation for FTL, the syntax for describing
-translation resources in Project Fluent.  FTL stands for _Fluent Translation
-List_.
+translation resources in Project Fluent.  FTL stands for *Fluent Translation
+List*.
 
 Read the [Fluent Syntax Guide][].
 

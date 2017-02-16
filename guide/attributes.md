@@ -1,5 +1,5 @@
-DOM Attributes
---------------
+# DOM Attributes
+
 ```
 login-input = Predefined value
     .placeholder = example@email.com
@@ -10,15 +10,15 @@ login-input = Predefined value
 
 UI elements often contain multiple translatable messages per one widget. For
 example, an HTML form input may have a value, but also a `placeholder`
-attribute, `aria-label` attribute and maybe a `title` attribute.
+attribute, `aria-label` attribute, and maybe a `title` attribute.
 
-Another example would be a Web Component confirm window with an `ok` button,
-`cancel` button and a message.
+Another example would be a Web Component confirm window with an `OK` button,
+`Cancel` button, and a message.
 
 In order to prevent having to define multiple separate messages for representing
 different strings within a single element, FTL allows you to add attributes to
 messages.
 
-This feature is particularly useful in translating more complex widgets since
-thanks to all attributes being stores on a single unit it's easier for editors,
-comments and tools to identify and work with the given message.
+This feature is particularly useful in translating more complex widgets since,
+thanks to all attributes being stores on a single unit, it's easier for editors,
+comments, and tools to identify and work with the given message.
