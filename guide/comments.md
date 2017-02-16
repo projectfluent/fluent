@@ -1,5 +1,5 @@
-Comments
---------
+# Comments
+
 ```
 // This comment is for the whole file.
 
@@ -19,9 +19,9 @@ logout = Logout { $user }
 }
 ```
 
-In FTL Comments can be standalone or bound to a file, message or section.
+In FTL, Comments can be standalone or bound to a file, message, or section.
 
-If a comment is located right above section or message, it belongs to it and
+If a comment is located right above a section or message, it belongs to it and
 localization tools will present it in its context.
 If a comment is located at the top of the file it will be bound to the whole file.
 

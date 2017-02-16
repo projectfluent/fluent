@@ -1,5 +1,5 @@
-Sections
---------
+# Sections
+
 ```
 instruction = Click "{ open }" to begin
 
