@@ -152,33 +152,31 @@ log-time2 = Entry time: { DATETIME($date) }
 
 ## Partial arguments
 
-In most cases users will not have to call out Function explicitly, thanks to
-the implicit calls.
+In most cases localizers don't need to call Functions explicitly, thanks to the
+implicit formatting. If the implicit formatting is not sufficient, the Function
+can be called explicitly with additional parameters.  To ease the burden this
+might have on localizers, Fluent allows developers to set the default
+formatting parameters for the external arguments they pass.
 
-The cases where implicit doesn't work will often come when the Function has to
-be called with additional parameters, but even then, majority of scenarios will
-require the parameters to be set by the developer and only in rare cases
-localizer will have to touch them.
+In other words, developers can provide externals which are already wrapped in
+a partial Function call.
 
-Developers can provide the variable already wrapped in Function as an argument.
+```
+today = Today is { $day }
+```
 
-Example:
-
-```json
-let date = new Date();
-let str = ctx.format('key1', {
-  day: Intl.MessageDateTimeArgument(date, {
+```javascript
+ctx.format('today', {
+  day: Intl.MessageDateTimeArgument(new Date(), {
     weekday: 'long'
   })
 })
 ```
-```
-key1 = Today is { $day }
-```
 
-If the localizer decides that they have to modify the parameters, for example
-because the string doesn't fit in the UI, they can pass the variable to the
-same Function and overload parameters. Example:
+If the localizer wishes to modify the parameters, for example because the
+string doesn't fit in the UI, they can pass the external argument to the same
+Function and overload the parameters set by the developer.
+
 ```
-key1 = Today is { DATETIME($day, weekday: "short") }
+today = Today is { DATETIME($day, weekday: "short") }
 ```

@@ -5,8 +5,9 @@ emails = You have { $unreadEmails } unread emails.
 emails2 = You have { NUMBER($unreadEmails) } unread emails.
 
 last-notice =
-    | Last checked: { DATETIME($lastChecked, day: "numeric", month: long") }.
+    | Last checked: { DATETIME($lastChecked, day: "numeric", month: "long") }.
 ```
+
 ```json
 {
     "lastChecked": "2016-04-22T08:13:56.354Z",

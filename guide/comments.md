@@ -13,6 +13,7 @@ close = Close
 // $user (String) Currently logged in username
 logout = Logout { $user }
 ```
+
 ```json
 {
     "user": "mkablnik"
