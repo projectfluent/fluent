@@ -1,16 +1,18 @@
 Variants
 --------
+```
+brand-name = {
+   *[nominative] Aurora
+    [genitive] Aurore
+    [dative] Aurori
+    [accusative] Auroro
+    [locative] Aurori
+    [instrumental] Auroro
+}
 
-    brand-name = {
-       *[nominative] Aurora
-        [genitive] Aurore
-        [dative] Aurori
-        [accusative] Auroro
-        [locative] Aurori
-        [instrumental] Auroro
-    }
+about = O { brand-name[locative] }
 
-    about = O { brand-name[locative] }
+```
 
 As we stated at the beginning of this guide, messages primarely consist of
 string values. A single string value can have multiple branches, or variants,

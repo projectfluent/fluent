@@ -159,23 +159,22 @@ Developers can provide the variable already wrapped in Function as an argument.
 
 Example:
 
-    main.js:
-
-    let date = new Date();
-    let s = ctx.format('key1', {
-      day: Intl.MessageDateTimeArgument(date, {
-        weekday: 'long'
-      })
-    })
-
-    main.ftl:
-
-    key1 = Today is { $day }
+```json
+let date = new Date();
+let str = ctx.format('key1', {
+  day: Intl.MessageDateTimeArgument(date, {
+    weekday: 'long'
+  })
+})
+```
+```
+key1 = Today is { $day }
+```
 
 If the localizer decide that they have to modify the parameters, for example
 because the string doesn't fit in the UI, they can pass the variable to the
 same Function and overload parameters. Example:
+```
+key1 = Today is { DATETIME($day, weekday: "short") }
 
-    main.ftl:
-
-    key1 = Today is { DATETIME($day, weekday: "short") }
+```
