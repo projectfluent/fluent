@@ -1,16 +1,17 @@
 Sections
 --------
+```
+instruction = Click "{ open }" to begin
 
-    instruction = Click "{ open }" to begin
+[[menu]]
 
-    [[menu]]
-
-    open = Open
-    close = Close
-    edit = Edit
-    new-file = New File
-    undo = Undo
-    search = Search
+open = Open
+close = Close
+edit = Edit
+new-file = New File
+undo = Undo
+search = Search
+```
 
 Section headers of the form `[[ key ]]` can be used to divide the localization
 into smaller groups of messages related to each other. Sections are mainly

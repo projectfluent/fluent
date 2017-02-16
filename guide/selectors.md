@@ -1,14 +1,18 @@
 Selectors
 ---------
+```
+emails = { $unreadEmails ->
+    [one] You have one unread email.
+   *[other] You have { $unreadEmails } unread emails.
+}
 
-    emails = { $unreadEmails ->
-        [one] You have one unread email.
-       *[other] You have { $unreadEmails } unread emails.
-    }
+```
 
-    {
-        "unreadEmails": 5
-    }
+```json
+{
+    "unreadEmails": 5
+}
+```
 
 One of the most common cases when a localizer needs to use a placeable is when
 there are multiple variants of the string that depend on some external

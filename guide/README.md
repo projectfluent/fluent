@@ -1,7 +1,9 @@
 Fluent Syntax Guide
 ===================
 
-FTL is a localization file format used for describing translation resources.
+Fluent is a localization paradigm designed to unleash the expressive power
+of the natural language. The format used to describe translation resources
+used by Fluent is called `FTL`.
 
 FTL is designed to be simple to read, but at the same time allows to represent
 complex concepts from natural languages like gender, plurals, conjugations,
