@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="selectors.html" />
+    <link rel="next" href="functions.html" />
     
     
-    <link rel="prev" href="external.html" />
+    <link rel="prev" href="comments.html" />
     
 
     </head>
@@ -154,20 +154,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="builtins.html">
-            
-                <a href="builtins.html">
-            
-                    
-                    Built-in Functions
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="selectors.html">
+        <li class="chapter " data-level="1.6" data-path="selectors.html">
             
                 <a href="selectors.html">
             
@@ -180,7 +167,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="variants.html">
+        <li class="chapter " data-level="1.7" data-path="variants.html">
             
                 <a href="variants.html">
             
@@ -193,7 +180,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="attributes.html">
+        <li class="chapter " data-level="1.8" data-path="attributes.html">
             
                 <a href="attributes.html">
             
@@ -206,7 +193,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="sections.html">
+        <li class="chapter " data-level="1.9" data-path="sections.html">
             
                 <a href="sections.html">
             
@@ -219,12 +206,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="comments.html">
+        <li class="chapter " data-level="1.10" data-path="comments.html">
             
                 <a href="comments.html">
             
                     
                     Comments
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.11" data-path="builtins.html">
+            
+                <a href="builtins.html">
+            
+                    
+                    Built-in Functions
             
                 </a>
             
@@ -335,7 +335,7 @@
                 <a href="functions.html#partial-arguments">
             
                     
-                    Partial arguments
+                    Partial Arguments
             
                 </a>
             
@@ -407,25 +407,22 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="builtins">Builtins</h2>
-<pre><code>emails = You have { $unreadEmails } unread emails.
-emails2 = You have { NUMBER($unreadEmails) } unread emails.
-
-last-notice =
-    | Last checked: { DATETIME($lastChecked, day: &quot;numeric&quot;, month: long&quot;) }.
-
-{
-    &quot;lastChecked&quot;: &quot;2016-04-22T08:13:56.354Z&quot;,
-    &quot;unreadEmails&quot;: 5
+<p>emails = You have { $unreadEmails } unread emails.
+emails2 = You have { NUMBER($unreadEmails) } unread emails.</p>
+<p>last-notice =
+    | Last checked: { DATETIME($lastChecked, day: &quot;numeric&quot;, month: long&quot;) }.</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;lastChecked&quot;</span>: <span class="hljs-string">&quot;2016-04-22T08:13:56.354Z&quot;</span>,
+    <span class="hljs-string">&quot;unreadEmails&quot;</span>: <span class="hljs-number">5</span>
 }
-</code></pre><p>In some rare cases the data provided by the developer will require some
-additional formatting before it can be placed into the string. FTL provides
-a list of built-in functions that can help with common operations on the
-external arguments.</p>
-<p>By default, FTL can guess which formatter to run on each kind of argument:
-<code>DATE</code> or <code>NUMBER</code>, but you can also call the builtin explicitly.</p>
-<p>Explicit calls are useful because they allow you to pass additional formatting
-options that may help make the formatted string look better in the given
-language. Examples include: defining month as <code>short</code> or <code>long</code> in the <code>DATE</code>
+</code></pre>
+<p>In most cases, Fluent will automatically select the right formatter for the
+argument and format it into a given locale.</p>
+<p>In other cases, the developer will have to annotate the argument with additional
+information on how to format it (see <a href="functions.html#partial-arguments">Partial Arguments</a>)</p>
+<p>But in rare cases there may be a value for a localizer to select some formatting
+options that are specific to the given locale.</p>
+<p>Examples include: defining month as <code>short</code> or <code>long</code> in the <code>DATE</code>
 formatter (using arguments defined in <code>Intl.DateTimeFormat</code>) or whether to use
 grouping separator when displaying a large number.</p>
 
@@ -455,12 +452,12 @@ grouping separator when displaying a large number.</p>
 
             
                 
-                <a href="external.html" class="navigation navigation-prev " aria-label="Previous page: External Data">
+                <a href="comments.html" class="navigation navigation-prev " aria-label="Previous page: Comments">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="selectors.html" class="navigation navigation-next " aria-label="Next page: Selectors">
+                <a href="functions.html" class="navigation navigation-next " aria-label="Next page: Functions">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -471,7 +468,7 @@ grouping separator when displaying a large number.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Built-in Functions","level":"1.6","depth":1,"next":{"title":"Selectors","level":"1.7","depth":1,"path":"selectors.md","ref":"selectors.md","articles":[]},"previous":{"title":"External Data","level":"1.5","depth":1,"path":"external.md","ref":"external.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"builtins.md","mtime":"2017-02-11T18:03:38.034Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-14T20:04:46.645Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Built-in Functions","level":"1.11","depth":1,"next":{"title":"Functions","level":"1.12","depth":1,"path":"functions.md","ref":"functions.md","articles":[{"title":"Using Functions","level":"1.12.1","depth":2,"anchor":"#using-functions","path":"functions.md","ref":"functions.md#using-functions","articles":[]},{"title":"Parameters","level":"1.12.2","depth":2,"anchor":"#function-parameters","path":"functions.md","ref":"functions.md#function-parameters","articles":[]},{"title":"Built-in Functions","level":"1.12.3","depth":2,"anchor":"#built-in-functions","path":"functions.md","ref":"functions.md#built-in-functions","articles":[{"title":"NUMBER","level":"1.12.3.1","depth":3,"anchor":"#number","path":"functions.md","ref":"functions.md#number","articles":[]},{"title":"DATETIME","level":"1.12.3.2","depth":3,"anchor":"#datetime","path":"functions.md","ref":"functions.md#datetime","articles":[]}]},{"title":"Implicit Use","level":"1.12.4","depth":2,"anchor":"#implicit-use","path":"functions.md","ref":"functions.md#implicit-use","articles":[]},{"title":"Partial Arguments","level":"1.12.5","depth":2,"anchor":"#partial-arguments","path":"functions.md","ref":"functions.md#partial-arguments","articles":[]}]},"previous":{"title":"Comments","level":"1.10","depth":1,"path":"comments.md","ref":"comments.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"builtins.md","mtime":"2017-02-16T00:49:47.818Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-16T00:50:36.493Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

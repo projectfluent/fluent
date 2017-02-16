@@ -60,7 +60,7 @@
     <link rel="next" href="functions.html" />
     
     
-    <link rel="prev" href="comments.html" />
+    <link rel="prev" href="builtins.html" />
     
 
     </head>
@@ -154,20 +154,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="builtins.html">
-            
-                <a href="builtins.html">
-            
-                    
-                    Built-in Functions
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="selectors.html">
+        <li class="chapter " data-level="1.6" data-path="selectors.html">
             
                 <a href="selectors.html">
             
@@ -180,7 +167,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="variants.html">
+        <li class="chapter " data-level="1.7" data-path="variants.html">
             
                 <a href="variants.html">
             
@@ -193,7 +180,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="attributes.html">
+        <li class="chapter " data-level="1.8" data-path="attributes.html">
             
                 <a href="attributes.html">
             
@@ -206,7 +193,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="sections.html">
+        <li class="chapter " data-level="1.9" data-path="sections.html">
             
                 <a href="sections.html">
             
@@ -219,12 +206,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="comments.html">
+        <li class="chapter " data-level="1.10" data-path="comments.html">
             
                 <a href="comments.html">
             
                     
                     Comments
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="builtins.html">
+            
+                <a href="builtins.html">
+            
+                    
+                    Built-in Functions
             
                 </a>
             
@@ -335,7 +335,7 @@
                 <a href="functions.html#partial-arguments">
             
                     
-                    Partial arguments
+                    Partial Arguments
             
                 </a>
             
@@ -512,24 +512,18 @@ require the parameters to be set by the developer and only in rare cases
 localizer will have to touch them.</p>
 <p>Developers can provide the variable already wrapped in Function as an argument.</p>
 <p>Example:</p>
-<pre><code>main.js:
-
-let date = new Date();
-let s = ctx.format(&apos;key1&apos;, {
-  day: Intl.MessageDateTimeArgument(date, {
-    weekday: &apos;long&apos;
+<pre><code class="lang-json"><span class="hljs-keyword">let</span> date = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+<span class="hljs-keyword">let</span> str = ctx.format(<span class="hljs-string">&apos;key1&apos;</span>, {
+  day: <span class="hljs-built_in">Intl</span>.MessageDateTimeArgument(date, {
+    weekday: <span class="hljs-string">&apos;long&apos;</span>
   })
 })
-
-main.ftl:
-
-key1 = Today is { $day }
+</code></pre>
+<pre><code>key1 = Today is { $day }
 </code></pre><p>If the localizer decide that they have to modify the parameters, for example
 because the string doesn&apos;t fit in the UI, they can pass the variable to the
 same Function and overload parameters. Example:</p>
-<pre><code>main.ftl:
-
-key1 = Today is { DATETIME($day, weekday: &quot;short&quot;) }
+<pre><code>key1 = Today is { DATETIME($day, weekday: &quot;short&quot;) }
 </code></pre>
                                 
                                 </section>
@@ -557,7 +551,7 @@ key1 = Today is { DATETIME($day, weekday: &quot;short&quot;) }
 
             
                 
-                <a href="comments.html" class="navigation navigation-prev " aria-label="Previous page: Comments">
+                <a href="builtins.html" class="navigation navigation-prev " aria-label="Previous page: Built-in Functions">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -573,7 +567,7 @@ key1 = Today is { DATETIME($day, weekday: &quot;short&quot;) }
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Functions","level":"1.12","depth":1,"next":{"title":"Using Functions","level":"1.12.1","depth":2,"anchor":"#using-functions","path":"functions.md","ref":"functions.md#using-functions","articles":[]},"previous":{"title":"Comments","level":"1.11","depth":1,"path":"comments.md","ref":"comments.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"functions.md","mtime":"2017-02-11T18:09:29.056Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-14T20:04:46.645Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Functions","level":"1.12","depth":1,"next":{"title":"Using Functions","level":"1.12.1","depth":2,"anchor":"#using-functions","path":"functions.md","ref":"functions.md#using-functions","articles":[]},"previous":{"title":"Built-in Functions","level":"1.11","depth":1,"path":"builtins.md","ref":"builtins.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"functions.md","mtime":"2017-02-16T00:49:47.821Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-16T00:50:36.493Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

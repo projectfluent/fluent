@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="functions.html" />
+    <link rel="next" href="builtins.html" />
     
     
     <link rel="prev" href="sections.html" />
@@ -154,20 +154,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="builtins.html">
-            
-                <a href="builtins.html">
-            
-                    
-                    Built-in Functions
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="selectors.html">
+        <li class="chapter " data-level="1.6" data-path="selectors.html">
             
                 <a href="selectors.html">
             
@@ -180,7 +167,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="variants.html">
+        <li class="chapter " data-level="1.7" data-path="variants.html">
             
                 <a href="variants.html">
             
@@ -193,7 +180,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="attributes.html">
+        <li class="chapter " data-level="1.8" data-path="attributes.html">
             
                 <a href="attributes.html">
             
@@ -206,7 +193,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="sections.html">
+        <li class="chapter " data-level="1.9" data-path="sections.html">
             
                 <a href="sections.html">
             
@@ -219,12 +206,25 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.11" data-path="comments.html">
+        <li class="chapter active" data-level="1.10" data-path="comments.html">
             
                 <a href="comments.html">
             
                     
                     Comments
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="builtins.html">
+            
+                <a href="builtins.html">
+            
+                    
+                    Built-in Functions
             
                 </a>
             
@@ -335,7 +335,7 @@
                 <a href="functions.html#partial-arguments">
             
                     
-                    Partial arguments
+                    Partial Arguments
             
                 </a>
             
@@ -407,22 +407,26 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="comments">Comments</h2>
-<pre><code># Try to keep all menu entities as single word if possible
+<pre><code>// This comment is for the whole file.
+
+// Try to keep all menu messages as single word if possible
 [[menu]]
 
 open = Open
 close = Close
 
-# This button lives in a main toolbar
-# $user (String) Currently logged in username
+// This button lives in a main toolbar
+// $user (String) Currently logged in username
 logout = Logout { $user }
-
-{
-    &quot;user&quot;: &quot;mkablnik&quot;
+</code></pre><pre><code class="lang-json">{
+    <span class="hljs-string">&quot;user&quot;</span>: <span class="hljs-string">&quot;mkablnik&quot;</span>
 }
-</code></pre><p>Comments in FTL can be either standalone or bound to an entity or section. If
-a comment is located right above section or entity, it belongs to it and
-localization tools will present it in its context.</p>
+</code></pre>
+<p>In FTL Comments can be standalone or bound to a file, message or section.</p>
+<p>If a comment is located right above section or message, it belongs to it and
+localization tools will present it in its context.
+If a comment is located at the top of the file it will be bound to the whole file.</p>
+<p>All other comments are standalone.</p>
 
                                 
                                 </section>
@@ -455,7 +459,7 @@ localization tools will present it in its context.</p>
                 </a>
                 
                 
-                <a href="functions.html" class="navigation navigation-next " aria-label="Next page: Functions">
+                <a href="builtins.html" class="navigation navigation-next " aria-label="Next page: Built-in Functions">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -466,7 +470,7 @@ localization tools will present it in its context.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Comments","level":"1.11","depth":1,"next":{"title":"Functions","level":"1.12","depth":1,"path":"functions.md","ref":"functions.md","articles":[{"title":"Using Functions","level":"1.12.1","depth":2,"anchor":"#using-functions","path":"functions.md","ref":"functions.md#using-functions","articles":[]},{"title":"Parameters","level":"1.12.2","depth":2,"anchor":"#function-parameters","path":"functions.md","ref":"functions.md#function-parameters","articles":[]},{"title":"Built-in Functions","level":"1.12.3","depth":2,"anchor":"#built-in-functions","path":"functions.md","ref":"functions.md#built-in-functions","articles":[{"title":"NUMBER","level":"1.12.3.1","depth":3,"anchor":"#number","path":"functions.md","ref":"functions.md#number","articles":[]},{"title":"DATETIME","level":"1.12.3.2","depth":3,"anchor":"#datetime","path":"functions.md","ref":"functions.md#datetime","articles":[]}]},{"title":"Implicit Use","level":"1.12.4","depth":2,"anchor":"#implicit-use","path":"functions.md","ref":"functions.md#implicit-use","articles":[]},{"title":"Partial arguments","level":"1.12.5","depth":2,"anchor":"#partial-arguments","path":"functions.md","ref":"functions.md#partial-arguments","articles":[]}]},"previous":{"title":"Sections","level":"1.10","depth":1,"path":"sections.md","ref":"sections.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"comments.md","mtime":"2017-02-13T16:25:53.590Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-14T20:04:46.645Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Comments","level":"1.10","depth":1,"next":{"title":"Built-in Functions","level":"1.11","depth":1,"path":"builtins.md","ref":"builtins.md","articles":[]},"previous":{"title":"Sections","level":"1.9","depth":1,"path":"sections.md","ref":"sections.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"comments.md","mtime":"2017-02-16T00:49:47.818Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-16T00:50:36.493Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
