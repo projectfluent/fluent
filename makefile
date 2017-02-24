@@ -2,8 +2,8 @@ export SHELL := /bin/bash
 export PATH  := $(CURDIR)/node_modules/.bin:$(PATH)
 
 build:
-	@mkdir -p build/syntax
-	@cp syntax/diagram.xhtml build/syntax
+	@mkdir -p build/spec
+	@cp spec/diagram.xhtml build/spec
 	@gitbook build guide build/guide
 
 serve:

@@ -11,4 +11,4 @@ diagrams][].
 
 [Fluent Syntax Guide]: http://projectfluent.io/fluent/guide
 [W3C's EBNF]: https://www.w3.org/TR/REC-xml/#sec-notation
-[railroad diagrams]: http://projectfluent.io/fluent/syntax/diagram.xhtml
+[railroad diagrams]: http://projectfluent.io/fluent/spec/diagram.xhtml
