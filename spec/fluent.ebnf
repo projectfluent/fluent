@@ -34,10 +34,13 @@ variant              ::= NL __ '[' _? variant-key _? ']' __ pattern
 default-variant      ::= NL __ '*[' _? variant-key _? ']' __ pattern
 variant-list         ::= variant* default-variant variant*
 
+tag                  ::= '#' word
+tag-list             ::= NL (__ tag)+
+
 attribute            ::= NL __ '.' identifier value
 attribute-list       ::= attribute+
 
-message              ::= identifier (value attribute-list? | attribute-list)
+message              ::= identifier ((value tag-list?) | (value? attribute-list))
 value                ::= _? '=' __? pattern
 pattern              ::= (text | placeable)+
 text                 ::= ((char - line-break) - special | break-indent | '\' special)+

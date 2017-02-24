@@ -2,6 +2,30 @@
 
 ## Unreleased
 
+  - Introduce tags for language-specific grammatical information.
+
+    Tags are binary values attached to messages.  They are language-specific and
+    can be used to describe grammatical characteristics of the message.
+
+        brand-name = Firefox
+            #masculine
+
+        brand-name = Aurora
+            #feminine
+            #vowel
+
+    Tags can be used in select expressions by matching a hashtag name to the
+    message:
+
+        has-updated = { brand-name ->
+                [masculine] …
+                [feminine] …
+               *[other] …
+            }
+
+    Tags can only be defined on messages which have a value and don't have any
+    attributes.
+
   - Require the message body to be indented.
 
     Quoted strings are now only valid in placeables and cannot contain other
