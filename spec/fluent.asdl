@@ -35,10 +35,12 @@ module Fluent
     span = Span(int from, int to)
 
     -- Pattern values
-    pat = Pattern(expr* elements, bool quoted)
+    pat = Pattern(elem* elements)
+    elem = TextElement(string)
+         | Expression(expr)
 
     -- Expressions
-    expr = StringExpression(text)
+    expr = StringExpression(string)
          | NumberExpression(number)
          | MessageReference(iden id)
          | ExternalArgument(iden id)
@@ -63,12 +65,12 @@ module Fluent
     arg = Expression(expr)
         | NamedArgument(iden name, argval value)
     argval = NumbeExpression(number)
-           | StringExpression(text)
+           | StringExpression(string)
     
     iden = Identifier(str name)
     symb = Symbol(str name)
     fun = Function(str name)
-    text = StringExpression(str value)
+    string = StringExpression(str value)
     number = NumberExpression(str value)
 
     comment = Comment(str content)

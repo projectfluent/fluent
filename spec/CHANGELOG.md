@@ -31,6 +31,8 @@
     Quoted strings are now only valid in placeables and cannot contain other
     placeables.  Removed `|` for multiline blocks.
 
+  - Added `TextElement` production for text elements of the `Pattern`.
+
   - Added `annotations` and `span` to all `entry` types.
 
   - Allowed more characters in keys.
