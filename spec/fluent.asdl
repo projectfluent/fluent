@@ -39,7 +39,7 @@ module Fluent
          | SelectExpression(expr? expression, var* variants)
          | AttributeExpression(iden id, iden name)
          | VariantExpression(iden id, varkey key)
-         | CallExpression(fun callee, arg* args)
+         | CallExpression(fun callee, arg* arguments)
          | Expression(expr)
 
     -- Attributes of Message
@@ -55,7 +55,7 @@ module Fluent
 
     -- Arguments to CallExpression
     arg = Expression(expr)
-        | NamedArgument(iden name, argval val)
+        | NamedArgument(iden name, argval value)
     argval = Number(number)
            | String(string)
     

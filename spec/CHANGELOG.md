@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+  - Renamed `CallExpression`'s `args` field to `arguments`.
+
+  - Renamed `NamedArgument`'s `val` field to `value`.
+
   - Introduce tags for language-specific grammatical information.
 
     Tags are binary values attached to messages.  They are language-specific and
