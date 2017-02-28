@@ -2,11 +2,7 @@
 
 ## Unreleased
 
-  - Renamed `CallExpression`'s `args` field to `arguments`.
-
-  - Renamed `NamedArgument`'s `val` field to `value`.
-
-  - Introduce tags for language-specific grammatical information.
+  - Added tags for language-specific grammatical information.
 
     Tags are binary values attached to messages.  They are language-specific and
     can be used to describe grammatical characteristics of the message.
@@ -30,17 +26,18 @@
     Tags can only be defined on messages which have a value and don't have any
     attributes.
 
-  - Require the message body to be indented.
+  - The message body must be indented now.
 
     Quoted strings are now only valid in placeables and cannot contain other
-    placeables.
+    placeables.  Removed `|` for multiline blocks.
 
-    Remove `|` for multiline blocks.
+  - Added `annotations` and `span` to all `entry` types.
 
-  - (f176deb) Fix #30. Allow more characters in keys, and trim whitespace
-    around them
+  - Allowed more characters in keys.
 
-    Introduce `word` which replaces `keyword` and changes its semantics:
+    Variant keys are now trimmed from both sides.
+
+    Introduced `word` which replaces `keyword` and changes its semantics:
     `words` cannot contain spaces.  Space-separated sequences of `words` are
     called `symbols`.
 
@@ -48,17 +45,15 @@
 
     `Keyword` is now called `Symbol` in ASDL.
 
-  - (9ef5543) Fix #28. Use // as the sigil for comments
-  - (52a04f4) Document the ASDL and use more explicit filed names
+  - Changed the sigil for comments to `//`.
+  - Renamed `SelectExpression`'s `expr` field to `expression`.
+  - Renamed `Junk`'s and `Comment`s `body` fields to `content`.
+  - Renamed `CallExpression`'s `args` field to `arguments`.
+  - Renamed `NamedArgument`'s `val` field to `value`.
+  - Renamed `keyword-argument` to `named-argument`
+  - Removed the list data type
 
-    Rename `SelectExpression`'s `expr` field to `expression`.  Rename `Junk`'s
-    and `Comment`s `body` fields to `content`.
-
-  - (5201845) Rename `keyword-argument` to `named-argument`
-
-  - (529600f) Remove the list data type
-
-    Remove `LIST`, `LEN`, `TAKE`, `DROP`.
+    Removed `LIST`, `LEN`, `TAKE`, `DROP`.
 
 ## 0.2.0
 

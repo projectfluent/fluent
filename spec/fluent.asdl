@@ -18,6 +18,8 @@
 -- correspond to actual AST nodes; constructors without named fields are
 -- similar to Rust's 'tuple structs' and allow to define union types. This is
 -- due to ASDL not supporting union types out of the box.
+--
+-- ASDL recognizes three native types: bool, int, str.
 
 module Fluent
 {
@@ -26,14 +28,18 @@ module Fluent
     entry = Message(iden id, pat? value, attr* attributes, tag* tags, comment? comment)
           | Section(symb name, comment? comment)
           | Comment(comment)
-          | Junk(string content)
+          | Junk(str content)
+          attributes (annot* annotations, span span)
+
+    annot = Annotation(str name, str message, int pos)
+    span = Span(int from, int to)
 
     -- Pattern values
     pat = Pattern(expr* elements, bool quoted)
 
     -- Expressions
-    expr = String(string)
-         | Number(number)
+    expr = StringExpression(text)
+         | NumberExpression(number)
          | MessageReference(iden id)
          | ExternalArgument(iden id)
          | SelectExpression(expr? expression, var* variants)
@@ -50,20 +56,20 @@ module Fluent
 
     -- Variants of SelectExpression
     var = Variant(varkey key, pat value, bool default)
-    varkey = Number(number)
+    varkey = NumberExpression(number)
            | Symbol(symb)
 
     -- Arguments to CallExpression
     arg = Expression(expr)
         | NamedArgument(iden name, argval value)
-    argval = Number(number)
-           | String(string)
+    argval = NumbeExpression(number)
+           | StringExpression(text)
     
-    iden = Identifier(string name)
-    symb = Symbol(string name)
-    fun = Function(string name)
-    string = StringExpression(string value)
-    number = NumberExpression(string value)
+    iden = Identifier(str name)
+    symb = Symbol(str name)
+    fun = Function(str name)
+    text = StringExpression(str value)
+    number = NumberExpression(str value)
 
-    comment = Comment(string content)
+    comment = Comment(str content)
 }
