@@ -24,7 +24,7 @@ English. In the example above, _żeński_ means _feminine_, _męski_ is
 _masculine_ and _inny_ is _other_.
 
 Both tags and variants discussed in the previous chapter can be used to provide
-more information about a message that is specific to your language.  There
+more information about a message that is specific to your language.  There's
 a number of differences between them, however.
 
   - Tags don't have a value; they _are_ the value.
