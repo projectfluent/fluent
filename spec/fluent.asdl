@@ -32,7 +32,7 @@ module Fluent
           attributes (annot* annotations, span span)
 
     annot = Annotation(str name, str message, int pos)
-    span = Span(int from, int to)
+    span = Span(int start, int end)
 
     -- Pattern values
     pat = Pattern(elem* elements)
