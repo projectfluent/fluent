@@ -31,7 +31,7 @@ module Fluent
           | Junk(str content)
           attributes (annot* annotations, span span)
 
-    annot = Annotation(str name, str message, int pos)
+    annot = Annotation(str code, str* args, str message, span span)
     span = Span(int start, int end)
 
     -- Pattern values
