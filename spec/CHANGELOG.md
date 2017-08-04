@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+  - …
+
+## 0.3.0
+
   - Added tags for language-specific grammatical information.
 
     Tags are binary values attached to messages.  They are language-specific and
@@ -35,6 +39,9 @@
 
   - Added `annotations` and `span` to all `entry` types.
 
+    Spans are `{ start, end }` productions. Annotations are `{ code, args,
+    message, span }` productions.
+
   - Allowed more characters in keys.
 
     Variant keys are now trimmed from both sides.
@@ -46,6 +53,21 @@
     `variant-key` may now be a `number` or a `symbol`.
 
     `Keyword` is now called `Symbol` in ASDL.
+
+  - Defined the behavior of backslash escapes as follows:
+
+    - Escape sequences are only allowed in `text` and `quoted-text`.
+
+    - Newlines are preserved by the parser. This allows proper serialization.
+
+    - Known escape sequences are: `\\` for the literal backslash, `\"` for the
+      literal double quote, `\{` for the literal opening brace and `\u`
+      followed by 4 hex digits for Unicode code points. Representing code
+      points from outside of the Basic Multilingual Plane is made possible with
+      surrogate pairs (two `\uXXXX` sequences). Using the actual character is
+      encouraged, however.
+
+    - Any other escaped characters result in a parsing error.
 
   - Changed the sigil for comments to `//`.
   - Renamed `SelectExpression`'s `expr` field to `expression`.
