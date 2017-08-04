@@ -23,20 +23,20 @@
 
 module Fluent
 {
-    res = Resource(entry* body, comment? comment)
+    res = Resource(entry* body, comment? comment, span? span)
 
     entry = Message(iden id, pat? value, attr* attributes, tag* tags, comment? comment)
           | Section(symb name, comment? comment)
           | Comment(comment)
           | Junk(str content)
-          attributes (annot* annotations, span span)
+          attributes (annot* annotations, span? span)
 
-    annot = Annotation(str code, str* args, str message, span span)
+    annot = Annotation(str code, str* args, str message, span? span)
     span = Span(int start, int end)
 
     -- Pattern values
-    pat = Pattern(elem* elements)
-    elem = TextElement(string)
+    pat = Pattern(elem* elements, span? span)
+    elem = TextElement(string value, span? span)
          | Expression(expr)
 
     -- Expressions
@@ -49,29 +49,30 @@ module Fluent
          | VariantExpression(iden id, varkey key)
          | CallExpression(fun callee, arg* arguments)
          | Expression(expr)
+         attributes (span? span)
 
     -- Attributes of Message
-    attr = Attribute(iden id, pat value)
+    attr = Attribute(iden id, pat value, span? span)
 
     -- Tags of Message
-    tag = Tag(symb name)
+    tag = Tag(symb name, span? span)
 
     -- Variants of SelectExpression
-    var = Variant(varkey key, pat value, bool default)
+    var = Variant(varkey key, pat value, bool default, span? span)
     varkey = NumberExpression(number)
            | Symbol(symb)
 
     -- Arguments to CallExpression
     arg = Expression(expr)
-        | NamedArgument(iden name, argval value)
-    argval = NumbeExpression(number)
+        | NamedArgument(iden name, argval value, span? span)
+    argval = NumberExpression(number)
            | StringExpression(string)
     
-    iden = Identifier(str name)
-    symb = Symbol(str name)
-    fun = Function(str name)
-    string = StringExpression(str value)
-    number = NumberExpression(str value)
+    iden = Identifier(str name, span? span)
+    symb = Symbol(str name, span? span)
+    fun = Function(str name, span? span)
+    string = StringExpression(str value, span? span)
+    number = NumberExpression(str value, span? span)
 
-    comment = Comment(str content)
+    comment = Comment(str content, span? span)
 }
