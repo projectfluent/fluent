@@ -14,7 +14,7 @@ targeted for such environments.
 
 ## Using Functions
 
-FTL Functions can only be called inside of placeables. Use them to return
+FTL functions can only be called inside of placeables. Use them to return
 a value to be interpolated in the message or as selectors in select
 expressions.
 
@@ -138,10 +138,10 @@ liked-count2 = { NUMBER($num) ->
     }
 ```
 
-### `DATETIME`  
+### `DATETIME`
 
 If the variable passed from the developer is a date and is used in a placeable,
-FTL will implicitly call a DATE function on it.
+FTL will implicitly call a `DATETIME` function on it.
 
 Example:
 ```
@@ -152,14 +152,14 @@ log-time2 = Entry time: { DATETIME($date) }
 
 ## Partial arguments
 
-In most cases localizers don't need to call Functions explicitly, thanks to the
-implicit formatting. If the implicit formatting is not sufficient, the Function
+In most cases localizers don't need to call functions explicitly, thanks to the
+implicit formatting. If the implicit formatting is not sufficient, the function
 can be called explicitly with additional parameters.  To ease the burden this
 might have on localizers, Fluent allows developers to set the default
 formatting parameters for the external arguments they pass.
 
 In other words, developers can provide externals which are already wrapped in
-a partial Function call.
+a partial function call.
 
 ```
 today = Today is { $day }
@@ -175,7 +175,7 @@ ctx.format('today', {
 
 If the localizer wishes to modify the parameters, for example because the
 string doesn't fit in the UI, they can pass the external argument to the same
-Function and overload the parameters set by the developer.
+function and overload the parameters set by the developer.
 
 ```
 today = Today is { DATETIME($day, weekday: "short") }

@@ -20,7 +20,7 @@ logout = Logout { $user }
 }
 ```
 
-In FTL, Comments can be standalone or bound to a file, message, or section.
+In FTL, comments can be standalone or bound to a file, message, or section.
 
 If a comment is located right above a section or message, it belongs to it and
 localization tools will present it in its context.
