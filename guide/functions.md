@@ -138,10 +138,10 @@ liked-count2 = { NUMBER($num) ->
     }
 ```
 
-### `DATETIME`  
+### `DATETIME`
 
 If the variable passed from the developer is a date and is used in a placeable,
-FTL will implicitly call a DATE function on it.
+FTL will implicitly call a `DATETIME` function on it.
 
 Example:
 ```

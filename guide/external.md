@@ -11,7 +11,7 @@ unreadEmails = { $user } has { $emailCount } unread emails.
 }
 ```
 
-Another common common use case for a placeable is to put an external argument,
+Another common use case for a placeable is to put an external argument,
 provided by the developer, into the string.
 
 There are all kinds of external data that might be useful in providing a good
