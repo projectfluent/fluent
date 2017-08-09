@@ -54,8 +54,9 @@ text                 ::= text-char+
 quoted-text          ::= '"' (text-char - '"' | '\"')+ '"'
 
 
-placeable            ::= '{' __? (expression | select-expression | variant-list) __? '}'
-expression           ::= quoted-text
+placeable            ::= '{' __? (inline-expression | block-expression) __? '}'
+
+inline-expression    ::= quoted-text
                        | number
                        | identifier
                        | external
@@ -63,11 +64,13 @@ expression           ::= quoted-text
                        | variant-expression
                        | call-expression
                        | placeable
+block-expression     ::= select-expression
+                       | variant-list
 
-select-expression    ::= expression __ '->' __ variant-list
+select-expression    ::= inline-expression __ '->' __ variant-list
 attribute-expression ::= identifier '.' identifier
 variant-expression   ::= identifier '[' _? variant-key _? ']'
 call-expression      ::= builtin '(' __? (argument ( __? ',' __? argument)*)? __? ')'
-argument             ::= expression
+argument             ::= inline-expression
                        | named-argument
 named-argument       ::= identifier __? ':' __? (quoted-text | number)

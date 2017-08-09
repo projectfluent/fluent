@@ -2,7 +2,16 @@
 
 ## Unreleased
 
-  - …
+  - Added the `Placeable` production as a wrapper for expressions in patterns.
+
+    This allows storing more precise information about the whitespace around
+    the placeable's braces.
+
+  - Separated the `expr` type into `inline_expr` and `block_expr`.
+
+    This mirrors the EBNF, where a select expression cannot by an argument to
+    a call expression nor selector of another select expression without being
+    wrapped in braces.
 
 ## 0.3.0
 

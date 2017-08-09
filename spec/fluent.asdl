@@ -37,19 +37,22 @@ module Fluent
     -- Pattern values
     pat = Pattern(elem* elements, span? span)
     elem = TextElement(string value, span? span)
-         | Expression(expr)
+         | Placeable(expr expression, span? span)
 
     -- Expressions
-    expr = StringExpression(string)
-         | NumberExpression(number)
-         | MessageReference(iden id)
-         | ExternalArgument(iden id)
-         | SelectExpression(expr? expression, var* variants)
-         | AttributeExpression(iden id, iden name)
-         | VariantExpression(iden id, varkey key)
-         | CallExpression(fun callee, arg* arguments)
-         | Expression(expr)
-         attributes (span? span)
+    expr = InlineExpression(inline_expr)
+         | BlockExpression(block_expr)
+    inline_expr = StringExpression(string)
+                | NumberExpression(number)
+                | MessageReference(iden id)
+                | ExternalArgument(iden id)
+                | AttributeExpression(iden id, iden name)
+                | VariantExpression(iden id, varkey key)
+                | CallExpression(fun callee, arg* arguments)
+                | Placeable(expr expression)
+                attributes (span? span)
+    block_expr = SelectExpression(inline_expr? expression, var* variants)
+               attributes (span? span)
 
     -- Attributes of Message
     attr = Attribute(iden id, pat value, span? span)
@@ -63,7 +66,7 @@ module Fluent
            | Symbol(symb)
 
     -- Arguments to CallExpression
-    arg = Expression(expr)
+    arg = Expression(inline_expr)
         | NamedArgument(iden name, argval value, span? span)
     argval = NumberExpression(number)
            | StringExpression(string)
