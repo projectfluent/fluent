@@ -1,4 +1,4 @@
-body                 ::= (_* NL)* (entry NL)* entry? EOF
+body                 ::= blank-line* (entry NL blank-line*)* entry? EOF
 entry                ::= comment
                        | section
                        | message
@@ -15,6 +15,7 @@ inline-space         ::= [#x20#x9]+
 
 /* if you break lines you need to indent afterwards */
 break-indent         ::= (line-break* inline-space)+
+blank-line           ::= inline-space* line-break
 
 _                    ::= inline-space
 NL                   ::= line-break
