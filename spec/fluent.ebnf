@@ -3,7 +3,7 @@ entry                ::= comment
                        | section
                        | message
 
-comment              ::= ('//' (char - NL)* )+
+comment              ::= ('//' (char - NL)* NL)+
 section              ::= '[[' _? word (_ word)* _? ']]'
 
 char                 ::= [https://www.w3.org/TR/REC-xml/#NT-Char]
