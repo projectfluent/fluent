@@ -18,6 +18,8 @@ there are multiple variants of the string that depend on some external
 argument. FTL provides the select expression syntax, which chooses one of the
 provided variants based on the given selector.
 
+The `*` indicator identifies the default selection. A default selection is required.
+
 The selector may be a string, in which case it will be compared directly to the
 keys of variants defined in the select expression. For number selectors, the
 variant keys either match the number exactly or they match the [CLDR plural
