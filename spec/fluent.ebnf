@@ -21,7 +21,7 @@ _                    ::= inline-space
 NL                   ::= line-break
 __                   ::= break-indent
 
-identifier           ::= [a-zA-Z] [a-zA-Z0-9_?-]*
+identifier           ::= [a-zA-Z] [a-zA-Z0-9_-]*
 external             ::= '$' identifier
 
 /* exclude whitespace and [ \ ] { } */
