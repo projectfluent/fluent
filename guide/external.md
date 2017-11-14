@@ -1,5 +1,13 @@
 # Interpolation and External Arguments
 
+Strings in FTL may use special syntax to incorporate small pieces of
+programmable interface. Those pieces are denoted with curly braces `{` and `}`
+and are called placeables.
+
+It's common to use placeables to interpolate external arguments into the
+translation. External arguments are provided by the developer and may change
+on runtime.
+
 ```
 welcome = Welcome { $user }
 unreadEmails = { $user } has { $emailCount } unread emails.
@@ -10,9 +18,6 @@ unreadEmails = { $user } has { $emailCount } unread emails.
     "emailCount": 5
 }
 ```
-
-Another common use case for a placeable is to put an external argument,
-provided by the developer, into the string.
 
 There are all kinds of external data that might be useful in providing a good
 localization: user names, number of unread messages, battery level, current

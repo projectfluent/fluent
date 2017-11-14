@@ -22,7 +22,9 @@ NL                   ::= line-break
 __                   ::= break-indent
 
 identifier           ::= [a-zA-Z] [a-zA-Z0-9_-]*
-external             ::= '$' identifier
+external-identifier  ::= '$' identifier
+private-identifier   ::= '-'+ identifier
+message-identifier   ::= identifier | private-identifier
 
 /* exclude whitespace and [ \ ] { } */
 word                 ::= (((char - line-break) - inline-space) - [#x5b#x5c#x5d#x7b#x7d])+
@@ -41,7 +43,9 @@ tag-list             ::= NL (__ tag)+
 attribute            ::= NL __ '.' identifier value
 attribute-list       ::= attribute+
 
-message              ::= identifier ((value tag-list?) | (value? attribute-list))
+message              ::= identifier ((value attribute-list?) | (value? attribute-list))
+                       | private-identifier value tag-list?
+
 value                ::= _? '=' __? pattern
 pattern              ::= (text | placeable)+
 /* text can only include newlines if they're followed by an indent */
@@ -59,8 +63,8 @@ placeable            ::= '{' __? (inline-expression | block-expression) __? '}'
 
 inline-expression    ::= quoted-text
                        | number
-                       | identifier
-                       | external
+                       | external-identifier
+                       | message-identifier
                        | attribute-expression
                        | variant-expression
                        | call-expression
@@ -69,8 +73,8 @@ block-expression     ::= select-expression
                        | variant-list
 
 select-expression    ::= inline-expression __ '->' __ variant-list
-attribute-expression ::= identifier '.' identifier
-variant-expression   ::= identifier '[' _? variant-key _? ']'
+attribute-expression ::= message-identifier '.' identifier
+variant-expression   ::= message-identifier '[' _? variant-key _? ']'
 call-expression      ::= builtin '(' __? (argument ( __? ',' __? argument)*)? __? ')'
 argument             ::= inline-expression
                        | named-argument

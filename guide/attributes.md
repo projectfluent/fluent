@@ -22,3 +22,5 @@ messages.
 This feature is particularly useful in translating more complex widgets since,
 thanks to all attributes being stored on a single unit, it's easier for editors,
 comments, and tools to identify and work with the given message.
+
+Attributes may not be defined on [private messages](private.html).
