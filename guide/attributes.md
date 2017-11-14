@@ -1,4 +1,4 @@
-# DOM Attributes
+# Attributes
 
 ```
 login-input = Predefined value
@@ -23,4 +23,7 @@ This feature is particularly useful in translating more complex widgets since,
 thanks to all attributes being stored on a single unit, it's easier for editors,
 comments, and tools to identify and work with the given message.
 
-Attributes may not be defined on [private messages](private.html).
+Attributes may also be used to define grammatical properties of [private
+messages](private.html). Attributes of private messages are also private and
+may not be retrieved by the localization runtime. They can only be used as
+[selectors](selectors.html).

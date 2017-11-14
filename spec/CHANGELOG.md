@@ -4,12 +4,28 @@
 
   - Added private messages. (#62)
 
-    Private messages start their identifiers with at least one dash `-`. Tags
-    are only allowed on private messages. Attributes are only allowed on
-    public messages.
+    Private messages start their identifiers with at least one dash `-`.
 
     Private messages cannot be retrieved by the `MessageContext` runtime.
     Tools may introduce different checks for private and public messages.
+
+  - Removed tags. (#67)
+
+    The same functionality can be achieved by using attributes defined on
+    private messages.
+
+    ```properties
+    -brand-name = Firefox
+        .gender = masculine
+
+    has-updated =
+        { -brand-name.gender ->
+            [masculine] { -brand-name} został zaktualizowany.
+            [feminine] { -brand-name } została zaktualizowana.
+           *[other] Program { -brand-name } został zaktualizowany.
+        }
+    ```
+
 
 ## 0.4.0 (November 14, 2017)
 

@@ -36,14 +36,11 @@ variant              ::= NL __ '[' _? variant-key _? ']' __ pattern
 default-variant      ::= NL __ '*[' _? variant-key _? ']' __ pattern
 variant-list         ::= variant* default-variant variant*
 
-tag                  ::= '#' word
-tag-list             ::= NL (__ tag)+
-
 attribute            ::= NL __ '.' public-identifier value
 attribute-list       ::= attribute+
 
 message              ::= public-identifier ((value attribute-list?) | (value? attribute-list))
-                       | private-identifier value tag-list?
+                       | private-identifier value attribute-list?
 
 value                ::= _? '=' __? pattern
 pattern              ::= (text | placeable)+
@@ -74,10 +71,11 @@ select-expression    ::= selector-expression __ '->' __ variant-list
 selector-expression  ::= quoted-text
                        | number
                        | external-identifier
-                       | private-identifier
+                       | private-attribute-identifier
                        | call-expression
 
 public-attribute-expression  ::= public-identifier '.' public-identifier
+private-attribute-expression ::= private-identifier '.' public-identifier
 private-variant-expression   ::= private-identifier '[' _? variant-key _? ']'
 
 call-expression      ::= builtin '(' __? (argument ( __? ',' __? argument)*)? __? ')'
