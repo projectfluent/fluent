@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+  - …
+
+## 0.4.0 (November 14, 2017)
+
   - Added the `Placeable` production as a wrapper for expressions in patterns.
 
     This allows storing more precise information about the whitespace around
@@ -12,6 +16,21 @@
     This mirrors the EBNF, where a select expression cannot by an argument to
     a call expression nor selector of another select expression without being
     wrapped in braces.
+
+  - The dash `-` is not allowed at the beginning of identifiers.
+
+    There's an ongoing discussion in #62 about using the leading `-` for
+    private messages in the future.
+
+  - The question mark `?` is not allowed in identifiers.
+
+    We want to start with a more strict syntax for identifiers. See the
+    discussion in #65.
+
+  - Small EBNF fixes:
+
+    - Allowed multiline comments.
+    - Allowed inline space in blank lines between entries.
 
 ## 0.3.0
 
