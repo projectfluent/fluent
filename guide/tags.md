@@ -1,23 +1,25 @@
 # Tags
 
 ```
-brand-name = Aurora
+-brand-name = Aurora
     #żeński
 
-has-updated = { brand-name ->
-        [męski] { brand-name} został zaktualizowany.
-        [żeński] { brand-name } została zaktualizowana.
-       *[inny] Program { brand-name } został zaktualizowany.
+has-updated =
+    { -brand-name ->
+        [męski] { -brand-name} został zaktualizowany.
+        [żeński] { -brand-name } została zaktualizowana.
+       *[inny] Program { -brand-name } został zaktualizowany.
     }
 ```
 
-Sometimes translations might vary depending on some grammatical trait of
-another message.  In the example above the form of the past tense of _has been
-updated_ depends on the grammatical gender of `brand-name`.
+Sometimes translations might vary depending on some grammatical trait of a
+private message used to create them. In the example above the form of the
+past tense of _has been updated_ depends on the grammatical gender of
+`-brand-name`.
 
-In such cases you can _tag_ messages with simple one-word _hashtags_ and then
-define different translations based on these tags.  You define them with `#`
-which must start on a new line under the message, indented.
+In such cases you can _tag_ private messages with simple one-word _hashtags_
+and then define different translations based on these tags. You define them
+with `#` which must start on a new line under the message, indented.
 
 Hashtags are specific to your language's grammar and don't have to be in
 English. In the example above, _żeński_ means _feminine_, _męski_ is

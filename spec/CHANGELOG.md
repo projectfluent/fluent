@@ -2,7 +2,14 @@
 
 ## Unreleased
 
-  - …
+  - Added private messages. (#62)
+
+    Private messages start their identifiers with at least one dash `-`. Tags
+    are only allowed on private messages. Attributes are only allowed on
+    public messages.
+
+    Private messages cannot be retrieved by the `MessageContext` runtime.
+    Tools may introduce different checks for private and public messages.
 
 ## 0.4.0 (November 14, 2017)
 

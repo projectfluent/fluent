@@ -1,7 +1,8 @@
 # Variants
 
 ```
-brand-name = {
+-brand-name =
+    {
        *[nominative] Aurora
         [genitive] Aurore
         [dative] Aurori
@@ -10,7 +11,7 @@ brand-name = {
         [instrumental] Auroro
     }
 
-about = O { brand-name[locative] }
+about = O { -brand-name[locative] }
 ```
 
 As we stated at the beginning of this guide, messages primarily consist of
@@ -18,7 +19,7 @@ string values. A single string value can have multiple branches, or variants,
 which are chosen based on the value of a selector. In some cases, however, we
 don't need any selector and instead just want to define multiple variants of
 the message and use them from within other messages. For instance, in languages
-that use noun declension, `brand-name` may need to be declined when referred to
+that use noun declension, `-brand-name` may need to be declined when referred to
 from other messages.
 
 FTL lets you define variants without a selector. Think of them as facets of the

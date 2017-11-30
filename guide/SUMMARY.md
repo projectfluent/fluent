@@ -2,10 +2,11 @@
 
 * [Hello world](hello.md)
 * [Writing Text](text.md)
-* [Referencing Messages](references.md)
 * [External Data](external.md)
+* [Referencing Messages](references.md)
 * [Selectors](selectors.md)
 * [Variants](variants.md)
+* [Private Messages](private.md)
 * [Tags](tags.md)
 * [Attributes](attributes.md)
 * [Sections](sections.md)
