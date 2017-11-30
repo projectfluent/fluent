@@ -21,10 +21,9 @@ _                    ::= inline-space
 NL                   ::= line-break
 __                   ::= break-indent
 
-identifier           ::= [a-zA-Z] [a-zA-Z0-9_-]*
-external-identifier  ::= '$' identifier
-private-identifier   ::= '-'+ identifier
-message-identifier   ::= identifier | private-identifier
+public-identifier    ::= [a-zA-Z] [a-zA-Z0-9_-]*
+external-identifier  ::= '$' public-identifier
+private-identifier   ::= '-'+ public-identifier
 
 /* exclude whitespace and [ \ ] { } */
 word                 ::= (((char - line-break) - inline-space) - [#x5b#x5c#x5d#x7b#x7d])+
@@ -40,10 +39,10 @@ variant-list         ::= variant* default-variant variant*
 tag                  ::= '#' word
 tag-list             ::= NL (__ tag)+
 
-attribute            ::= NL __ '.' identifier value
+attribute            ::= NL __ '.' public-identifier value
 attribute-list       ::= attribute+
 
-message              ::= identifier ((value attribute-list?) | (value? attribute-list))
+message              ::= public-identifier ((value attribute-list?) | (value? attribute-list))
                        | private-identifier value tag-list?
 
 value                ::= _? '=' __? pattern
@@ -58,24 +57,30 @@ text                 ::= text-char+
 /* in quoted-text " must be escaped */
 quoted-text          ::= '"' (text-char - '"' | '\"')+ '"'
 
-
 placeable            ::= '{' __? (inline-expression | block-expression) __? '}'
-
 inline-expression    ::= quoted-text
                        | number
                        | external-identifier
-                       | message-identifier
-                       | attribute-expression
-                       | variant-expression
+                       | public-identifier
+                       | public-attribute-expression
+                       | private-identifier
+                       | private-variant-expression
                        | call-expression
                        | placeable
 block-expression     ::= select-expression
                        | variant-list
 
-select-expression    ::= inline-expression __ '->' __ variant-list
-attribute-expression ::= message-identifier '.' identifier
-variant-expression   ::= message-identifier '[' _? variant-key _? ']'
+select-expression    ::= selector-expression __ '->' __ variant-list
+selector-expression  ::= quoted-text
+                       | number
+                       | external-identifier
+                       | private-identifier
+                       | call-expression
+
+public-attribute-expression  ::= public-identifier '.' public-identifier
+private-variant-expression   ::= private-identifier '[' _? variant-key _? ']'
+
 call-expression      ::= builtin '(' __? (argument ( __? ',' __? argument)*)? __? ')'
 argument             ::= inline-expression
                        | named-argument
-named-argument       ::= identifier __? ':' __? (quoted-text | number)
+named-argument       ::= public-identifier __? ':' __? (quoted-text | number)

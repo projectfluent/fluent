@@ -44,19 +44,16 @@ module Fluent
          | Placeable(expr expression, span? span)
 
     -- Expressions
-    expr = InlineExpression(inline_expr)
-         | BlockExpression(block_expr)
-    inline_expr = StringExpression(string)
-                | NumberExpression(number)
-                | MessageReference(iden id)
-                | ExternalArgument(iden id)
-                | AttributeExpression(iden id, iden name)
-                | VariantExpression(iden id, varkey key)
-                | CallExpression(fun callee, arg* arguments)
-                | Placeable(expr expression)
-                attributes (span? span)
-    block_expr = SelectExpression(inline_expr? expression, var* variants)
-               attributes (span? span)
+    expr = StringExpression(string)
+           | NumberExpression(number)
+           | MessageReference(iden id)
+           | ExternalArgument(iden id)
+           | AttributeExpression(iden id, iden name)
+           | VariantExpression(iden id, varkey key)
+           | CallExpression(fun callee, arg* arguments)
+           | SelectExpression(expr? expression, var* variants)
+           | Placeable(expr expression)
+           attributes (span? span)
 
     -- Attributes of Message
     attr = Attribute(iden id, pat value, span? span)
@@ -70,7 +67,7 @@ module Fluent
            | Symbol(symb)
 
     -- Arguments to CallExpression
-    arg = Expression(inline_expr)
+    arg = Expression(expr)
         | NamedArgument(iden name, argval value, span? span)
     argval = NumberExpression(number)
            | StringExpression(string)
