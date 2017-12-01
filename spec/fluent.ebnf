@@ -36,12 +36,11 @@ variant              ::= __ '[' _? variant-key _? ']' __ pattern
 default-variant      ::= __ '*[' _? variant-key _? ']' __ pattern
 variant-list         ::= variant* default-variant variant* line-break
 
-attribute            ::= __ '.' identifier value
+attribute            ::= __ '.' identifier _? '=' __? pattern
 
-message              ::= identifier (value attribute* | attribute+)
-                       | private-identifier value attribute*
+message              ::= identifier _? '=' __? (pattern attribute* | attribute+)
+                       | private-identifier _? '=' __? pattern attribute*
 
-value                ::= _? '=' __? pattern
 pattern              ::= (text | placeable)+
 /* text can only include newlines if they're followed by an indent */
 /* \ and { must be escaped */

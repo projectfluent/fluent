@@ -37,8 +37,9 @@
 
     The `comment` field on the `Resource` node was removed.
 
-  - Renamed `Symbol` to `VariantName` in the ASDL.
+  - Require `=` after the identifier in message definitions. (#63)
 
+  - Renamed `Symbol` to `VariantName` in the ASDL.
 
 ## 0.4.0 (November 14, 2017)
 
