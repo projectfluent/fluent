@@ -31,9 +31,9 @@ module Fluent
           | Junk(str content)
           attributes (annot* annotations, span? span)
 
-    base_message = Message(pat? value, attr* attributes)
-                 | PrivateMessage(pat value, tag* tags)
-                 attributes (iden id, comment? comment)
+    base_message = Message
+                 | PrivateMessage
+                 attributes (iden id, pat? value, attr* attributes, comment? comment)
 
     annot = Annotation(str code, str* args, str message, span? span)
     span = Span(int start, int end)
@@ -57,9 +57,6 @@ module Fluent
 
     -- Attributes of Message
     attr = Attribute(iden id, pat value, span? span)
-
-    -- Tags of Message
-    tag = Tag(symb name, span? span)
 
     -- Variants of SelectExpression
     var = Variant(varkey key, pat value, bool default, span? span)
