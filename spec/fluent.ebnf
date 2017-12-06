@@ -1,11 +1,11 @@
-body                 ::= blank-line* (entry NL blank-line*)* entry? EOF
+body                 ::= blank-line* (entry line-break blank-line*)* entry? EOF
 entry                ::= comment
                        | section
                        | message
 
-comment              ::= ('#' (inline-space (char - NL)*)? NL)+
-                       | ('##' (inline-space (char - NL)*)? NL)+
-                       | ('###' (inline-space (char - NL)*)? NL)+
+comment              ::= ('#' (inline-space (char - line-break)*)? line-break)+
+                       | ('##' (inline-space (char - line-break)*)? line-break)+
+                       | ('###' (inline-space (char - line-break)*)? line-break)+
 
 char                 ::= [https://www.w3.org/TR/REC-xml/#NT-Char]
 hexdigit             ::= [0-9a-fA-F]
@@ -13,13 +13,13 @@ hexdigit             ::= [0-9a-fA-F]
 /* line feed, carriage return; space, tab */
 line-break           ::= [#xA#xD]+
 inline-space         ::= [#x20#x9]+
-
-/* if you break lines you need to indent afterwards */
-break-indent         ::= (line-break* inline-space)+
 blank-line           ::= inline-space* line-break
 
+/* if you break lines you need to indent afterwards */
+break-indent         ::= line-break blank-line* inline-space+
+
+/* aliases for convenience */
 _                    ::= inline-space
-NL                   ::= line-break
 __                   ::= break-indent
 
 public-identifier    ::= [a-zA-Z] [a-zA-Z0-9_-]*
@@ -32,17 +32,17 @@ builtin              ::= [A-Z] [A-Z_?-]*
 number               ::= '-'? [0-9]+ ('.' [0-9]+)?
 
 variant-key          ::= number | word (_ word)*
-variant              ::= NL __ '[' _? variant-key _? ']' __ pattern
-default-variant      ::= NL __ '*[' _? variant-key _? ']' __ pattern
-variant-list         ::= variant* default-variant variant*
+variant              ::= __ '[' _? variant-key _? ']' __ pattern
+default-variant      ::= __ '*[' _? variant-key _? ']' __ pattern
+variant-list         ::= variant* default-variant variant* line-break
 
-attribute            ::= NL __ '.' public-identifier value
+attribute            ::= __ '.' public-identifier value
 attribute-list       ::= attribute+
 
 message              ::= public-identifier ((value attribute-list?) | (value? attribute-list))
                        | private-identifier value attribute-list?
 
-value                ::= _? '=' __? pattern
+value                ::= _? '=' (__? pattern | _? '{' __? block-expression blank-line* '}')
 pattern              ::= (text | placeable)+
 /* text can only include newlines if they're followed by an indent */
 /* \ and { must be escaped */
