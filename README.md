@@ -17,8 +17,8 @@ grammar of the Fluent Syntax.
 
 ## Learn more
 
-Find out more about Project Fluent at [projectfluent.io][], including links to
+Find out more about Project Fluent at [projectfluent.org][], including links to
 implementations, and information about how to get involved.
 
-[Fluent Syntax Guide]: http://projectfluent.io/fluent/guide
-[projectfluent.io]: http://projectfluent.io
+[Fluent Syntax Guide]: http://projectfluent.org/fluent/guide
+[projectfluent.org]: http://projectfluent.org
