@@ -23,7 +23,7 @@ __                   ::= break-indent
 
 public-identifier    ::= [a-zA-Z] [a-zA-Z0-9_-]*
 external-identifier  ::= '$' public-identifier
-private-identifier   ::= '-'+ public-identifier
+private-identifier   ::= '-' public-identifier
 
 /* exclude whitespace and [ \ ] { } */
 word                 ::= (((char - line-break) - inline-space) - [#x5b#x5c#x5d#x7b#x7d])+

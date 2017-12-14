@@ -4,7 +4,7 @@
 
   - Added private messages. (#62)
 
-    Private messages start their identifiers with at least one dash `-`.
+    Private messages start their identifiers with a single dash `-`.
 
     Private messages cannot be retrieved by the `MessageContext` runtime.
     Tools may introduce different checks for private and public messages.

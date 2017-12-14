@@ -1,10 +1,10 @@
 # Private Messages
 
 Private messages are similar to regular messages but they can only be used as
-references in other messages. Their identifiers start with at least one dash
-`-` like in the example above: `-brand-name`. The runtime cannot retrieve
-private messages directly. They are best used to define terms which can be
-used consistently across the localization of the entire product.
+references in other messages. Their identifiers start with a single dash `-`
+like in the example above: `-brand-name`. The runtime cannot retrieve private
+messages directly. They are best used to define terms which can be used
+consistently across the localization of the entire product.
 
 ```
 -brand-name = Firefox
