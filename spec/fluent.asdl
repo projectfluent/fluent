@@ -25,15 +25,13 @@ module Fluent
 {
     res = Resource(entry* body, comment? comment, span? span)
 
-    entry = BaseMessage(base_message)
+    entry = Message(message)
           | Section(symb name, comment? comment)
           | Comment(comment)
           | Junk(str content)
           attributes (annot* annotations, span? span)
 
-    base_message = Message
-                 | PrivateMessage
-                 attributes (iden id, pat? value, attr* attributes, comment? comment)
+    message = Message(iden id, pat? value, attr* attributes, comment? comment)
 
     annot = Annotation(str code, str* args, str message, span? span)
     span = Span(int start, int end)
