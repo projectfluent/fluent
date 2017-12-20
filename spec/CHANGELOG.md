@@ -26,6 +26,19 @@
         }
     ```
 
+  - Changed the comment sigil to `#`. (#58)
+
+  - Removed sections and introduced group and resource comments. (#58)
+
+    Comments starting with `##` and `###` define the outline of the file and
+    replace sections. `##` denotes group-level comments (`GroupComment` in
+    ASDL) and `###` denotes resource-level comments (`ResourceComment`).
+    These are always standalone `Comment` entries.
+
+    The `comment` field on the `Resource` node was removed.
+
+  - Renamed `Symbol` to `VariantName` in the ASDL.
+
 
 ## 0.4.0 (November 14, 2017)
 

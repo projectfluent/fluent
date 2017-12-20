@@ -8,7 +8,6 @@
 * [Variants](variants.md)
 * [Attributes](attributes.md)
 * [Private Messages](private.md)
-* [Sections](sections.md)
 * [Comments](comments.md)
 * [Built-in Functions](builtins.md)
 * [Functions](functions.md)
