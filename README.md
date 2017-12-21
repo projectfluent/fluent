@@ -1,6 +1,6 @@
 # Fluent
 
-Fluent is a localization paradigm designed to unleash the expressive power of
+Fluent is a localization system designed to unleash the expressive power of
 the natural language.
 
 This repository contains specification, design and documentation for Fluent.
