@@ -42,7 +42,7 @@ attribute-list       ::= attribute+
 message              ::= public-identifier ((value attribute-list?) | (value? attribute-list))
                        | private-identifier value attribute-list?
 
-value                ::= _? '=' (__? pattern | _? '{' __? block-expression blank-line* '}')
+value                ::= _? '=' __? pattern
 pattern              ::= (text | placeable)+
 /* text can only include newlines if they're followed by an indent */
 /* \ and { must be escaped */
