@@ -22,9 +22,9 @@ break-indent         ::= line-break blank-line* inline-space+
 _                    ::= inline-space
 __                   ::= break-indent
 
-public-identifier    ::= [a-zA-Z] [a-zA-Z0-9_-]*
-external-identifier  ::= '$' public-identifier
-private-identifier   ::= '-' public-identifier
+identifier           ::= [a-zA-Z] [a-zA-Z0-9_-]*
+private-identifier   ::= '-' identifier
+external-identifier  ::= '$' identifier
 
 /* exclude whitespace and [ \ ] { } */
 word                 ::= (((char - line-break) - inline-space) - [#x5b#x5c#x5d#x7b#x7d])+
@@ -36,11 +36,10 @@ variant              ::= __ '[' _? variant-key _? ']' __ pattern
 default-variant      ::= __ '*[' _? variant-key _? ']' __ pattern
 variant-list         ::= variant* default-variant variant* line-break
 
-attribute            ::= __ '.' public-identifier value
-attribute-list       ::= attribute+
+attribute            ::= __ '.' identifier value
 
-message              ::= public-identifier ((value attribute-list?) | (value? attribute-list))
-                       | private-identifier value attribute-list?
+message              ::= identifier (value attribute* | attribute+)
+                       | private-identifier value attribute*
 
 value                ::= _? '=' __? pattern
 pattern              ::= (text | placeable)+
@@ -58,7 +57,7 @@ placeable            ::= '{' __? (inline-expression | block-expression) __? '}'
 inline-expression    ::= quoted-text
                        | number
                        | external-identifier
-                       | public-identifier
+                       | identifier
                        | public-attribute-expression
                        | private-identifier
                        | private-variant-expression
@@ -71,14 +70,14 @@ select-expression    ::= selector-expression __ '->' __ variant-list
 selector-expression  ::= quoted-text
                        | number
                        | external-identifier
-                       | private-attribute-identifier
+                       | private-attribute-expression
                        | call-expression
 
-public-attribute-expression  ::= public-identifier '.' public-identifier
-private-attribute-expression ::= private-identifier '.' public-identifier
+public-attribute-expression  ::= identifier '.' identifier
+private-attribute-expression ::= private-identifier '.' identifier
 private-variant-expression   ::= private-identifier '[' _? variant-key _? ']'
 
 call-expression      ::= builtin '(' __? (argument ( __? ',' __? argument)*)? __? ')'
 argument             ::= inline-expression
                        | named-argument
-named-argument       ::= public-identifier __? ':' __? (quoted-text | number)
+named-argument       ::= identifier __? ':' __? (quoted-text | number)
