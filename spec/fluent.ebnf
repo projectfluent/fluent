@@ -51,7 +51,7 @@ text-char            ::= (char - line-break) - [#x5c#x7b]
 /* text can only include newlines if they're followed by an indent */
 text                 ::= (text-char | break-indent)* text-char
 /* in quoted-text " must be escaped */
-quoted-text          ::= '"' (text-char - '"' | '\"')+ '"'
+quoted-text          ::= '"' (text-char - '"' | '\"')* '"'
 
 placeable            ::= '{' __? (inline-expression | block-expression) __? '}'
 inline-expression    ::= quoted-text
