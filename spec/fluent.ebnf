@@ -43,13 +43,13 @@ message              ::= identifier (value attribute* | attribute+)
 
 value                ::= _? '=' __? pattern
 pattern              ::= (text | placeable)+
-/* text can only include newlines if they're followed by an indent */
+
 /* \ and { must be escaped */
 text-char            ::= (char - line-break) - [#x5c#x7b]
-                       | break-indent
                        | '\u' hexdigit hexdigit hexdigit hexdigit
                        | '\' [#x5c#x7b]
-text                 ::= text-char+
+/* text can only include newlines if they're followed by an indent */
+text                 ::= (text-char | break-indent)* text-char
 /* in quoted-text " must be escaped */
 quoted-text          ::= '"' (text-char - '"' | '\"')+ '"'
 
