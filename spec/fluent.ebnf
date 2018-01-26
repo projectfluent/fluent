@@ -77,7 +77,8 @@ public-attribute-expression  ::= identifier '.' identifier
 private-attribute-expression ::= private-identifier '.' identifier
 private-variant-expression   ::= private-identifier '[' _? variant-key _? ']'
 
-call-expression      ::= builtin '(' __? (argument ( __? ',' __? argument)*)? __? ')'
+call-expression      ::= builtin '(' __? argument-list? __? ')'
+argument-list        ::= argument ( __? ',' __? argument)* __? ','?
 argument             ::= inline-expression
                        | named-argument
 named-argument       ::= identifier __? ':' __? (quoted-text | number)
