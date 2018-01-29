@@ -1,7 +1,7 @@
 body                 ::= blank-line* (entry line-break blank-line*)* entry? EOF
-entry                ::= comment
-                       | section
-                       | message
+entry                ::= message
+                       | term
+                       | comment
 
 comment              ::= ('#' (inline-space (char - line-break)*)? line-break)+
                        | ('##' (inline-space (char - line-break)*)? line-break)+
@@ -23,7 +23,7 @@ _                    ::= inline-space
 __                   ::= break-indent
 
 identifier           ::= [a-zA-Z] [a-zA-Z0-9_-]*
-private-identifier   ::= '-' identifier
+term-identifier      ::= '-' identifier
 external-identifier  ::= '$' identifier
 
 /* exclude whitespace and [ \ ] { } */
@@ -39,7 +39,7 @@ variant-list         ::= variant* default-variant variant* line-break
 attribute            ::= __ '.' identifier value
 
 message              ::= identifier (value attribute* | attribute+)
-                       | private-identifier value attribute*
+term                 ::= term-identifier value attribute*
 
 value                ::= _? '=' __? pattern
 pattern              ::= (text | placeable)+
@@ -58,9 +58,9 @@ inline-expression    ::= quoted-text
                        | number
                        | external-identifier
                        | identifier
-                       | public-attribute-expression
-                       | private-identifier
-                       | private-variant-expression
+                       | message-attribute-expression
+                       | term-identifier
+                       | term-variant-expression
                        | call-expression
                        | placeable
 block-expression     ::= select-expression
@@ -70,12 +70,12 @@ select-expression    ::= selector-expression __ '->' __ variant-list
 selector-expression  ::= quoted-text
                        | number
                        | external-identifier
-                       | private-attribute-expression
+                       | term-attribute-expression
                        | call-expression
 
-public-attribute-expression  ::= identifier '.' identifier
-private-attribute-expression ::= private-identifier '.' identifier
-private-variant-expression   ::= private-identifier '[' _? variant-key _? ']'
+message-attribute-expression  ::= identifier '.' identifier
+term-attribute-expression     ::= term-identifier '.' identifier
+term-variant-expression       ::= term-identifier '[' _? variant-key _? ']'
 
 call-expression      ::= builtin '(' __? argument-list? __? ')'
 argument-list        ::= argument ( __? ',' __? argument)* __? ','?
