@@ -2,17 +2,17 @@
 
 ## Unreleased
 
-  - Added private messages. (#62)
+  - Added terms. (#62, #85)
 
-    Private messages start their identifiers with a single dash `-`.
+    Terms are entries which can only be referenced by other messages. Terms
+    cannot be retrieved by the `MessageContext` runtime.
 
-    Private messages cannot be retrieved by the `MessageContext` runtime.
-    Tools may introduce different checks for private and public messages.
+    Terms start their identifiers with a single dash `-`. Tools may introduce
+    different checks for messages and terms.
 
   - Removed tags. (#67)
 
-    The same functionality can be achieved by using attributes defined on
-    private messages.
+    The same functionality can be achieved by using term attributes.
 
     ```properties
     -brand-name = Firefox
@@ -56,7 +56,7 @@
   - The dash `-` is not allowed at the beginning of identifiers.
 
     There's an ongoing discussion in #62 about using the leading `-` for
-    private messages in the future.
+    private messages (terms) in the future.
 
   - The question mark `?` is not allowed in identifiers.
 

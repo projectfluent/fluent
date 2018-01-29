@@ -7,7 +7,7 @@
 * [Selectors](selectors.md)
 * [Variants](variants.md)
 * [Attributes](attributes.md)
-* [Private Messages](private.md)
+* [Terms](terms.md)
 * [Comments](comments.md)
 * [Built-in Functions](builtins.md)
 * [Functions](functions.md)

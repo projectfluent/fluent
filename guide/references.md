@@ -13,14 +13,14 @@ consistent across the interface and makes maintenance easier.
 It is also particularly handy for keeping branding separated from the rest of
 the translations, so that it can be changed easily when needed, e.g. during
 the build process of the application. This use-case is best served by
-defining a [private message](private.html) with a leading dash `-`, like
-`-brand-name` in the example below.
+defining a [term](terms.html) with a leading dash `-`, like `-brand-name` in
+the example below.
 
 ```
 -brand-name = Firefox
 installing = Installing { -brand-name }.
 ```
 
-The use of the private message indicates to tools and to the localization
-runtime that `-brand-name` is not supposed to be used directly in the product
-but rather should be referenced in other messages.
+Using a term here indicates to tools and to the localization runtime that
+`-brand-name` is not supposed to be used directly in the product but rather
+should be referenced in other messages.

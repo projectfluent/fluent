@@ -26,11 +26,13 @@ module Fluent
     res = Resource(entry* body, span? span)
 
     entry = Message(message)
+          | Term(term)
           | Comment(comment)
           | Junk(str content)
           attributes (annot* annotations, span? span)
 
     message = Message(iden id, pat? value, attr* attributes, comment? comment)
+    term = Term(iden id, pat value, attr* attributes, comment? comment)
 
     annot = Annotation(str code, str* args, str message, span? span)
     span = Span(int start, int end)
@@ -52,7 +54,7 @@ module Fluent
            | Placeable(expr expression)
            attributes (span? span)
 
-    -- Attributes of Message
+    -- Attributes of Messages and Terms
     attr = Attribute(iden id, pat value, span? span)
 
     -- Variants of SelectExpression
