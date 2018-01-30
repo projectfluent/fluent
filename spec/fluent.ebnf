@@ -32,8 +32,8 @@ builtin              ::= [A-Z] [A-Z_?-]*
 number               ::= '-'? [0-9]+ ('.' [0-9]+)?
 
 variant-key          ::= number | word (_ word)*
-variant              ::= __ '[' _? variant-key _? ']' __ pattern
-default-variant      ::= __ '*[' _? variant-key _? ']' __ pattern
+variant              ::= __ '[' _? variant-key _? ']' pattern
+default-variant      ::= __ '*[' _? variant-key _? ']' pattern
 variant-list         ::= variant* default-variant variant* line-break
 
 attribute            ::= __ '.' identifier value
@@ -41,7 +41,7 @@ attribute            ::= __ '.' identifier value
 message              ::= identifier (value attribute* | attribute+)
 term                 ::= term-identifier value attribute*
 
-value                ::= _? '=' __? pattern
+value                ::= _? '=' pattern
 pattern              ::= (text | placeable)+
 
 /* \ and { must be escaped */
