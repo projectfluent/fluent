@@ -66,7 +66,7 @@ inline-expression    ::= quoted-text
 block-expression     ::= select-expression
                        | variant-list
 
-select-expression    ::= selector-expression __ '->' __ variant-list
+select-expression    ::= selector-expression _ '->' __ variant-list
 selector-expression  ::= quoted-text
                        | number
                        | external-identifier
