@@ -38,7 +38,7 @@ variant-list         ::= variant* default-variant variant* line-break
 
 message              ::= identifier _? '=' (pattern attribute* | attribute+)
 term                 ::= term-identifier _? '=' pattern attribute*
-attribute            ::= __ '.' identifier _? '=' __? pattern
+attribute            ::= __ '.' identifier _? '=' pattern
 pattern              ::= (text | placeable)+
 
 /* \ and { must be escaped */
