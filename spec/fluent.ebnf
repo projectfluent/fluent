@@ -36,12 +36,9 @@ variant              ::= __ '[' _? variant-key _? ']' pattern
 default-variant      ::= __ '*[' _? variant-key _? ']' pattern
 variant-list         ::= variant* default-variant variant* line-break
 
-attribute            ::= __ '.' identifier value
-
-message              ::= identifier (value attribute* | attribute+)
-term                 ::= term-identifier value attribute*
-
-value                ::= _? '=' pattern
+message              ::= identifier _? '=' (pattern attribute* | attribute+)
+term                 ::= term-identifier _? '=' pattern attribute*
+attribute            ::= __ '.' identifier _? '=' pattern
 pattern              ::= (text | placeable)+
 
 /* \ and { must be escaped */
