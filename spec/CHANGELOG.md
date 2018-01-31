@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.5.0 (January 31, 2018)
 
   - Added terms. (#62, #85)
 
