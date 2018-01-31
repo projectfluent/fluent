@@ -7,7 +7,7 @@
         <title>Comments · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.3">
         
         
         
@@ -60,7 +60,7 @@
     <link rel="next" href="builtins.html" />
     
     
-    <link rel="prev" href="sections.html" />
+    <link rel="prev" href="terms.html" />
     
 
     </head>
@@ -128,12 +128,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="references.html">
+        <li class="chapter " data-level="1.4" data-path="external.html">
             
-                <a href="references.html">
+                <a href="external.html">
             
                     
-                    Referencing Messages
+                    External Data
             
                 </a>
             
@@ -141,12 +141,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="external.html">
+        <li class="chapter " data-level="1.5" data-path="references.html">
             
-                <a href="external.html">
+                <a href="references.html">
             
                     
-                    External Data
+                    Referencing Messages
             
                 </a>
             
@@ -180,20 +180,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="tags.html">
-            
-                <a href="tags.html">
-            
-                    
-                    Tags
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9" data-path="attributes.html">
+        <li class="chapter " data-level="1.8" data-path="attributes.html">
             
                 <a href="attributes.html">
             
@@ -206,12 +193,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="sections.html">
+        <li class="chapter " data-level="1.9" data-path="terms.html">
             
-                <a href="sections.html">
+                <a href="terms.html">
             
                     
-                    Sections
+                    Terms
             
                 </a>
             
@@ -219,7 +206,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.11" data-path="comments.html">
+        <li class="chapter active" data-level="1.10" data-path="comments.html">
             
                 <a href="comments.html">
             
@@ -232,7 +219,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12" data-path="builtins.html">
+        <li class="chapter " data-level="1.11" data-path="builtins.html">
             
                 <a href="builtins.html">
             
@@ -245,7 +232,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13" data-path="functions.html">
+        <li class="chapter " data-level="1.12" data-path="functions.html">
             
                 <a href="functions.html">
             
@@ -259,7 +246,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.13.1" data-path="functions.html">
+        <li class="chapter " data-level="1.12.1" data-path="functions.html">
             
                 <a href="functions.html#using-functions">
             
@@ -272,7 +259,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.2" data-path="functions.html">
+        <li class="chapter " data-level="1.12.2" data-path="functions.html">
             
                 <a href="functions.html#function-parameters">
             
@@ -285,7 +272,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.3" data-path="functions.html">
+        <li class="chapter " data-level="1.12.3" data-path="functions.html">
             
                 <a href="functions.html#built-in-functions">
             
@@ -299,7 +286,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.13.3.1" data-path="functions.html">
+        <li class="chapter " data-level="1.12.3.1" data-path="functions.html">
             
                 <a href="functions.html#number">
             
@@ -312,7 +299,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.3.2" data-path="functions.html">
+        <li class="chapter " data-level="1.12.3.2" data-path="functions.html">
             
                 <a href="functions.html#datetime">
             
@@ -330,7 +317,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.4" data-path="functions.html">
+        <li class="chapter " data-level="1.12.4" data-path="functions.html">
             
                 <a href="functions.html#implicit-use">
             
@@ -343,7 +330,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.5" data-path="functions.html">
+        <li class="chapter " data-level="1.12.5" data-path="functions.html">
             
                 <a href="functions.html#partial-arguments">
             
@@ -361,7 +348,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14" data-path="more.html">
+        <li class="chapter " data-level="1.13" data-path="more.html">
             
                 <a href="more.html">
             
@@ -420,26 +407,45 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="comments">Comments</h1>
-<pre><code>// This comment is for the whole file.
+<p>Comments in Fluent start with <code>#</code>, <code>##</code>, or <code>###</code>, and can be used to
+document messages and to define the outline of the file.</p>
+<p>Single-hash comments (<code>#</code>) can be standalone or can be bound to messages. If
+a comment is located right above a message it is considered part of the
+message and localization tools will present the message and the comment
+together. Otherwise the comment is standalone (which is useful for commenting
+parts of the file out).</p>
+<p>Double-hash comments (<code>##</code>) are always standalone. They can be used to divide
+files into smaller groups of messages related to each other; they are
+group-level comments. Think of them as of headers with a description.
+Group-level comments are intended as a hint for localizers and tools about
+the layout of the localization resource. The grouping ends with the next
+group comment or at the end of the file.</p>
+<p>Triple-hash comments (<code>###</code>) are also always standalone and apply to the
+entire file; they are file-level comments. They can be used to provide
+information about the purpose or the context of the entire file.</p>
+<pre><code class="lang-properties"># This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-// Try to keep all menu messages as single word if possible
-[[menu]]
+### Localization for Server-side strings of Firefox Screenshots
 
-open = Open
-close = Close
+## Global phrases shared across pages
 
-// This button lives in a main toolbar
-// $user (String) Currently logged in username
-logout = Logout { $user }
-</code></pre><pre><code class="lang-json">{
-    <span class="hljs-string">&quot;user&quot;</span>: <span class="hljs-string">&quot;mkablnik&quot;</span>
-}
+my-shots = My Shots
+home-link = Home
+screenshots-description =
+    Screenshots made simple. Take, save, and
+    share screenshots without leaving Firefox.
+
+## Creating page
+
+# Note: { $title } is a placeholder for the title of the web page
+# captured in the screenshot. The default, for pages without titles, is
+# creating-page-title-default.
+creating-page-title = Creating { $title }
+creating-page-title-default = page
+creating-page-wait-message = Saving your shot&#x2026;
 </code></pre>
-<p>In FTL, Comments can be standalone or bound to a file, message, or section.</p>
-<p>If a comment is located right above a section or message, it belongs to it and
-localization tools will present it in its context.
-If a comment is located at the top of the file it will be bound to the whole file.</p>
-<p>All other comments are standalone.</p>
 
                                 
                                 </section>
@@ -467,7 +473,7 @@ If a comment is located at the top of the file it will be bound to the whole fil
 
             
                 
-                <a href="sections.html" class="navigation navigation-prev " aria-label="Previous page: Sections">
+                <a href="terms.html" class="navigation navigation-prev " aria-label="Previous page: Terms">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -483,7 +489,7 @@ If a comment is located at the top of the file it will be bound to the whole fil
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Comments","level":"1.11","depth":1,"next":{"title":"Built-in Functions","level":"1.12","depth":1,"path":"builtins.md","ref":"builtins.md","articles":[]},"previous":{"title":"Sections","level":"1.10","depth":1,"path":"sections.md","ref":"sections.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"comments.md","mtime":"2017-02-24T15:40:22.722Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-14T12:25:46.639Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Comments","level":"1.10","depth":1,"next":{"title":"Built-in Functions","level":"1.11","depth":1,"path":"builtins.md","ref":"builtins.md","articles":[]},"previous":{"title":"Terms","level":"1.9","depth":1,"path":"terms.md","ref":"terms.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"comments.md","mtime":"2018-01-23T10:11:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-31T18:45:07.649Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

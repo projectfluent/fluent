@@ -4,10 +4,10 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Sections · GitBook</title>
+        <title>Terms · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.3">
         
         
         
@@ -128,12 +128,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="references.html">
+        <li class="chapter " data-level="1.4" data-path="external.html">
             
-                <a href="references.html">
+                <a href="external.html">
             
                     
-                    Referencing Messages
+                    External Data
             
                 </a>
             
@@ -141,12 +141,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="external.html">
+        <li class="chapter " data-level="1.5" data-path="references.html">
             
-                <a href="external.html">
+                <a href="references.html">
             
                     
-                    External Data
+                    Referencing Messages
             
                 </a>
             
@@ -180,20 +180,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="tags.html">
-            
-                <a href="tags.html">
-            
-                    
-                    Tags
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9" data-path="attributes.html">
+        <li class="chapter " data-level="1.8" data-path="attributes.html">
             
                 <a href="attributes.html">
             
@@ -206,12 +193,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10" data-path="sections.html">
+        <li class="chapter active" data-level="1.9" data-path="terms.html">
             
-                <a href="sections.html">
+                <a href="terms.html">
             
                     
-                    Sections
+                    Terms
             
                 </a>
             
@@ -219,7 +206,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="comments.html">
+        <li class="chapter " data-level="1.10" data-path="comments.html">
             
                 <a href="comments.html">
             
@@ -232,7 +219,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12" data-path="builtins.html">
+        <li class="chapter " data-level="1.11" data-path="builtins.html">
             
                 <a href="builtins.html">
             
@@ -245,7 +232,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13" data-path="functions.html">
+        <li class="chapter " data-level="1.12" data-path="functions.html">
             
                 <a href="functions.html">
             
@@ -259,7 +246,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.13.1" data-path="functions.html">
+        <li class="chapter " data-level="1.12.1" data-path="functions.html">
             
                 <a href="functions.html#using-functions">
             
@@ -272,7 +259,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.2" data-path="functions.html">
+        <li class="chapter " data-level="1.12.2" data-path="functions.html">
             
                 <a href="functions.html#function-parameters">
             
@@ -285,7 +272,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.3" data-path="functions.html">
+        <li class="chapter " data-level="1.12.3" data-path="functions.html">
             
                 <a href="functions.html#built-in-functions">
             
@@ -299,7 +286,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.13.3.1" data-path="functions.html">
+        <li class="chapter " data-level="1.12.3.1" data-path="functions.html">
             
                 <a href="functions.html#number">
             
@@ -312,7 +299,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.3.2" data-path="functions.html">
+        <li class="chapter " data-level="1.12.3.2" data-path="functions.html">
             
                 <a href="functions.html#datetime">
             
@@ -330,7 +317,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.4" data-path="functions.html">
+        <li class="chapter " data-level="1.12.4" data-path="functions.html">
             
                 <a href="functions.html#implicit-use">
             
@@ -343,7 +330,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.5" data-path="functions.html">
+        <li class="chapter " data-level="1.12.5" data-path="functions.html">
             
                 <a href="functions.html#partial-arguments">
             
@@ -361,7 +348,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14" data-path="more.html">
+        <li class="chapter " data-level="1.13" data-path="more.html">
             
                 <a href="more.html">
             
@@ -404,7 +391,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Sections</a>
+        <a href="." >Terms</a>
     </h1>
 </div>
 
@@ -419,21 +406,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="sections">Sections</h1>
-<pre><code>instruction = Click &quot;{ open }&quot; to begin
+                                <h1 id="terms">Terms</h1>
+<p>Terms are similar to regular messages but they can only be used as references
+in other messages. Their identifiers start with a single dash <code>-</code> like in the
+example above: <code>-brand-name</code>. The runtime cannot retrieve terms directly.
+They are best used to define vocabulary and glossary items which can be used
+consistently across the localization of the entire product.</p>
+<pre><code>-brand-name = Firefox
 
-[[menu]]
+app-title = { -brand-name }
+has-updated = { -brand-name } has been updated.
+</code></pre><h2 id="terms-and-variants">Terms and Variants</h2>
+<p>Values of terms may have multiple <a href="variants.html">variants</a>, including the
+default variant marked with an asterisk (<code>*</code>). For instance, variants may
+correspond to different grammatical cases.</p>
+<pre><code>-brand-name =
+    {
+       *[nominative] Firefox
+        [accusative] Firefoxa
+    }
 
-open = Open
-close = Close
-edit = Edit
-new-file = New File
-undo = Undo
-search = Search
-</code></pre><p>Section headers of the form <code>[[ Section name ]]</code> can be used to divide the localization
-into smaller groups of messages related to each other. Sections are mainly
-intended as a hint for tools about the layout of the localization resource and
-don&apos;t impact how messages are referenced or requested.</p>
+app-title = { -brand-name }
+restart-app = Zrestartuj { -brand-name[accusative] }.
+</code></pre><p>Use variants to define different <em>facets</em> of the term&apos;s value. Variants
+are essentially the same value, just in slightly different forms to make it
+grammatically correct when used inside of other messages.</p>
+<h2 id="terms-and-attributes">Terms and Attributes</h2>
+<p>Sometimes other translations might vary depending on some grammatical trait
+of a term references in them. Terms can store this grammatical information
+about themselves in <a href="attributes.html">attributes</a>. In the example below the
+form of the past tense of <em>has been updated</em> depends on the grammatical
+gender of <code>-brand-name</code>.</p>
+<pre><code>-brand-name = Aurora
+    .gender = feminine
+
+has-updated =
+    { -brand-name.gender -&gt;
+        [masculine] { -brand-name} zosta&#x142; zaktualizowany.
+        [feminine] { -brand-name } zosta&#x142;a zaktualizowana.
+       *[other] Program { -brand-name } zosta&#x142; zaktualizowany.
+    }
+</code></pre><p>Use attributes to describe grammatical traits and properties. Genders,
+animacy, whether the term essage starts with a vowel or not etc. Attributes
+of terms are private and cannot be retrieved by the localization runtime.
+They can only be used as <a href="selectors.html">selectors</a>.</p>
 
                                 
                                 </section>
@@ -477,7 +493,7 @@ don&apos;t impact how messages are referenced or requested.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Sections","level":"1.10","depth":1,"next":{"title":"Comments","level":"1.11","depth":1,"path":"comments.md","ref":"comments.md","articles":[]},"previous":{"title":"Attributes","level":"1.9","depth":1,"path":"attributes.md","ref":"attributes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"sections.md","mtime":"2017-02-24T15:40:22.722Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-14T12:25:46.639Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Terms","level":"1.9","depth":1,"next":{"title":"Comments","level":"1.10","depth":1,"path":"comments.md","ref":"comments.md","articles":[]},"previous":{"title":"Attributes","level":"1.8","depth":1,"path":"attributes.md","ref":"attributes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"terms.md","mtime":"2018-01-29T20:32:55.689Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-31T18:45:07.649Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

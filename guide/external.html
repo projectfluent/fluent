@@ -7,7 +7,7 @@
         <title>External Data · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.3">
         
         
         
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="selectors.html" />
+    <link rel="next" href="references.html" />
     
     
-    <link rel="prev" href="references.html" />
+    <link rel="prev" href="text.html" />
     
 
     </head>
@@ -128,12 +128,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="references.html">
+        <li class="chapter active" data-level="1.4" data-path="external.html">
             
-                <a href="references.html">
+                <a href="external.html">
             
                     
-                    Referencing Messages
+                    External Data
             
                 </a>
             
@@ -141,12 +141,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5" data-path="external.html">
+        <li class="chapter " data-level="1.5" data-path="references.html">
             
-                <a href="external.html">
+                <a href="references.html">
             
                     
-                    External Data
+                    Referencing Messages
             
                 </a>
             
@@ -180,20 +180,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="tags.html">
-            
-                <a href="tags.html">
-            
-                    
-                    Tags
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9" data-path="attributes.html">
+        <li class="chapter " data-level="1.8" data-path="attributes.html">
             
                 <a href="attributes.html">
             
@@ -206,12 +193,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="sections.html">
+        <li class="chapter " data-level="1.9" data-path="terms.html">
             
-                <a href="sections.html">
+                <a href="terms.html">
             
                     
-                    Sections
+                    Terms
             
                 </a>
             
@@ -219,7 +206,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="comments.html">
+        <li class="chapter " data-level="1.10" data-path="comments.html">
             
                 <a href="comments.html">
             
@@ -232,7 +219,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12" data-path="builtins.html">
+        <li class="chapter " data-level="1.11" data-path="builtins.html">
             
                 <a href="builtins.html">
             
@@ -245,7 +232,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13" data-path="functions.html">
+        <li class="chapter " data-level="1.12" data-path="functions.html">
             
                 <a href="functions.html">
             
@@ -259,7 +246,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.13.1" data-path="functions.html">
+        <li class="chapter " data-level="1.12.1" data-path="functions.html">
             
                 <a href="functions.html#using-functions">
             
@@ -272,7 +259,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.2" data-path="functions.html">
+        <li class="chapter " data-level="1.12.2" data-path="functions.html">
             
                 <a href="functions.html#function-parameters">
             
@@ -285,7 +272,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.3" data-path="functions.html">
+        <li class="chapter " data-level="1.12.3" data-path="functions.html">
             
                 <a href="functions.html#built-in-functions">
             
@@ -299,7 +286,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.13.3.1" data-path="functions.html">
+        <li class="chapter " data-level="1.12.3.1" data-path="functions.html">
             
                 <a href="functions.html#number">
             
@@ -312,7 +299,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.3.2" data-path="functions.html">
+        <li class="chapter " data-level="1.12.3.2" data-path="functions.html">
             
                 <a href="functions.html#datetime">
             
@@ -330,7 +317,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.4" data-path="functions.html">
+        <li class="chapter " data-level="1.12.4" data-path="functions.html">
             
                 <a href="functions.html#implicit-use">
             
@@ -343,7 +330,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.5" data-path="functions.html">
+        <li class="chapter " data-level="1.12.5" data-path="functions.html">
             
                 <a href="functions.html#partial-arguments">
             
@@ -361,7 +348,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14" data-path="more.html">
+        <li class="chapter " data-level="1.13" data-path="more.html">
             
                 <a href="more.html">
             
@@ -420,6 +407,12 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="interpolation-and-external-arguments">Interpolation and External Arguments</h1>
+<p>Strings in FTL may use special syntax to incorporate small pieces of
+programmable interface. Those pieces are denoted with curly braces <code>{</code> and <code>}</code>
+and are called placeables.</p>
+<p>It&apos;s common to use placeables to interpolate external arguments into the
+translation. External arguments are provided by the developer and may change
+on runtime.</p>
 <pre><code>welcome = Welcome { $user }
 unreadEmails = { $user } has { $emailCount } unread emails.
 </code></pre><pre><code class="lang-json">{
@@ -427,14 +420,9 @@ unreadEmails = { $user } has { $emailCount } unread emails.
     <span class="hljs-string">&quot;emailCount&quot;</span>: <span class="hljs-number">5</span>
 }
 </code></pre>
-<p>Another common use case for a placeable is to put an external argument,
-provided by the developer, into the string.</p>
 <p>There are all kinds of external data that might be useful in providing a good
 localization: user names, number of unread messages, battery level, current
 time, time left before an alarm goes off, etc.</p>
-<p>To reference a variable, use the dollar syntax in your FTL code:
-<code>$user</code>. <code>user</code> has to be defined in the context data. In the examples below,
-we insert the value of a context data variable into a message&apos;s value.</p>
 
                                 
                                 </section>
@@ -462,12 +450,12 @@ we insert the value of a context data variable into a message&apos;s value.</p>
 
             
                 
-                <a href="references.html" class="navigation navigation-prev " aria-label="Previous page: Referencing Messages">
+                <a href="text.html" class="navigation navigation-prev " aria-label="Previous page: Writing Text">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="selectors.html" class="navigation navigation-next " aria-label="Next page: Selectors">
+                <a href="references.html" class="navigation navigation-next " aria-label="Next page: Referencing Messages">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -478,7 +466,7 @@ we insert the value of a context data variable into a message&apos;s value.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"External Data","level":"1.5","depth":1,"next":{"title":"Selectors","level":"1.6","depth":1,"path":"selectors.md","ref":"selectors.md","articles":[]},"previous":{"title":"Referencing Messages","level":"1.4","depth":1,"path":"references.md","ref":"references.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"external.md","mtime":"2017-08-08T13:59:48.335Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-14T12:25:46.639Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"External Data","level":"1.4","depth":1,"next":{"title":"Referencing Messages","level":"1.5","depth":1,"path":"references.md","ref":"references.md","articles":[]},"previous":{"title":"Writing Text","level":"1.3","depth":1,"path":"text.md","ref":"text.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"external.md","mtime":"2018-01-31T18:24:48.777Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-31T18:45:07.649Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
