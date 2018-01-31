@@ -8,13 +8,6 @@ last-notice =
     Last checked: { DATETIME($lastChecked, day: "numeric", month: "long") }.
 ```
 
-```json
-{
-    "lastChecked": "2016-04-22T08:13:56.354Z",
-    "unreadEmails": 5
-}
-```
-
 In most cases, Fluent will automatically select the right formatter for the
 argument and format it into a given locale.
 

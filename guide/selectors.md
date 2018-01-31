@@ -1,32 +1,29 @@
 # Selectors
 
 ```
-emails = { $unreadEmails ->
+emails =
+    { $unreadEmails ->
         [one] You have one unread email.
        *[other] You have { $unreadEmails } unread emails.
     }
 ```
 
-```json
-{
-    "unreadEmails": 5
-}
-```
-
 One of the most common cases when a localizer needs to use a placeable is when
 there are multiple variants of the string that depend on some external
-argument. FTL provides the select expression syntax, which chooses one of the
-provided variants based on the given selector.
+argument. In the example above, the `emails` message depends on the value of
+the `$unreadEmails` external argument.
 
-The `*` indicator identifies the default selection. A default selection is required.
+FTL has the select expression syntax which allows to define multiple variants
+of the translation and choose between them based on the value of the
+selector. The `*` indicator identifies the default variant. A default
+variant is required.
 
-The selector may be a string, in which case it will be compared directly to the
-keys of variants defined in the select expression. For number selectors, the
-variant keys either match the number exactly or they match the [CLDR plural
-category](http://www.unicode.org/cldr/charts/30/supplemental/language_plural_rules.html)
-for the number. The possible categories are: `zero`, `one`, `two`, `few`,
-`many`, and `other`. For instance, English has two plural categories: `one` and
-`other`.
+The selector may be a string, in which case it will be compared directly to
+the keys of variants defined in the select expression. For selectors which
+are numbers, the variant keys either match the number exactly or they match
+the [CLDR plural category][] for the number. The possible categories are:
+`zero`, `one`, `two`, `few`, `many`, and `other`. For instance, English has
+two plural categories: `one` and `other`.
 
 If the translation requires a number to be formatted in a particular
 non-default manner, the selector should use the same formatting options. The
@@ -35,8 +32,11 @@ which, for some languages, might be different than the category of the
 unformatted number:
 
 ```
-your-score = { NUMBER($score, minimumFractionDigits: 1) ->
+your-score =
+    { NUMBER($score, minimumFractionDigits: 1) ->
         [0.0]   You scored zero points. What happened?
        *[other] You scored { NUMBER($score, minimumFractionDigits: 1) } points.
     }
 ```
+
+[CLDR plural category]: http://www.unicode.org/cldr/charts/30/supplemental/language_plural_rules.html
