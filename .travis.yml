@@ -1,0 +1,16 @@
+sudo: false
+language: node_js
+script: npm run ci
+node_js: 9
+cache:
+  directories: node_modules
+notifications:
+  irc:
+    channels:
+      - "irc.mozilla.org#l20n"
+    on_success: always
+    on_failure: always
+    use_notice: true
+    template:
+      - "#%{build_number} %{message} %{build_url}"
+      - "Change by %{author}: %{compare_url}"

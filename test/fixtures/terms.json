@@ -1,0 +1,113 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Term",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "-term01"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value"
+                    }
+                ]
+            },
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attr"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "Attribute"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": null
+        },
+        {
+            "type": "Term",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "-term02"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": ""
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "JUNK Missing value\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "-term03 =\n    .attr = Attribute\n"
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "JUNK Missing value\n       <  whitespace  >\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "-term04 =                \n    .attr1 = Attribute 1\n"
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "JUNK Missing value\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "-term05 =\n"
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "JUNK Missing value\n       <  whitespace  >\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "-term06 =                \n"
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "JUNK Missing =\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "-term07\n"
+        }
+    ]
+}

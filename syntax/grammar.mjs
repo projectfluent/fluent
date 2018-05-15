@@ -1,0 +1,492 @@
+import * as FTL from "./ast.mjs";
+import {list_into, into} from "./abstract.mjs";
+import {
+    always, and, char, charset, defer, either, eof, maybe, not,
+    regex, repeat, repeat1, sequence, string
+} from "../lib/combinators.mjs";
+import {
+    element_at, flatten, join, keep_abstract, mutate, print
+} from "../lib/mappers.mjs";
+
+/* ------------------------------- */
+/* An FTL file defines a Resource. */
+export
+let Resource = defer(() =>
+    repeat(
+        either(
+            blank_line,
+            Entry,
+            junk_line))
+    .map(list_into(FTL.Resource)));
+
+export
+let Entry = defer(() =>
+    either(
+        Message,
+        Term,
+        either(
+            ResourceComment,
+            GroupComment,
+            Comment)));
+
+let Message = defer(() =>
+    sequence(
+        maybe(Comment).abstract,
+        Identifier.abstract,
+        maybe(inline_space),
+        char("="),
+        maybe(inline_space),
+        either(
+            sequence(
+                Pattern.abstract,
+                repeat(Attribute).abstract),
+            sequence(
+                always(null).abstract,
+                repeat1(Attribute).abstract)),
+        line_end)
+    .map(flatten(1))
+    .map(keep_abstract)
+    .map(list_into(FTL.Message)));
+
+let Term = defer(() =>
+    sequence(
+        maybe(Comment).abstract,
+        TermIdentifier.abstract,
+        maybe(inline_space),
+        char("="),
+        maybe(inline_space),
+        Pattern.abstract,
+        repeat(Attribute).abstract,
+        line_end)
+    .map(keep_abstract)
+    .map(list_into(FTL.Term)));
+
+let Comment = defer(() =>
+    repeat1(
+        sequence(
+            char("#"),
+            comment_line.abstract))
+    .map(flatten(1))
+    .map(keep_abstract)
+    .map(join)
+    .map(into(FTL.Comment)));
+
+let GroupComment = defer(() =>
+    repeat1(
+        sequence(
+            string("##"),
+            comment_line.abstract))
+    .map(flatten(1))
+    .map(keep_abstract)
+    .map(join)
+    .map(into(FTL.GroupComment)));
+
+let ResourceComment = defer(() =>
+    repeat1(
+        sequence(
+            string("###"),
+            comment_line.abstract))
+    .map(flatten(1))
+    .map(keep_abstract)
+    .map(join)
+    .map(into(FTL.ResourceComment)));
+
+/* ----------------------------------------------------------------- */
+/* Adjacent junk_lines should be joined into FTL.Junk during the AST
+   construction. */
+let junk_line = defer(() =>
+    sequence(
+        regex(/.*/),
+        line_end)
+    .map(join)
+    .map(into(FTL.Junk)));
+
+/* --------------------------------- */
+/* Attributes of Messages and Terms. */
+let Attribute = defer(() =>
+    sequence(
+        break_indent,
+        char("."),
+        Identifier.abstract,
+        maybe(inline_space),
+        char("="),
+        maybe(inline_space),
+        Pattern.abstract)
+    .map(keep_abstract)
+    .map(list_into(FTL.Attribute)));
+
+/* ----------------------------------------------- */
+/* Patterns consist of TextElements or Placeables. */
+let Pattern = defer(() =>
+    repeat1(
+        PatternElement)
+    // Flatten indented Placeables.
+    .map(flatten(1))
+    .map(list_into(FTL.Pattern)));
+
+let PatternElement = defer(() =>
+    either(
+        TextElement,
+        Placeable,
+        sequence(
+            // Trimmed or joined into a preceding FTL.TextElement during the
+            // AST construction.
+            break_indent.map(into(FTL.TextElement)),
+            Placeable)));
+
+let TextElement = defer(() =>
+    repeat1(
+        either(
+            text_char,
+            text_cont))
+    .map(join)
+    .map(into(FTL.TextElement)));
+
+let Placeable = defer(() =>
+    sequence(
+        char("{"),
+        maybe(inline_space),
+        either(
+            // Order matters!
+            BlockExpression,
+            InlineExpression),
+        maybe(inline_space),
+        char("}"))
+    .map(element_at(2))
+    .map(into(FTL.Placeable)));
+
+let BlockExpression = defer(() =>
+    either(
+        SelectExpression,
+        VariantList));
+
+let InlineExpression = defer(() =>
+    either(
+        StringExpression,
+        NumberExpression,
+        ExternalArgument,
+        CallExpression, // Must be before MessageReference
+        MessageAttributeExpression,
+        TermVariantExpression,
+        Identifier.map(into(FTL.MessageReference)),
+        TermIdentifier.map(into(FTL.MessageReference)),
+        Placeable));
+
+/* ------------------ */
+/* Inline Expressions */
+let StringExpression = defer(() =>
+    quoted_text.map(into(FTL.StringExpression)));
+
+let NumberExpression = defer(() =>
+    number.map(into(FTL.NumberExpression)));
+
+let ExternalArgument = defer(() =>
+    ExternalIdentifier.map(into(FTL.ExternalArgument)));
+
+let CallExpression = defer(() =>
+    sequence(
+        Function.abstract,
+        char("("),
+        maybe(space_indent),
+        argument_list.abstract,
+        maybe(space_indent),
+        char(")"))
+    .map(keep_abstract)
+    .map(list_into(FTL.CallExpression)));
+
+let argument_list = defer(() =>
+    sequence(
+        repeat(
+            sequence(
+                Argument.abstract,
+                maybe(space_indent),
+                char(","),
+                maybe(space_indent))),
+        maybe(Argument.abstract))
+    .map(flatten(2))
+    .map(keep_abstract));
+
+let Argument = defer(() =>
+    either(
+        NamedArgument,
+        InlineExpression));
+
+let NamedArgument = defer(() =>
+    sequence(
+        Identifier.abstract,
+        maybe(space_indent),
+        char(":"),
+        maybe(space_indent),
+        either(
+            StringExpression,
+            NumberExpression).abstract)
+    .map(keep_abstract)
+    .map(list_into(FTL.NamedArgument)));
+
+let MessageAttributeExpression = defer(() =>
+    sequence(
+        Identifier.abstract,
+        char("."),
+        Identifier.abstract)
+    .map(keep_abstract)
+    .map(list_into(FTL.AttributeExpression)));
+
+let TermVariantExpression = defer(() =>
+    sequence(
+        TermIdentifier.abstract,
+        VariantKey.abstract)
+    .map(keep_abstract)
+    .map(list_into(FTL.VariantExpression)));
+
+/* ----------------- */
+/* Block Expressions */
+let SelectExpression = defer(() =>
+    sequence(
+        SelectorExpression.abstract,
+        maybe(inline_space),
+        string("->"),
+        maybe(inline_space),
+        variant_list.abstract,
+        break_indent)
+    .map(keep_abstract)
+    .map(list_into(FTL.SelectExpression)));
+
+let SelectorExpression = defer(() =>
+    either(
+        StringExpression,
+        NumberExpression,
+        ExternalArgument,
+        CallExpression,
+        TermAttributeExpression));
+
+let TermAttributeExpression = defer(() =>
+    sequence(
+        TermIdentifier.abstract,
+        char("."),
+        Identifier.abstract)
+    .map(keep_abstract)
+    .map(list_into(FTL.AttributeExpression)));
+
+let VariantList = defer(() =>
+    sequence(
+        always(null).abstract,
+        variant_list.abstract,
+        break_indent)
+    .map(keep_abstract)
+    .map(list_into(FTL.SelectExpression)));
+
+let variant_list = defer(() =>
+    sequence(
+        repeat(Variant),
+        DefaultVariant,
+        repeat(Variant))
+    .map(flatten(1)));
+
+let Variant = defer(() =>
+    sequence(
+        break_indent,
+        VariantKey.abstract,
+        maybe(inline_space),
+        Pattern.abstract)
+    .map(keep_abstract)
+    .map(list_into(FTL.Variant)));
+
+let DefaultVariant = defer(() =>
+    sequence(
+        break_indent,
+        char("*"),
+        VariantKey.abstract,
+        maybe(inline_space),
+        Pattern.abstract)
+    .map(keep_abstract)
+    .map(list_into(FTL.Variant))
+    .map(mutate({default: true})));
+
+let VariantKey = defer(() =>
+    sequence(
+        char("["),
+        maybe(inline_space),
+        either(
+            // Meh. It's not really an expression.
+            NumberExpression,
+            VariantName),
+        maybe(inline_space),
+        char("]"))
+    .map(element_at(2)));
+
+let VariantName = defer(() =>
+    sequence(
+        word,
+        repeat(
+            sequence(
+                inline_space,
+                word)))
+    .map(flatten(2))
+    .map(join)
+    .map(into(FTL.VariantName)));
+
+/* ----------- */
+/* Identifiers */
+
+let Identifier = defer(() =>
+    identifier.map(into(FTL.Identifier)));
+
+let TermIdentifier = defer(() =>
+    sequence(
+        char("-"),
+        identifier)
+    .map(join)
+    .map(into(FTL.Identifier)));
+
+let ExternalIdentifier = defer(() =>
+    sequence(
+        char("$"),
+        identifier)
+    .map(element_at(1))
+    .map(into(FTL.Identifier)));
+
+let Function =
+    sequence(
+        charset("A-Z"),
+        repeat(
+            charset("A-Z_?-")))
+    .map(flatten(1))
+    .map(join)
+    .map(into(FTL.Function));
+
+/* ------ */
+/* Tokens */
+let identifier =
+    sequence(
+        charset("a-zA-Z"),
+        repeat(
+            charset("a-zA-Z0-9_-")))
+    .map(flatten(1))
+    .map(join);
+
+let comment_line = defer(() =>
+    either(
+        sequence(
+            line_end.abstract),
+        sequence(
+            char(" "),
+            regex(/.*/).abstract,
+            line_end.abstract))
+    .map(keep_abstract)
+    .map(join));
+
+let word = defer(() =>
+    repeat1(
+        and(
+            not(char("[")),
+            not(char("]")),
+            not(char("{")),
+            not(char("}")),
+            not(backslash),
+            regular_char))
+    .map(join));
+
+/* ---------- */
+/* Characters */
+
+let backslash = char("\\");
+let quote = char("\"");
+
+/* Any Unicode character from BMP excluding C0 control characters, space,
+ * surrogate blocks and non-characters (U+FFFE, U+FFFF).
+ * Cf. https://www.w3.org/TR/REC-xml/#NT-Char
+ * TODO Add characters from other planes: U+10000 to U+10FFFF.
+ */
+let regular_char =
+    charset("\u0021-\uD7FF\uE000-\uFFFD");
+
+let text_char = defer(() =>
+    either(
+        inline_space,
+        regex(/\\u[0-9a-fA-F]{4}/),
+        sequence(
+            backslash,
+            backslash).map(join),
+        sequence(
+            backslash,
+            char("{")).map(join),
+        and(
+            not(backslash),
+            not(char("{")),
+            regular_char)));
+
+let text_cont = defer(() =>
+    sequence(
+        break_indent,
+        and(
+            not(char(".")),
+            not(char("*")),
+            not(char("[")),
+            not(char("}")),
+            text_char))
+    .map(join));
+
+let quoted_text_char =
+    either(
+        and(
+            not(quote),
+            text_char),
+        sequence(
+            backslash,
+            quote).map(join));
+
+let quoted_text =
+    sequence(
+        quote,
+        repeat(quoted_text_char),
+        quote)
+    .map(element_at(1))
+    .map(join);
+
+let digit = charset("0-9");
+
+let number =
+    sequence(
+        maybe(char("-")),
+        repeat1(digit),
+        maybe(
+            sequence(
+                char("."),
+                repeat1(digit))))
+    .map(flatten(2))
+    .map(join);
+
+/* ---------- */
+/* Whitespace */
+let inline_space =
+    repeat1(
+        either(
+            char("\u0020"),
+            char("\u0009")))
+    .map(join);
+
+let line_end =
+    either(
+        string("\u000D\u000A"),
+        char("\u000A"),
+        char("\u000D"),
+        eof());
+
+let blank_line =
+    sequence(
+        maybe(inline_space),
+        line_end)
+    .map(join);
+
+let break_indent =
+    sequence(
+        line_end,
+        repeat(blank_line),
+        inline_space)
+    .map(flatten(1))
+    .map(join);
+
+let space_indent =
+    sequence(
+        maybe(inline_space),
+        maybe(break_indent));
