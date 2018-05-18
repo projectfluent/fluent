@@ -117,7 +117,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "SelectExpression",
-                            "expression": null,
+                            "selector": null,
                             "variants": [
                                 {
                                     "type": "Variant",
