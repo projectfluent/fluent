@@ -1,0 +1,15 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "ResourceComment",
+            "annotations": [],
+            "content": "NOTE: Disable final newline insertion when editing this file.\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "message-id"
+        }
+    ]
+}
