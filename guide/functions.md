@@ -25,13 +25,10 @@ today-is = Today is { DATETIME($date) }
 
 ## Function parameters
 
-Functions may (but don't have to) accept positional and keyword arguments. Some
-keyword parameters are only available to developers and cannot be used inside
-of FTL translations. Instead they can be set on external arguments passed into
-translations by the developer.
-
-See the reference below for more information about the arguments accepted for
-each built-in function.
+Functions may accept positional and named arguments. Some named arguments
+are only available to developers when they pre-format variables passed as
+arguments to translations (see [Partially-formatted
+variables](#partially-formatted-variables) below).
 
 ## Built-in Functions
 
@@ -150,15 +147,15 @@ log-time = Entry time: { $date }
 log-time2 = Entry time: { DATETIME($date) }
 ```
 
-## Partial arguments
+## Partially-formatted variables
 
 In most cases localizers don't need to call Functions explicitly, thanks to the
 implicit formatting. If the implicit formatting is not sufficient, the Function
 can be called explicitly with additional parameters.  To ease the burden this
-might have on localizers, Fluent allows developers to set the default
-formatting parameters for the external arguments they pass.
+might have on localizers, Fluent implementations may allow developers to set
+the default formatting parameters for the variables they pass.
 
-In other words, developers can provide externals which are already wrapped in
+In other words, developers can provide variables which are already wrapped in
 a partial Function call.
 
 ```
@@ -174,7 +171,7 @@ ctx.format('today', {
 ```
 
 If the localizer wishes to modify the parameters, for example because the
-string doesn't fit in the UI, they can pass the external argument to the same
+string doesn't fit in the UI, they can pass the variable to the same
 Function and overload the parameters set by the developer.
 
 ```

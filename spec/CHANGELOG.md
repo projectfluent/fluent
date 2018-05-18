@@ -54,6 +54,8 @@
     `TermVariantExpression` now store the entire referent expression in a new
     `ref` field, rather than just the `Identifier`.
 
+  - `ExternalArgument` is now called `VariableReference`.
+
 ## 0.5.0 (January 31, 2018)
 
   - Added terms. (#62, #85)

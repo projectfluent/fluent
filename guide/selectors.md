@@ -10,8 +10,8 @@ emails =
 
 One of the most common cases when a localizer needs to use a placeable is when
 there are multiple variants of the string that depend on some external
-argument. In the example above, the `emails` message depends on the value of
-the `$unreadEmails` external argument.
+variable. In the example above, the `emails` message depends on the value of
+the `$unreadEmails` variable.
 
 FTL has the select expression syntax which allows to define multiple variants
 of the translation and choose between them based on the value of the

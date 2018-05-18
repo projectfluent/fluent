@@ -28,7 +28,7 @@ BlockExpression            ::= SelectExpression
                              | VariantList
 InlineExpression           ::= StringExpression
                              | NumberExpression
-                             | ExternalArgument
+                             | VariableReference
                              | CallExpression
                              | MessageAttributeExpression
                              | TermVariantExpression
@@ -41,7 +41,7 @@ StringExpression           ::= quoted_text
 NumberExpression           ::= number
 MessageReference           ::= Identifier
 TermReference              ::= TermIdentifier
-ExternalArgument           ::= ExternalIdentifier
+VariableReference          ::= VariableIdentifier
 CallExpression             ::= Function "(" space_indent? argument_list space_indent? ")"
 argument_list              ::= (Argument space_indent? "," space_indent?)* Argument?
 Argument                   ::= NamedArgument
@@ -54,7 +54,7 @@ TermVariantExpression      ::= TermReference VariantKey
 SelectExpression           ::= SelectorExpression inline_space? "->" inline_space? variant_list break_indent
 SelectorExpression         ::= StringExpression
                              | NumberExpression
-                             | ExternalArgument
+                             | VariableReference
                              | CallExpression
                              | TermAttributeExpression
 TermAttributeExpression    ::= TermReference "." Identifier
@@ -68,7 +68,7 @@ VariantName                ::= word (inline_space word)*
 /* Identifiers */
 Identifier                 ::= identifier
 TermIdentifier             ::= "-" identifier
-ExternalIdentifier         ::= "$" identifier
+VariableIdentifier         ::= "$" identifier
 Function                   ::= [A-Z] [A-Z_?-]*
 
 /* Tokens */
