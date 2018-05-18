@@ -358,7 +358,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "SelectExpression",
-                            "expression": {
+                            "selector": {
                                 "type": "NumberExpression",
                                 "value": "1"
                             },

@@ -15,7 +15,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "SelectExpression",
-                            "expression": {
+                            "selector": {
                                 "type": "CallExpression",
                                 "callee": {
                                     "type": "Function",
@@ -87,7 +87,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "SelectExpression",
-                            "expression": {
+                            "selector": {
                                 "type": "AttributeExpression",
                                 "id": {
                                     "type": "Identifier",
@@ -143,7 +143,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "SelectExpression",
-                            "expression": null,
+                            "selector": null,
                             "variants": [
                                 {
                                     "type": "Variant",
@@ -184,7 +184,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "SelectExpression",
-                            "expression": {
+                            "selector": {
                                 "type": "NumberExpression",
                                 "value": "1"
                             },
