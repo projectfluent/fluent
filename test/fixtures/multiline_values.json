@@ -1,0 +1,225 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key01"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "A multiline value\n    continued on the next line\n\n    and also down here."
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key02"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "A multiline value starting\n    on a new line."
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key03"
+            },
+            "value": null,
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attr"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "A multiline attribute value\n        continued on the next line\n\n        and also down here."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key04"
+            },
+            "value": null,
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attr"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "A multiline attribute value\n        staring on a new line"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key05"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "A multiline value with non-standard\n\n     indentation."
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key06"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "A multiline value with "
+                    },
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": "placeables"
+                        }
+                    },
+                    {
+                        "type": "TextElement",
+                        "value": "\n    "
+                    },
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": "at"
+                        }
+                    },
+                    {
+                        "type": "TextElement",
+                        "value": " the beginning and the end\n    "
+                    },
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": "of lines"
+                        }
+                    },
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": "."
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key07"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": "A multiline value"
+                        }
+                    },
+                    {
+                        "type": "TextElement",
+                        "value": " starting and ending "
+                    },
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": "with a placeable"
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key08"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Leading and trailing whitespace."
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        }
+    ]
+}

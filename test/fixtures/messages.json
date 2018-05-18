@@ -1,0 +1,258 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key01"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key02"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value"
+                    }
+                ]
+            },
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attr"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "Attribute"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key02"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value"
+                    }
+                ]
+            },
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attr1"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "Attribute 1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attr2"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "Attribute 2"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key03"
+            },
+            "value": null,
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attr"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "Attribute"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key04"
+            },
+            "value": null,
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attr1"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "Attribute 1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attr2"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "Attribute 2"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key05"
+            },
+            "value": null,
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attr1"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "Attribute 1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": {
+                "type": "Comment",
+                "annotations": [],
+                "content": "     <  whitespace  >\n"
+            }
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key06"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": ""
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "JUNK Missing value\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "key07 =\n"
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "JUNK Missing =\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "key08\n"
+        }
+    ]
+}

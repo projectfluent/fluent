@@ -1,5 +1,42 @@
 # Changelog
 
+## Unreleased
+
+  - Created the reference parser for Fluent Syntax.
+
+    This version is the first to ship with the official reference
+    implementation of the parser. The parser focuses on strictness and
+    correctness at a cost of reduced performance.
+
+    The ASDL description of the AST has been removed in favor of
+    `syntax/ast.mjs` which defines the actual AST nodes returned by the
+    reference parser.
+
+    The EBNF is now auto-generated from the reference parser's
+    `syntax/grammar.mjs` file. It provides an easy to read overview of the
+    grammar and will continue to be updated in the future.
+
+    Going forward, all changes to the grammar will be implemented in the
+    reference parser first, which also ships with an extensive test suite.
+
+  - Added junk entries.
+
+    The grammar now explicitly defines the `junk_line` production which is
+    converted into `Junk` during the AST construction.
+
+  - Comments may now be attached to Messages or Terms.
+
+    The grammar now encodes the behavior for Comments preceding Messages and
+    Terms. If there are no blank lines between the Comment and the Message or
+    the Term, the Comment becomes part of the `Message` or the `Term` AST node.
+
+  - Fixed many issues with the white-space grammar.
+
+    The EBNF for Syntax 0.5 had many issues with its use of `inline-space` and
+    `break-indent`. It defined undesirable or impossible parsing behavior.
+    These issues have been fixed and the new test suite will help ensure the
+    correctness of the grammar in the future.
+
 ## 0.5.0 (January 31, 2018)
 
   - Added terms. (#62, #85)

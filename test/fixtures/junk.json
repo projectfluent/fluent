@@ -1,0 +1,15 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "ą=Invalid identifier\nć=Another one\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "key01 = {\n"
+        }
+    ]
+}

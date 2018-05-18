@@ -1,0 +1,105 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "License Comment\n"
+        },
+        {
+            "type": "ResourceComment",
+            "annotations": [],
+            "content": "Resource Comment\n"
+        },
+        {
+            "type": "Term",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "-brand-name"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Aurora"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "GroupComment",
+            "annotations": [],
+            "content": "Group Comment\n"
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key01"
+            },
+            "value": null,
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attr"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "Attribute"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": null
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "ą=Invalid identifier\nć=Another one\n"
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key02"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "annotations": [],
+                "content": "Message Comment\n"
+            }
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "Standalone Comment\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "    .attr = Dangling attribute\n"
+        }
+    ]
+}

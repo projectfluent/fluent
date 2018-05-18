@@ -1,81 +1,107 @@
-body                 ::= blank-line* (entry line-break blank-line*)* entry? EOF
-entry                ::= message
-                       | term
-                       | comment
 
-comment              ::= ('#' (inline-space (char - line-break)*)? line-break)+
-                       | ('##' (inline-space (char - line-break)*)? line-break)+
-                       | ('###' (inline-space (char - line-break)*)? line-break)+
+/* An FTL file defines a Resource. */
+Resource                   ::= (blank_line | Entry | junk_line)*
+Entry                      ::= Message
+                             | Term
+                             | (ResourceComment | GroupComment | Comment)
+Message                    ::= Comment? Identifier inline_space? "=" inline_space? ((Pattern Attribute*) | (Attribute+)) line_end
+Term                       ::= Comment? TermIdentifier inline_space? "=" inline_space? Pattern Attribute* line_end
+Comment                    ::= ("#" comment_line)+
+GroupComment               ::= ("##" comment_line)+
+ResourceComment            ::= ("###" comment_line)+
 
-char                 ::= [https://www.w3.org/TR/REC-xml/#NT-Char]
-hexdigit             ::= [0-9a-fA-F]
+/* Adjacent junk_lines should be joined into FTL.Junk during the AST
+   construction. */
+junk_line                  ::= /.*/ line_end
 
-/* line feed, carriage return; space, tab */
-line-break           ::= [#xA#xD]+
-inline-space         ::= [#x20#x9]+
-blank-line           ::= inline-space* line-break
+/* Attributes of Messages and Terms. */
+Attribute                  ::= break_indent "." Identifier inline_space? "=" inline_space? Pattern
 
-/* if you break lines you need to indent afterwards */
-break-indent         ::= line-break blank-line* inline-space+
+/* Patterns consist of TextElements or Placeables. */
+Pattern                    ::= PatternElement+
+PatternElement             ::= TextElement
+                             | Placeable
+                             | (break_indent Placeable)
+TextElement                ::= (text_char | text_cont)+
+Placeable                  ::= "{" inline_space? (BlockExpression | InlineExpression) inline_space? "}"
+BlockExpression            ::= SelectExpression
+                             | VariantList
+InlineExpression           ::= StringExpression
+                             | NumberExpression
+                             | ExternalArgument
+                             | CallExpression
+                             | MessageAttributeExpression
+                             | TermVariantExpression
+                             | Identifier
+                             | TermIdentifier
+                             | Placeable
 
-/* aliases for convenience */
-_                    ::= inline-space
-__                   ::= break-indent
+/* Inline Expressions */
+StringExpression           ::= quoted_text
+NumberExpression           ::= number
+ExternalArgument           ::= ExternalIdentifier
+CallExpression             ::= Function "(" space_indent? argument_list space_indent? ")"
+argument_list              ::= (Argument space_indent? "," space_indent?)* Argument?
+Argument                   ::= NamedArgument
+                             | InlineExpression
+NamedArgument              ::= Identifier space_indent? ":" space_indent? (StringExpression | NumberExpression)
+MessageAttributeExpression ::= Identifier "." Identifier
+TermVariantExpression      ::= TermIdentifier VariantKey
 
-identifier           ::= [a-zA-Z] [a-zA-Z0-9_-]*
-term-identifier      ::= '-' identifier
-external-identifier  ::= '$' identifier
+/* Block Expressions */
+SelectExpression           ::= SelectorExpression inline_space? "->" inline_space? variant_list break_indent
+SelectorExpression         ::= StringExpression
+                             | NumberExpression
+                             | ExternalArgument
+                             | CallExpression
+                             | TermAttributeExpression
+TermAttributeExpression    ::= TermIdentifier "." Identifier
+VariantList                ::= variant_list break_indent
+variant_list               ::= Variant* DefaultVariant Variant*
+Variant                    ::= break_indent VariantKey inline_space? Pattern
+DefaultVariant             ::= break_indent "*" VariantKey inline_space? Pattern
+VariantKey                 ::= "[" inline_space? (NumberExpression | VariantName) inline_space? "]"
+VariantName                ::= word (inline_space word)*
 
-/* exclude whitespace and [ \ ] { } */
-word                 ::= (((char - line-break) - inline-space) - [#x5b#x5c#x5d#x7b#x7d])+
-builtin              ::= [A-Z] [A-Z_?-]*
-number               ::= '-'? [0-9]+ ('.' [0-9]+)?
+/* Identifiers */
+Identifier                 ::= identifier
+TermIdentifier             ::= "-" identifier
+ExternalIdentifier         ::= "$" identifier
+Function                   ::= [A-Z] [A-Z_?-]*
 
-variant-key          ::= number | word (_ word)*
-variant              ::= __ '[' _? variant-key _? ']' pattern
-default-variant      ::= __ '*[' _? variant-key _? ']' pattern
-variant-list         ::= variant* default-variant variant* line-break
+/* Tokens */
+identifier                 ::= [a-zA-Z] [a-zA-Z0-9_-]*
+comment_line               ::= (line_end)
+                             | ("\u0020" /.*/ line_end)
+word                       ::= (regular_char - backslash - "}" - "{" - "]" - "[")+
 
-message              ::= identifier _? '=' (pattern attribute* | attribute+)
-term                 ::= term-identifier _? '=' pattern attribute*
-attribute            ::= __ '.' identifier _? '=' pattern
-pattern              ::= (text | placeable)+
+/* Characters */
+backslash                  ::= "\\"
+quote                      ::= "\""
+/* Any Unicode character from BMP excluding C0 control characters, space,
+ * surrogate blocks and non-characters (U+FFFE, U+FFFF).
+ * Cf. https://www.w3.org/TR/REC-xml/#NT-Char
+ * TODO Add characters from other planes: U+10000 to U+10FFFF.
+ */
+regular_char               ::= [!-\uD7FF\uE000-\uFFFD]
+text_char                  ::= inline_space
+                             | /\\u[0-9a-fA-F]{4}/
+                             | (backslash backslash)
+                             | (backslash "{")
+                             | (regular_char - "{" - backslash)
+text_cont                  ::= break_indent (text_char - "}" - "[" - "*" - ".")
+quoted_text_char           ::= (text_char - quote)
+                             | (backslash quote)
+quoted_text                ::= quote quoted_text_char* quote
+digit                      ::= [0-9]
+number                     ::= "-"? digit+ ("." digit+)?
 
-/* \ and { must be escaped */
-text-char            ::= (char - line-break) - [#x5c#x7b]
-                       | '\u' hexdigit hexdigit hexdigit hexdigit
-                       | '\' [#x5c#x7b]
-/* text can only include newlines if they're followed by an indent */
-text                 ::= (text-char | break-indent)* text-char
-/* in quoted-text " must be escaped */
-quoted-text          ::= '"' (text-char - '"' | '\"')* '"'
-
-placeable            ::= '{' __? (inline-expression | block-expression) __? '}'
-inline-expression    ::= quoted-text
-                       | number
-                       | external-identifier
-                       | identifier
-                       | message-attribute-expression
-                       | term-identifier
-                       | term-variant-expression
-                       | call-expression
-                       | placeable
-block-expression     ::= select-expression
-                       | variant-list
-
-select-expression    ::= selector-expression _ '->' __ variant-list
-selector-expression  ::= quoted-text
-                       | number
-                       | external-identifier
-                       | term-attribute-expression
-                       | call-expression
-
-message-attribute-expression  ::= identifier '.' identifier
-term-attribute-expression     ::= term-identifier '.' identifier
-term-variant-expression       ::= term-identifier '[' _? variant-key _? ']'
-
-call-expression      ::= builtin '(' __? argument-list? __? ')'
-argument-list        ::= argument ( __? ',' __? argument)* __? ','?
-argument             ::= inline-expression
-                       | named-argument
-named-argument       ::= identifier __? ':' __? (quoted-text | number)
+/* Whitespace */
+inline_space               ::= ("\u0020" | "\u0009")+
+line_end                   ::= "\u000D\u000A"
+                             | "\u000A"
+                             | "\u000D"
+                             | EOF
+blank_line                 ::= inline_space? line_end
+break_indent               ::= line_end blank_line* inline_space
+space_indent               ::= inline_space? break_indent?

@@ -1,0 +1,71 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "Standalone Comment\n"
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "foo"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Foo"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "annotations": [],
+                "content": "Message Comment\n"
+            }
+        },
+        {
+            "type": "Term",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "-term"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Term"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "annotations": [],
+                "content": "Term Comment\nwith a blank last line.\n\n"
+            }
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "Another standalone\n\n     with indent\n"
+        },
+        {
+            "type": "GroupComment",
+            "annotations": [],
+            "content": "Group Comment\n"
+        },
+        {
+            "type": "ResourceComment",
+            "annotations": [],
+            "content": "Resource Comment\n"
+        }
+    ]
+}

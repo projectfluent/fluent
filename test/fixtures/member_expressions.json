@@ -1,0 +1,73 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "variant-expression"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "VariantExpression",
+                            "id": {
+                                "type": "Identifier",
+                                "name": "-term"
+                            },
+                            "key": {
+                                "type": "VariantName",
+                                "name": "case"
+                            }
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "attribute-expression"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "AttributeExpression",
+                            "id": {
+                                "type": "Identifier",
+                                "name": "msg"
+                            },
+                            "name": {
+                                "type": "Identifier",
+                                "name": "attr"
+                            }
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "GroupComment",
+            "annotations": [],
+            "content": "Invalid syntax\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "variant-expression = {msg[case]}\nattribute-expression = {-term.attr}\n"
+        }
+    ]
+}

@@ -1,0 +1,436 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key01"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": ".Value"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key02"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "…Value"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key03"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": "."
+                        }
+                    },
+                    {
+                        "type": "TextElement",
+                        "value": "Value"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key04"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": "."
+                        }
+                    },
+                    {
+                        "type": "TextElement",
+                        "value": "Value"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key05"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value\n    "
+                    },
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": "."
+                        }
+                    },
+                    {
+                        "type": "TextElement",
+                        "value": "Continued"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key06"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": ".Value\n    "
+                    },
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": "."
+                        }
+                    },
+                    {
+                        "type": "TextElement",
+                        "value": "Continued"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key07"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "annotations": [],
+                "content": "MESSAGE (value = \"Value\", attributes = [])\nJUNK (attr .Continued\" must have a value)\n"
+            }
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "    .Continued\n"
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "JUNK (attr .Value must have a value)\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "key08 =\n    .Value\n"
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "JUNK (attr .Value must have a value)\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "key09 =\n    .Value\n    Continued\n"
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key10"
+            },
+            "value": null,
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "Value"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "which is an attribute\n    Continued"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key11"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringExpression",
+                            "value": "."
+                        }
+                    },
+                    {
+                        "type": "TextElement",
+                        "value": "Value = which looks like an attribute\n    Continued"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key12"
+            },
+            "value": null,
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "accesskey"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "A"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key13"
+            },
+            "value": null,
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attribute"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": ".Value"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key14"
+            },
+            "value": null,
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "attribute"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "Placeable",
+                                "expression": {
+                                    "type": "StringExpression",
+                                    "value": "."
+                                }
+                            },
+                            {
+                                "type": "TextElement",
+                                "value": "Value"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key15"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "SelectExpression",
+                            "expression": {
+                                "type": "NumberExpression",
+                                "value": "1"
+                            },
+                            "variants": [
+                                {
+                                    "type": "Variant",
+                                    "key": {
+                                        "type": "VariantName",
+                                        "name": "one"
+                                    },
+                                    "value": {
+                                        "type": "Pattern",
+                                        "elements": [
+                                            {
+                                                "type": "TextElement",
+                                                "value": ".Value"
+                                            }
+                                        ]
+                                    },
+                                    "default": false
+                                },
+                                {
+                                    "type": "Variant",
+                                    "key": {
+                                        "type": "VariantName",
+                                        "name": "other"
+                                    },
+                                    "value": {
+                                        "type": "Pattern",
+                                        "elements": [
+                                            {
+                                                "type": "Placeable",
+                                                "expression": {
+                                                    "type": "StringExpression",
+                                                    "value": "."
+                                                }
+                                            },
+                                            {
+                                                "type": "TextElement",
+                                                "value": "Value"
+                                            }
+                                        ]
+                                    },
+                                    "default": true
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "JUNK (variant must have a value)\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "key16 =\n    { 1 ->\n       *[one]\n           .Value\n    }\n"
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "JUNK (unclosed placeable)\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "key17 =\n    { 1 ->\n       *[one] Value\n           .Continued\n    }\n"
+        }
+    ]
+}
