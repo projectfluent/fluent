@@ -6,7 +6,7 @@ This directory contains support code for the parser-combinator underlying the sy
 
 **`parser.mjs`** is the base parser class, **`stream.mjs`** holds a iterator over the strings to be parsed.
 
-**`combinators.mjs`** hold the actual basic grammar productions and logical combinations of grammar productions.
+**`combinators.mjs`** holds the actual basic grammar productions and logical combinations of grammar productions.
 
 Both use `Success` and `Failure` from **`result.mjs`** to pass success and failure conditions forward.
 
