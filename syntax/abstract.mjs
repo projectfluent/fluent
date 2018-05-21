@@ -1,36 +1,38 @@
 import * as FTL from "./ast.mjs";
+import {always} from "../lib/combinators.mjs";
 
 export function list_into(Type) {
     switch (Type) {
         case FTL.CallExpression:
             return ([callee, args = []]) =>
-                new Type(callee, args);
+                always(new Type(callee, args));
         case FTL.Message:
             return ([comment, ...args]) =>
-                new Type(...args, comment);
+                always(new Type(...args, comment));
         case FTL.Pattern:
             return elements =>
-                new FTL.Pattern(
+                always(new FTL.Pattern(
                     elements
                         .reduce(join_adjacent(FTL.TextElement), [])
                         .map(trim_text_at_extremes)
-                        .filter(remove_empty_text));
+                        .filter(remove_empty_text)));
         case FTL.Resource:
             return entries =>
-                new FTL.Resource(
+                always(new FTL.Resource(
                     entries
                         .reduce(join_adjacent(FTL.Junk), [])
-                        .filter(remove_blank_lines));
+                        .filter(remove_blank_lines)));
         case FTL.Term:
             return ([comment, ...args]) =>
-                new Type(...args, comment);
+                always(new Type(...args, comment));
         default:
-            return elements => new Type(...elements);
+            return elements =>
+                always(new Type(...elements));
     }
 }
 
 export function into(Type) {
-    return (...args) => new Type(...args);
+    return (...args) => always(new Type(...args));
 }
 
 function join_adjacent(Type) {
