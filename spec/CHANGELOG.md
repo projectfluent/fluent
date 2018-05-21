@@ -37,6 +37,17 @@
     These issues have been fixed and the new test suite will help ensure the
     correctness of the grammar in the future.
 
+  - Variant keys can now be numbers, identifiers or quoted text.
+
+    Previously, variant keys could either be numbers (`NumberExpressions`) or
+    text (`VariantNames`). Text keys allowed inline whitespace; the whitespace
+    at the extremes, however, was trimmed. Special characters like `{` or `[`
+    were forbidden, and no espace sequences were allowed either.
+
+    To fix this, variant keys can now be numbers (as before), identifiers
+    (`Identifier`) or quoted text (`StringExpressions`). The `VariantName`
+    AST node has been removed.
+
 ## 0.5.0 (January 31, 2018)
 
   - Added terms. (#62, #85)
