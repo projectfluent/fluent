@@ -1,11 +1,25 @@
 import * as FTL from "./ast.mjs";
-import {always} from "../lib/combinators.mjs";
+import {always, never} from "../lib/combinators.mjs";
 
 export function list_into(Type) {
     switch (Type) {
         case FTL.CallExpression:
-            return ([callee, args = []]) =>
-                always(new Type(callee, args));
+            return ([callee, args]) => {
+                let positional = [];
+                let named = [];
+                for (let arg of args) {
+                    if (arg instanceof FTL.NamedArgument) {
+                        named.push(arg);
+                    } else if (named.length > 0) {
+                        return never(
+                            "Positional arguments must not follow " +
+                            "named arguments.");
+                    } else {
+                        positional.push(arg);
+                    }
+                }
+                return always(new Type(callee, positional, named));
+            };
         case FTL.Message:
             return ([comment, ...args]) =>
                 always(new Type(...args, comment));
