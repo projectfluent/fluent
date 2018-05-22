@@ -39,7 +39,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "MessageReference",
+                            "type": "TermReference",
                             "id": {
                                 "type": "Identifier",
                                 "name": "-term"

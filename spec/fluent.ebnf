@@ -32,13 +32,15 @@ InlineExpression           ::= StringExpression
                              | CallExpression
                              | MessageAttributeExpression
                              | TermVariantExpression
-                             | Identifier
-                             | TermIdentifier
+                             | MessageReference
+                             | TermReference
                              | Placeable
 
 /* Inline Expressions */
 StringExpression           ::= quoted_text
 NumberExpression           ::= number
+MessageReference           ::= Identifier
+TermReference              ::= TermIdentifier
 ExternalArgument           ::= ExternalIdentifier
 CallExpression             ::= Function "(" space_indent? argument_list space_indent? ")"
 argument_list              ::= (Argument space_indent? "," space_indent?)* Argument?

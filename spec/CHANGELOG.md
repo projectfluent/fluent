@@ -43,6 +43,11 @@
     positional first, named second. The `CallExpression`'s `arguments` field
     was replaced by two new fields: `positional` and `named`.
 
+  - Added the `TermReference` expression.
+
+    References to terms used to be stored as `MessageReferences` in the AST.
+    They now have their own expression type.
+
 ## 0.5.0 (January 31, 2018)
 
   - Added terms. (#62, #85)

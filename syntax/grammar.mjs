@@ -168,8 +168,8 @@ let InlineExpression = defer(() =>
         CallExpression, // Must be before MessageReference
         MessageAttributeExpression,
         TermVariantExpression,
-        Identifier.chain(into(FTL.MessageReference)),
-        TermIdentifier.chain(into(FTL.MessageReference)),
+        MessageReference,
+        TermReference,
         Placeable));
 
 /* ------------------ */
@@ -179,6 +179,12 @@ let StringExpression = defer(() =>
 
 let NumberExpression = defer(() =>
     number.chain(into(FTL.NumberExpression)));
+
+let MessageReference = defer(() =>
+    Identifier.chain(into(FTL.MessageReference)));
+
+let TermReference = defer(() =>
+    TermIdentifier.chain(into(FTL.TermReference)));
 
 let ExternalArgument = defer(() =>
     ExternalIdentifier.chain(into(FTL.ExternalArgument)));
