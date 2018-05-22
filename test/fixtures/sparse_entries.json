@@ -117,7 +117,10 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "SelectExpression",
-                            "selector": null,
+                            "selector": {
+                                "type": "NumberExpression",
+                                "value": "1"
+                            },
                             "variants": [
                                 {
                                     "type": "Variant",

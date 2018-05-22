@@ -56,6 +56,16 @@
 
   - `ExternalArgument` is now called `VariableReference`.
 
+  - Add the `VariantList` value type.
+
+    Selector-less `SelectExpressions` have been removed in favor of
+    `VariantLists` which share the same syntax but have more restricted usage.
+    Values of `Messages` and all `Attributes` may only be `Patterns`.  Values
+    of `Terms` may either be `Patterns` or `VariantLists`.  Values of
+    `Variants` may only be `VariantLists` if they're defined in another
+    `VariantList`.
+
+
 ## 0.5.0 (January 31, 2018)
 
   - Added terms. (#62, #85)

@@ -56,6 +56,14 @@ export class Term extends Entry {
     }
 }
 
+export class VariantList extends SyntaxNode {
+    constructor(variants) {
+        super();
+        this.type = "VariantList";
+        this.variants = variants;
+    }
+}
+
 export class Pattern extends SyntaxNode {
     constructor(elements) {
         super();

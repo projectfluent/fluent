@@ -55,7 +55,7 @@ let Term = defer(() =>
         maybe(inline_space),
         char("="),
         maybe(inline_space),
-        Pattern.abstract,
+        Value.abstract,
         repeat(Attribute).abstract,
         line_end)
     .map(keep_abstract)
@@ -115,14 +115,28 @@ let Attribute = defer(() =>
     .map(keep_abstract)
     .chain(list_into(FTL.Attribute)));
 
-/* ----------------------------------------------- */
-/* Patterns consist of TextElements or Placeables. */
+/* ------------------------------------- */
+/* Value types: Pattern and VariantList. */
+let Value = defer(() =>
+    either(
+        Pattern,
+        VariantList));
+
 let Pattern = defer(() =>
     repeat1(
         PatternElement)
     // Flatten indented Placeables.
     .map(flatten(1))
     .chain(list_into(FTL.Pattern)));
+
+let VariantList = defer(() =>
+    sequence(
+        maybe(space_indent),
+        char("{"),
+        variant_list.abstract,
+        char("}"))
+    .map(keep_abstract)
+    .chain(list_into(FTL.VariantList)));
 
 let PatternElement = defer(() =>
     either(
@@ -148,17 +162,12 @@ let Placeable = defer(() =>
         maybe(inline_space),
         either(
             // Order matters!
-            BlockExpression,
+            SelectExpression,
             InlineExpression),
         maybe(inline_space),
         char("}"))
     .map(element_at(2))
     .chain(into(FTL.Placeable)));
-
-let BlockExpression = defer(() =>
-    either(
-        SelectExpression,
-        VariantList));
 
 let InlineExpression = defer(() =>
     either(
@@ -251,9 +260,7 @@ let SelectExpression = defer(() =>
         SelectorExpression.abstract,
         maybe(inline_space),
         string("->"),
-        maybe(inline_space),
-        variant_list.abstract,
-        break_indent)
+        variant_list.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.SelectExpression)));
 
@@ -273,19 +280,14 @@ let TermAttributeExpression = defer(() =>
     .map(keep_abstract)
     .chain(list_into(FTL.AttributeExpression)));
 
-let VariantList = defer(() =>
-    sequence(
-        always(null).abstract,
-        variant_list.abstract,
-        break_indent)
-    .map(keep_abstract)
-    .chain(list_into(FTL.SelectExpression)));
-
 let variant_list = defer(() =>
     sequence(
-        repeat(Variant),
-        DefaultVariant,
-        repeat(Variant))
+        maybe(inline_space),
+        repeat(Variant).abstract,
+        DefaultVariant.abstract,
+        repeat(Variant).abstract,
+        break_indent)
+    .map(keep_abstract)
     .map(flatten(1)));
 
 let Variant = defer(() =>
@@ -293,7 +295,7 @@ let Variant = defer(() =>
         break_indent,
         VariantKey.abstract,
         maybe(inline_space),
-        Pattern.abstract)
+        Value.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.Variant)));
 
@@ -303,7 +305,7 @@ let DefaultVariant = defer(() =>
         char("*"),
         VariantKey.abstract,
         maybe(inline_space),
-        Pattern.abstract)
+        Value.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.Variant))
     .map(mutate({default: true})));
