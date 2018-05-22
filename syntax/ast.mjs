@@ -137,19 +137,19 @@ export class SelectExpression extends Expression {
 }
 
 export class AttributeExpression extends Expression {
-    constructor(id, name) {
+    constructor(ref, name) {
         super();
         this.type = "AttributeExpression";
-        this.id = id;
+        this.ref = ref;
         this.name = name;
     }
 }
 
 export class VariantExpression extends Expression {
-    constructor(id, key) {
+    constructor(ref, key) {
         super();
         this.type = "VariantExpression";
-        this.id = id;
+        this.ref = ref;
         this.key = key;
     }
 }

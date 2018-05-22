@@ -15,9 +15,12 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "VariantExpression",
-                            "id": {
-                                "type": "Identifier",
-                                "name": "-term"
+                            "ref": {
+                                "type": "TermReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "-term"
+                                }
                             },
                             "key": {
                                 "type": "VariantName",
@@ -44,9 +47,12 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "AttributeExpression",
-                            "id": {
-                                "type": "Identifier",
-                                "name": "msg"
+                            "ref": {
+                                "type": "MessageReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "msg"
+                                }
                             },
                             "name": {
                                 "type": "Identifier",
