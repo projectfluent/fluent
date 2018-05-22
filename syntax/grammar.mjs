@@ -307,23 +307,12 @@ let VariantKey = defer(() =>
         char("["),
         maybe(inline_space),
         either(
-            // Meh. It's not really an expression.
             NumberExpression,
-            VariantName),
+            StringExpression,
+            Identifier),
         maybe(inline_space),
         char("]"))
     .map(element_at(2)));
-
-let VariantName = defer(() =>
-    sequence(
-        word,
-        repeat(
-            sequence(
-                inline_space,
-                word)))
-    .map(flatten(2))
-    .map(join)
-    .map(into(FTL.VariantName)));
 
 /* ----------- */
 /* Identifiers */
@@ -373,17 +362,6 @@ let comment_line = defer(() =>
             regex(/.*/).abstract,
             line_end.abstract))
     .map(keep_abstract)
-    .map(join));
-
-let word = defer(() =>
-    repeat1(
-        and(
-            not(char("[")),
-            not(char("]")),
-            not(char("{")),
-            not(char("}")),
-            not(backslash),
-            regular_char))
     .map(join));
 
 /* ---------- */

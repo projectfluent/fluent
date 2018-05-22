@@ -60,8 +60,7 @@ VariantList                ::= variant_list break_indent
 variant_list               ::= Variant* DefaultVariant Variant*
 Variant                    ::= break_indent VariantKey inline_space? Pattern
 DefaultVariant             ::= break_indent "*" VariantKey inline_space? Pattern
-VariantKey                 ::= "[" inline_space? (NumberExpression | VariantName) inline_space? "]"
-VariantName                ::= word (inline_space word)*
+VariantKey                 ::= "[" inline_space? (NumberExpression | StringExpression | Identifier) inline_space? "]"
 
 /* Identifiers */
 Identifier                 ::= identifier
@@ -73,7 +72,6 @@ Function                   ::= [A-Z] [A-Z_?-]*
 identifier                 ::= [a-zA-Z] [a-zA-Z0-9_-]*
 comment_line               ::= (line_end)
                              | ("\u0020" /.*/ line_end)
-word                       ::= (regular_char - backslash - "}" - "{" - "]" - "[")+
 
 /* Characters */
 backslash                  ::= "\\"
