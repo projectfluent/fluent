@@ -111,6 +111,14 @@ export class MessageReference extends Expression {
     }
 }
 
+export class TermReference extends Expression {
+    constructor(id) {
+        super();
+        this.type = "TermReference";
+        this.id = id;
+    }
+}
+
 export class ExternalArgument extends Expression {
     constructor(id) {
         super();
