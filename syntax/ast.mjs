@@ -147,11 +147,12 @@ export class VariantExpression extends Expression {
 }
 
 export class CallExpression extends Expression {
-    constructor(callee, args = []) {
+    constructor(callee, positional = [], named = []) {
         super();
         this.type = "CallExpression";
         this.callee = callee;
-        this.arguments = args;
+        this.positional = positional;
+        this.named = named;
     }
 }
 

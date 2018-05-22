@@ -17,7 +17,7 @@ let Resource = defer(() =>
             blank_line,
             Entry,
             junk_line))
-    .map(list_into(FTL.Resource)));
+    .chain(list_into(FTL.Resource)));
 
 export
 let Entry = defer(() =>
@@ -46,7 +46,7 @@ let Message = defer(() =>
         line_end)
     .map(flatten(1))
     .map(keep_abstract)
-    .map(list_into(FTL.Message)));
+    .chain(list_into(FTL.Message)));
 
 let Term = defer(() =>
     sequence(
@@ -59,7 +59,7 @@ let Term = defer(() =>
         repeat(Attribute).abstract,
         line_end)
     .map(keep_abstract)
-    .map(list_into(FTL.Term)));
+    .chain(list_into(FTL.Term)));
 
 let Comment = defer(() =>
     repeat1(
@@ -69,7 +69,7 @@ let Comment = defer(() =>
     .map(flatten(1))
     .map(keep_abstract)
     .map(join)
-    .map(into(FTL.Comment)));
+    .chain(into(FTL.Comment)));
 
 let GroupComment = defer(() =>
     repeat1(
@@ -79,7 +79,7 @@ let GroupComment = defer(() =>
     .map(flatten(1))
     .map(keep_abstract)
     .map(join)
-    .map(into(FTL.GroupComment)));
+    .chain(into(FTL.GroupComment)));
 
 let ResourceComment = defer(() =>
     repeat1(
@@ -89,7 +89,7 @@ let ResourceComment = defer(() =>
     .map(flatten(1))
     .map(keep_abstract)
     .map(join)
-    .map(into(FTL.ResourceComment)));
+    .chain(into(FTL.ResourceComment)));
 
 /* ----------------------------------------------------------------- */
 /* Adjacent junk_lines should be joined into FTL.Junk during the AST
@@ -99,7 +99,7 @@ let junk_line = defer(() =>
         regex(/.*/),
         line_end)
     .map(join)
-    .map(into(FTL.Junk)));
+    .chain(into(FTL.Junk)));
 
 /* --------------------------------- */
 /* Attributes of Messages and Terms. */
@@ -113,7 +113,7 @@ let Attribute = defer(() =>
         maybe(inline_space),
         Pattern.abstract)
     .map(keep_abstract)
-    .map(list_into(FTL.Attribute)));
+    .chain(list_into(FTL.Attribute)));
 
 /* ----------------------------------------------- */
 /* Patterns consist of TextElements or Placeables. */
@@ -122,7 +122,7 @@ let Pattern = defer(() =>
         PatternElement)
     // Flatten indented Placeables.
     .map(flatten(1))
-    .map(list_into(FTL.Pattern)));
+    .chain(list_into(FTL.Pattern)));
 
 let PatternElement = defer(() =>
     either(
@@ -131,7 +131,7 @@ let PatternElement = defer(() =>
         sequence(
             // Trimmed or joined into a preceding FTL.TextElement during the
             // AST construction.
-            break_indent.map(into(FTL.TextElement)),
+            break_indent.chain(into(FTL.TextElement)),
             Placeable)));
 
 let TextElement = defer(() =>
@@ -140,7 +140,7 @@ let TextElement = defer(() =>
             text_char,
             text_cont))
     .map(join)
-    .map(into(FTL.TextElement)));
+    .chain(into(FTL.TextElement)));
 
 let Placeable = defer(() =>
     sequence(
@@ -153,7 +153,7 @@ let Placeable = defer(() =>
         maybe(inline_space),
         char("}"))
     .map(element_at(2))
-    .map(into(FTL.Placeable)));
+    .chain(into(FTL.Placeable)));
 
 let BlockExpression = defer(() =>
     either(
@@ -168,20 +168,20 @@ let InlineExpression = defer(() =>
         CallExpression, // Must be before MessageReference
         MessageAttributeExpression,
         TermVariantExpression,
-        Identifier.map(into(FTL.MessageReference)),
-        TermIdentifier.map(into(FTL.MessageReference)),
+        Identifier.chain(into(FTL.MessageReference)),
+        TermIdentifier.chain(into(FTL.MessageReference)),
         Placeable));
 
 /* ------------------ */
 /* Inline Expressions */
 let StringExpression = defer(() =>
-    quoted_text.map(into(FTL.StringExpression)));
+    quoted_text.chain(into(FTL.StringExpression)));
 
 let NumberExpression = defer(() =>
-    number.map(into(FTL.NumberExpression)));
+    number.chain(into(FTL.NumberExpression)));
 
 let ExternalArgument = defer(() =>
-    ExternalIdentifier.map(into(FTL.ExternalArgument)));
+    ExternalIdentifier.chain(into(FTL.ExternalArgument)));
 
 let CallExpression = defer(() =>
     sequence(
@@ -192,7 +192,7 @@ let CallExpression = defer(() =>
         maybe(space_indent),
         char(")"))
     .map(keep_abstract)
-    .map(list_into(FTL.CallExpression)));
+    .chain(list_into(FTL.CallExpression)));
 
 let argument_list = defer(() =>
     sequence(
@@ -221,7 +221,7 @@ let NamedArgument = defer(() =>
             StringExpression,
             NumberExpression).abstract)
     .map(keep_abstract)
-    .map(list_into(FTL.NamedArgument)));
+    .chain(list_into(FTL.NamedArgument)));
 
 let MessageAttributeExpression = defer(() =>
     sequence(
@@ -229,14 +229,14 @@ let MessageAttributeExpression = defer(() =>
         char("."),
         Identifier.abstract)
     .map(keep_abstract)
-    .map(list_into(FTL.AttributeExpression)));
+    .chain(list_into(FTL.AttributeExpression)));
 
 let TermVariantExpression = defer(() =>
     sequence(
         TermIdentifier.abstract,
         VariantKey.abstract)
     .map(keep_abstract)
-    .map(list_into(FTL.VariantExpression)));
+    .chain(list_into(FTL.VariantExpression)));
 
 /* ----------------- */
 /* Block Expressions */
@@ -249,7 +249,7 @@ let SelectExpression = defer(() =>
         variant_list.abstract,
         break_indent)
     .map(keep_abstract)
-    .map(list_into(FTL.SelectExpression)));
+    .chain(list_into(FTL.SelectExpression)));
 
 let SelectorExpression = defer(() =>
     either(
@@ -265,7 +265,7 @@ let TermAttributeExpression = defer(() =>
         char("."),
         Identifier.abstract)
     .map(keep_abstract)
-    .map(list_into(FTL.AttributeExpression)));
+    .chain(list_into(FTL.AttributeExpression)));
 
 let VariantList = defer(() =>
     sequence(
@@ -273,7 +273,7 @@ let VariantList = defer(() =>
         variant_list.abstract,
         break_indent)
     .map(keep_abstract)
-    .map(list_into(FTL.SelectExpression)));
+    .chain(list_into(FTL.SelectExpression)));
 
 let variant_list = defer(() =>
     sequence(
@@ -289,7 +289,7 @@ let Variant = defer(() =>
         maybe(inline_space),
         Pattern.abstract)
     .map(keep_abstract)
-    .map(list_into(FTL.Variant)));
+    .chain(list_into(FTL.Variant)));
 
 let DefaultVariant = defer(() =>
     sequence(
@@ -299,7 +299,7 @@ let DefaultVariant = defer(() =>
         maybe(inline_space),
         Pattern.abstract)
     .map(keep_abstract)
-    .map(list_into(FTL.Variant))
+    .chain(list_into(FTL.Variant))
     .map(mutate({default: true})));
 
 let VariantKey = defer(() =>
@@ -323,27 +323,27 @@ let VariantName = defer(() =>
                 word)))
     .map(flatten(2))
     .map(join)
-    .map(into(FTL.VariantName)));
+    .chain(into(FTL.VariantName)));
 
 /* ----------- */
 /* Identifiers */
 
 let Identifier = defer(() =>
-    identifier.map(into(FTL.Identifier)));
+    identifier.chain(into(FTL.Identifier)));
 
 let TermIdentifier = defer(() =>
     sequence(
         char("-"),
         identifier)
     .map(join)
-    .map(into(FTL.Identifier)));
+    .chain(into(FTL.Identifier)));
 
 let ExternalIdentifier = defer(() =>
     sequence(
         char("$"),
         identifier)
     .map(element_at(1))
-    .map(into(FTL.Identifier)));
+    .chain(into(FTL.Identifier)));
 
 let Function =
     sequence(
@@ -352,7 +352,7 @@ let Function =
             charset("A-Z_?-")))
     .map(flatten(1))
     .map(join)
-    .map(into(FTL.Function));
+    .chain(into(FTL.Function));
 
 /* ------ */
 /* Tokens */

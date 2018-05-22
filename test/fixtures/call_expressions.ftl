@@ -2,6 +2,8 @@ positional-args = {FUN(1, "a", msg)}
 named-args = {FUN(x: 1, y: "Y")}
 dense-named-args = {FUN(x:1, y:"Y")}
 mixed-args = {FUN(1, "a", msg, x: 1, y: "Y")}
+
+# ERROR Positional arg must not follow keyword args
 shuffled-args = {FUN(1, x: 1, "a", y: "Y", msg)}
 
 

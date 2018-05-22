@@ -19,7 +19,7 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [
                                 {
                                     "type": "NumberExpression",
                                     "value": "1"
@@ -35,7 +35,8 @@
                                         "name": "msg"
                                     }
                                 }
-                            ]
+                            ],
+                            "named": []
                         }
                     }
                 ]
@@ -61,7 +62,8 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [],
+                            "named": [
                                 {
                                     "type": "NamedArgument",
                                     "name": {
@@ -110,7 +112,8 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [],
+                            "named": [
                                 {
                                     "type": "NamedArgument",
                                     "name": {
@@ -159,7 +162,7 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [
                                 {
                                     "type": "NumberExpression",
                                     "value": "1"
@@ -174,7 +177,9 @@
                                         "type": "Identifier",
                                         "name": "msg"
                                     }
-                                },
+                                }
+                            ],
+                            "named": [
                                 {
                                     "type": "NamedArgument",
                                     "name": {
@@ -206,68 +211,14 @@
             "comment": null
         },
         {
-            "type": "Message",
+            "type": "Comment",
             "annotations": [],
-            "id": {
-                "type": "Identifier",
-                "name": "shuffled-args"
-            },
-            "value": {
-                "type": "Pattern",
-                "elements": [
-                    {
-                        "type": "Placeable",
-                        "expression": {
-                            "type": "CallExpression",
-                            "callee": {
-                                "type": "Function",
-                                "name": "FUN"
-                            },
-                            "arguments": [
-                                {
-                                    "type": "NumberExpression",
-                                    "value": "1"
-                                },
-                                {
-                                    "type": "NamedArgument",
-                                    "name": {
-                                        "type": "Identifier",
-                                        "name": "x"
-                                    },
-                                    "value": {
-                                        "type": "NumberExpression",
-                                        "value": "1"
-                                    }
-                                },
-                                {
-                                    "type": "StringExpression",
-                                    "value": "a"
-                                },
-                                {
-                                    "type": "NamedArgument",
-                                    "name": {
-                                        "type": "Identifier",
-                                        "name": "y"
-                                    },
-                                    "value": {
-                                        "type": "StringExpression",
-                                        "value": "Y"
-                                    }
-                                },
-                                {
-                                    "type": "MessageReference",
-                                    "id": {
-                                        "type": "Identifier",
-                                        "name": "msg"
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                ]
-            },
-            "attributes": [],
-            "comment": null
+            "content": "ERROR Positional arg must not follow keyword args\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "shuffled-args = {FUN(1, x: 1, \"a\", y: \"Y\", msg)}\n"
         },
         {
             "type": "GroupComment",
@@ -292,7 +243,7 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [
                                 {
                                     "type": "StringExpression",
                                     "value": "a"
@@ -303,7 +254,9 @@
                                         "type": "Identifier",
                                         "name": "msg"
                                     }
-                                },
+                                }
+                            ],
+                            "named": [
                                 {
                                     "type": "NamedArgument",
                                     "name": {
@@ -341,7 +294,8 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": []
+                            "positional": [],
+                            "named": []
                         }
                     }
                 ]
@@ -367,7 +321,7 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [
                                 {
                                     "type": "StringExpression",
                                     "value": "a"
@@ -378,7 +332,9 @@
                                         "type": "Identifier",
                                         "name": "msg"
                                     }
-                                },
+                                }
+                            ],
+                            "named": [
                                 {
                                     "type": "NamedArgument",
                                     "name": {
@@ -416,7 +372,7 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [
                                 {
                                     "type": "StringExpression",
                                     "value": "a"
@@ -427,7 +383,9 @@
                                         "type": "Identifier",
                                         "name": "msg"
                                     }
-                                },
+                                }
+                            ],
+                            "named": [
                                 {
                                     "type": "NamedArgument",
                                     "name": {
@@ -465,7 +423,8 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": []
+                            "positional": [],
+                            "named": []
                         }
                     }
                 ]
@@ -541,12 +500,13 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [
                                 {
                                     "type": "NumberExpression",
                                     "value": "1"
                                 }
-                            ]
+                            ],
+                            "named": []
                         }
                     }
                 ]
@@ -572,7 +532,7 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [
                                 {
                                     "type": "NumberExpression",
                                     "value": "1"
@@ -585,7 +545,8 @@
                                     "type": "NumberExpression",
                                     "value": "3"
                                 }
-                            ]
+                            ],
+                            "named": []
                         }
                     }
                 ]
@@ -611,7 +572,7 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [
                                 {
                                     "type": "NumberExpression",
                                     "value": "1"
@@ -624,7 +585,8 @@
                                     "type": "NumberExpression",
                                     "value": "3"
                                 }
-                            ]
+                            ],
+                            "named": []
                         }
                     }
                 ]
@@ -650,7 +612,7 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [
                                 {
                                     "type": "NumberExpression",
                                     "value": "1"
@@ -659,7 +621,8 @@
                                     "type": "NumberExpression",
                                     "value": "2"
                                 }
-                            ]
+                            ],
+                            "named": []
                         }
                     }
                 ]
@@ -685,7 +648,7 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [
                                 {
                                     "type": "NumberExpression",
                                     "value": "1"
@@ -694,7 +657,8 @@
                                     "type": "NumberExpression",
                                     "value": "2"
                                 }
-                            ]
+                            ],
+                            "named": []
                         }
                     }
                 ]
@@ -735,7 +699,8 @@
                                 "type": "Function",
                                 "name": "FUN"
                             },
-                            "arguments": [
+                            "positional": [],
+                            "named": [
                                 {
                                     "type": "NamedArgument",
                                     "name": {

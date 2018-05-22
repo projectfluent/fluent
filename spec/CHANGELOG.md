@@ -37,6 +37,12 @@
     These issues have been fixed and the new test suite will help ensure the
     correctness of the grammar in the future.
 
+  - Named arguments to `CallExpression` must now follow all positional ones.
+
+    The order of arguments to `CallExpressions` is now strictly defined as
+    positional first, named second. The `CallExpression`'s `arguments` field
+    was replaced by two new fields: `positional` and `named`.
+
 ## 0.5.0 (January 31, 2018)
 
   - Added terms. (#62, #85)
