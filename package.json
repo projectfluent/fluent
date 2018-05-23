@@ -5,12 +5,14 @@
   "private": true,
   "scripts": {
     "bench": "node --experimental-modules --harmony-async-iteration ./test/bench.mjs ./test/benchmarks/gecko_strings.ftl",
-    "build:ebnf": "node --experimental-modules bin/ebnf.mjs ./syntax/grammar.mjs > ./spec/fluent.ebnf",
-    "build:fixtures": "make -sC test/fixtures",
     "build:guide": "gitbook build guide build/guide",
+    "build": "npm run build:guide",
     "ci": "npm run lint && npm test",
     "clean": "rm -rf build",
     "deploy": "gh-pages -d build",
+    "generate:ebnf": "node --experimental-modules bin/ebnf.mjs ./syntax/grammar.mjs > ./spec/fluent.ebnf",
+    "generate:fixtures": "make -sC test/fixtures",
+    "generate": "npm run generate:ebnf && npm run generate:fixtures",
     "lint": "eslint **/*.mjs",
     "test": "node --experimental-modules test/parser.mjs ./test/fixtures; node --experimental-modules test/ebnf.mjs ./syntax/grammar.mjs ./spec/fluent.ebnf"
   },

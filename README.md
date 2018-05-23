@@ -23,14 +23,15 @@ reference implementation.
 While working on the reference parser, use the following commands to test and
 validate your work:
 
-    npm test                # Test the parser against JSON AST fixtures.
-    npm run lint            # Lint the parser code.
+    npm test                   # Test the parser against JSON AST fixtures.
+    npm run lint               # Lint the parser code.
 
-    npm run build:ebnf      # Generate the EBNF from syntax/grammar.mjs.
-    npm run build:fixtures  # Generate test fixtures (FTL → JSON AST).
-    npm run build:guide     # Build the HTML version of the Guide.
+    npm run generate:ebnf      # Generate the EBNF from syntax/grammar.mjs.
+    npm run generate:fixtures  # Generate test fixtures (FTL → JSON AST).
 
-    npm run bench           # Run the performance benchmark on large FTL.
+    npm run build:guide        # Build the HTML version of the Guide.
+
+    npm run bench              # Run the performance benchmark on large FTL.
 
 ## Learn more
 
