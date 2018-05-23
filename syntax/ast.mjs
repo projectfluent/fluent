@@ -119,10 +119,10 @@ export class TermReference extends Expression {
     }
 }
 
-export class ExternalArgument extends Expression {
+export class VariableReference extends Expression {
     constructor(id) {
         super();
-        this.type = "ExternalArgument";
+        this.type = "VariableReference";
         this.id = id;
     }
 }

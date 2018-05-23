@@ -1,11 +1,11 @@
-# Interpolation and External Arguments
+# Interpolation and Variables
 
 Strings in FTL may use special syntax to incorporate small pieces of
 programmable interface. Those pieces are denoted with curly braces `{` and `}`
 and are called placeables.
 
-It's common to use placeables to interpolate external arguments into the
-translation. External arguments are provided by the developer and may change
+It's common to use placeables to interpolate external variables into the
+translation. Variables are provided by the developer and may change
 on runtime.
 
 ```

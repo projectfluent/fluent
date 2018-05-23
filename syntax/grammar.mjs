@@ -164,7 +164,7 @@ let InlineExpression = defer(() =>
     either(
         StringExpression,
         NumberExpression,
-        ExternalArgument,
+        VariableReference,
         CallExpression, // Must be before MessageReference
         MessageAttributeExpression,
         TermVariantExpression,
@@ -186,8 +186,8 @@ let MessageReference = defer(() =>
 let TermReference = defer(() =>
     TermIdentifier.chain(into(FTL.TermReference)));
 
-let ExternalArgument = defer(() =>
-    ExternalIdentifier.chain(into(FTL.ExternalArgument)));
+let VariableReference = defer(() =>
+    VariableIdentifier.chain(into(FTL.VariableReference)));
 
 let CallExpression = defer(() =>
     sequence(
@@ -261,7 +261,7 @@ let SelectorExpression = defer(() =>
     either(
         StringExpression,
         NumberExpression,
-        ExternalArgument,
+        VariableReference,
         CallExpression,
         TermAttributeExpression));
 
@@ -344,7 +344,7 @@ let TermIdentifier = defer(() =>
     .map(join)
     .chain(into(FTL.Identifier)));
 
-let ExternalIdentifier = defer(() =>
+let VariableIdentifier = defer(() =>
     sequence(
         char("$"),
         identifier)

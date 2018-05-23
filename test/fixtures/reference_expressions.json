@@ -64,7 +64,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "ExternalArgument",
+                            "type": "VariableReference",
                             "id": {
                                 "type": "Identifier",
                                 "name": "var"
