@@ -48,6 +48,12 @@
     References to terms used to be stored as `MessageReferences` in the AST.
     They now have their own expression type.
 
+  - Store the referent expression in attribute and variant expressions.
+
+    `MessageAttributeExpression`, `TermAttributeExpression` and
+    `TermVariantExpression` now store the entire referent expression in a new
+    `ref` field, rather than just the `Identifier`.
+
 ## 0.5.0 (January 31, 2018)
 
   - Added terms. (#62, #85)

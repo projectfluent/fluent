@@ -47,8 +47,8 @@ argument_list              ::= (Argument space_indent? "," space_indent?)* Argum
 Argument                   ::= NamedArgument
                              | InlineExpression
 NamedArgument              ::= Identifier space_indent? ":" space_indent? (StringExpression | NumberExpression)
-MessageAttributeExpression ::= Identifier "." Identifier
-TermVariantExpression      ::= TermIdentifier VariantKey
+MessageAttributeExpression ::= MessageReference "." Identifier
+TermVariantExpression      ::= TermReference VariantKey
 
 /* Block Expressions */
 SelectExpression           ::= SelectorExpression inline_space? "->" inline_space? variant_list break_indent
@@ -57,7 +57,7 @@ SelectorExpression         ::= StringExpression
                              | ExternalArgument
                              | CallExpression
                              | TermAttributeExpression
-TermAttributeExpression    ::= TermIdentifier "." Identifier
+TermAttributeExpression    ::= TermReference "." Identifier
 VariantList                ::= variant_list break_indent
 variant_list               ::= Variant* DefaultVariant Variant*
 Variant                    ::= break_indent VariantKey inline_space? Pattern

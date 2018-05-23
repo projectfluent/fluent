@@ -90,9 +90,12 @@
                             "type": "SelectExpression",
                             "selector": {
                                 "type": "AttributeExpression",
-                                "id": {
-                                    "type": "Identifier",
-                                    "name": "-term"
+                                "ref": {
+                                    "type": "TermReference",
+                                    "id": {
+                                        "type": "Identifier",
+                                        "name": "-term"
+                                    }
                                 },
                                 "name": {
                                     "type": "Identifier",

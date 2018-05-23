@@ -231,7 +231,7 @@ let NamedArgument = defer(() =>
 
 let MessageAttributeExpression = defer(() =>
     sequence(
-        Identifier.abstract,
+        MessageReference.abstract,
         char("."),
         Identifier.abstract)
     .map(keep_abstract)
@@ -239,7 +239,7 @@ let MessageAttributeExpression = defer(() =>
 
 let TermVariantExpression = defer(() =>
     sequence(
-        TermIdentifier.abstract,
+        TermReference.abstract,
         VariantKey.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.VariantExpression)));
@@ -267,7 +267,7 @@ let SelectorExpression = defer(() =>
 
 let TermAttributeExpression = defer(() =>
     sequence(
-        TermIdentifier.abstract,
+        TermReference.abstract,
         char("."),
         Identifier.abstract)
     .map(keep_abstract)
