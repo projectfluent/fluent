@@ -169,14 +169,17 @@ let Placeable = defer(() =>
     .map(element_at(2))
     .chain(into(FTL.Placeable)));
 
+/* ------------------------------------------------------------------ */
+/* Rules for validating expressions in Placeables and as selectors of
+ * SelectExpressions are enforced in syntax/abstract.mjs. */
 let InlineExpression = defer(() =>
     either(
         StringLiteral,
         NumberLiteral,
         VariableReference,
         CallExpression, // Must be before MessageReference
-        MessageAttributeExpression,
-        TermVariantExpression,
+        AttributeExpression,
+        VariantExpression,
         MessageReference,
         TermReference,
         Placeable));
@@ -255,15 +258,17 @@ let NamedArgument = defer(() =>
     .map(keep_abstract)
     .chain(list_into(FTL.NamedArgument)));
 
-let MessageAttributeExpression = defer(() =>
+let AttributeExpression = defer(() =>
     sequence(
-        MessageReference.abstract,
+        either(
+            MessageReference,
+            TermReference).abstract,
         char("."),
         Identifier.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.AttributeExpression)));
 
-let TermVariantExpression = defer(() =>
+let VariantExpression = defer(() =>
     sequence(
         TermReference.abstract,
         VariantKey.abstract)
@@ -274,28 +279,12 @@ let TermVariantExpression = defer(() =>
 /* Block Expressions */
 let SelectExpression = defer(() =>
     sequence(
-        SelectorExpression.abstract,
+        InlineExpression.abstract,
         maybe(inline_space),
         string("->"),
         variant_list.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.SelectExpression)));
-
-let SelectorExpression = defer(() =>
-    either(
-        StringLiteral,
-        NumberLiteral,
-        VariableReference,
-        CallExpression,
-        TermAttributeExpression));
-
-let TermAttributeExpression = defer(() =>
-    sequence(
-        TermReference.abstract,
-        char("."),
-        Identifier.abstract)
-    .map(keep_abstract)
-    .chain(list_into(FTL.AttributeExpression)));
 
 let variant_list = defer(() =>
     sequence(

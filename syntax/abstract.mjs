@@ -1,3 +1,11 @@
+/*
+ * AST Validation
+ *
+ * The parse result of the grammar.mjs parser is a well-formed AST which is
+ * validated according to the rules documented on the wiki:
+ * https://github.com/projectfluent/fluent/wiki/Syntax-Semantics
+ */
+
 import * as FTL from "./ast.mjs";
 import {always, never} from "../lib/combinators.mjs";
 
@@ -43,6 +51,15 @@ export function list_into(Type) {
                         .filter(remove_blank_lines)));
         case FTL.SelectExpression:
             return ([selector, variants]) => {
+                let invalid_selector_found =
+                    selector instanceof FTL.MessageReference
+                    || selector instanceof FTL.TermReference
+                    || selector instanceof FTL.VariantExpression
+                    || (selector instanceof FTL.AttributeExpression
+                        && selector.ref instanceof FTL.MessageReference);
+                if (invalid_selector_found) {
+                    return never("Invalid selector type: ${selector.type}.");
+                }
                 let invalid_variants_found = variants.some(
                     variant => variant.value instanceof FTL.VariantList);
                 if (invalid_variants_found) {
@@ -65,7 +82,22 @@ export function list_into(Type) {
 }
 
 export function into(Type) {
-    return (...args) => always(new Type(...args));
+    switch (Type) {
+        case FTL.Placeable:
+            return expression => {
+                let invalid_expression_found =
+                    expression instanceof FTL.AttributeExpression
+                    && expression.ref instanceof FTL.TermReference;
+                if (invalid_expression_found) {
+                    return never(
+                        "Invalid expression type: ${expression.type}.");
+                }
+                return always(new Type(expression));
+            };
+        default:
+            return (...args) =>
+                always(new Type(...args));
+    }
 }
 
 function join_adjacent(Type) {
