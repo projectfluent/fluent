@@ -24,7 +24,7 @@ key03 =
 
 key05 =                     Value
 
-key06 = {
+key06 = { 1 ->
 
 
          [one] One

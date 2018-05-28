@@ -36,9 +36,23 @@ export function list_into(Type) {
                     entries
                         .reduce(join_adjacent(FTL.Junk), [])
                         .filter(remove_blank_lines)));
+        case FTL.SelectExpression:
+            return ([selector, variants]) => {
+                let invalid_variants_found = variants.some(
+                    variant => variant.value instanceof FTL.VariantList);
+                if (invalid_variants_found) {
+                    return never(
+                        "VariantLists are only allowed inside of " +
+                        "other VariantLists.");
+                }
+                return always(new Type(selector, variants));
+            };
         case FTL.Term:
             return ([comment, ...args]) =>
                 always(new Type(...args, comment));
+        case FTL.VariantList:
+            return ([variants]) =>
+                always(new Type(variants));
         default:
             return elements =>
                 always(new Type(...elements));

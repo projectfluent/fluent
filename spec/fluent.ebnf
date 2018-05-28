@@ -5,7 +5,7 @@ Entry                      ::= Message
                              | Term
                              | (ResourceComment | GroupComment | Comment)
 Message                    ::= Comment? Identifier inline_space? "=" inline_space? ((Pattern Attribute*) | (Attribute+)) line_end
-Term                       ::= Comment? TermIdentifier inline_space? "=" inline_space? Pattern Attribute* line_end
+Term                       ::= Comment? TermIdentifier inline_space? "=" inline_space? Value Attribute* line_end
 Comment                    ::= ("#" comment_line)+
 GroupComment               ::= ("##" comment_line)+
 ResourceComment            ::= ("###" comment_line)+
@@ -17,15 +17,16 @@ junk_line                  ::= /.*/ line_end
 /* Attributes of Messages and Terms. */
 Attribute                  ::= break_indent "." Identifier inline_space? "=" inline_space? Pattern
 
-/* Patterns consist of TextElements or Placeables. */
+/* Value types: Pattern and VariantList. */
+Value                      ::= Pattern
+                             | VariantList
 Pattern                    ::= PatternElement+
+VariantList                ::= space_indent? "{" variant_list "}"
 PatternElement             ::= TextElement
                              | Placeable
                              | (break_indent Placeable)
 TextElement                ::= (text_char | text_cont)+
-Placeable                  ::= "{" inline_space? (BlockExpression | InlineExpression) inline_space? "}"
-BlockExpression            ::= SelectExpression
-                             | VariantList
+Placeable                  ::= "{" inline_space? (SelectExpression | InlineExpression) inline_space? "}"
 InlineExpression           ::= StringExpression
                              | NumberExpression
                              | VariableReference
@@ -51,17 +52,16 @@ MessageAttributeExpression ::= MessageReference "." Identifier
 TermVariantExpression      ::= TermReference VariantKey
 
 /* Block Expressions */
-SelectExpression           ::= SelectorExpression inline_space? "->" inline_space? variant_list break_indent
+SelectExpression           ::= SelectorExpression inline_space? "->" variant_list
 SelectorExpression         ::= StringExpression
                              | NumberExpression
                              | VariableReference
                              | CallExpression
                              | TermAttributeExpression
 TermAttributeExpression    ::= TermReference "." Identifier
-VariantList                ::= variant_list break_indent
-variant_list               ::= Variant* DefaultVariant Variant*
-Variant                    ::= break_indent VariantKey inline_space? Pattern
-DefaultVariant             ::= break_indent "*" VariantKey inline_space? Pattern
+variant_list               ::= inline_space? Variant* DefaultVariant Variant* break_indent
+Variant                    ::= break_indent VariantKey inline_space? Value
+DefaultVariant             ::= break_indent "*" VariantKey inline_space? Value
 VariantKey                 ::= "[" inline_space? (NumberExpression | VariantName) inline_space? "]"
 VariantName                ::= word (inline_space word)*
 

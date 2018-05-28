@@ -1,0 +1,225 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Term",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "-variant-list-in-term"
+            },
+            "value": {
+                "type": "VariantList",
+                "variants": [
+                    {
+                        "type": "Variant",
+                        "key": {
+                            "type": "VariantName",
+                            "name": "key"
+                        },
+                        "value": {
+                            "type": "Pattern",
+                            "elements": [
+                                {
+                                    "type": "TextElement",
+                                    "value": "Value"
+                                }
+                            ]
+                        },
+                        "default": true
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Term",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "-variant-list-in-term-attr"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "annotations": [],
+                "content": "ERROR Attributes of Terms must be Patterns.\n"
+            }
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "    .attr =\n        {\n           *[key] Value\n        }\n"
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "ERROR Message values must be Patterns.\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "variant-list-in-message =\n    {\n       *[key] Value\n    }\n"
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "variant-list-in-message-attr"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "annotations": [],
+                "content": "ERROR Attributes of Messages must be Patterns.\n"
+            }
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "    .attr =\n        {\n           *[key] Value\n        }\n"
+        },
+        {
+            "type": "Term",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "-nested-variant-list-in-term"
+            },
+            "value": {
+                "type": "VariantList",
+                "variants": [
+                    {
+                        "type": "Variant",
+                        "key": {
+                            "type": "VariantName",
+                            "name": "one"
+                        },
+                        "value": {
+                            "type": "VariantList",
+                            "variants": [
+                                {
+                                    "type": "Variant",
+                                    "key": {
+                                        "type": "VariantName",
+                                        "name": "two"
+                                    },
+                                    "value": {
+                                        "type": "Pattern",
+                                        "elements": [
+                                            {
+                                                "type": "TextElement",
+                                                "value": "Value"
+                                            }
+                                        ]
+                                    },
+                                    "default": true
+                                }
+                            ]
+                        },
+                        "default": true
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Term",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "-nested-select"
+            },
+            "value": {
+                "type": "VariantList",
+                "variants": [
+                    {
+                        "type": "Variant",
+                        "key": {
+                            "type": "VariantName",
+                            "name": "one"
+                        },
+                        "value": {
+                            "type": "Pattern",
+                            "elements": [
+                                {
+                                    "type": "Placeable",
+                                    "expression": {
+                                        "type": "SelectExpression",
+                                        "selector": {
+                                            "type": "NumberExpression",
+                                            "value": "2"
+                                        },
+                                        "variants": [
+                                            {
+                                                "type": "Variant",
+                                                "key": {
+                                                    "type": "VariantName",
+                                                    "name": "two"
+                                                },
+                                                "value": {
+                                                    "type": "Pattern",
+                                                    "elements": [
+                                                        {
+                                                            "type": "TextElement",
+                                                            "value": "Value"
+                                                        }
+                                                    ]
+                                                },
+                                                "default": true
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "default": true
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "ERROR VariantLists may not appear in SelectExpressions\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "nested-select-then-variant-list =\n    {\n       *[one] { 2 ->\n          *[two] {\n             *[three] Value\n          }\n       }\n    }\n"
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "ERROR VariantLists are value types and may not appear in Placeables\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "variant-list-in-placeable =\n    A prefix here {\n       *[key] Value\n    } and a postfix here make this a Pattern.\n"
+        }
+    ]
+}

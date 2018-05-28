@@ -129,50 +129,14 @@
             "comment": null
         },
         {
+            "type": "Comment",
+            "annotations": [],
+            "content": "ERROR\n"
+        },
+        {
             "type": "Junk",
             "annotations": [],
             "content": "invalid-selector =\n    { -term[case] ->\n       *[key] value\n    }\n"
-        },
-        {
-            "type": "Message",
-            "annotations": [],
-            "id": {
-                "type": "Identifier",
-                "name": "variant-list"
-            },
-            "value": {
-                "type": "Pattern",
-                "elements": [
-                    {
-                        "type": "Placeable",
-                        "expression": {
-                            "type": "SelectExpression",
-                            "selector": null,
-                            "variants": [
-                                {
-                                    "type": "Variant",
-                                    "key": {
-                                        "type": "VariantName",
-                                        "name": "key"
-                                    },
-                                    "value": {
-                                        "type": "Pattern",
-                                        "elements": [
-                                            {
-                                                "type": "TextElement",
-                                                "value": "value"
-                                            }
-                                        ]
-                                    },
-                                    "default": true
-                                }
-                            ]
-                        }
-                    }
-                ]
-            },
-            "attributes": [],
-            "comment": null
         },
         {
             "type": "Message",
@@ -220,6 +184,85 @@
             },
             "attributes": [],
             "comment": null
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "nested-select"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "SelectExpression",
+                            "selector": {
+                                "type": "NumberExpression",
+                                "value": "1"
+                            },
+                            "variants": [
+                                {
+                                    "type": "Variant",
+                                    "key": {
+                                        "type": "VariantName",
+                                        "name": "one"
+                                    },
+                                    "value": {
+                                        "type": "Pattern",
+                                        "elements": [
+                                            {
+                                                "type": "Placeable",
+                                                "expression": {
+                                                    "type": "SelectExpression",
+                                                    "selector": {
+                                                        "type": "NumberExpression",
+                                                        "value": "2"
+                                                    },
+                                                    "variants": [
+                                                        {
+                                                            "type": "Variant",
+                                                            "key": {
+                                                                "type": "VariantName",
+                                                                "name": "two"
+                                                            },
+                                                            "value": {
+                                                                "type": "Pattern",
+                                                                "elements": [
+                                                                    {
+                                                                        "type": "TextElement",
+                                                                        "value": "Value"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "default": true
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "default": true
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "ERROR VariantLists cannot appear in SelectExpressions\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "nested-variant-list =\n    { 1 ->\n       *[one] {\n          *[two] Value\n       }\n    }\n"
         }
     ]
 }
