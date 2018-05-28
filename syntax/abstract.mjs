@@ -5,20 +5,25 @@ export function list_into(Type) {
     switch (Type) {
         case FTL.CallExpression:
             return ([callee, args]) => {
-                let positional = [];
-                let named = [];
+                let positional_args = [];
+                let named_map = new Map();
                 for (let arg of args) {
                     if (arg instanceof FTL.NamedArgument) {
-                        named.push(arg);
-                    } else if (named.length > 0) {
+                        let name = arg.name.name;
+                        if (named_map.has(name)) {
+                            return never("Named arguments must be unique.");
+                        }
+                        named_map.set(name, arg);
+                    } else if (named_map.size > 0) {
                         return never(
                             "Positional arguments must not follow " +
                             "named arguments.");
                     } else {
-                        positional.push(arg);
+                        positional_args.push(arg);
                     }
                 }
-                return always(new Type(callee, positional, named));
+                let named_args = Array.from(named_map.values());
+                return always(new Type(callee, positional_args, named_args));
             };
         case FTL.Message:
             return ([comment, ...args]) =>

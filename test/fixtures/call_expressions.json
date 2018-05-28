@@ -221,6 +221,16 @@
             "content": "shuffled-args = {FUN(1, x: 1, \"a\", y: \"Y\", msg)}\n"
         },
         {
+            "type": "Comment",
+            "annotations": [],
+            "content": "ERROR Named arguments must be unique\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "duplicate-named-args = {FUN(x: 1, x: \"X\")}\n"
+        },
+        {
             "type": "GroupComment",
             "annotations": [],
             "content": "Whitespace around arguments\n"
