@@ -50,7 +50,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": ""
                         }
                     }

@@ -118,7 +118,7 @@
                         "expression": {
                             "type": "SelectExpression",
                             "selector": {
-                                "type": "NumberExpression",
+                                "type": "NumberLiteral",
                                 "value": "1"
                             },
                             "variants": [

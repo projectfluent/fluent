@@ -52,7 +52,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "."
                         }
                     },
@@ -78,7 +78,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "."
                         }
                     },
@@ -108,7 +108,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "."
                         }
                     },
@@ -138,7 +138,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "."
                         }
                     },
@@ -240,7 +240,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "."
                         }
                     },
@@ -330,7 +330,7 @@
                             {
                                 "type": "Placeable",
                                 "expression": {
-                                    "type": "StringExpression",
+                                    "type": "StringLiteral",
                                     "value": "."
                                 }
                             },
@@ -359,7 +359,7 @@
                         "expression": {
                             "type": "SelectExpression",
                             "selector": {
-                                "type": "NumberExpression",
+                                "type": "NumberLiteral",
                                 "value": "1"
                             },
                             "variants": [
@@ -392,7 +392,7 @@
                                             {
                                                 "type": "Placeable",
                                                 "expression": {
-                                                    "type": "StringExpression",
+                                                    "type": "StringLiteral",
                                                     "value": "."
                                                 }
                                             },

@@ -65,6 +65,12 @@
     `Variants` may only be `VariantLists` if they're defined in another
     `VariantList`.
 
+  - `StringExpression` is now called `StringLiteral` and no longer subclasses
+    `Expression`.
+
+  - `NumberExpression` is now called `NumberLiteral` and no longer subclasses
+    `Expression`.
+
 
 ## 0.5.0 (January 31, 2018)
 

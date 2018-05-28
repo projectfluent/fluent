@@ -131,7 +131,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "placeables"
                         }
                     },
@@ -142,7 +142,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "at"
                         }
                     },
@@ -153,14 +153,14 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "of lines"
                         }
                     },
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "."
                         }
                     }
@@ -182,7 +182,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "A multiline value"
                         }
                     },
@@ -193,7 +193,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "with a placeable"
                         }
                     }

@@ -21,11 +21,11 @@
                             },
                             "positional": [
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "1"
                                 },
                                 {
-                                    "type": "StringExpression",
+                                    "type": "StringLiteral",
                                     "value": "a"
                                 },
                                 {
@@ -71,7 +71,7 @@
                                         "name": "x"
                                     },
                                     "value": {
-                                        "type": "NumberExpression",
+                                        "type": "NumberLiteral",
                                         "value": "1"
                                     }
                                 },
@@ -82,7 +82,7 @@
                                         "name": "y"
                                     },
                                     "value": {
-                                        "type": "StringExpression",
+                                        "type": "StringLiteral",
                                         "value": "Y"
                                     }
                                 }
@@ -121,7 +121,7 @@
                                         "name": "x"
                                     },
                                     "value": {
-                                        "type": "NumberExpression",
+                                        "type": "NumberLiteral",
                                         "value": "1"
                                     }
                                 },
@@ -132,7 +132,7 @@
                                         "name": "y"
                                     },
                                     "value": {
-                                        "type": "StringExpression",
+                                        "type": "StringLiteral",
                                         "value": "Y"
                                     }
                                 }
@@ -164,11 +164,11 @@
                             },
                             "positional": [
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "1"
                                 },
                                 {
-                                    "type": "StringExpression",
+                                    "type": "StringLiteral",
                                     "value": "a"
                                 },
                                 {
@@ -187,7 +187,7 @@
                                         "name": "x"
                                     },
                                     "value": {
-                                        "type": "NumberExpression",
+                                        "type": "NumberLiteral",
                                         "value": "1"
                                     }
                                 },
@@ -198,7 +198,7 @@
                                         "name": "y"
                                     },
                                     "value": {
-                                        "type": "StringExpression",
+                                        "type": "StringLiteral",
                                         "value": "Y"
                                     }
                                 }
@@ -245,7 +245,7 @@
                             },
                             "positional": [
                                 {
-                                    "type": "StringExpression",
+                                    "type": "StringLiteral",
                                     "value": "a"
                                 },
                                 {
@@ -264,7 +264,7 @@
                                         "name": "x"
                                     },
                                     "value": {
-                                        "type": "NumberExpression",
+                                        "type": "NumberLiteral",
                                         "value": "1"
                                     }
                                 }
@@ -323,7 +323,7 @@
                             },
                             "positional": [
                                 {
-                                    "type": "StringExpression",
+                                    "type": "StringLiteral",
                                     "value": "a"
                                 },
                                 {
@@ -342,7 +342,7 @@
                                         "name": "x"
                                     },
                                     "value": {
-                                        "type": "NumberExpression",
+                                        "type": "NumberLiteral",
                                         "value": "1"
                                     }
                                 }
@@ -374,7 +374,7 @@
                             },
                             "positional": [
                                 {
-                                    "type": "StringExpression",
+                                    "type": "StringLiteral",
                                     "value": "a"
                                 },
                                 {
@@ -393,7 +393,7 @@
                                         "name": "x"
                                     },
                                     "value": {
-                                        "type": "NumberExpression",
+                                        "type": "NumberLiteral",
                                         "value": "1"
                                     }
                                 }
@@ -502,7 +502,7 @@
                             },
                             "positional": [
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "1"
                                 }
                             ],
@@ -534,15 +534,15 @@
                             },
                             "positional": [
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "1"
                                 },
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "2"
                                 },
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "3"
                                 }
                             ],
@@ -574,15 +574,15 @@
                             },
                             "positional": [
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "1"
                                 },
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "2"
                                 },
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "3"
                                 }
                             ],
@@ -614,11 +614,11 @@
                             },
                             "positional": [
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "1"
                                 },
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "2"
                                 }
                             ],
@@ -650,11 +650,11 @@
                             },
                             "positional": [
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "1"
                                 },
                                 {
-                                    "type": "NumberExpression",
+                                    "type": "NumberLiteral",
                                     "value": "2"
                                 }
                             ],
@@ -708,7 +708,7 @@
                                         "name": "x"
                                     },
                                     "value": {
-                                        "type": "NumberExpression",
+                                        "type": "NumberLiteral",
                                         "value": "1"
                                     }
                                 },
@@ -719,7 +719,7 @@
                                         "name": "y"
                                     },
                                     "value": {
-                                        "type": "NumberExpression",
+                                        "type": "NumberLiteral",
                                         "value": "2"
                                     }
                                 },
@@ -730,7 +730,7 @@
                                         "name": "z"
                                     },
                                     "value": {
-                                        "type": "NumberExpression",
+                                        "type": "NumberLiteral",
                                         "value": "3"
                                     }
                                 }
