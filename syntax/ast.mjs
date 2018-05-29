@@ -80,6 +80,22 @@ export class TextElement extends SyntaxNode {
     }
 }
 
+export class StringLiteral extends SyntaxNode {
+    constructor(value) {
+        super();
+        this.type = "StringLiteral";
+        this.value = value;
+    }
+}
+
+export class NumberLiteral extends SyntaxNode {
+    constructor(value) {
+        super();
+        this.type = "NumberLiteral";
+        this.value = value;
+    }
+}
+
 export class Placeable extends SyntaxNode {
     constructor(expression) {
         super();
@@ -92,22 +108,6 @@ export class Expression extends SyntaxNode {
     constructor() {
         super();
         this.type = "Expression";
-    }
-}
-
-export class StringExpression extends Expression {
-    constructor(value) {
-        super();
-        this.type = "StringExpression";
-        this.value = value;
-    }
-}
-
-export class NumberExpression extends Expression {
-    constructor(value) {
-        super();
-        this.type = "NumberExpression";
-        this.value = value;
     }
 }
 

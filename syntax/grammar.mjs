@@ -171,8 +171,8 @@ let Placeable = defer(() =>
 
 let InlineExpression = defer(() =>
     either(
-        StringExpression,
-        NumberExpression,
+        StringLiteral,
+        NumberLiteral,
         VariableReference,
         CallExpression, // Must be before MessageReference
         MessageAttributeExpression,
@@ -181,14 +181,31 @@ let InlineExpression = defer(() =>
         TermReference,
         Placeable));
 
+/* -------- */
+/* Literals */
+let StringLiteral = defer(() =>
+    sequence(
+        quote,
+        repeat(quoted_text_char),
+        quote)
+    .map(element_at(1))
+    .map(join)
+    .chain(into(FTL.StringLiteral)));
+
+let NumberLiteral = defer(() =>
+    sequence(
+        maybe(char("-")),
+        repeat1(digit),
+        maybe(
+            sequence(
+                char("."),
+                repeat1(digit))))
+    .map(flatten(2))
+    .map(join)
+    .chain(into(FTL.NumberLiteral)));
+
 /* ------------------ */
 /* Inline Expressions */
-let StringExpression = defer(() =>
-    quoted_text.chain(into(FTL.StringExpression)));
-
-let NumberExpression = defer(() =>
-    number.chain(into(FTL.NumberExpression)));
-
 let MessageReference = defer(() =>
     Identifier.chain(into(FTL.MessageReference)));
 
@@ -233,8 +250,8 @@ let NamedArgument = defer(() =>
         char(":"),
         maybe(space_indent),
         either(
-            StringExpression,
-            NumberExpression).abstract)
+            StringLiteral,
+            NumberLiteral).abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.NamedArgument)));
 
@@ -266,8 +283,8 @@ let SelectExpression = defer(() =>
 
 let SelectorExpression = defer(() =>
     either(
-        StringExpression,
-        NumberExpression,
+        StringLiteral,
+        NumberLiteral,
         VariableReference,
         CallExpression,
         TermAttributeExpression));
@@ -315,8 +332,7 @@ let VariantKey = defer(() =>
         char("["),
         maybe(inline_space),
         either(
-            // Meh. It's not really an expression.
-            NumberExpression,
+            NumberLiteral,
             VariantName),
         maybe(inline_space),
         char("]"))
@@ -443,26 +459,7 @@ let quoted_text_char =
             backslash,
             quote).map(join));
 
-let quoted_text =
-    sequence(
-        quote,
-        repeat(quoted_text_char),
-        quote)
-    .map(element_at(1))
-    .map(join);
-
 let digit = charset("0-9");
-
-let number =
-    sequence(
-        maybe(char("-")),
-        repeat1(digit),
-        maybe(
-            sequence(
-                char("."),
-                repeat1(digit))))
-    .map(flatten(2))
-    .map(join);
 
 /* ---------- */
 /* Whitespace */

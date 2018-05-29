@@ -95,7 +95,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "\\\""
                         }
                     }
@@ -117,7 +117,7 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringExpression",
+                            "type": "StringLiteral",
                             "value": "\\\\"
                         }
                     }
