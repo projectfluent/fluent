@@ -67,11 +67,13 @@
     `Variants` may only be `VariantLists` if they're defined in another
     `VariantList`.
 
-  - `StringExpression` is now called `StringLiteral` and no longer subclasses
-    `Expression`.
+  - All expression nodes now subclass `SyntaxNode` directly.
 
-  - `NumberExpression` is now called `NumberLiteral` and no longer subclasses
-    `Expression`.
+    The abstract `Expression` node class has been removed.
+
+  - `StringExpression` is now called `StringLiteral`.
+
+  - `NumberExpression` is now called `NumberLiteral`.
 
 
 ## 0.5.0 (January 31, 2018)
