@@ -27,12 +27,15 @@ PatternElement             ::= TextElement
                              | (break_indent Placeable)
 TextElement                ::= (text_char | text_cont)+
 Placeable                  ::= "{" inline_space? (SelectExpression | InlineExpression) inline_space? "}"
+
+/* Rules for validating expressions in Placeables and as selectors of
+ * SelectExpressions are enforced in syntax/abstract.mjs. */
 InlineExpression           ::= StringLiteral
                              | NumberLiteral
                              | VariableReference
                              | CallExpression
-                             | MessageAttributeExpression
-                             | TermVariantExpression
+                             | AttributeExpression
+                             | VariantExpression
                              | MessageReference
                              | TermReference
                              | Placeable
@@ -50,17 +53,11 @@ argument_list              ::= (Argument space_indent? "," space_indent?)* Argum
 Argument                   ::= NamedArgument
                              | InlineExpression
 NamedArgument              ::= Identifier space_indent? ":" space_indent? (StringLiteral | NumberLiteral)
-MessageAttributeExpression ::= MessageReference "." Identifier
-TermVariantExpression      ::= TermReference VariantKey
+AttributeExpression        ::= (MessageReference | TermReference) "." Identifier
+VariantExpression          ::= TermReference VariantKey
 
 /* Block Expressions */
-SelectExpression           ::= SelectorExpression inline_space? "->" variant_list
-SelectorExpression         ::= StringLiteral
-                             | NumberLiteral
-                             | VariableReference
-                             | CallExpression
-                             | TermAttributeExpression
-TermAttributeExpression    ::= TermReference "." Identifier
+SelectExpression           ::= InlineExpression inline_space? "->" variant_list
 variant_list               ::= inline_space? Variant* DefaultVariant Variant* break_indent
 Variant                    ::= break_indent VariantKey inline_space? Value
 DefaultVariant             ::= break_indent "*" VariantKey inline_space? Value
