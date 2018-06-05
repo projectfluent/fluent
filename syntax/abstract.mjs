@@ -2,8 +2,7 @@
  * AST Validation
  *
  * The parse result of the grammar.mjs parser is a well-formed AST which is
- * validated according to the rules documented on the wiki:
- * https://github.com/projectfluent/fluent/wiki/Syntax-Semantics
+ * validated according to the rules documented in `spec/valid.md`.
  */
 
 import * as FTL from "./ast.mjs";
