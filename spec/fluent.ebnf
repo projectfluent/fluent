@@ -29,7 +29,8 @@ TextElement                ::= (text_char | text_cont)+
 Placeable                  ::= "{" inline_space? (SelectExpression | InlineExpression) inline_space? "}"
 
 /* Rules for validating expressions in Placeables and as selectors of
- * SelectExpressions are enforced in syntax/abstract.mjs. */
+ * SelectExpressions are documented in spec/valid.md and enforced in
+ * syntax/abstract.mjs. */
 InlineExpression           ::= StringLiteral
                              | NumberLiteral
                              | VariableReference

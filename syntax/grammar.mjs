@@ -169,9 +169,10 @@ let Placeable = defer(() =>
     .map(element_at(2))
     .chain(into(FTL.Placeable)));
 
-/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------- */
 /* Rules for validating expressions in Placeables and as selectors of
- * SelectExpressions are enforced in syntax/abstract.mjs. */
+ * SelectExpressions are documented in spec/valid.md and enforced in
+ * syntax/abstract.mjs. */
 let InlineExpression = defer(() =>
     either(
         StringLiteral,
