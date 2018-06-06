@@ -16,6 +16,7 @@
         }],
         "quotes": ["error", "double"],
         "semi": ["error", "always"],
+        "space-infix-ops": ["error"],
         "no-tabs": "error",
         "no-undef": "error"
     }
