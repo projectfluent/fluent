@@ -2,7 +2,7 @@ import * as FTL from "./ast.mjs";
 import {list_into, into} from "./abstract.mjs";
 import {
     always, and, char, charset, defer, either, eof, maybe, not,
-    regex, repeat, repeat1, sequence, string
+    regex, repeat, repeat1, sequence
 } from "../lib/combinators.mjs";
 import {
     element_at, flatten, join, keep_abstract, mutate, print
@@ -74,7 +74,7 @@ let Comment = defer(() =>
 let GroupComment = defer(() =>
     repeat1(
         sequence(
-            string("##"),
+            char("##"),
             comment_line.abstract))
     .map(flatten(1))
     .map(keep_abstract)
@@ -84,7 +84,7 @@ let GroupComment = defer(() =>
 let ResourceComment = defer(() =>
     repeat1(
         sequence(
-            string("###"),
+            char("###"),
             comment_line.abstract))
     .map(flatten(1))
     .map(keep_abstract)
@@ -282,7 +282,7 @@ let SelectExpression = defer(() =>
     sequence(
         InlineExpression.abstract,
         maybe(inline_space),
-        string("->"),
+        char("->"),
         variant_list.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.SelectExpression)));
@@ -462,7 +462,7 @@ let inline_space =
 
 let line_end =
     either(
-        string("\u000D\u000A"),
+        char("\u000D\u000A"),
         char("\u000A"),
         char("\u000D"),
         eof());
