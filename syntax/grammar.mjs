@@ -27,11 +27,15 @@ let Entry = defer(() =>
         either(
             ResourceComment,
             GroupComment,
-            Comment)));
+            Comment,
+            LegacyComment)));
 
 let Message = defer(() =>
     sequence(
-        maybe(Comment).abstract,
+        maybe(
+            either(
+                Comment,
+                LegacyComment)).abstract,
         Identifier.abstract,
         maybe(inline_space),
         string("="),
@@ -90,6 +94,18 @@ let ResourceComment = defer(() =>
     .map(keep_abstract)
     .map(join)
     .chain(into(FTL.ResourceComment)));
+
+/* --------------------------------------- */
+/* "//"=style comments were removed in 0.5 */
+let LegacyComment = defer(() =>
+    repeat1(
+        sequence(
+            string("//"),
+            comment_line.abstract))
+    .map(flatten(1))
+    .map(keep_abstract)
+    .map(join)
+    .chain(into(FTL.Comment)));
 
 /* ----------------------------------------------------------------- */
 /* Adjacent junk_lines should be joined into FTL.Junk during the AST

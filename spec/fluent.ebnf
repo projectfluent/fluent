@@ -3,12 +3,15 @@
 Resource            ::= (blank_line | Entry | junk_line)*
 Entry               ::= Message
                       | Term
-                      | (ResourceComment | GroupComment | Comment)
-Message             ::= Comment? Identifier inline_space? "=" inline_space? ((Pattern Attribute*) | (Attribute+)) line_end
+                      | (ResourceComment | GroupComment | Comment | LegacyComment)
+Message             ::= (Comment | LegacyComment)? Identifier inline_space? "=" inline_space? ((Pattern Attribute*) | (Attribute+)) line_end
 Term                ::= Comment? TermIdentifier inline_space? "=" inline_space? Value Attribute* line_end
 Comment             ::= ("#" comment_line)+
 GroupComment        ::= ("##" comment_line)+
 ResourceComment     ::= ("###" comment_line)+
+
+/* "//"=style comments were removed in 0.5 */
+LegacyComment       ::= ("//" comment_line)+
 
 /* Adjacent junk_lines should be joined into FTL.Junk during the AST
    construction. */
