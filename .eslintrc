@@ -8,6 +8,7 @@
         "node": true
     },
     "rules": {
+        "brace-style": ["error", "1tbs"],
         "eqeqeq": ["error", "always"],
         "indent": ["error", 4, {
             "CallExpression": {"arguments": 1},

@@ -7,22 +7,20 @@ const fixtures_dir = process.argv[2];
 
 if (!fixtures_dir) {
     console.error(
-        "Usage: node --experimental-modules parser.mjs FIXTURES_DIR_OR_FTL");
+        "Usage: node --experimental-modules parser.mjs FIXTURE");
     process.exit(1);
 }
 
 main(fixtures_dir);
 
 async function main(fixtures_dir) {
-    let files, ftls;
     if (fixtures_dir.endsWith(".ftl")) {
         // Actually, this is a filepath, split the path and the dir.
-        ftls = [path.basename(fixtures_dir)];
+        var ftls = [path.basename(fixtures_dir)];
         fixtures_dir = path.dirname(fixtures_dir);
-    }
-    else {
-        files = await readdir(fixtures_dir);
-        ftls = files.filter(
+    } else {
+        let files = await readdir(fixtures_dir);
+        var ftls = files.filter(
             filename => filename.endsWith(".ftl"));
     }
 
