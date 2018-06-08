@@ -1,0 +1,73 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Comment",
+            "annotations": [],
+            "content": "In Syntax 0.4 and earlier, we had tags to denote grammatical properties.\nNot supported in archaelogy as we're parsing them as part of\nValue or Attribute values in 0.5+.\nDocumenting that with a test.\n"
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key01"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value\n#masculine"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "annotations": [],
+                "content": "Just Value and Tag\n"
+            }
+        },
+        {
+            "type": "Message",
+            "annotations": [],
+            "id": {
+                "type": "Identifier",
+                "name": "key02"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value"
+                    }
+                ]
+            },
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "label"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "Foo\n#masculine"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "comment": {
+                "type": "Comment",
+                "annotations": [],
+                "content": "Both Attribute and Tag used to be supported.\n"
+            }
+        }
+    ]
+}
