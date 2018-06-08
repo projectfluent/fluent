@@ -24,6 +24,7 @@ let Entry = defer(() =>
     either(
         Message,
         Term,
+        LegacyAttributeMessage,
         LegacySection,
         either(
             ResourceComment,
@@ -128,6 +129,22 @@ let LegacySection = defer(() =>
     .map(keep_abstract)
     .map(join)
     .chain(into(FTL.Section)));
+
+/* ---------------------------------------------- */
+/* Messages without value had no "=" prior to 0.5 */
+/* These messages only had //-style comments      */
+let LegacyAttributeMessage = defer(() =>
+    sequence(
+        maybe(LegacyComment).abstract,
+        Identifier.abstract,
+        maybe(inline_space),
+        sequence(
+            always(null).abstract,
+            repeat1(Attribute).abstract),
+        line_end)
+    .map(flatten(1))
+    .map(keep_abstract)
+    .chain(list_into(FTL.Message)));
 
 /* ----------------------------------------------------------------- */
 /* Adjacent junk_lines should be joined into FTL.Junk during the AST
