@@ -56,6 +56,14 @@ export class Term extends Entry {
     }
 }
 
+export class Section extends SyntaxNode {
+    constructor(name) {
+        super();
+        this.type = "Section";
+        this.name = name;
+    }
+}
+
 export class VariantList extends SyntaxNode {
     constructor(variants) {
         super();

@@ -1,0 +1,17 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Section",
+            "name": "one"
+        },
+        {
+            "type": "Section",
+            "name": "two words"
+        },
+        {
+            "type": "Section",
+            "name": "with leading and trailing white-space"
+        }
+    ]
+}

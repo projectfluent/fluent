@@ -3,6 +3,7 @@
 Resource            ::= (blank_line | Entry | junk_line)*
 Entry               ::= Message
                       | Term
+                      | LegacySection
                       | (ResourceComment | GroupComment | Comment | LegacyComment)
 Message             ::= (Comment | LegacyComment)? Identifier inline_space? "=" inline_space? ((Pattern Attribute*) | (Attribute+)) line_end
 Term                ::= Comment? TermIdentifier inline_space? "=" inline_space? Value Attribute* line_end
@@ -12,6 +13,9 @@ ResourceComment     ::= ("###" comment_line)+
 
 /* "//"=style comments were removed in 0.5 */
 LegacyComment       ::= ("//" comment_line)+
+
+/* Sections got removed in 0.5 */
+LegacySection       ::= "[[" inline_space? word (inline_space? word)* inline_space? "]]"
 
 /* Adjacent junk_lines should be joined into FTL.Junk during the AST
    construction. */

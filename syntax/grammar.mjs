@@ -24,6 +24,7 @@ let Entry = defer(() =>
     either(
         Message,
         Term,
+        LegacySection,
         either(
             ResourceComment,
             GroupComment,
@@ -106,6 +107,27 @@ let LegacyComment = defer(() =>
     .map(keep_abstract)
     .map(join)
     .chain(into(FTL.Comment)));
+
+/* --------------------------- */
+/* Sections got removed in 0.5 */
+let LegacySection = defer(() =>
+    sequence(
+        string("[["),
+        maybe(inline_space),
+        word.abstract,
+        repeat(
+            sequence(
+                maybe(inline_space.abstract),
+                word.abstract
+            )
+        ),
+        maybe(inline_space),
+        string("]]")
+    )
+    .map(flatten())
+    .map(keep_abstract)
+    .map(join)
+    .chain(into(FTL.Section)));
 
 /* ----------------------------------------------------------------- */
 /* Adjacent junk_lines should be joined into FTL.Junk during the AST
