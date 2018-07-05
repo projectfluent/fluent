@@ -13,7 +13,7 @@
                 "elements": [
                     {
                         "type": "TextElement",
-                        "value": "A multiline value\n    continued on the next line\n\n    and also down here."
+                        "value": "A multiline value\ncontinued on the next line\n\nand also down here."
                     }
                 ]
             },
@@ -32,7 +32,7 @@
                 "elements": [
                     {
                         "type": "TextElement",
-                        "value": "A multiline value starting\n    on a new line."
+                        "value": "A multiline value starting\non a new line."
                     }
                 ]
             },
@@ -59,7 +59,7 @@
                         "elements": [
                             {
                                 "type": "TextElement",
-                                "value": "A multiline attribute value\n        continued on the next line\n\n        and also down here."
+                                "value": "A multiline attribute value\ncontinued on the next line\n\nand also down here."
                             }
                         ]
                     }
@@ -87,7 +87,7 @@
                         "elements": [
                             {
                                 "type": "TextElement",
-                                "value": "A multiline attribute value\n        staring on a new line"
+                                "value": "A multiline attribute value\nstaring on a new line"
                             }
                         ]
                     }
@@ -107,7 +107,7 @@
                 "elements": [
                     {
                         "type": "TextElement",
-                        "value": "A multiline value with non-standard\n\n     indentation."
+                        "value": "A multiline value with non-standard\n\nindentation."
                     }
                 ]
             },
@@ -137,7 +137,7 @@
                     },
                     {
                         "type": "TextElement",
-                        "value": "\n    "
+                        "value": "\n"
                     },
                     {
                         "type": "Placeable",
@@ -148,7 +148,7 @@
                     },
                     {
                         "type": "TextElement",
-                        "value": " the beginning and the end\n    "
+                        "value": " the beginning and the end\n"
                     },
                     {
                         "type": "Placeable",

@@ -103,7 +103,7 @@
                 "elements": [
                     {
                         "type": "TextElement",
-                        "value": "Value\n    "
+                        "value": "Value\n"
                     },
                     {
                         "type": "Placeable",
@@ -133,7 +133,7 @@
                 "elements": [
                     {
                         "type": "TextElement",
-                        "value": ".Value\n    "
+                        "value": ".Value\n"
                     },
                     {
                         "type": "Placeable",
@@ -219,7 +219,7 @@
                         "elements": [
                             {
                                 "type": "TextElement",
-                                "value": "which is an attribute\n    Continued"
+                                "value": "which is an attribute\nContinued"
                             }
                         ]
                     }
@@ -246,7 +246,7 @@
                     },
                     {
                         "type": "TextElement",
-                        "value": "Value = which looks like an attribute\n    Continued"
+                        "value": "Value = which looks like an attribute\nContinued"
                     }
                 ]
             },

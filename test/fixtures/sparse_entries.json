@@ -60,7 +60,7 @@
                 "elements": [
                     {
                         "type": "TextElement",
-                        "value": "Value\n    Continued\n\n\n    Over multiple\n    Lines"
+                        "value": "Value\nContinued\n\n\nOver multiple\nLines"
                     }
                 ]
             },

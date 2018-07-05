@@ -479,7 +479,8 @@ let break_indent =
         repeat(blank_line),
         inline_space)
     .map(flatten(1))
-    .map(join);
+    // Trim the indents. Keep only the newlines.
+    .map(indents => indents.fill("").join("\n"));
 
 let space_indent =
     sequence(
