@@ -67,13 +67,12 @@
     `Variants` may only be `VariantLists` if they're defined in another
     `VariantList`.
 
-  - All expression nodes now subclass `SyntaxNode` directly.
-
-    The abstract `Expression` node class has been removed.
-
   - `StringExpression` is now called `StringLiteral`.
 
   - `NumberExpression` is now called `NumberLiteral`.
+
+  - `TextElement` and `Placeable` are now subclasses of an abstract
+    `PatternElement` class.
 
 
 ## 0.5.0 (January 31, 2018)
