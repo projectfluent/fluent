@@ -3,17 +3,14 @@
     "body": [
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "License Comment\n"
+            "content": "License Comment"
         },
         {
             "type": "ResourceComment",
-            "annotations": [],
-            "content": "Resource Comment\n"
+            "content": "Resource Comment"
         },
         {
             "type": "Term",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "-brand-name"
@@ -32,12 +29,10 @@
         },
         {
             "type": "GroupComment",
-            "annotations": [],
-            "content": "Group Comment\n"
+            "content": "Group Comment"
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key01"
@@ -70,7 +65,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key02"
@@ -87,14 +81,12 @@
             "attributes": [],
             "comment": {
                 "type": "Comment",
-                "annotations": [],
-                "content": "Message Comment\n"
+                "content": "Message Comment"
             }
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "Standalone Comment\n"
+            "content": "Standalone Comment"
         },
         {
             "type": "Junk",

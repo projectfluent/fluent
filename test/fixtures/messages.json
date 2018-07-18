@@ -3,7 +3,6 @@
     "body": [
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key01"
@@ -22,7 +21,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key02"
@@ -58,7 +56,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key02"
@@ -110,7 +107,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key03"
@@ -138,7 +134,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key04"
@@ -182,7 +177,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key05"
@@ -208,13 +202,11 @@
             ],
             "comment": {
                 "type": "Comment",
-                "annotations": [],
-                "content": "     <  whitespace  >\n"
+                "content": "     <  whitespace  >"
             }
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key06"
@@ -236,8 +228,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "JUNK Missing value\n"
+            "content": "JUNK Missing value"
         },
         {
             "type": "Junk",
@@ -246,8 +237,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "JUNK Missing =\n"
+            "content": "JUNK Missing ="
         },
         {
             "type": "Junk",

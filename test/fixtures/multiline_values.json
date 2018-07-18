@@ -3,7 +3,6 @@
     "body": [
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key01"
@@ -22,7 +21,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key02"
@@ -41,7 +39,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key03"
@@ -69,7 +66,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key04"
@@ -97,7 +93,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key05"
@@ -116,7 +111,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key06"
@@ -171,7 +165,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key07"
@@ -204,7 +197,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key08"

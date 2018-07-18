@@ -3,12 +3,10 @@
     "body": [
         {
             "type": "ResourceComment",
-            "annotations": [],
-            "content": "NOTE: Disable final newline insertion when editing this file.\n"
+            "content": "NOTE: Disable final newline insertion when editing this file."
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "no-eol"

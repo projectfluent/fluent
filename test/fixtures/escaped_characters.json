@@ -3,7 +3,6 @@
     "body": [
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "backslash"
@@ -22,7 +21,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "closing-brace"
@@ -41,7 +39,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "unicode-escape"
@@ -60,7 +57,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "escaped-unicode"
@@ -79,12 +75,10 @@
         },
         {
             "type": "GroupComment",
-            "annotations": [],
-            "content": "String Expressions\n"
+            "content": "String Expressions"
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "quote-in-string"
@@ -106,7 +100,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "backslash-in-string"

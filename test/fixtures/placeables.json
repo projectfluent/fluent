@@ -3,7 +3,6 @@
     "body": [
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "nested-placeable"
@@ -31,7 +30,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "padded-placeable"
@@ -53,7 +51,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "sparse-placeable"

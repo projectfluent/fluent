@@ -3,7 +3,6 @@
     "body": [
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key01"
@@ -22,7 +21,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key02"
@@ -41,7 +39,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key03"
@@ -67,7 +64,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key04"
@@ -93,7 +89,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key05"
@@ -123,7 +118,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key06"
@@ -153,7 +147,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key07"
@@ -170,8 +163,7 @@
             "attributes": [],
             "comment": {
                 "type": "Comment",
-                "annotations": [],
-                "content": "MESSAGE (value = \"Value\", attributes = [])\nJUNK (attr .Continued\" must have a value)\n"
+                "content": "MESSAGE (value = \"Value\", attributes = [])\nJUNK (attr .Continued\" must have a value)"
             }
         },
         {
@@ -181,8 +173,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "JUNK (attr .Value must have a value)\n"
+            "content": "JUNK (attr .Value must have a value)"
         },
         {
             "type": "Junk",
@@ -191,8 +182,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "JUNK (attr .Value must have a value)\n"
+            "content": "JUNK (attr .Value must have a value)"
         },
         {
             "type": "Junk",
@@ -201,7 +191,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key10"
@@ -229,7 +218,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key11"
@@ -255,7 +243,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key12"
@@ -283,7 +270,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key13"
@@ -311,7 +297,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key14"
@@ -346,7 +331,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "key15"
@@ -414,8 +398,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "JUNK (variant must have a value)\n"
+            "content": "JUNK (variant must have a value)"
         },
         {
             "type": "Junk",
@@ -424,8 +407,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "JUNK (unclosed placeable)\n"
+            "content": "JUNK (unclosed placeable)"
         },
         {
             "type": "Junk",

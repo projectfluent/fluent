@@ -3,7 +3,6 @@
     "body": [
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "new-messages"
@@ -76,7 +75,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "valid-selector"
@@ -130,8 +128,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "ERROR\n"
+            "content": "ERROR"
         },
         {
             "type": "Junk",
@@ -140,7 +137,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "empty-variant"
@@ -187,7 +183,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "nested-select"
@@ -256,8 +251,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "ERROR VariantLists cannot appear in SelectExpressions\n"
+            "content": "ERROR VariantLists cannot appear in SelectExpressions"
         },
         {
             "type": "Junk",

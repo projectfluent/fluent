@@ -18,17 +18,8 @@ export class Resource extends SyntaxNode {
     }
 }
 
-export class Entry extends SyntaxNode {
-    constructor() {
-        super();
-        this.type = "Entry";
-        this.annotations = [];
-    }
-
-    addAnnotation(annot) {
-        this.annotations.push(annot);
-    }
-}
+// An abstract base class for useful elements of Resource.body.
+export class Entry extends SyntaxNode {}
 
 export class Message extends Entry {
     constructor(id, value = null, attributes = [], comment = null) {
@@ -245,11 +236,16 @@ export class Function extends Identifier {
     }
 }
 
-export class Junk extends Entry {
+export class Junk extends SyntaxNode {
     constructor(content) {
         super();
         this.type = "Junk";
+        this.annotations = [];
         this.content = content;
+    }
+
+    addAnnotation(annot) {
+        this.annotations.push(annot);
     }
 }
 
