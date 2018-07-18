@@ -3,7 +3,6 @@
     "body": [
         {
             "type": "Term",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "-term01"
@@ -39,7 +38,6 @@
         },
         {
             "type": "Term",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "-term02"
@@ -61,8 +59,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "JUNK Missing value\n"
+            "content": "JUNK Missing value"
         },
         {
             "type": "Junk",
@@ -71,8 +68,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "JUNK Missing value\n       <  whitespace  >\n"
+            "content": "JUNK Missing value\n       <  whitespace  >"
         },
         {
             "type": "Junk",
@@ -81,8 +77,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "JUNK Missing value\n"
+            "content": "JUNK Missing value"
         },
         {
             "type": "Junk",
@@ -91,8 +86,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "JUNK Missing value\n       <  whitespace  >\n"
+            "content": "JUNK Missing value\n       <  whitespace  >"
         },
         {
             "type": "Junk",
@@ -101,8 +95,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "JUNK Missing =\n"
+            "content": "JUNK Missing ="
         },
         {
             "type": "Junk",

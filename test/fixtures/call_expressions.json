@@ -3,7 +3,6 @@
     "body": [
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "positional-args"
@@ -46,7 +45,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "named-args"
@@ -96,7 +94,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "dense-named-args"
@@ -146,7 +143,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "mixed-args"
@@ -212,8 +208,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "ERROR Positional arg must not follow keyword args\n"
+            "content": "ERROR Positional arg must not follow keyword args"
         },
         {
             "type": "Junk",
@@ -222,8 +217,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "ERROR Named arguments must be unique\n"
+            "content": "ERROR Named arguments must be unique"
         },
         {
             "type": "Junk",
@@ -232,12 +226,10 @@
         },
         {
             "type": "GroupComment",
-            "annotations": [],
-            "content": "Whitespace around arguments\n"
+            "content": "Whitespace around arguments"
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "sparse-inline-call"
@@ -288,7 +280,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "empty-inline-call"
@@ -315,7 +306,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "multiline-call"
@@ -366,7 +356,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "sparse-multiline-call"
@@ -417,7 +406,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "empty-multiline-call"
@@ -444,8 +432,7 @@
         },
         {
             "type": "GroupComment",
-            "annotations": [],
-            "content": "Syntax errors for multiline call expressions\n"
+            "content": "Syntax errors for multiline call expressions"
         },
         {
             "type": "Junk",
@@ -489,12 +476,10 @@
         },
         {
             "type": "GroupComment",
-            "annotations": [],
-            "content": "Optional trailing comma\n"
+            "content": "Optional trailing comma"
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "one-argument"
@@ -526,7 +511,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "many-arguments"
@@ -566,7 +550,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "inline-sparse-args"
@@ -606,7 +589,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "mulitline-args"
@@ -642,7 +624,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "mulitline-sparse-args"
@@ -678,8 +659,7 @@
         },
         {
             "type": "GroupComment",
-            "annotations": [],
-            "content": "Syntax errors for trailing comma\n"
+            "content": "Syntax errors for trailing comma"
         },
         {
             "type": "Junk",
@@ -688,12 +668,10 @@
         },
         {
             "type": "GroupComment",
-            "annotations": [],
-            "content": "Whitespace in named arguments\n"
+            "content": "Whitespace in named arguments"
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "sparse-named-arg"
@@ -754,8 +732,7 @@
         },
         {
             "type": "GroupComment",
-            "annotations": [],
-            "content": "Syntax errors for named arguments\n"
+            "content": "Syntax errors for named arguments"
         },
         {
             "type": "Junk",

@@ -82,6 +82,25 @@ export function list_into(Type) {
 
 export function into(Type) {
     switch (Type) {
+        case FTL.Comment:
+        case FTL.GroupComment:
+        case FTL.ResourceComment:
+            return content => {
+                if (content.endsWith("\n")) {
+                    if (content.endsWith("\r\n")) {
+                        var offset = -2;
+                    } else {
+                        var offset = -1;
+                    }
+                } else if (content.endsWith("\r")) {
+                    var offset = -1;
+                } else {
+                    // The comment ended with the EOF; don't trim it.
+                    return always(new Type(content));
+                }
+                // Trim the EOL from the end of the comment.
+                return always(new Type(content.slice(0, offset)));
+            };
         case FTL.Placeable:
             return expression => {
                 let invalid_expression_found =

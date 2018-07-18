@@ -14,16 +14,20 @@ export
 let Resource = defer(() =>
     repeat(
         either(
-            blank_line,
             Entry,
+            blank_line,
             junk_line))
     .chain(list_into(FTL.Resource)));
 
 export
 let Entry = defer(() =>
     either(
-        Message,
-        Term,
+        sequence(
+            Message,
+            line_end).map(element_at(0)),
+        sequence(
+            Term,
+            line_end).map(element_at(0)),
         either(
             ResourceComment,
             GroupComment,
@@ -42,8 +46,7 @@ let Message = defer(() =>
                 repeat(Attribute).abstract),
             sequence(
                 always(null).abstract,
-                repeat1(Attribute).abstract)),
-        line_end)
+                repeat1(Attribute).abstract)))
     .map(flatten(1))
     .map(keep_abstract)
     .chain(list_into(FTL.Message)));
@@ -56,8 +59,7 @@ let Term = defer(() =>
         string("="),
         maybe(inline_space),
         Value.abstract,
-        repeat(Attribute).abstract,
-        line_end)
+        repeat(Attribute).abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.Term)));
 
@@ -65,8 +67,12 @@ let Comment = defer(() =>
     repeat1(
         sequence(
             string("#"),
-            comment_line.abstract))
-    .map(flatten(1))
+            maybe(
+                sequence(
+                    string(" "),
+                    regex(/.*/).abstract)),
+            line_end.abstract))
+    .map(flatten(2))
     .map(keep_abstract)
     .map(join)
     .chain(into(FTL.Comment)));
@@ -75,8 +81,12 @@ let GroupComment = defer(() =>
     repeat1(
         sequence(
             string("##"),
-            comment_line.abstract))
-    .map(flatten(1))
+            maybe(
+                sequence(
+                    string(" "),
+                    regex(/.*/).abstract)),
+            line_end.abstract))
+    .map(flatten(2))
     .map(keep_abstract)
     .map(join)
     .chain(into(FTL.GroupComment)));
@@ -85,8 +95,12 @@ let ResourceComment = defer(() =>
     repeat1(
         sequence(
             string("###"),
-            comment_line.abstract))
-    .map(flatten(1))
+            maybe(
+                sequence(
+                    string(" "),
+                    regex(/.*/).abstract)),
+            line_end.abstract))
+    .map(flatten(2))
     .map(keep_abstract)
     .map(join)
     .chain(into(FTL.ResourceComment)));
@@ -377,17 +391,6 @@ let identifier =
             charset("a-zA-Z0-9_-")))
     .map(flatten(1))
     .map(join);
-
-let comment_line = defer(() =>
-    either(
-        sequence(
-            line_end.abstract),
-        sequence(
-            string(" "),
-            regex(/.*/).abstract,
-            line_end.abstract))
-    .map(keep_abstract)
-    .map(join));
 
 let word = defer(() =>
     repeat1(

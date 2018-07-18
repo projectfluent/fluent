@@ -3,8 +3,7 @@
     "body": [
         {
             "type": "ResourceComment",
-            "annotations": [],
-            "content": "NOTE: Disable final newline insertion when editing this file.\n"
+            "content": "NOTE: Disable final newline insertion when editing this file."
         },
         {
             "type": "Junk",

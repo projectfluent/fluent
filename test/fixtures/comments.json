@@ -3,12 +3,10 @@
     "body": [
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "Standalone Comment\n"
+            "content": "Standalone Comment"
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "foo"
@@ -25,13 +23,11 @@
             "attributes": [],
             "comment": {
                 "type": "Comment",
-                "annotations": [],
-                "content": "Message Comment\n"
+                "content": "Message Comment"
             }
         },
         {
             "type": "Term",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "-term"
@@ -48,24 +44,20 @@
             "attributes": [],
             "comment": {
                 "type": "Comment",
-                "annotations": [],
-                "content": "Term Comment\nwith a blank last line.\n\n"
+                "content": "Term Comment\nwith a blank last line.\n"
             }
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "Another standalone\n\n     with indent\n"
+            "content": "Another standalone\n\n     with indent"
         },
         {
             "type": "GroupComment",
-            "annotations": [],
-            "content": "Group Comment\n"
+            "content": "Group Comment"
         },
         {
             "type": "ResourceComment",
-            "annotations": [],
-            "content": "Resource Comment\n"
+            "content": "Resource Comment"
         }
     ]
 }

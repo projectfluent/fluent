@@ -3,7 +3,6 @@
     "body": [
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "variant-expression"
@@ -35,7 +34,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "attribute-expression"
@@ -67,8 +65,7 @@
         },
         {
             "type": "GroupComment",
-            "annotations": [],
-            "content": "Invalid syntax\n"
+            "content": "Invalid syntax"
         },
         {
             "type": "Junk",

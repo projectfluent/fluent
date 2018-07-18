@@ -1,14 +1,14 @@
 
 /* An FTL file defines a Resource. */
-Resource            ::= (blank_line | Entry | junk_line)*
-Entry               ::= Message
-                      | Term
+Resource            ::= (Entry | blank_line | junk_line)*
+Entry               ::= (Message line_end)
+                      | (Term line_end)
                       | (ResourceComment | GroupComment | Comment)
-Message             ::= Comment? Identifier inline_space? "=" inline_space? ((Pattern Attribute*) | (Attribute+)) line_end
-Term                ::= Comment? TermIdentifier inline_space? "=" inline_space? Value Attribute* line_end
-Comment             ::= ("#" comment_line)+
-GroupComment        ::= ("##" comment_line)+
-ResourceComment     ::= ("###" comment_line)+
+Message             ::= Comment? Identifier inline_space? "=" inline_space? ((Pattern Attribute*) | (Attribute+))
+Term                ::= Comment? TermIdentifier inline_space? "=" inline_space? Value Attribute*
+Comment             ::= ("#" ("\u0020" /.*/)? line_end)+
+GroupComment        ::= ("##" ("\u0020" /.*/)? line_end)+
+ResourceComment     ::= ("###" ("\u0020" /.*/)? line_end)+
 
 /* Adjacent junk_lines should be joined into FTL.Junk during the AST
    construction. */
@@ -73,8 +73,6 @@ Function            ::= [A-Z] [A-Z_?-]*
 
 /* Tokens */
 identifier          ::= [a-zA-Z] [a-zA-Z0-9_-]*
-comment_line        ::= (line_end)
-                      | ("\u0020" /.*/ line_end)
 word                ::= (regular_char - backslash - "}" - "{" - "]" - "[")+
 
 /* Characters */

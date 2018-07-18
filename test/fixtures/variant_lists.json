@@ -3,7 +3,6 @@
     "body": [
         {
             "type": "Term",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "-variant-list-in-term"
@@ -35,7 +34,6 @@
         },
         {
             "type": "Term",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "-variant-list-in-term-attr"
@@ -52,8 +50,7 @@
             "attributes": [],
             "comment": {
                 "type": "Comment",
-                "annotations": [],
-                "content": "ERROR Attributes of Terms must be Patterns.\n"
+                "content": "ERROR Attributes of Terms must be Patterns."
             }
         },
         {
@@ -63,8 +60,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "ERROR Message values must be Patterns.\n"
+            "content": "ERROR Message values must be Patterns."
         },
         {
             "type": "Junk",
@@ -73,7 +69,6 @@
         },
         {
             "type": "Message",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "variant-list-in-message-attr"
@@ -90,8 +85,7 @@
             "attributes": [],
             "comment": {
                 "type": "Comment",
-                "annotations": [],
-                "content": "ERROR Attributes of Messages must be Patterns.\n"
+                "content": "ERROR Attributes of Messages must be Patterns."
             }
         },
         {
@@ -101,7 +95,6 @@
         },
         {
             "type": "Term",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "-nested-variant-list-in-term"
@@ -146,7 +139,6 @@
         },
         {
             "type": "Term",
-            "annotations": [],
             "id": {
                 "type": "Identifier",
                 "name": "-nested-select"
@@ -203,8 +195,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "ERROR VariantLists may not appear in SelectExpressions\n"
+            "content": "ERROR VariantLists may not appear in SelectExpressions"
         },
         {
             "type": "Junk",
@@ -213,8 +204,7 @@
         },
         {
             "type": "Comment",
-            "annotations": [],
-            "content": "ERROR VariantLists are value types and may not appear in Placeables\n"
+            "content": "ERROR VariantLists are value types and may not appear in Placeables"
         },
         {
             "type": "Junk",
