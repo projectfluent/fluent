@@ -1,6 +1,12 @@
 # Changelog
 
+
 ## Unreleased
+
+  - …
+
+
+## 0.6.0 (July 24, 2018)
 
   - Created the reference parser for Fluent Syntax.
 
