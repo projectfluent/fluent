@@ -22,7 +22,7 @@
                                 }
                             },
                             "key": {
-                                "type": "VariantName",
+                                "type": "Identifier",
                                 "name": "case"
                             }
                         }

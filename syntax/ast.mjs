@@ -194,13 +194,6 @@ export class Identifier extends SyntaxNode {
     }
 }
 
-export class VariantName extends Identifier {
-    constructor(name) {
-        super(name);
-        this.type = "VariantName";
-    }
-}
-
 export class BaseComment extends Entry {
     constructor(content) {
         super();
