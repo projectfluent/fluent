@@ -63,3 +63,11 @@ key17 =
        *[one] Value
            .Continued
     }
+
+# JUNK (attr .Value must have a value)
+key18 =
+.Value
+
+key19 =
+.attribute = Value
+    Continued

@@ -15,18 +15,18 @@ ResourceComment     ::= ("###" ("\u0020" /.*/)? line_end)+
 junk_line           ::= /.*/ line_end
 
 /* Attributes of Messages and Terms. */
-Attribute           ::= break_indent "." Identifier inline_space? "=" inline_space? Pattern
+Attribute           ::= line_end any_space? "." Identifier inline_space? "=" inline_space? Pattern
 
 /* Value types: Pattern and VariantList. */
 Value               ::= Pattern
                       | VariantList
 Pattern             ::= PatternElement+
-VariantList         ::= space_indent? "{" variant_list "}"
+VariantList         ::= any_space? "{" variant_list any_space? "}"
 PatternElement      ::= TextElement
                       | Placeable
                       | (break_indent Placeable)
 TextElement         ::= (text_char | text_cont)+
-Placeable           ::= "{" inline_space? (SelectExpression | InlineExpression) inline_space? "}"
+Placeable           ::= "{" any_space? (SelectExpression | InlineExpression) any_space? "}"
 
 /* Rules for validating expressions in Placeables and as selectors of
  * SelectExpressions are documented in spec/valid.md and enforced in
@@ -49,21 +49,21 @@ NumberLiteral       ::= "-"? digit+ ("." digit+)?
 MessageReference    ::= Identifier
 TermReference       ::= TermIdentifier
 VariableReference   ::= VariableIdentifier
-CallExpression      ::= Function "(" space_indent? argument_list space_indent? ")"
-argument_list       ::= (Argument space_indent? "," space_indent?)* Argument?
+CallExpression      ::= Function any_space? "(" any_space? argument_list any_space? ")"
+argument_list       ::= (Argument any_space? "," any_space?)* Argument?
 Argument            ::= NamedArgument
                       | InlineExpression
-NamedArgument       ::= Identifier space_indent? ":" space_indent? (StringLiteral | NumberLiteral)
+NamedArgument       ::= Identifier any_space? ":" any_space? (StringLiteral | NumberLiteral)
 AttributeExpression ::= (MessageReference | TermReference) "." Identifier
 VariantExpression   ::= TermReference VariantKey
 
 /* Block Expressions */
-SelectExpression    ::= InlineExpression inline_space? "->" variant_list
-variant_list        ::= inline_space? Variant* DefaultVariant Variant* break_indent
-Variant             ::= break_indent VariantKey inline_space? Value
-DefaultVariant      ::= break_indent "*" VariantKey inline_space? Value
-VariantKey          ::= "[" inline_space? (NumberLiteral | VariantName) inline_space? "]"
-VariantName         ::= word (inline_space word)*
+SelectExpression    ::= InlineExpression inline_space? "->" inline_space? variant_list
+variant_list        ::= Variant* DefaultVariant Variant* line_end
+Variant             ::= line_end any_space? VariantKey inline_space? Value
+DefaultVariant      ::= line_end any_space? "*" VariantKey inline_space? Value
+VariantKey          ::= "[" any_space? (NumberLiteral | VariantName) any_space? "]"
+VariantName         ::= word (any_space word)*
 
 /* Identifiers */
 Identifier          ::= identifier
@@ -73,7 +73,7 @@ Function            ::= [A-Z] [A-Z_?-]*
 
 /* Tokens */
 identifier          ::= [a-zA-Z] [a-zA-Z0-9_-]*
-word                ::= (regular_char - backslash - "}" - "{" - "]" - "[")+
+word                ::= (regular_char - backslash - "}" - "{" - "]" - "[" - "=")+
 
 /* Characters */
 backslash           ::= "\\"
@@ -101,4 +101,4 @@ line_end            ::= "\u000D\u000A"
                       | EOF
 blank_line          ::= inline_space? line_end
 break_indent        ::= line_end blank_line* inline_space
-space_indent        ::= inline_space? break_indent?
+any_space           ::= (inline_space | line_end)+
