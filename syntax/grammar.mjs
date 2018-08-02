@@ -159,10 +159,11 @@ let PatternElement = defer(() =>
         TextElement,
         Placeable,
         sequence(
-            // Trimmed or joined into a preceding FTL.TextElement during the
-            // AST construction.
-            break_indent.chain(into(FTL.TextElement)),
-            Placeable)));
+            // Joined with preceding TextElements during AST construction.
+            break_line.chain(into(FTL.TextElement)).abstract,
+            maybe(inline_space),
+            Placeable.abstract)
+        .map(keep_abstract)));
 
 let TextElement = defer(() =>
     repeat1(
@@ -440,13 +441,15 @@ let text_char = defer(() =>
 
 let text_cont = defer(() =>
     sequence(
-        break_indent,
+        break_line.abstract,
+        inline_space,
         and(
             not(string(".")),
             not(string("*")),
             not(string("[")),
             not(string("}")),
-            text_char))
+            text_char).abstract)
+    .map(keep_abstract)
     .map(join));
 
 let quoted_text_char =
@@ -482,14 +485,13 @@ let blank_line =
         line_end)
     .map(join);
 
-let break_indent =
+let break_line =
     sequence(
         line_end,
-        repeat(blank_line),
-        inline_space)
+        repeat(blank_line))
     .map(flatten(1))
-    // Trim the indents. Keep only the newlines.
-    .map(indents => indents.fill("").join("\n"));
+    // Trim any indents. Keep only the newlines.
+    .map(indents => indents.fill("\n").join(""));
 
 let any_space =
     repeat1(

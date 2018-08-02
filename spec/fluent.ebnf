@@ -24,7 +24,7 @@ Pattern             ::= PatternElement+
 VariantList         ::= any_space? "{" variant_list any_space? "}"
 PatternElement      ::= TextElement
                       | Placeable
-                      | (break_indent Placeable)
+                      | (break_line inline_space? Placeable)
 TextElement         ::= (text_char | text_cont)+
 Placeable           ::= "{" any_space? (SelectExpression | InlineExpression) any_space? "}"
 
@@ -89,7 +89,7 @@ text_char           ::= inline_space
                       | (backslash backslash)
                       | (backslash "{")
                       | (regular_char - "{" - backslash)
-text_cont           ::= break_indent (text_char - "}" - "[" - "*" - ".")
+text_cont           ::= break_line inline_space (text_char - "}" - "[" - "*" - ".")
 quoted_text_char    ::= (text_char - quote)
                       | (backslash quote)
 digit               ::= [0-9]
@@ -100,5 +100,5 @@ line_end            ::= "\u000D\u000A"
                       | "\u000A"
                       | EOF
 blank_line          ::= inline_space? line_end
-break_indent        ::= line_end blank_line* inline_space
+break_line          ::= line_end blank_line*
 any_space           ::= (inline_space | line_end)+

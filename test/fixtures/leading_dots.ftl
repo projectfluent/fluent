@@ -71,3 +71,6 @@ key18 =
 key19 =
 .attribute = Value
     Continued
+
+key20 =
+{"."}Value
