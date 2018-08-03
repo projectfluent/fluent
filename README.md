@@ -33,10 +33,23 @@ validate your work:
 
     npm run bench              # Run the performance benchmark on large FTL.
 
-## Learn more
+## Other Implementations
 
-Find out more about Project Fluent at [projectfluent.org][], including links to
-implementations, and information about how to get involved.
+This repository contains the reference implementation of the parser. Other implementations exist which should be preferred for use in production and in tooling.
+
+  - The JavaScript implementation at [`fluent.js`](https://github.com/projectfluent/fluent.js), including the [React bindings](https://github.com/projectfluent/fluent.js/tree/master/fluent-react).
+  - The Python implementation at [`python-fluent`](https://github.com/projectfluent/python-fluent).
+  - The Rust implementation at [`fluent-rs`](https://github.com/projectfluent/fluent-rs).
+
+We also know about the following community-driven implementations:
+
+  - [`Fluent.Net`](https://github.com/blushingpenguin/Fluent.Net) by [@blushingpenguin](https://github.com/blushingpenguin). See [#93](https://github.com/projectfluent/fluent/issues/93) for more info.
+  - A Java/Kotlin implementation has been requested in [#158](https://github.com/projectfluent/fluent/issues/158).
+
+## Learn More and Discuss
+
+Find out more about Project Fluent at [projectfluent.org][] and discuss the future of Fluent at [Mozilla Discourse][].
 
 [Fluent Syntax Guide]: http://projectfluent.org/fluent/guide
 [projectfluent.org]: http://projectfluent.org
+[Mozilla Discourse]: https://discourse.mozilla.org/c/fluent
