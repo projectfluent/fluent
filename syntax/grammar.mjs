@@ -467,7 +467,6 @@ let line_end =
     either(
         string("\u000D\u000A"),
         string("\u000A"),
-        string("\u000D"),
         eof());
 
 let blank_line =
