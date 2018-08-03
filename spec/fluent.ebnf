@@ -3,12 +3,10 @@
 Resource            ::= (Entry | blank_block | junk_line)*
 Entry               ::= Message
                       | Term
-                      | (ResourceComment | GroupComment | Comment)
-Message             ::= Comment? Identifier blank_inline? "=" ((Pattern Attribute*) | (Attribute+))
-Term                ::= Comment? TermIdentifier blank_inline? "=" Value Attribute*
-Comment             ::= ("#" ("\u0020" /.*/)? line_end)+
-GroupComment        ::= ("##" ("\u0020" /.*/)? line_end)+
-ResourceComment     ::= ("###" ("\u0020" /.*/)? line_end)+
+                      | CommentLine
+Message             ::= Identifier blank_inline? "=" ((Pattern Attribute*) | (Attribute+))
+Term                ::= TermIdentifier blank_inline? "=" Value Attribute*
+CommentLine         ::= ("###" | "##" | "#") ("\u0020" /.*/)? line_end
 
 /* Adjacent junk_lines should be joined into FTL.Junk during the AST
    construction. */
