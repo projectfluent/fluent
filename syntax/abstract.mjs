@@ -108,6 +108,13 @@ export function into(Type) {
                 }
                 return always(new Type(expression));
             };
+        case FTL.TextElement:
+            return value => {
+                if (value === Symbol.for("eof")) {
+                    return always(new Type(""));
+                }
+                return always(new Type(value));
+            };
         default:
             return (...args) =>
                 always(new Type(...args));
@@ -151,6 +158,7 @@ function trim_text_at_extremes(element, index, array) {
 }
 
 function remove_empty_text(element) {
+    // Keep Placeables and non-empty TextElements.
     return !(element instanceof FTL.TextElement)
         || element.value !== "";
 }

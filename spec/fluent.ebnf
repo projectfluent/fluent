@@ -1,11 +1,11 @@
 
 /* An FTL file defines a Resource. */
 Resource            ::= (Entry | blank_block | junk_line)*
-Entry               ::= (Message line_end)
-                      | (Term line_end)
+Entry               ::= Message
+                      | Term
                       | (ResourceComment | GroupComment | Comment)
-Message             ::= Comment? Identifier blank_inline? "=" blank_inline? ((Pattern Attribute*) | (Attribute+))
-Term                ::= Comment? TermIdentifier blank_inline? "=" blank_inline? Value Attribute*
+Message             ::= Comment? Identifier blank_inline? "=" ((Pattern Attribute*) | (Attribute+))
+Term                ::= Comment? TermIdentifier blank_inline? "=" Value Attribute*
 Comment             ::= ("#" ("\u0020" /.*/)? line_end)+
 GroupComment        ::= ("##" ("\u0020" /.*/)? line_end)+
 ResourceComment     ::= ("###" ("\u0020" /.*/)? line_end)+
@@ -15,17 +15,23 @@ ResourceComment     ::= ("###" ("\u0020" /.*/)? line_end)+
 junk_line           ::= /.*/ line_end
 
 /* Attributes of Messages and Terms. */
-Attribute           ::= line_end blank? "." Identifier blank_inline? "=" blank_inline? Pattern
+Attribute           ::= blank? "." Identifier blank_inline? "=" Pattern
 
 /* Value types: Pattern and VariantList. */
-Value               ::= Pattern
-                      | VariantList
-Pattern             ::= PatternElement+
+Value               ::= VariantList
+                      | Pattern
 VariantList         ::= blank? "{" variant_list blank? "}"
+Pattern             ::= (PatternInline PatternBlock)
+                      | PatternInline
+                      | PatternBlock
+PatternInline       ::= blank_inline? PatternElement+ line_end
+PatternBlock        ::= blank_block* pattern_line (pattern_line | blank_block)*
+pattern_line        ::= PatternStartElement PatternElement* line_end
 PatternElement      ::= TextElement
                       | Placeable
-                      | (blank_block blank_inline? Placeable)
-TextElement         ::= (text_char | text_cont)+
+PatternStartElement ::= (blank_inline text_start)
+                      | (blank_inline? Placeable)
+TextElement         ::= text_char+
 Placeable           ::= "{" blank? (SelectExpression | InlineExpression) blank? "}"
 
 /* Rules for validating expressions in Placeables and as selectors of
@@ -58,10 +64,10 @@ AttributeExpression ::= (MessageReference | TermReference) "." Identifier
 VariantExpression   ::= TermReference VariantKey
 
 /* Block Expressions */
-SelectExpression    ::= InlineExpression blank? "->" blank_inline? variant_list
-variant_list        ::= Variant* DefaultVariant Variant* line_end
-Variant             ::= line_end blank? VariantKey blank_inline? Value
-DefaultVariant      ::= line_end blank? "*" VariantKey blank_inline? Value
+SelectExpression    ::= InlineExpression blank? "->" variant_list
+variant_list        ::= blank_block Variant* DefaultVariant Variant*
+Variant             ::= blank? VariantKey Value
+DefaultVariant      ::= blank? "*" VariantKey Value
 VariantKey          ::= "[" blank? (NumberLiteral | VariantName) blank? "]"
 VariantName         ::= word (blank word)*
 
@@ -89,7 +95,7 @@ text_char           ::= blank_inline
                       | (backslash backslash)
                       | (backslash "{")
                       | (regular_char - "{" - backslash)
-text_cont           ::= blank_block blank_inline (text_char - "}" - "[" - "*" - ".")
+text_start          ::= text_char - "}" - "[" - "*" - "."
 quoted_text_char    ::= (text_char - quote)
                       | (backslash quote)
 digit               ::= [0-9]
