@@ -3,8 +3,7 @@
 
 ## Unreleased
 
-  - …
-
+  - Remove support for CR as a line ending. (#154)
 
 ## 0.6.0 (July 24, 2018)
 

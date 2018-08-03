@@ -98,7 +98,6 @@ digit               ::= [0-9]
 inline_space        ::= ("\u0020" | "\u0009")+
 line_end            ::= "\u000D\u000A"
                       | "\u000A"
-                      | "\u000D"
                       | EOF
 blank_line          ::= inline_space? line_end
 break_indent        ::= line_end blank_line* inline_space

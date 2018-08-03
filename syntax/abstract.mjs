@@ -86,20 +86,16 @@ export function into(Type) {
         case FTL.GroupComment:
         case FTL.ResourceComment:
             return content => {
-                if (content.endsWith("\n")) {
-                    if (content.endsWith("\r\n")) {
-                        var offset = -2;
-                    } else {
-                        var offset = -1;
-                    }
-                } else if (content.endsWith("\r")) {
-                    var offset = -1;
-                } else {
+                if (!content.endsWith("\n")) {
                     // The comment ended with the EOF; don't trim it.
                     return always(new Type(content));
                 }
-                // Trim the EOL from the end of the comment.
-                return always(new Type(content.slice(0, offset)));
+                if (content.endsWith("\r\n")) {
+                    // Trim the CRLF from the end of the comment.
+                    return always(new Type(content.slice(0, -2)));
+                }
+                // Trim the LF from the end of the comment.
+                return always(new Type(content.slice(0, -1)));
             };
         case FTL.Placeable:
             return expression => {
