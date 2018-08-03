@@ -28,14 +28,10 @@ let Entry = defer(() =>
         sequence(
             Term,
             line_end).map(element_at(0)),
-        either(
-            ResourceComment,
-            GroupComment,
-            Comment)));
+        CommentLine));
 
 let Message = defer(() =>
     sequence(
-        maybe(Comment).abstract,
         Identifier.abstract,
         maybe(blank_inline),
         string("="),
@@ -53,7 +49,6 @@ let Message = defer(() =>
 
 let Term = defer(() =>
     sequence(
-        maybe(Comment).abstract,
         TermIdentifier.abstract,
         maybe(blank_inline),
         string("="),
@@ -63,47 +58,20 @@ let Term = defer(() =>
     .map(keep_abstract)
     .chain(list_into(FTL.Term)));
 
-let Comment = defer(() =>
-    repeat1(
-        sequence(
-            string("#"),
-            maybe(
-                sequence(
-                    string(" "),
-                    regex(/.*/).abstract)),
-            line_end.abstract))
-    .map(flatten(2))
-    .map(keep_abstract)
-    .map(join)
-    .chain(into(FTL.Comment)));
-
-let GroupComment = defer(() =>
-    repeat1(
-        sequence(
-            string("##"),
-            maybe(
-                sequence(
-                    string(" "),
-                    regex(/.*/).abstract)),
-            line_end.abstract))
-    .map(flatten(2))
-    .map(keep_abstract)
-    .map(join)
-    .chain(into(FTL.GroupComment)));
-
-let ResourceComment = defer(() =>
-    repeat1(
-        sequence(
+let CommentLine = defer(() =>
+    sequence(
+        either(
             string("###"),
-            maybe(
-                sequence(
-                    string(" "),
-                    regex(/.*/).abstract)),
-            line_end.abstract))
-    .map(flatten(2))
+            string("##"),
+            string("#")).abstract,
+        maybe(
+            sequence(
+                string(" "),
+                regex(/.*/).abstract)),
+        line_end)
+    .map(flatten(1))
     .map(keep_abstract)
-    .map(join)
-    .chain(into(FTL.ResourceComment)));
+    .chain(list_into(FTL.BaseComment)));
 
 /* ----------------------------------------------------------------- */
 /* Adjacent junk_lines should be joined into FTL.Junk during the AST
