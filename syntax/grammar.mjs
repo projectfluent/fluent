@@ -15,7 +15,7 @@ let Resource = defer(() =>
     repeat(
         either(
             Entry,
-            line_break,
+            blank_block,
             junk_line))
     .chain(list_into(FTL.Resource)));
 
@@ -479,19 +479,16 @@ let line_end =
         string("\u000A"),
         eof());
 
-let line_break =
-    sequence(
-        maybe(blank_inline),
-        line_end)
-    .map(join);
-
 let blank_block =
-    sequence(
-        line_end,
-        repeat(line_break))
+    repeat1(
+        sequence(
+            maybe(blank_inline),
+            line_end.abstract))
     .map(flatten(1))
-    // Trim any indents. Keep only the newlines.
-    .map(indents => indents.fill("\n").join(""));
+    // Discard the indents and only keep the newlines
+    // for multiline Patterns.
+    .map(keep_abstract)
+    .map(join);
 
 let blank =
     repeat1(

@@ -1,6 +1,6 @@
 
 /* An FTL file defines a Resource. */
-Resource            ::= (Entry | line_break | junk_line)*
+Resource            ::= (Entry | blank_block | junk_line)*
 Entry               ::= (Message line_end)
                       | (Term line_end)
                       | (ResourceComment | GroupComment | Comment)
@@ -99,6 +99,5 @@ blank_inline        ::= ("\u0020" | "\u0009")+
 line_end            ::= "\u000D\u000A"
                       | "\u000A"
                       | EOF
-line_break          ::= blank_inline? line_end
-blank_block         ::= line_end line_break*
+blank_block         ::= (blank_inline? line_end)+
 blank               ::= (blank_inline | line_end)+

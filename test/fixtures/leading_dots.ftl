@@ -35,7 +35,7 @@ key11 =
 key12 =
     .accesskey =
     A
-    
+
 key13 =
     .attribute = .Value
 
