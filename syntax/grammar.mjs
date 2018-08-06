@@ -15,7 +15,7 @@ let Resource = defer(() =>
     repeat(
         either(
             Entry,
-            blank_line,
+            line_break,
             junk_line))
     .chain(list_into(FTL.Resource)));
 
@@ -37,9 +37,9 @@ let Message = defer(() =>
     sequence(
         maybe(Comment).abstract,
         Identifier.abstract,
-        maybe(inline_space),
+        maybe(blank_inline),
         string("="),
-        maybe(inline_space),
+        maybe(blank_inline),
         either(
             sequence(
                 Pattern.abstract,
@@ -55,9 +55,9 @@ let Term = defer(() =>
     sequence(
         maybe(Comment).abstract,
         TermIdentifier.abstract,
-        maybe(inline_space),
+        maybe(blank_inline),
         string("="),
-        maybe(inline_space),
+        maybe(blank_inline),
         Value.abstract,
         repeat(Attribute).abstract)
     .map(keep_abstract)
@@ -120,12 +120,12 @@ let junk_line = defer(() =>
 let Attribute = defer(() =>
     sequence(
         line_end,
-        maybe(any_space),
+        maybe(blank),
         string("."),
         Identifier.abstract,
-        maybe(inline_space),
+        maybe(blank_inline),
         string("="),
-        maybe(inline_space),
+        maybe(blank_inline),
         Pattern.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.Attribute)));
@@ -146,10 +146,10 @@ let Pattern = defer(() =>
 
 let VariantList = defer(() =>
     sequence(
-        maybe(any_space),
+        maybe(blank),
         string("{"),
         variant_list.abstract,
-        maybe(any_space),
+        maybe(blank),
         string("}"))
     .map(keep_abstract)
     .chain(list_into(FTL.VariantList)));
@@ -160,8 +160,8 @@ let PatternElement = defer(() =>
         Placeable,
         sequence(
             // Joined with preceding TextElements during AST construction.
-            break_line.chain(into(FTL.TextElement)).abstract,
-            maybe(inline_space),
+            blank_block.chain(into(FTL.TextElement)).abstract,
+            maybe(blank_inline),
             Placeable.abstract)
         .map(keep_abstract)));
 
@@ -176,12 +176,12 @@ let TextElement = defer(() =>
 let Placeable = defer(() =>
     sequence(
         string("{"),
-        maybe(any_space),
+        maybe(blank),
         either(
             // Order matters!
             SelectExpression,
             InlineExpression),
-        maybe(any_space),
+        maybe(blank),
         string("}"))
     .map(element_at(2))
     .chain(into(FTL.Placeable)));
@@ -239,11 +239,11 @@ let VariableReference = defer(() =>
 let CallExpression = defer(() =>
     sequence(
         Function.abstract,
-        maybe(any_space),
+        maybe(blank),
         string("("),
-        maybe(any_space),
+        maybe(blank),
         argument_list.abstract,
-        maybe(any_space),
+        maybe(blank),
         string(")"))
     .map(keep_abstract)
     .chain(list_into(FTL.CallExpression)));
@@ -253,9 +253,9 @@ let argument_list = defer(() =>
         repeat(
             sequence(
                 Argument.abstract,
-                maybe(any_space),
+                maybe(blank),
                 string(","),
-                maybe(any_space))),
+                maybe(blank))),
         maybe(Argument.abstract))
     .map(flatten(2))
     .map(keep_abstract));
@@ -268,9 +268,9 @@ let Argument = defer(() =>
 let NamedArgument = defer(() =>
     sequence(
         Identifier.abstract,
-        maybe(any_space),
+        maybe(blank),
         string(":"),
-        maybe(any_space),
+        maybe(blank),
         either(
             StringLiteral,
             NumberLiteral).abstract)
@@ -299,9 +299,9 @@ let VariantExpression = defer(() =>
 let SelectExpression = defer(() =>
     sequence(
         InlineExpression.abstract,
-        maybe(inline_space),
+        maybe(blank_inline),
         string("->"),
-        maybe(inline_space),
+        maybe(blank_inline),
         variant_list.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.SelectExpression)));
@@ -318,9 +318,9 @@ let variant_list = defer(() =>
 let Variant = defer(() =>
     sequence(
         line_end,
-        maybe(any_space),
+        maybe(blank),
         VariantKey.abstract,
-        maybe(inline_space),
+        maybe(blank_inline),
         Value.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.Variant)));
@@ -328,10 +328,10 @@ let Variant = defer(() =>
 let DefaultVariant = defer(() =>
     sequence(
         line_end,
-        maybe(any_space),
+        maybe(blank),
         string("*"),
         VariantKey.abstract,
-        maybe(inline_space),
+        maybe(blank_inline),
         Value.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.Variant))
@@ -340,11 +340,11 @@ let DefaultVariant = defer(() =>
 let VariantKey = defer(() =>
     sequence(
         string("["),
-        maybe(any_space),
+        maybe(blank),
         either(
             NumberLiteral,
             VariantName),
-        maybe(any_space),
+        maybe(blank),
         string("]"))
     .map(element_at(2)));
 
@@ -353,7 +353,7 @@ let VariantName = defer(() =>
         word,
         repeat(
             sequence(
-                any_space,
+                blank,
                 word)))
     .map(flatten(2))
     .map(join)
@@ -426,7 +426,7 @@ let regular_char =
 
 let text_char = defer(() =>
     either(
-        inline_space,
+        blank_inline,
         regex(/\\u[0-9a-fA-F]{4}/),
         sequence(
             backslash,
@@ -441,8 +441,8 @@ let text_char = defer(() =>
 
 let text_cont = defer(() =>
     sequence(
-        break_line.abstract,
-        inline_space,
+        blank_block.abstract,
+        blank_inline,
         and(
             not(string(".")),
             not(string("*")),
@@ -465,7 +465,7 @@ let digit = charset("0-9");
 
 /* ---------- */
 /* Whitespace */
-let inline_space =
+let blank_inline =
     repeat1(
         either(
             string("\u0020"),
@@ -479,22 +479,22 @@ let line_end =
         string("\u000A"),
         eof());
 
-let blank_line =
+let line_break =
     sequence(
-        maybe(inline_space),
+        maybe(blank_inline),
         line_end)
     .map(join);
 
-let break_line =
+let blank_block =
     sequence(
         line_end,
-        repeat(blank_line))
+        repeat(line_break))
     .map(flatten(1))
     // Trim any indents. Keep only the newlines.
     .map(indents => indents.fill("\n").join(""));
 
-let any_space =
+let blank =
     repeat1(
         either(
-            inline_space,
+            blank_inline,
             line_end));
