@@ -68,3 +68,28 @@ select-no-indent-multiline = { $selector ->
    *[key] Value
 Continued without indent.
 }
+
+select-flat =
+{
+$selector
+->
+*[
+key
+] Value
+[
+other
+] Other
+}
+
+# Each line ends with 5 spaces.
+select-flat-with-trailing-spaces =
+{     
+$selector     
+->     
+*[     
+key     
+] Value     
+[     
+other     
+] Other     
+}     

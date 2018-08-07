@@ -549,6 +549,135 @@
             "type": "Junk",
             "annotations": [],
             "content": "select-no-indent-multiline = { $selector ->\n   *[key] Value\nContinued without indent.\n}\n"
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "select-flat"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "SelectExpression",
+                            "selector": {
+                                "type": "VariableReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "selector"
+                                }
+                            },
+                            "variants": [
+                                {
+                                    "type": "Variant",
+                                    "key": {
+                                        "type": "VariantName",
+                                        "name": "key"
+                                    },
+                                    "value": {
+                                        "type": "Pattern",
+                                        "elements": [
+                                            {
+                                                "type": "TextElement",
+                                                "value": "Value"
+                                            }
+                                        ]
+                                    },
+                                    "default": true
+                                },
+                                {
+                                    "type": "Variant",
+                                    "key": {
+                                        "type": "VariantName",
+                                        "name": "other"
+                                    },
+                                    "value": {
+                                        "type": "Pattern",
+                                        "elements": [
+                                            {
+                                                "type": "TextElement",
+                                                "value": "Other"
+                                            }
+                                        ]
+                                    },
+                                    "default": false
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "select-flat-with-trailing-spaces"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "SelectExpression",
+                            "selector": {
+                                "type": "VariableReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "selector"
+                                }
+                            },
+                            "variants": [
+                                {
+                                    "type": "Variant",
+                                    "key": {
+                                        "type": "VariantName",
+                                        "name": "key"
+                                    },
+                                    "value": {
+                                        "type": "Pattern",
+                                        "elements": [
+                                            {
+                                                "type": "TextElement",
+                                                "value": "Value"
+                                            }
+                                        ]
+                                    },
+                                    "default": true
+                                },
+                                {
+                                    "type": "Variant",
+                                    "key": {
+                                        "type": "VariantName",
+                                        "name": "other"
+                                    },
+                                    "value": {
+                                        "type": "Pattern",
+                                        "elements": [
+                                            {
+                                                "type": "TextElement",
+                                                "value": "Other"
+                                            }
+                                        ]
+                                    },
+                                    "default": false
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "content": "Each line ends with 5 spaces."
+            }
         }
     ]
 }

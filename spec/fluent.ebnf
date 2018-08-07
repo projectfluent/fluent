@@ -58,7 +58,7 @@ AttributeExpression ::= (MessageReference | TermReference) "." Identifier
 VariantExpression   ::= TermReference VariantKey
 
 /* Block Expressions */
-SelectExpression    ::= InlineExpression blank_inline? "->" blank_inline? variant_list
+SelectExpression    ::= InlineExpression blank? "->" blank_inline? variant_list
 variant_list        ::= Variant* DefaultVariant Variant* line_end
 Variant             ::= line_end blank? VariantKey blank_inline? Value
 DefaultVariant      ::= line_end blank? "*" VariantKey blank_inline? Value

@@ -299,7 +299,7 @@ let VariantExpression = defer(() =>
 let SelectExpression = defer(() =>
     sequence(
         InlineExpression.abstract,
-        maybe(blank_inline),
+        maybe(blank),
         string("->"),
         maybe(blank_inline),
         variant_list.abstract)
