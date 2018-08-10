@@ -465,7 +465,8 @@ let inline_space =
 
 let line_end =
     either(
-        string("\u000D\u000A"),
+        // Normalize CRLF to LF.
+        string("\u000D\u000A").map(() => "\n"),
         string("\u000A"),
         eof());
 
