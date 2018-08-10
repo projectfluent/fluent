@@ -30,8 +30,6 @@ empty-multiline-call = {FUN(
     )}
 
 
-## Syntax errors for multiline call expressions
-
 unindented-arg-number = {FUN(
 1)}
 
@@ -94,8 +92,6 @@ sparse-named-arg = {FUN(
         3
     )}
 
-
-## Syntax errors for named arguments
 
 unindented-colon = {FUN(
         x

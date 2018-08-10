@@ -1,11 +1,11 @@
 
 /* An FTL file defines a Resource. */
-Resource            ::= (Entry | blank_line | junk_line)*
+Resource            ::= (Entry | blank_block | junk_line)*
 Entry               ::= (Message line_end)
                       | (Term line_end)
                       | (ResourceComment | GroupComment | Comment)
-Message             ::= Comment? Identifier inline_space? "=" inline_space? ((Pattern Attribute*) | (Attribute+))
-Term                ::= Comment? TermIdentifier inline_space? "=" inline_space? Value Attribute*
+Message             ::= Comment? Identifier blank_inline? "=" blank_inline? ((Pattern Attribute*) | (Attribute+))
+Term                ::= Comment? TermIdentifier blank_inline? "=" blank_inline? Value Attribute*
 Comment             ::= ("#" ("\u0020" /.*/)? line_end)+
 GroupComment        ::= ("##" ("\u0020" /.*/)? line_end)+
 ResourceComment     ::= ("###" ("\u0020" /.*/)? line_end)+
@@ -15,18 +15,18 @@ ResourceComment     ::= ("###" ("\u0020" /.*/)? line_end)+
 junk_line           ::= /.*/ line_end
 
 /* Attributes of Messages and Terms. */
-Attribute           ::= break_indent "." Identifier inline_space? "=" inline_space? Pattern
+Attribute           ::= line_end blank? "." Identifier blank_inline? "=" blank_inline? Pattern
 
 /* Value types: Pattern and VariantList. */
 Value               ::= Pattern
                       | VariantList
 Pattern             ::= PatternElement+
-VariantList         ::= space_indent? "{" variant_list "}"
+VariantList         ::= blank? "{" variant_list blank? "}"
 PatternElement      ::= TextElement
                       | Placeable
-                      | (break_indent Placeable)
+                      | (blank_block blank_inline? Placeable)
 TextElement         ::= (text_char | text_cont)+
-Placeable           ::= "{" inline_space? (SelectExpression | InlineExpression) inline_space? "}"
+Placeable           ::= "{" blank? (SelectExpression | InlineExpression) blank? "}"
 
 /* Rules for validating expressions in Placeables and as selectors of
  * SelectExpressions are documented in spec/valid.md and enforced in
@@ -49,21 +49,21 @@ NumberLiteral       ::= "-"? digit+ ("." digit+)?
 MessageReference    ::= Identifier
 TermReference       ::= TermIdentifier
 VariableReference   ::= VariableIdentifier
-CallExpression      ::= Function "(" space_indent? argument_list space_indent? ")"
-argument_list       ::= (Argument space_indent? "," space_indent?)* Argument?
+CallExpression      ::= Function blank? "(" blank? argument_list blank? ")"
+argument_list       ::= (Argument blank? "," blank?)* Argument?
 Argument            ::= NamedArgument
                       | InlineExpression
-NamedArgument       ::= Identifier space_indent? ":" space_indent? (StringLiteral | NumberLiteral)
+NamedArgument       ::= Identifier blank? ":" blank? (StringLiteral | NumberLiteral)
 AttributeExpression ::= (MessageReference | TermReference) "." Identifier
 VariantExpression   ::= TermReference VariantKey
 
 /* Block Expressions */
-SelectExpression    ::= InlineExpression inline_space? "->" variant_list
-variant_list        ::= inline_space? Variant* DefaultVariant Variant* break_indent
-Variant             ::= break_indent VariantKey inline_space? Value
-DefaultVariant      ::= break_indent "*" VariantKey inline_space? Value
-VariantKey          ::= "[" inline_space? (NumberLiteral | VariantName) inline_space? "]"
-VariantName         ::= word (inline_space word)*
+SelectExpression    ::= InlineExpression blank? "->" blank_inline? variant_list
+variant_list        ::= Variant* DefaultVariant Variant* line_end
+Variant             ::= line_end blank? VariantKey blank_inline? Value
+DefaultVariant      ::= line_end blank? "*" VariantKey blank_inline? Value
+VariantKey          ::= "[" blank? (NumberLiteral | VariantName) blank? "]"
+VariantName         ::= word (blank word)*
 
 /* Identifiers */
 Identifier          ::= identifier
@@ -73,7 +73,7 @@ Function            ::= [A-Z] [A-Z_?-]*
 
 /* Tokens */
 identifier          ::= [a-zA-Z] [a-zA-Z0-9_-]*
-word                ::= (regular_char - backslash - "}" - "{" - "]" - "[")+
+word                ::= (regular_char - backslash - "}" - "{" - "]" - "[" - "=")+
 
 /* Characters */
 backslash           ::= "\\"
@@ -84,21 +84,20 @@ quote               ::= "\""
  * TODO Add characters from other planes: U+10000 to U+10FFFF.
  */
 regular_char        ::= [!-\uD7FF\uE000-\uFFFD]
-text_char           ::= inline_space
+text_char           ::= blank_inline
                       | /\\u[0-9a-fA-F]{4}/
                       | (backslash backslash)
                       | (backslash "{")
                       | (regular_char - "{" - backslash)
-text_cont           ::= break_indent (text_char - "}" - "[" - "*" - ".")
+text_cont           ::= blank_block blank_inline (text_char - "}" - "[" - "*" - ".")
 quoted_text_char    ::= (text_char - quote)
                       | (backslash quote)
 digit               ::= [0-9]
 
 /* Whitespace */
-inline_space        ::= ("\u0020" | "\u0009")+
+blank_inline        ::= ("\u0020" | "\u0009")+
 line_end            ::= "\u000D\u000A"
                       | "\u000A"
                       | EOF
-blank_line          ::= inline_space? line_end
-break_indent        ::= line_end blank_line* inline_space
-space_indent        ::= inline_space? break_indent?
+blank_block         ::= (blank_inline? line_end)+
+blank               ::= (blank_inline | line_end)+

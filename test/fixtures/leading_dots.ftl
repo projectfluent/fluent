@@ -35,7 +35,7 @@ key11 =
 key12 =
     .accesskey =
     A
-    
+
 key13 =
     .attribute = .Value
 
@@ -63,3 +63,14 @@ key17 =
        *[one] Value
            .Continued
     }
+
+# JUNK (attr .Value must have a value)
+key18 =
+.Value
+
+key19 =
+.attribute = Value
+    Continued
+
+key20 =
+{"."}Value

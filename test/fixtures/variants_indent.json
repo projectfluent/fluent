@@ -1,0 +1,146 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Term",
+            "id": {
+                "type": "Identifier",
+                "name": "-variants-1tbs"
+            },
+            "value": {
+                "type": "VariantList",
+                "variants": [
+                    {
+                        "type": "Variant",
+                        "key": {
+                            "type": "VariantName",
+                            "name": "key"
+                        },
+                        "value": {
+                            "type": "Pattern",
+                            "elements": [
+                                {
+                                    "type": "TextElement",
+                                    "value": "Value"
+                                }
+                            ]
+                        },
+                        "default": true
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Term",
+            "id": {
+                "type": "Identifier",
+                "name": "-variants-allman"
+            },
+            "value": {
+                "type": "VariantList",
+                "variants": [
+                    {
+                        "type": "Variant",
+                        "key": {
+                            "type": "VariantName",
+                            "name": "key"
+                        },
+                        "value": {
+                            "type": "Pattern",
+                            "elements": [
+                                {
+                                    "type": "TextElement",
+                                    "value": "Value"
+                                }
+                            ]
+                        },
+                        "default": true
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Term",
+            "id": {
+                "type": "Identifier",
+                "name": "-variants-gnu"
+            },
+            "value": {
+                "type": "VariantList",
+                "variants": [
+                    {
+                        "type": "Variant",
+                        "key": {
+                            "type": "VariantName",
+                            "name": "key"
+                        },
+                        "value": {
+                            "type": "Pattern",
+                            "elements": [
+                                {
+                                    "type": "TextElement",
+                                    "value": "Value"
+                                }
+                            ]
+                        },
+                        "default": true
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Term",
+            "id": {
+                "type": "Identifier",
+                "name": "-variants-no-indent"
+            },
+            "value": {
+                "type": "VariantList",
+                "variants": [
+                    {
+                        "type": "Variant",
+                        "key": {
+                            "type": "VariantName",
+                            "name": "key"
+                        },
+                        "value": {
+                            "type": "Pattern",
+                            "elements": [
+                                {
+                                    "type": "TextElement",
+                                    "value": "Value"
+                                }
+                            ]
+                        },
+                        "default": true
+                    },
+                    {
+                        "type": "Variant",
+                        "key": {
+                            "type": "VariantName",
+                            "name": "other"
+                        },
+                        "value": {
+                            "type": "Pattern",
+                            "elements": [
+                                {
+                                    "type": "TextElement",
+                                    "value": "Other"
+                                }
+                            ]
+                        },
+                        "default": false
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        }
+    ]
+}

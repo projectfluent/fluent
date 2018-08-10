@@ -92,6 +92,45 @@
             "type": "Junk",
             "annotations": [],
             "content": "    .attr = Dangling attribute\n"
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key03"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value 03"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "content": "There are 5 spaces on the line between key03 and key04."
+            }
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key04"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value 04"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
         }
     ]
 }

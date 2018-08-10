@@ -17,3 +17,8 @@ key02 = Value
 
 # Standalone Comment
     .attr = Dangling attribute
+
+# There are 5 spaces on the line between key03 and key04.
+key03 = Value 03
+     
+key04 = Value 04
