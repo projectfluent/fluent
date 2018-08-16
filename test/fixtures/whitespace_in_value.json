@@ -19,7 +19,7 @@
             "attributes": [],
             "comment": {
                 "type": "Comment",
-                "content": "Caution, lines 4 and 6 contain white-space-only lines"
+                "content": "Caution, lines 6 and 7 contain white-space-only lines"
             }
         }
     ]
