@@ -12,7 +12,7 @@
                 "elements": [
                     {
                         "type": "TextElement",
-                        "value": "first line\n\n\n\nlast line"
+                        "value": "first line\n\n\n\n\n\n\nlast line"
                     }
                 ]
             },
