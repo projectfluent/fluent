@@ -467,9 +467,7 @@ let digit = charset("0-9");
 /* Whitespace */
 let blank_inline =
     repeat1(
-        either(
-            string("\u0020"),
-            string("\u0009")))
+        string("\u0020"))
     .map(join);
 
 let line_end =

@@ -95,7 +95,7 @@ quoted_text_char    ::= (text_char - quote)
 digit               ::= [0-9]
 
 /* Whitespace */
-blank_inline        ::= ("\u0020" | "\u0009")+
+blank_inline        ::= "\u0020"+
 line_end            ::= "\u000D\u000A"
                       | "\u000A"
                       | EOF

@@ -1,0 +1,58 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Comment",
+            "content": "Error (tab after =)"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "key01 =\tValue 01\n"
+        },
+        {
+            "type": "Comment",
+            "content": "Error (tab before =)"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "key02\t= Value 02\n"
+        },
+        {
+            "type": "Comment",
+            "content": "Error (tab is not a valid indent)"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "key03 =\n\tThis line isn't properly indented.\n"
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key04"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "This line is indented by 4 spaces,"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "content": "Error (tab is not a valid indent)"
+            }
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "\twhereas this line by 1 tab.\n"
+        }
+    ]
+}
