@@ -427,6 +427,7 @@ let regular_char =
 let text_char = defer(() =>
     either(
         blank_inline,
+        string("\u0009"),
         regex(/\\u[0-9a-fA-F]{4}/),
         sequence(
             backslash,

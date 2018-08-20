@@ -85,6 +85,7 @@ quote               ::= "\""
  */
 regular_char        ::= [!-\uD7FF\uE000-\uFFFD]
 text_char           ::= blank_inline
+                      | "\u0009"
                       | /\\u[0-9a-fA-F]{4}/
                       | (backslash backslash)
                       | (backslash "{")

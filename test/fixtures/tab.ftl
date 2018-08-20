@@ -1,4 +1,4 @@
-# Error (tab after =)
+# OK (tab after = is part of the value)
 key01 =	Value 01
 
 # Error (tab before =)

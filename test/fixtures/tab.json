@@ -2,13 +2,25 @@
     "type": "Resource",
     "body": [
         {
-            "type": "Comment",
-            "content": "Error (tab after =)"
-        },
-        {
-            "type": "Junk",
-            "annotations": [],
-            "content": "key01 =\tValue 01\n"
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key01"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "\tValue 01"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "content": "OK (tab after = is part of the value)"
+            }
         },
         {
             "type": "Comment",
@@ -46,7 +58,7 @@
             "attributes": [],
             "comment": {
                 "type": "Comment",
-                "content": "Error (tab is not a valid indent)"
+                "content": "Partial Error (tab is not a valid indent)"
             }
         },
         {
