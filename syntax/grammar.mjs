@@ -427,6 +427,7 @@ let regular_char =
 let text_char = defer(() =>
     either(
         blank_inline,
+        string("\u0009"),
         regex(/\\u[0-9a-fA-F]{4}/),
         sequence(
             backslash,
@@ -467,9 +468,7 @@ let digit = charset("0-9");
 /* Whitespace */
 let blank_inline =
     repeat1(
-        either(
-            string("\u0020"),
-            string("\u0009")))
+        string("\u0020"))
     .map(join);
 
 let line_end =

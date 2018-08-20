@@ -138,13 +138,18 @@ function join_of_type(Type, ...elements) {
     }
 }
 
+const LEADING_BLANK = /^[ \n\r]*/;
+const TRAILING_BLANK = /[ \n\r]*$/;
+
 function trim_text_at_extremes(element, index, array) {
     if (element instanceof FTL.TextElement) {
         if (index === 0) {
-            element.value = element.value.trimLeft();
+            element.value = element.value.replace(
+                LEADING_BLANK, "");
         }
         if (index === array.length - 1) {
-            element.value = element.value.trimRight();
+            element.value = element.value.replace(
+                TRAILING_BLANK, "");
         }
     }
     return element;

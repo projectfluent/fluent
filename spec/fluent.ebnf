@@ -85,6 +85,7 @@ quote               ::= "\""
  */
 regular_char        ::= [!-\uD7FF\uE000-\uFFFD]
 text_char           ::= blank_inline
+                      | "\u0009"
                       | /\\u[0-9a-fA-F]{4}/
                       | (backslash backslash)
                       | (backslash "{")
@@ -95,7 +96,7 @@ quoted_text_char    ::= (text_char - quote)
 digit               ::= [0-9]
 
 /* Whitespace */
-blank_inline        ::= ("\u0020" | "\u0009")+
+blank_inline        ::= "\u0020"+
 line_end            ::= "\u000D\u000A"
                       | "\u000A"
                       | EOF
