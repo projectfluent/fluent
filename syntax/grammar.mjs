@@ -143,12 +143,13 @@ let PatternElement = defer(() =>
         .map(keep_abstract)));
 
 let TextElement = defer(() =>
-    repeat1(
-        either(
-            text_char,
-            text_cont))
-    .map(join)
-    .chain(into(FTL.TextElement)));
+    either(
+        repeat1(text_char)
+        .map(join)
+        .chain(into(FTL.TextElement))
+        ,
+        text_cont
+    ));
 
 let Placeable = defer(() =>
     sequence(
@@ -426,9 +427,12 @@ let text_cont = defer(() =>
             not(string("*")),
             not(string("[")),
             not(string("}")),
-            text_char).abstract)
+            text_char).abstract,
+        repeat(text_char).abstract)
     .map(keep_abstract)
-    .map(join));
+    .map(flatten(1))
+    .map(join)
+    .chain(into(FTL.TextElement)));
 
 let quoted_text_char =
     either(
