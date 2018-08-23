@@ -10,6 +10,19 @@ import {always, never} from "../lib/combinators.mjs";
 
 export function list_into(Type) {
     switch (Type) {
+        case FTL.Comment:
+            return ([sigil, content = ""]) => {
+                switch (sigil) {
+                    case "#":
+                        return always(new FTL.Comment(content));
+                    case "##":
+                        return always(new FTL.GroupComment(content));
+                    case "###":
+                        return always(new FTL.ResourceComment(content));
+                    default:
+                        return never(`Unknown comment sigil: ${sigil}`);
+                }
+            };
         case FTL.CallExpression:
             return ([callee, args]) => {
                 let positional_args = [];
@@ -32,9 +45,6 @@ export function list_into(Type) {
                 let named_args = Array.from(named_map.values());
                 return always(new Type(callee, positional_args, named_args));
             };
-        case FTL.Message:
-            return ([comment, ...args]) =>
-                always(new Type(...args, comment));
         case FTL.Pattern:
             return elements =>
                 always(new FTL.Pattern(
@@ -46,7 +56,12 @@ export function list_into(Type) {
             return entries =>
                 always(new FTL.Resource(
                     entries
-                        .reduce(join_adjacent(FTL.Junk), [])
+                        .reduce(join_adjacent(
+                            FTL.Junk,
+                            FTL.Comment,
+                            FTL.GroupComment,
+                            FTL.ResourceComment), [])
+                        .reduce(attach_comments, [])
                         .filter(remove_blank_lines)));
         case FTL.SelectExpression:
             return ([selector, variants]) => {
@@ -68,9 +83,6 @@ export function list_into(Type) {
                 }
                 return always(new Type(selector, variants));
             };
-        case FTL.Term:
-            return ([comment, ...args]) =>
-                always(new Type(...args, comment));
         case FTL.VariantList:
             return ([variants]) =>
                 always(new Type(variants));
@@ -82,21 +94,6 @@ export function list_into(Type) {
 
 export function into(Type) {
     switch (Type) {
-        case FTL.Comment:
-        case FTL.GroupComment:
-        case FTL.ResourceComment:
-            return content => {
-                if (!content.endsWith("\n")) {
-                    // The comment ended with the EOF; don't trim it.
-                    return always(new Type(content));
-                }
-                if (content.endsWith("\r\n")) {
-                    // Trim the CRLF from the end of the comment.
-                    return always(new Type(content.slice(0, -2)));
-                }
-                // Trim the LF from the end of the comment.
-                return always(new Type(content.slice(0, -1)));
-            };
         case FTL.Placeable:
             return expression => {
                 let invalid_expression_found =
@@ -114,15 +111,16 @@ export function into(Type) {
     }
 }
 
-function join_adjacent(Type) {
+function join_adjacent(...types) {
     return function(acc, cur) {
         let prev = acc[acc.length - 1];
-        if (prev instanceof Type && cur instanceof Type) {
-            join_of_type(Type, prev, cur);
-            return acc;
-        } else {
-            return acc.concat(cur);
+        for (let Type of types) {
+            if (prev instanceof Type && cur instanceof Type) {
+                join_of_type(Type, prev, cur);
+                return acc;
+            }
         }
+        return acc.concat(cur);
     };
 }
 
@@ -132,9 +130,27 @@ function join_of_type(Type, ...elements) {
         case FTL.TextElement:
             return elements.reduce((a, b) =>
                 (a.value += b.value, a));
+        case FTL.Comment:
+        case FTL.GroupComment:
+        case FTL.ResourceComment:
+            return elements.reduce((a, b) =>
+                (a.content += `\n${b.content}`, a));
         case FTL.Junk:
             return elements.reduce((a, b) =>
                 (a.content += b.content, a));
+    }
+}
+
+function attach_comments(acc, cur) {
+    let prev = acc[acc.length - 1];
+    if (prev instanceof FTL.Comment
+        && (cur instanceof FTL.Message
+            || cur instanceof FTL.Term)) {
+        cur.comment = prev;
+        acc[acc.length - 1] = cur;
+        return acc;
+    } else {
+        return acc.concat(cur);
     }
 }
 

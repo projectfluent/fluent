@@ -8,8 +8,8 @@ import {
     element_at, flatten, join, keep_abstract, mutate, print
 } from "../lib/mappers.mjs";
 
-/* ------------------------------- */
-/* An FTL file defines a Resource. */
+/* ----------------------------------------------------- */
+/* An FTL file defines a Resource consisting of Entries. */
 export
 let Resource = defer(() =>
     repeat(
@@ -19,6 +19,13 @@ let Resource = defer(() =>
             junk_line))
     .chain(list_into(FTL.Resource)));
 
+/* ------------------------------------------------------------------------- */
+/* Entries are the main building blocks of Fluent. They define translations and
+ * contextual and semantic information about the translations. During the AST
+ * construction, adjacent comment lines of the same comment type (defined by
+ * the number of #) are joined together. Single-# comments directly preceding
+ * Messages and Terms are attached to the Message or Term and are not
+ * standalone Entries. */
 export
 let Entry = defer(() =>
     either(
@@ -28,14 +35,10 @@ let Entry = defer(() =>
         sequence(
             Term,
             line_end).map(element_at(0)),
-        either(
-            ResourceComment,
-            GroupComment,
-            Comment)));
+        CommentLine));
 
 let Message = defer(() =>
     sequence(
-        maybe(Comment).abstract,
         Identifier.abstract,
         maybe(blank_inline),
         string("="),
@@ -53,7 +56,6 @@ let Message = defer(() =>
 
 let Term = defer(() =>
     sequence(
-        maybe(Comment).abstract,
         TermIdentifier.abstract,
         maybe(blank_inline),
         string("="),
@@ -63,51 +65,26 @@ let Term = defer(() =>
     .map(keep_abstract)
     .chain(list_into(FTL.Term)));
 
-let Comment = defer(() =>
-    repeat1(
-        sequence(
-            string("#"),
-            maybe(
-                sequence(
-                    string(" "),
-                    regex(/.*/).abstract)),
-            line_end.abstract))
-    .map(flatten(2))
-    .map(keep_abstract)
-    .map(join)
-    .chain(into(FTL.Comment)));
-
-let GroupComment = defer(() =>
-    repeat1(
-        sequence(
-            string("##"),
-            maybe(
-                sequence(
-                    string(" "),
-                    regex(/.*/).abstract)),
-            line_end.abstract))
-    .map(flatten(2))
-    .map(keep_abstract)
-    .map(join)
-    .chain(into(FTL.GroupComment)));
-
-let ResourceComment = defer(() =>
-    repeat1(
-        sequence(
+/* -------------------------------------------------------------------------- */
+/* Adjacent comment lines of the same comment type are joined together during
+ * the AST construction. */
+let CommentLine = defer(() =>
+    sequence(
+        either(
             string("###"),
-            maybe(
-                sequence(
-                    string(" "),
-                    regex(/.*/).abstract)),
-            line_end.abstract))
-    .map(flatten(2))
+            string("##"),
+            string("#")).abstract,
+        maybe(
+            sequence(
+                string(" "),
+                regex(/.*/).abstract)),
+        line_end)
+    .map(flatten(1))
     .map(keep_abstract)
-    .map(join)
-    .chain(into(FTL.ResourceComment)));
+    .chain(list_into(FTL.Comment)));
 
-/* ----------------------------------------------------------------- */
-/* Adjacent junk_lines should be joined into FTL.Junk during the AST
-   construction. */
+/* ------------------------------------------------------------------------- */
+/* Adjacent junk_lines are joined into FTL.Junk during the AST construction. */
 let junk_line = defer(() =>
     sequence(
         regex(/.*/),
