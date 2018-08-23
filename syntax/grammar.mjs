@@ -134,22 +134,29 @@ let VariantList = defer(() =>
 let PatternElement = defer(() =>
     either(
         TextElement,
+        block_text,
         Placeable,
-        sequence(
-            // Joined with preceding TextElements during AST construction.
-            blank_block.chain(into(FTL.TextElement)).abstract,
-            maybe(blank_inline),
-            Placeable.abstract)
-        .map(keep_abstract)));
+        block_placeable));
 
+/* ----------------------------------------------------------------- */
+/* TextElement and Placeable can occur inline or as block.           *
+ * Text needs to be indented and start with a non-special character. *
+ * Placeables can start at the beginning of the line or be indented. */
 let TextElement = defer(() =>
-    either(
-        repeat1(text_char)
-        .map(join)
-        .chain(into(FTL.TextElement))
-        ,
-        text_cont
-    ));
+    repeat1(text_char)
+    .map(join)
+    .chain(into(FTL.TextElement)));
+
+let block_text = defer(() =>
+    sequence(
+        blank_block.abstract,
+        blank_inline,
+        indented_char.abstract,
+        repeat(text_char).abstract)
+    .map(keep_abstract)
+    .map(flatten(1))
+    .map(join)
+.chain(into(FTL.TextElement)));
 
 let Placeable = defer(() =>
     sequence(
@@ -163,6 +170,14 @@ let Placeable = defer(() =>
         string("}"))
     .map(element_at(2))
     .chain(into(FTL.Placeable)));
+
+let block_placeable = defer(() =>
+    sequence(
+        // Joined with preceding TextElements during AST construction.
+        blank_block.chain(into(FTL.TextElement)).abstract,
+        maybe(blank_inline),
+        Placeable.abstract)
+        .map(keep_abstract));
 
 /* ------------------------------------------------------------------- */
 /* Rules for validating expressions in Placeables and as selectors of
@@ -418,21 +433,13 @@ let text_char = defer(() =>
             not(string("{")),
             regular_char)));
 
-let text_cont = defer(() =>
-    sequence(
-        blank_block.abstract,
-        blank_inline,
-        and(
-            not(string(".")),
-            not(string("*")),
-            not(string("[")),
-            not(string("}")),
-            text_char).abstract,
-        repeat(text_char).abstract)
-    .map(keep_abstract)
-    .map(flatten(1))
-    .map(join)
-    .chain(into(FTL.TextElement)));
+let indented_char = defer(() =>
+    and(
+        not(string(".")),
+        not(string("*")),
+        not(string("[")),
+        not(string("}")),
+        text_char));
 
 let quoted_text_char =
     either(
