@@ -10,7 +10,7 @@ import {always, never} from "../lib/combinators.mjs";
 
 export function list_into(Type) {
     switch (Type) {
-        case FTL.BaseComment:
+        case FTL.Comment:
             return ([sigil, content = ""]) => {
                 switch (sigil) {
                     case "#":

@@ -8,8 +8,8 @@ import {
     element_at, flatten, join, keep_abstract, mutate, print
 } from "../lib/mappers.mjs";
 
-/* ------------------------------- */
-/* An FTL file defines a Resource. */
+/* ----------------------------------------------------- */
+/* An FTL file defines a Resource consisting of Entries. */
 export
 let Resource = defer(() =>
     repeat(
@@ -19,6 +19,13 @@ let Resource = defer(() =>
             junk_line))
     .chain(list_into(FTL.Resource)));
 
+/* ------------------------------------------------------------------------- */
+/* Entries are the main building blocks of Fluent. They define translations and
+ * contextual and semantic information about the translations. During the AST
+ * construction, adjacent comment lines of the same comment type (defined by
+ * the number of #) are joined together. Single-# comments directly preceding
+ * Messages and Terms are attached to the Message or Term and are not
+ * standalone Entries. */
 export
 let Entry = defer(() =>
     either(
@@ -58,6 +65,9 @@ let Term = defer(() =>
     .map(keep_abstract)
     .chain(list_into(FTL.Term)));
 
+/* -------------------------------------------------------------------------- */
+/* Adjacent comment lines of the same comment type are joined together during
+ * the AST construction. */
 let CommentLine = defer(() =>
     sequence(
         either(
@@ -71,11 +81,10 @@ let CommentLine = defer(() =>
         line_end)
     .map(flatten(1))
     .map(keep_abstract)
-    .chain(list_into(FTL.BaseComment)));
+    .chain(list_into(FTL.Comment)));
 
-/* ----------------------------------------------------------------- */
-/* Adjacent junk_lines should be joined into FTL.Junk during the AST
-   construction. */
+/* ------------------------------------------------------------------------- */
+/* Adjacent junk_lines are joined into FTL.Junk during the AST construction. */
 let junk_line = defer(() =>
     sequence(
         regex(/.*/),

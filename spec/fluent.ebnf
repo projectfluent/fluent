@@ -1,15 +1,24 @@
 
-/* An FTL file defines a Resource. */
+/* An FTL file defines a Resource consisting of Entries. */
 Resource            ::= (Entry | blank_block | junk_line)*
+
+/* Entries are the main building blocks of Fluent. They define translations and
+ * contextual and semantic information about the translations. During the AST
+ * construction, adjacent comment lines of the same comment type (defined by
+ * the number of #) are joined together. Single-# comments directly preceding
+ * Messages and Terms are attached to the Message or Term and are not
+ * standalone Entries. */
 Entry               ::= (Message line_end)
                       | (Term line_end)
                       | CommentLine
 Message             ::= Identifier blank_inline? "=" blank_inline? ((Pattern Attribute*) | (Attribute+))
 Term                ::= TermIdentifier blank_inline? "=" blank_inline? Value Attribute*
+
+/* Adjacent comment lines of the same comment type are joined together during
+ * the AST construction. */
 CommentLine         ::= ("###" | "##" | "#") ("\u0020" /.*/)? line_end
 
-/* Adjacent junk_lines should be joined into FTL.Junk during the AST
-   construction. */
+/* Adjacent junk_lines are joined into FTL.Junk during the AST construction. */
 junk_line           ::= /.*/ line_end
 
 /* Attributes of Messages and Terms. */
