@@ -133,32 +133,32 @@ let VariantList = defer(() =>
 
 let PatternElement = defer(() =>
     either(
-        TextElement,
+        inline_text
+        .chain(into(FTL.TextElement)),
         block_text,
-        Placeable,
+        inline_placeable,
         block_placeable));
 
 /* ----------------------------------------------------------------- */
-/* TextElement and Placeable can occur inline or as block.           *
- * Text needs to be indented and start with a non-special character. *
+/* TextElement and Placeable can occur inline or as block.
+ * Text needs to be indented and start with a non-special character.
  * Placeables can start at the beginning of the line or be indented. */
-let TextElement = defer(() =>
+let inline_text = defer(() =>
     repeat1(text_char)
-    .map(join)
-    .chain(into(FTL.TextElement)));
+    .map(join));
 
 let block_text = defer(() =>
     sequence(
         blank_block.abstract,
         blank_inline,
         indented_char.abstract,
-        repeat(text_char).abstract)
+        maybe(inline_text).abstract)
     .map(keep_abstract)
     .map(flatten(1))
     .map(join)
 .chain(into(FTL.TextElement)));
 
-let Placeable = defer(() =>
+let inline_placeable = defer(() =>
     sequence(
         string("{"),
         maybe(blank),
@@ -176,8 +176,8 @@ let block_placeable = defer(() =>
         // Joined with preceding TextElements during AST construction.
         blank_block.chain(into(FTL.TextElement)).abstract,
         maybe(blank_inline),
-        Placeable.abstract)
-        .map(keep_abstract));
+        inline_placeable.abstract)
+    .map(keep_abstract));
 
 /* ------------------------------------------------------------------- */
 /* Rules for validating expressions in Placeables and as selectors of
@@ -193,7 +193,7 @@ let InlineExpression = defer(() =>
         VariantExpression,
         MessageReference,
         TermReference,
-        Placeable));
+        inline_placeable));
 
 /* -------- */
 /* Literals */

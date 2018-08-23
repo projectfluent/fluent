@@ -29,18 +29,18 @@ Value               ::= Pattern
                       | VariantList
 Pattern             ::= PatternElement+
 VariantList         ::= blank? "{" variant_list blank? "}"
-PatternElement      ::= TextElement
+PatternElement      ::= inline_text
                       | block_text
-                      | Placeable
+                      | inline_placeable
                       | block_placeable
 
-/* TextElement and Placeable can occur inline or as block.           *
- * Text needs to be indented and start with a non-special character. *
+/* TextElement and Placeable can occur inline or as block.
+ * Text needs to be indented and start with a non-special character.
  * Placeables can start at the beginning of the line or be indented. */
-TextElement         ::= text_char+
-block_text          ::= blank_block blank_inline indented_char text_char*
-Placeable           ::= "{" blank? (SelectExpression | InlineExpression) blank? "}"
-block_placeable     ::= blank_block blank_inline? Placeable
+inline_text         ::= text_char+
+block_text          ::= blank_block blank_inline indented_char inline_text?
+inline_placeable    ::= "{" blank? (SelectExpression | InlineExpression) blank? "}"
+block_placeable     ::= blank_block blank_inline? inline_placeable
 
 /* Rules for validating expressions in Placeables and as selectors of
  * SelectExpressions are documented in spec/valid.md and enforced in
@@ -53,7 +53,7 @@ InlineExpression    ::= StringLiteral
                       | VariantExpression
                       | MessageReference
                       | TermReference
-                      | Placeable
+                      | inline_placeable
 
 /* Literals */
 StringLiteral       ::= quote quoted_text_char* quote
