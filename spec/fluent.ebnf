@@ -29,14 +29,15 @@ Value               ::= Pattern
                       | VariantList
 Pattern             ::= PatternElement+
 VariantList         ::= blank? "{" variant_list blank? "}"
+
+/* TextElement and Placeable can occur inline or as block.
+ * Text needs to be indented and start with a non-special character.
+ * Placeables can start at the beginning of the line or be indented.
+ * Adjacent TextElements are joined in AST creation. */
 PatternElement      ::= inline_text
                       | block_text
                       | inline_placeable
                       | block_placeable
-
-/* TextElement and Placeable can occur inline or as block.
- * Text needs to be indented and start with a non-special character.
- * Placeables can start at the beginning of the line or be indented. */
 inline_text         ::= text_char+
 block_text          ::= blank_block blank_inline indented_char inline_text?
 inline_placeable    ::= "{" blank? (SelectExpression | InlineExpression) blank? "}"
