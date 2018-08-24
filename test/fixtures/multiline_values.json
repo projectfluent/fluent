@@ -102,7 +102,7 @@
                 "elements": [
                     {
                         "type": "TextElement",
-                        "value": "A multiline value with non-standard\n\nindentation."
+                        "value": "A multiline value with non-standard\n\n    indentation."
                     }
                 ]
             },

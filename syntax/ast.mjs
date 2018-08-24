@@ -70,6 +70,11 @@ export class TextElement extends PatternElement {
     }
 }
 
+// Spaces indenting block text and block placeables.
+// The actual value gets dedented in abstract.mjs.
+export class Indent extends TextElement {
+}
+
 export class Placeable extends PatternElement {
     constructor(expression) {
         super();

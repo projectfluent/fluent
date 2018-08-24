@@ -152,7 +152,7 @@ let inline_text = defer(() =>
 let block_text = defer(() =>
     sequence(
         blank_block.chain(into(FTL.TextElement)).abstract,
-        blank_inline,
+        blank_inline.chain(into(FTL.Indent)).abstract,
         indented_char.chain(into(FTL.TextElement)).abstract,
         maybe(inline_text.abstract)
     )
@@ -174,7 +174,7 @@ let inline_placeable = defer(() =>
 let block_placeable = defer(() =>
     sequence(
         blank_block.chain(into(FTL.TextElement)).abstract,
-        maybe(blank_inline),
+        maybe(blank_inline.chain(into(FTL.Indent)).abstract),
         inline_placeable.abstract)
     .map(keep_abstract));
 

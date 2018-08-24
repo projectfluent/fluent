@@ -48,7 +48,7 @@ export function list_into(Type) {
         case FTL.Pattern:
             return elements =>
                 always(new FTL.Pattern(
-                    elements
+                    dedent_whitespace(elements)
                         .reduce(join_adjacent(FTL.TextElement), [])
                         .map(trim_text_at_extremes)
                         .filter(remove_empty_text)));
@@ -156,6 +156,15 @@ function attach_comments(acc, cur) {
 
 const LEADING_BLANK = /^[ \n\r]*/;
 const TRAILING_BLANK = /[ \n\r]*$/;
+
+function dedent_whitespace(array) {
+    const indents = array.filter(element => element instanceof FTL.Indent);
+    const lead = Math.min(...indents.map(indent => indent.value.length));
+    indents.forEach(function(indent) {
+        indent.value = indent.value.substr(lead);
+    });
+    return array;
+}
 
 function trim_text_at_extremes(element, index, array) {
     if (element instanceof FTL.TextElement) {
