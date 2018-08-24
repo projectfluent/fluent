@@ -33,3 +33,17 @@ key07 =
     {"A multiline value"} starting and ending {"with a placeable"}
 
 key08 =     Leading and trailing whitespace.     
+
+key09 = zero
+     three
+    two
+   one
+  zero
+
+key10 =
+
+  one
+{"."}
+
+
+  more

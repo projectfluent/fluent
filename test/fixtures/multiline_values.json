@@ -212,6 +212,53 @@
             },
             "attributes": [],
             "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key09"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "zero\n   three\n  two\n one\nzero"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key10"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "one\n"
+                    },
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringLiteral",
+                            "value": "."
+                        }
+                    },
+                    {
+                        "type": "TextElement",
+                        "value": "\n\n\nmore"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
         }
     ]
 }
