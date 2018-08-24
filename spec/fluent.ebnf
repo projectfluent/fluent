@@ -29,11 +29,19 @@ Value               ::= Pattern
                       | VariantList
 Pattern             ::= PatternElement+
 VariantList         ::= blank? "{" variant_list blank? "}"
-PatternElement      ::= TextElement
-                      | Placeable
-                      | (blank_block blank_inline? Placeable)
-TextElement         ::= (text_char | text_cont)+
-Placeable           ::= "{" blank? (SelectExpression | InlineExpression) blank? "}"
+
+/* TextElement and Placeable can occur inline or as block.
+ * Text needs to be indented and start with a non-special character.
+ * Placeables can start at the beginning of the line or be indented.
+ * Adjacent TextElements are joined in AST creation. */
+PatternElement      ::= inline_text
+                      | block_text
+                      | inline_placeable
+                      | block_placeable
+inline_text         ::= text_char+
+block_text          ::= blank_block blank_inline indented_char inline_text?
+inline_placeable    ::= "{" blank? (SelectExpression | InlineExpression) blank? "}"
+block_placeable     ::= blank_block blank_inline? inline_placeable
 
 /* Rules for validating expressions in Placeables and as selectors of
  * SelectExpressions are documented in spec/valid.md and enforced in
@@ -46,7 +54,7 @@ InlineExpression    ::= StringLiteral
                       | VariantExpression
                       | MessageReference
                       | TermReference
-                      | Placeable
+                      | inline_placeable
 
 /* Literals */
 StringLiteral       ::= quote quoted_text_char* quote
@@ -97,7 +105,7 @@ text_char           ::= blank_inline
                       | (backslash backslash)
                       | (backslash "{")
                       | (regular_char - "{" - backslash)
-text_cont           ::= blank_block blank_inline (text_char - "}" - "[" - "*" - ".")
+indented_char       ::= text_char - "}" - "[" - "*" - "."
 quoted_text_char    ::= (text_char - quote)
                       | (backslash quote)
 digit               ::= [0-9]

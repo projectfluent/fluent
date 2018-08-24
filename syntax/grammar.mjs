@@ -117,7 +117,7 @@ let Value = defer(() =>
 let Pattern = defer(() =>
     repeat1(
         PatternElement)
-    // Flatten indented Placeables.
+    // Flatten block_text and block_placeable which return lists.
     .map(flatten(1))
     .chain(list_into(FTL.Pattern)));
 
@@ -131,26 +131,34 @@ let VariantList = defer(() =>
     .map(keep_abstract)
     .chain(list_into(FTL.VariantList)));
 
+/* ----------------------------------------------------------------- */
+/* TextElement and Placeable can occur inline or as block.
+ * Text needs to be indented and start with a non-special character.
+ * Placeables can start at the beginning of the line or be indented.
+ * Adjacent TextElements are joined in AST creation. */
+
 let PatternElement = defer(() =>
     either(
-        TextElement,
-        Placeable,
-        sequence(
-            // Joined with preceding TextElements during AST construction.
-            blank_block.chain(into(FTL.TextElement)).abstract,
-            maybe(blank_inline),
-            Placeable.abstract)
-        .map(keep_abstract)));
+        inline_text,
+        block_text,
+        inline_placeable,
+        block_placeable));
 
-let TextElement = defer(() =>
-    repeat1(
-        either(
-            text_char,
-            text_cont))
+let inline_text = defer(() =>
+    repeat1(text_char)
     .map(join)
     .chain(into(FTL.TextElement)));
 
-let Placeable = defer(() =>
+let block_text = defer(() =>
+    sequence(
+        blank_block.chain(into(FTL.TextElement)).abstract,
+        blank_inline,
+        indented_char.chain(into(FTL.TextElement)).abstract,
+        maybe(inline_text.abstract)
+    )
+    .map(keep_abstract));
+
+let inline_placeable = defer(() =>
     sequence(
         string("{"),
         maybe(blank),
@@ -162,6 +170,13 @@ let Placeable = defer(() =>
         string("}"))
     .map(element_at(2))
     .chain(into(FTL.Placeable)));
+
+let block_placeable = defer(() =>
+    sequence(
+        blank_block.chain(into(FTL.TextElement)).abstract,
+        maybe(blank_inline),
+        inline_placeable.abstract)
+    .map(keep_abstract));
 
 /* ------------------------------------------------------------------- */
 /* Rules for validating expressions in Placeables and as selectors of
@@ -177,7 +192,7 @@ let InlineExpression = defer(() =>
         VariantExpression,
         MessageReference,
         TermReference,
-        Placeable));
+        inline_placeable));
 
 /* -------- */
 /* Literals */
@@ -417,18 +432,13 @@ let text_char = defer(() =>
             not(string("{")),
             regular_char)));
 
-let text_cont = defer(() =>
-    sequence(
-        blank_block.abstract,
-        blank_inline,
-        and(
-            not(string(".")),
-            not(string("*")),
-            not(string("[")),
-            not(string("}")),
-            text_char).abstract)
-    .map(keep_abstract)
-    .map(join));
+let indented_char = defer(() =>
+    and(
+        not(string(".")),
+        not(string("*")),
+        not(string("[")),
+        not(string("}")),
+        text_char));
 
 let quoted_text_char =
     either(
