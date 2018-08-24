@@ -155,10 +155,9 @@ let block_text = defer(() =>
         blank_block.chain(into(FTL.TextElement)).abstract,
         blank_inline,
         indented_char.chain(into(FTL.TextElement)).abstract,
-        maybe(inline_text).abstract
+        maybe(inline_text.abstract)
     )
-    .map(keep_abstract)
-    .map(flatten(1)));
+    .map(keep_abstract));
 
 let inline_placeable = defer(() =>
     sequence(
