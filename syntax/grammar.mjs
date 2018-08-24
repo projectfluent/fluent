@@ -148,17 +148,17 @@ let PatternElement = defer(() =>
 let inline_text = defer(() =>
     repeat1(text_char)
     .map(join)
-    .chain(into(FTL.TextElement))
-    .map(te => [te]));
+    .chain(into(FTL.TextElement)));
 
 let block_text = defer(() =>
     sequence(
         blank_block.chain(into(FTL.TextElement)).abstract,
         blank_inline,
         indented_char.chain(into(FTL.TextElement)).abstract,
-        maybe(inline_text.map(element_at(0)).abstract)
+        maybe(inline_text).abstract
     )
-    .map(keep_abstract));
+    .map(keep_abstract)
+    .map(flatten(1)));
 
 let inline_placeable = defer(() =>
     sequence(
