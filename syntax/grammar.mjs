@@ -133,8 +133,7 @@ let VariantList = defer(() =>
 
 let PatternElement = defer(() =>
     either(
-        inline_text
-        .chain(into(FTL.TextElement)),
+        inline_text,
         block_text,
         inline_placeable,
         block_placeable));
@@ -143,20 +142,22 @@ let PatternElement = defer(() =>
 /* TextElement and Placeable can occur inline or as block.
  * Text needs to be indented and start with a non-special character.
  * Placeables can start at the beginning of the line or be indented. */
+
+// all of [inline|block]_[text|placeable] return arrays
 let inline_text = defer(() =>
     repeat1(text_char)
-    .map(join));
+    .map(join)
+    .chain(into(FTL.TextElement))
+    .map(te => [te]));
 
 let block_text = defer(() =>
     sequence(
-        blank_block.abstract,
+        blank_block.chain(into(FTL.TextElement)).abstract,
         blank_inline,
-        indented_char.abstract,
-        maybe(inline_text).abstract)
-    .map(keep_abstract)
-    .map(flatten(1))
-    .map(join)
-.chain(into(FTL.TextElement)));
+        indented_char.chain(into(FTL.TextElement)).abstract,
+        maybe(inline_text.map(element_at(0)).abstract)
+    )
+    .map(keep_abstract));
 
 let inline_placeable = defer(() =>
     sequence(
