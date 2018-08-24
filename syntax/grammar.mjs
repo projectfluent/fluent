@@ -117,7 +117,7 @@ let Value = defer(() =>
 let Pattern = defer(() =>
     repeat1(
         PatternElement)
-    // Flatten indented Placeables.
+    // Flatten block_text and block_placeable which return lists.
     .map(flatten(1))
     .chain(list_into(FTL.Pattern)));
 
@@ -144,7 +144,6 @@ let PatternElement = defer(() =>
         inline_placeable,
         block_placeable));
 
-// all of [inline|block]_[text|placeable] return arrays
 let inline_text = defer(() =>
     repeat1(text_char)
     .map(join)
