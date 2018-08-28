@@ -41,7 +41,7 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
+                    "name": {
                         "type": "Name",
                         "name": "attr"
                     },

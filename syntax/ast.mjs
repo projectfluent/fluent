@@ -159,10 +159,10 @@ export class CallExpression extends Expression {
 }
 
 export class Attribute extends SyntaxNode {
-    constructor(id, value) {
+    constructor(name, value) {
         super();
         this.type = "Attribute";
-        this.id = id;
+        this.name = name;
         this.value = value;
     }
 }

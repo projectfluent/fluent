@@ -199,7 +199,7 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
+                    "name": {
                         "type": "Name",
                         "name": "Value"
                     },
@@ -251,7 +251,7 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
+                    "name": {
                         "type": "Name",
                         "name": "accesskey"
                     },
@@ -278,7 +278,7 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
+                    "name": {
                         "type": "Name",
                         "name": "attribute"
                     },
@@ -305,7 +305,7 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
+                    "name": {
                         "type": "Name",
                         "name": "attribute"
                     },
@@ -433,7 +433,7 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
+                    "name": {
                         "type": "Name",
                         "name": "attribute"
                     },
