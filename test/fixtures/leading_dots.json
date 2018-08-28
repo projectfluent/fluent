@@ -200,7 +200,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "Value"
                     },
                     "value": {
@@ -252,7 +252,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "accesskey"
                     },
                     "value": {
@@ -279,7 +279,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "attribute"
                     },
                     "value": {
@@ -306,7 +306,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "attribute"
                     },
                     "value": {
@@ -350,7 +350,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "Identifier",
+                                        "type": "Name",
                                         "name": "one"
                                     },
                                     "value": {
@@ -367,7 +367,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "Identifier",
+                                        "type": "Name",
                                         "name": "other"
                                     },
                                     "value": {
@@ -434,7 +434,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "attribute"
                     },
                     "value": {

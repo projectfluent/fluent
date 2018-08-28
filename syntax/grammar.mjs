@@ -99,7 +99,7 @@ let Attribute = defer(() =>
         line_end,
         maybe(blank),
         string("."),
-        Identifier.abstract,
+        Name.abstract,
         maybe(blank_inline),
         string("="),
         maybe(blank_inline),
@@ -275,7 +275,7 @@ let AttributeExpression = defer(() =>
             MessageReference,
             TermReference).abstract,
         string("."),
-        Identifier.abstract)
+        Name.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.AttributeExpression)));
 
@@ -335,16 +335,19 @@ let VariantKey = defer(() =>
         maybe(blank),
         either(
             NumberLiteral,
-            Identifier),
+            Name),
         maybe(blank),
         string("]"))
     .map(element_at(2)));
 
-/* ----------- */
-/* Identifiers */
+/* --------------------- */
+/* Identifiers and Names */
 
 let Identifier = defer(() =>
     identifier.chain(into(FTL.Identifier)));
+
+let Name = defer(() =>
+    identifier.chain(into(FTL.Name)));
 
 let TermIdentifier = defer(() =>
     sequence(

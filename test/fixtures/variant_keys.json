@@ -13,7 +13,7 @@
                     {
                         "type": "Variant",
                         "key": {
-                            "type": "Identifier",
+                            "type": "Name",
                             "name": "key"
                         },
                         "value": {
@@ -44,7 +44,7 @@
                     {
                         "type": "Variant",
                         "key": {
-                            "type": "Identifier",
+                            "type": "Name",
                             "name": "key"
                         },
                         "value": {

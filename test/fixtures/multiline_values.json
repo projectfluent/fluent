@@ -48,7 +48,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "attr"
                     },
                     "value": {
@@ -75,7 +75,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "attr"
                     },
                     "value": {

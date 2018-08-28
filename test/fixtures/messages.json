@@ -38,7 +38,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "attr"
                     },
                     "value": {
@@ -73,7 +73,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "attr1"
                     },
                     "value": {
@@ -89,7 +89,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "attr2"
                     },
                     "value": {
@@ -116,7 +116,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "attr"
                     },
                     "value": {
@@ -143,7 +143,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "attr1"
                     },
                     "value": {
@@ -159,7 +159,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "attr2"
                     },
                     "value": {
@@ -186,7 +186,7 @@
                 {
                     "type": "Attribute",
                     "id": {
-                        "type": "Identifier",
+                        "type": "Name",
                         "name": "attr1"
                     },
                     "value": {

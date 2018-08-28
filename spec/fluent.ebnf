@@ -22,7 +22,7 @@ CommentLine         ::= ("###" | "##" | "#") ("\u0020" /.*/)? line_end
 junk_line           ::= /.*/ line_end
 
 /* Attributes of Messages and Terms. */
-Attribute           ::= line_end blank? "." Identifier blank_inline? "=" blank_inline? Pattern
+Attribute           ::= line_end blank? "." Name blank_inline? "=" blank_inline? Pattern
 
 /* Value types: Pattern and VariantList. */
 Value               ::= Pattern
@@ -69,7 +69,7 @@ argument_list       ::= (Argument blank? "," blank?)* Argument?
 Argument            ::= NamedArgument
                       | InlineExpression
 NamedArgument       ::= Identifier blank? ":" blank? (StringLiteral | NumberLiteral)
-AttributeExpression ::= (MessageReference | TermReference) "." Identifier
+AttributeExpression ::= (MessageReference | TermReference) "." Name
 VariantExpression   ::= TermReference VariantKey
 
 /* Block Expressions */
@@ -77,10 +77,11 @@ SelectExpression    ::= InlineExpression blank? "->" blank_inline? variant_list
 variant_list        ::= Variant* DefaultVariant Variant* line_end
 Variant             ::= line_end blank? VariantKey blank_inline? Value
 DefaultVariant      ::= line_end blank? "*" VariantKey blank_inline? Value
-VariantKey          ::= "[" blank? (NumberLiteral | Identifier) blank? "]"
+VariantKey          ::= "[" blank? (NumberLiteral | Name) blank? "]"
 
-/* Identifiers */
+/* Identifiers and Names */
 Identifier          ::= identifier
+Name                ::= identifier
 TermIdentifier      ::= "-" identifier
 VariableIdentifier  ::= "$" identifier
 Function            ::= [A-Z] [A-Z_?-]*

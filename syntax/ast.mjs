@@ -194,6 +194,14 @@ export class Identifier extends SyntaxNode {
     }
 }
 
+export class Name extends SyntaxNode {
+    constructor(name) {
+        super();
+        this.type = "Name";
+        this.name = name;
+    }
+}
+
 export class BaseComment extends Entry {
     constructor(content) {
         super();
