@@ -25,7 +25,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -71,7 +71,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -117,7 +117,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -163,7 +163,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -209,7 +209,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -255,7 +255,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -301,7 +301,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -347,7 +347,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -393,7 +393,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -439,7 +439,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -456,7 +456,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "other"
                                     },
                                     "value": {
@@ -502,7 +502,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -519,7 +519,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "other"
                                     },
                                     "value": {
@@ -574,7 +574,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -591,7 +591,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "other"
                                     },
                                     "value": {
@@ -637,7 +637,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "key"
                                     },
                                     "value": {
@@ -654,7 +654,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "other"
                                     },
                                     "value": {

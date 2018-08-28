@@ -199,8 +199,8 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
-                        "type": "Identifier",
+                    "name": {
+                        "type": "Name",
                         "name": "Value"
                     },
                     "value": {
@@ -251,8 +251,8 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
-                        "type": "Identifier",
+                    "name": {
+                        "type": "Name",
                         "name": "accesskey"
                     },
                     "value": {
@@ -278,8 +278,8 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
-                        "type": "Identifier",
+                    "name": {
+                        "type": "Name",
                         "name": "attribute"
                     },
                     "value": {
@@ -305,8 +305,8 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
-                        "type": "Identifier",
+                    "name": {
+                        "type": "Name",
                         "name": "attribute"
                     },
                     "value": {
@@ -350,7 +350,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "one"
                                     },
                                     "value": {
@@ -367,7 +367,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "other"
                                     },
                                     "value": {
@@ -433,8 +433,8 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
-                        "type": "Identifier",
+                    "name": {
+                        "type": "Name",
                         "name": "attribute"
                     },
                     "value": {

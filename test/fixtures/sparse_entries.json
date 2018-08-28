@@ -29,8 +29,8 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
-                        "type": "Identifier",
+                    "name": {
+                        "type": "Name",
                         "name": "attr"
                     },
                     "value": {
@@ -64,8 +64,8 @@
             "attributes": [
                 {
                     "type": "Attribute",
-                    "id": {
-                        "type": "Identifier",
+                    "name": {
+                        "type": "Name",
                         "name": "attr"
                     },
                     "value": {
@@ -120,7 +120,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "one"
                                     },
                                     "value": {
@@ -137,7 +137,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "two"
                                     },
                                     "value": {

@@ -22,7 +22,7 @@
                                 }
                             },
                             "key": {
-                                "type": "VariantName",
+                                "type": "Name",
                                 "name": "case"
                             }
                         }
@@ -53,7 +53,7 @@
                                 }
                             },
                             "name": {
-                                "type": "Identifier",
+                                "type": "Name",
                                 "name": "attr"
                             }
                         }

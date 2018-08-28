@@ -99,7 +99,7 @@ let Attribute = defer(() =>
         line_end,
         maybe(blank),
         string("."),
-        Identifier.abstract,
+        Name.abstract,
         maybe(blank_inline),
         string("="),
         maybe(blank_inline),
@@ -275,7 +275,7 @@ let AttributeExpression = defer(() =>
             MessageReference,
             TermReference).abstract,
         string("."),
-        Identifier.abstract)
+        Name.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.AttributeExpression)));
 
@@ -335,27 +335,19 @@ let VariantKey = defer(() =>
         maybe(blank),
         either(
             NumberLiteral,
-            VariantName),
+            Name),
         maybe(blank),
         string("]"))
     .map(element_at(2)));
 
-let VariantName = defer(() =>
-    sequence(
-        word,
-        repeat(
-            sequence(
-                blank,
-                word)))
-    .map(flatten(2))
-    .map(join)
-    .chain(into(FTL.VariantName)));
-
-/* ----------- */
-/* Identifiers */
+/* --------------------- */
+/* Identifiers and Names */
 
 let Identifier = defer(() =>
     identifier.chain(into(FTL.Identifier)));
+
+let Name = defer(() =>
+    identifier.chain(into(FTL.Name)));
 
 let TermIdentifier = defer(() =>
     sequence(
@@ -380,8 +372,6 @@ let Function =
     .map(join)
     .chain(into(FTL.Function));
 
-/* ------ */
-/* Tokens */
 let identifier =
     sequence(
         charset("a-zA-Z"),
@@ -389,18 +379,6 @@ let identifier =
             charset("a-zA-Z0-9_-")))
     .map(flatten(1))
     .map(join);
-
-let word = defer(() =>
-    repeat1(
-        and(
-            not(string("=")),
-            not(string("[")),
-            not(string("]")),
-            not(string("{")),
-            not(string("}")),
-            not(backslash),
-            regular_char))
-    .map(join));
 
 /* ---------- */
 /* Characters */

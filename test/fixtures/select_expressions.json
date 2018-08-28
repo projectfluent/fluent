@@ -44,7 +44,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "other"
                                     },
                                     "value": {
@@ -96,7 +96,7 @@
                                     }
                                 },
                                 "name": {
-                                    "type": "Identifier",
+                                    "type": "Name",
                                     "name": "case"
                                 }
                             },
@@ -104,8 +104,8 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
-                                        "name": "many     words"
+                                        "type": "Name",
+                                        "name": "key"
                                     },
                                     "value": {
                                         "type": "Pattern",
@@ -156,7 +156,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "one"
                                     },
                                     "value": {
@@ -202,7 +202,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Name",
                                         "name": "one"
                                     },
                                     "value": {
@@ -220,7 +220,7 @@
                                                         {
                                                             "type": "Variant",
                                                             "key": {
-                                                                "type": "VariantName",
+                                                                "type": "Name",
                                                                 "name": "two"
                                                             },
                                                             "value": {
