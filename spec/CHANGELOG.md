@@ -3,7 +3,36 @@
 
 ## Unreleased
 
+  - Relax the indentation requirement. (#87)
+
+    Attributes, variant keys and placeables may now be written without indent.
+
+        emails = { $unreadEmails ->
+            [one] You have one unread email.
+           *[other] You have { $unreadEmails } unread emails.
+        }
+
+    Multiline `TextElements` still require indent to aid error recovery.
+
+        multiline-text =
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.
+
+
+  - Forbid tab as syntax whitespace. (#165)
+
+    Tabs are now parsed as part of `TextElement`'s value and are not allowed
+    outside of them.
+
   - Remove support for CR as a line ending. (#154)
+
+    Valid line endings for Fluent files are: LF (U+0A) and CRLF (U+0D U+0A).
+
+  - Normalize all EOLs as LF. (#163)
+
+    The AST now stores line endings using the line feed character (LF, U+0A),
+    even if the input file used CRLF or a mix of CRLF and LF.
 
   - Restrict `VariantKey` to `NumberLiteral` and `Identifier`. (#127)
 
