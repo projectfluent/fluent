@@ -5,6 +5,10 @@
 
   - Remove support for CR as a line ending. (#154)
 
+  - Restrict `VariantKey` to `NumberLiteral` and `Identifier`. (#127)
+
+    The `VariantName` AST node has been removed
+
 ## 0.6.0 (July 24, 2018)
 
   - Created the reference parser for Fluent Syntax.

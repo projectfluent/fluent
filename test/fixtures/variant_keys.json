@@ -5,7 +5,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-variants-1tbs"
+                "name": "-simple-identifier"
             },
             "value": {
                 "type": "VariantList",
@@ -21,7 +21,7 @@
                             "elements": [
                                 {
                                     "type": "TextElement",
-                                    "value": "Value"
+                                    "value": "value"
                                 }
                             ]
                         },
@@ -36,7 +36,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-variants-allman"
+                "name": "-identifier-surrounded-by-whitespace"
             },
             "value": {
                 "type": "VariantList",
@@ -52,7 +52,7 @@
                             "elements": [
                                 {
                                     "type": "TextElement",
-                                    "value": "Value"
+                                    "value": "value"
                                 }
                             ]
                         },
@@ -67,7 +67,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-variants-gnu"
+                "name": "-int-number"
             },
             "value": {
                 "type": "VariantList",
@@ -75,15 +75,15 @@
                     {
                         "type": "Variant",
                         "key": {
-                            "type": "Identifier",
-                            "name": "key"
+                            "type": "NumberLiteral",
+                            "value": "1"
                         },
                         "value": {
                             "type": "Pattern",
                             "elements": [
                                 {
                                     "type": "TextElement",
-                                    "value": "Value"
+                                    "value": "value"
                                 }
                             ]
                         },
@@ -98,7 +98,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-variants-no-indent"
+                "name": "-float-number"
             },
             "value": {
                 "type": "VariantList",
@@ -106,41 +106,51 @@
                     {
                         "type": "Variant",
                         "key": {
-                            "type": "Identifier",
-                            "name": "key"
+                            "type": "NumberLiteral",
+                            "value": "3.14"
                         },
                         "value": {
                             "type": "Pattern",
                             "elements": [
                                 {
                                     "type": "TextElement",
-                                    "value": "Value"
+                                    "value": "value"
                                 }
                             ]
                         },
                         "default": true
-                    },
-                    {
-                        "type": "Variant",
-                        "key": {
-                            "type": "Identifier",
-                            "name": "other"
-                        },
-                        "value": {
-                            "type": "Pattern",
-                            "elements": [
-                                {
-                                    "type": "TextElement",
-                                    "value": "Other"
-                                }
-                            ]
-                        },
-                        "default": false
                     }
                 ]
             },
             "attributes": [],
             "comment": null
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "-invalid-identifier =\n    {\n       *[two words] value\n    }\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "-invalid-int =\n    {\n       *[1 apple] value\n    }\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "-invalid-int =\n    {\n       *[3.14 apples] value\n    }\n"
         }
     ]
 }

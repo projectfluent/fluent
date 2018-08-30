@@ -77,18 +77,14 @@ SelectExpression    ::= InlineExpression blank? "->" blank_inline? variant_list
 variant_list        ::= Variant* DefaultVariant Variant* line_end
 Variant             ::= line_end blank? VariantKey blank_inline? Value
 DefaultVariant      ::= line_end blank? "*" VariantKey blank_inline? Value
-VariantKey          ::= "[" blank? (NumberLiteral | VariantName) blank? "]"
-VariantName         ::= word (blank word)*
+VariantKey          ::= "[" blank? (NumberLiteral | Identifier) blank? "]"
 
 /* Identifiers */
 Identifier          ::= identifier
 TermIdentifier      ::= "-" identifier
 VariableIdentifier  ::= "$" identifier
 Function            ::= [A-Z] [A-Z_?-]*
-
-/* Tokens */
 identifier          ::= [a-zA-Z] [a-zA-Z0-9_-]*
-word                ::= (regular_char - backslash - "}" - "{" - "]" - "[" - "=")+
 
 /* Characters */
 backslash           ::= "\\"

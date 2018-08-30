@@ -6,7 +6,7 @@ new-messages =
 
 valid-selector =
     { -term.case ->
-       *[    many     words    ] value
+       *[key] value
     }
 
 # ERROR

@@ -44,7 +44,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Identifier",
                                         "name": "other"
                                     },
                                     "value": {
@@ -104,8 +104,8 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
-                                        "name": "many     words"
+                                        "type": "Identifier",
+                                        "name": "key"
                                     },
                                     "value": {
                                         "type": "Pattern",
@@ -156,7 +156,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Identifier",
                                         "name": "one"
                                     },
                                     "value": {
@@ -202,7 +202,7 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "VariantName",
+                                        "type": "Identifier",
                                         "name": "one"
                                     },
                                     "value": {
@@ -220,7 +220,7 @@
                                                         {
                                                             "type": "Variant",
                                                             "key": {
-                                                                "type": "VariantName",
+                                                                "type": "Identifier",
                                                                 "name": "two"
                                                             },
                                                             "value": {
