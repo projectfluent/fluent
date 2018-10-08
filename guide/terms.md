@@ -55,6 +55,6 @@ has-updated =
 ```
 
 Use attributes to describe grammatical traits and properties. Genders,
-animacy, whether the term essage starts with a vowel or not etc. Attributes
+animacy, whether the term message starts with a vowel or not etc. Attributes
 of terms are private and cannot be retrieved by the localization runtime.
 They can only be used as [selectors](selectors.html).
