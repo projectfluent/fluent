@@ -1,11 +1,12 @@
 # Changelog
 
 
-## Unreleased
+## 0.7.0 (October 15, 2018)
 
   - Relax the indentation requirement. (#87)
 
-    Attributes, variant keys and placeables may now be written without indent.
+    Attributes, variant keys and placeables may now be written without
+    indent, including the closing curly brace, `}`.
 
         emails = { $unreadEmails ->
             [one] You have one unread email.
