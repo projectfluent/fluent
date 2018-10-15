@@ -199,9 +199,9 @@ let InlineExpression = defer(() =>
 /* Literals */
 let StringLiteral = defer(() =>
     sequence(
-        quote,
+        string("\""),
         repeat(quoted_text_char),
-        quote)
+        string("\""))
     .map(element_at(1))
     .map(join)
     .chain(into(FTL.StringLiteral)));
@@ -373,48 +373,44 @@ let Function =
 /* ---------- */
 /* Characters */
 
-let backslash = string("\\");
-let quote = string("\"");
-
-/* Any Unicode character from BMP excluding C0 control characters, space,
- * surrogate blocks and non-characters (U+FFFE, U+FFFF).
- * Cf. https://www.w3.org/TR/REC-xml/#NT-Char
- */
+/* Any Unicode character excluding C0 control characters (but including tab),
+ * space, surrogate blocks and non-characters (U+FFFE, U+FFFF).
+ * Cf. https://www.w3.org/TR/REC-xml/#NT-Char */
 let regular_char =
-    charset("\\u{21}-\\u{D7FF}\\u{E000}-\\u{FFFD}\\u{10000}-\\u{10FFFF}");
-
-let text_char = defer(() =>
     either(
-        blank_inline,
-        string("\u0009"),
-        regex(/\\u[0-9a-fA-F]{4}/),
-        sequence(
-            backslash,
-            backslash).map(join),
-        sequence(
-            backslash,
-            string("{")).map(join),
-        and(
-            not(backslash),
-            not(string("{")),
-            regular_char)));
+        charset("\\u{9}\\u{21}-\\u{D7FF}\\u{E000}-\\u{FFFD}"),
+        charset("\\u{10000}-\\u{10FFFF}"));
 
-let indented_char = defer(() =>
+/* The opening brace in text starts a placeable. */
+let text_char =
+    either(
+        and(
+            not(string("{")),
+            regular_char),
+        string("\u0020"));
+
+/* Indented text may not start with characters which mark its end. */
+let indented_char =
     and(
         not(string(".")),
         not(string("*")),
         not(string("[")),
         not(string("}")),
-        text_char));
+        text_char);
 
+/* Backslash can be used to escape the double quote and the backslash itself.
+ * The literal opening brace { is allowed because StringLiterals may not have
+ * placeables. \uXXXX Unicode escape sequences are recognized, too. */
 let quoted_text_char =
     either(
         and(
-            not(quote),
+            not(string("\\")),
+            not(string("\"")),
             text_char),
-        sequence(
-            backslash,
-            quote).map(join));
+        regex(/\\u[0-9a-fA-F]{4}/),
+        string("{"),
+        string("\\\\"),
+        string("\\\""));
 
 let digit = charset("0-9");
 
