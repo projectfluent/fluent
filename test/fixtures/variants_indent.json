@@ -5,7 +5,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-variants-1tbs"
+                "name": "variants-1tbs"
             },
             "value": {
                 "type": "VariantList",
@@ -36,7 +36,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-variants-allman"
+                "name": "variants-allman"
             },
             "value": {
                 "type": "VariantList",
@@ -67,7 +67,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-variants-gnu"
+                "name": "variants-gnu"
             },
             "value": {
                 "type": "VariantList",
@@ -98,7 +98,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-variants-no-indent"
+                "name": "variants-no-indent"
             },
             "value": {
                 "type": "VariantList",

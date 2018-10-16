@@ -548,7 +548,7 @@
                                     "type": "TermReference",
                                     "id": {
                                         "type": "Identifier",
-                                        "name": "-msg"
+                                        "name": "msg"
                                     }
                                 }
                             ],

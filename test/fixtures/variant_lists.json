@@ -5,7 +5,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-variant-list-in-term"
+                "name": "variant-list-in-term"
             },
             "value": {
                 "type": "VariantList",
@@ -36,7 +36,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-variant-list-in-term-attr"
+                "name": "variant-list-in-term-attr"
             },
             "value": {
                 "type": "Pattern",
@@ -97,7 +97,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-nested-variant-list-in-term"
+                "name": "nested-variant-list-in-term"
             },
             "value": {
                 "type": "VariantList",
@@ -141,7 +141,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-nested-select"
+                "name": "nested-select"
             },
             "value": {
                 "type": "VariantList",

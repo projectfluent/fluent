@@ -2,11 +2,17 @@
 
 ## Unreleased
 
-  - Support astral Unicode characters. (#179)
+  - Support astral Unicode characters. (#174)
 
     Unicode characters from outside of the Basic Multilingual Plane can now
     be used in values of `TextElements` and `StringLiterals`. This means all
     characters in the U+10000 to U+10FFFF range. 🎉
+
+  - Don't store the `-` sigil in `Identifiers` of `Terms`. (#142)
+
+    The `-` sigil is no longer part of the term's `Identifier`. This is now
+    consistent with how `Identifiers` of variables don't include the `$`
+    sigil either.
 
 ## 0.7.0 (October 15, 2018)
 
