@@ -386,10 +386,9 @@ let quote = string("\"");
 /* Any Unicode character from BMP excluding C0 control characters, space,
  * surrogate blocks and non-characters (U+FFFE, U+FFFF).
  * Cf. https://www.w3.org/TR/REC-xml/#NT-Char
- * TODO Add characters from other planes: U+10000 to U+10FFFF.
  */
 let regular_char =
-    charset("\u0021-\uD7FF\uE000-\uFFFD");
+    charset("\\u{21}-\\u{D7FF}\\u{E000}-\\u{FFFD}\\u{10000}-\\u{10FFFF}");
 
 let text_char = defer(() =>
     either(

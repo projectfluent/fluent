@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+  - Support astral Unicode characters. (#179)
+
+    Unicode characters from outside of the Basic Multilingual Plane can now
+    be used in values of `TextElements` and `StringLiterals`. This means all
+    characters in the U+10000 to U+10FFFF range. 🎉
 
 ## 0.7.0 (October 15, 2018)
 

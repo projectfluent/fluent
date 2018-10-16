@@ -92,9 +92,8 @@ quote               ::= "\""
 /* Any Unicode character from BMP excluding C0 control characters, space,
  * surrogate blocks and non-characters (U+FFFE, U+FFFF).
  * Cf. https://www.w3.org/TR/REC-xml/#NT-Char
- * TODO Add characters from other planes: U+10000 to U+10FFFF.
  */
-regular_char        ::= [!-\uD7FF\uE000-\uFFFD]
+regular_char        ::= [\\u{21}-\\u{D7FF}\\u{E000}-\\u{FFFD}\\u{10000}-\\u{10FFFF}]
 text_char           ::= blank_inline
                       | "\u0009"
                       | /\\u[0-9a-fA-F]{4}/
