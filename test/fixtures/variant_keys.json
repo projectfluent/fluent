@@ -5,7 +5,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-simple-identifier"
+                "name": "simple-identifier"
             },
             "value": {
                 "type": "VariantList",
@@ -36,7 +36,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-identifier-surrounded-by-whitespace"
+                "name": "identifier-surrounded-by-whitespace"
             },
             "value": {
                 "type": "VariantList",
@@ -67,7 +67,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-int-number"
+                "name": "int-number"
             },
             "value": {
                 "type": "VariantList",
@@ -98,7 +98,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-float-number"
+                "name": "float-number"
             },
             "value": {
                 "type": "VariantList",

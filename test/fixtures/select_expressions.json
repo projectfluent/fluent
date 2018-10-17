@@ -92,7 +92,7 @@
                                     "type": "TermReference",
                                     "id": {
                                         "type": "Identifier",
-                                        "name": "-term"
+                                        "name": "term"
                                     }
                                 },
                                 "name": {

@@ -30,7 +30,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-term"
+                "name": "term"
             },
             "value": {
                 "type": "Pattern",

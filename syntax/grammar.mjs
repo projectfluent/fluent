@@ -56,7 +56,8 @@ let Message = defer(() =>
 
 let Term = defer(() =>
     sequence(
-        TermIdentifier.abstract,
+        string("-"),
+        Identifier.abstract,
         maybe(blank_inline),
         string("="),
         maybe(blank_inline),
@@ -223,10 +224,18 @@ let MessageReference = defer(() =>
     Identifier.chain(into(FTL.MessageReference)));
 
 let TermReference = defer(() =>
-    TermIdentifier.chain(into(FTL.TermReference)));
+    sequence(
+        string("-"),
+        Identifier)
+    .map(element_at(1))
+    .chain(into(FTL.TermReference)));
 
 let VariableReference = defer(() =>
-    VariableIdentifier.chain(into(FTL.VariableReference)));
+    sequence(
+        string("$"),
+        Identifier)
+    .map(element_at(1))
+    .chain(into(FTL.VariableReference)));
 
 let CallExpression = defer(() =>
     sequence(
@@ -343,22 +352,14 @@ let VariantKey = defer(() =>
 /* ----------- */
 /* Identifiers */
 
-let Identifier = defer(() =>
-    identifier.chain(into(FTL.Identifier)));
-
-let TermIdentifier = defer(() =>
+let Identifier =
     sequence(
-        string("-"),
-        identifier)
+        charset("a-zA-Z"),
+        repeat(
+            charset("a-zA-Z0-9_-")))
+    .map(flatten(1))
     .map(join)
-    .chain(into(FTL.Identifier)));
-
-let VariableIdentifier = defer(() =>
-    sequence(
-        string("$"),
-        identifier)
-    .map(element_at(1))
-    .chain(into(FTL.Identifier)));
+    .chain(into(FTL.Identifier));
 
 let Function =
     sequence(
@@ -368,14 +369,6 @@ let Function =
     .map(flatten(1))
     .map(join)
     .chain(into(FTL.Function));
-
-let identifier =
-    sequence(
-        charset("a-zA-Z"),
-        repeat(
-            charset("a-zA-Z0-9_-")))
-    .map(flatten(1))
-    .map(join);
 
 /* ---------- */
 /* Characters */

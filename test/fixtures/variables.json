@@ -5,55 +5,7 @@
             "type": "Message",
             "id": {
                 "type": "Identifier",
-                "name": "message-reference"
-            },
-            "value": {
-                "type": "Pattern",
-                "elements": [
-                    {
-                        "type": "Placeable",
-                        "expression": {
-                            "type": "MessageReference",
-                            "id": {
-                                "type": "Identifier",
-                                "name": "msg"
-                            }
-                        }
-                    }
-                ]
-            },
-            "attributes": [],
-            "comment": null
-        },
-        {
-            "type": "Message",
-            "id": {
-                "type": "Identifier",
-                "name": "term-reference"
-            },
-            "value": {
-                "type": "Pattern",
-                "elements": [
-                    {
-                        "type": "Placeable",
-                        "expression": {
-                            "type": "TermReference",
-                            "id": {
-                                "type": "Identifier",
-                                "name": "term"
-                            }
-                        }
-                    }
-                ]
-            },
-            "attributes": [],
-            "comment": null
-        },
-        {
-            "type": "Message",
-            "id": {
-                "type": "Identifier",
-                "name": "variable-reference"
+                "name": "key01"
             },
             "value": {
                 "type": "Pattern",
@@ -77,7 +29,7 @@
             "type": "Message",
             "id": {
                 "type": "Identifier",
-                "name": "not-call-expression"
+                "name": "key02"
             },
             "value": {
                 "type": "Pattern",
@@ -85,10 +37,10 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "MessageReference",
+                            "type": "VariableReference",
                             "id": {
                                 "type": "Identifier",
-                                "name": "FUN"
+                                "name": "var"
                             }
                         }
                     }
@@ -96,6 +48,85 @@
             },
             "attributes": [],
             "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key03"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "VariableReference",
+                            "id": {
+                                "type": "Identifier",
+                                "name": "var"
+                            }
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key04"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "VariableReference",
+                            "id": {
+                                "type": "Identifier",
+                                "name": "var"
+                            }
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "GroupComment",
+            "content": "Errors"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Missing variable identifier"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "err01 = {$}\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Double $$"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "err02 = {$$var}\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Invalid first char of the identifier"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "err03 = {$-var}\n"
         }
     ]
 }

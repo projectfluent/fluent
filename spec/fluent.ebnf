@@ -12,7 +12,7 @@ Entry               ::= (Message line_end)
                       | (Term line_end)
                       | CommentLine
 Message             ::= Identifier blank_inline? "=" blank_inline? ((Pattern Attribute*) | (Attribute+))
-Term                ::= TermIdentifier blank_inline? "=" blank_inline? Value Attribute*
+Term                ::= "-" Identifier blank_inline? "=" blank_inline? Value Attribute*
 
 /* Adjacent comment lines of the same comment type are joined together during
  * the AST construction. */
@@ -62,8 +62,8 @@ NumberLiteral       ::= "-"? digit+ ("." digit+)?
 
 /* Inline Expressions */
 MessageReference    ::= Identifier
-TermReference       ::= TermIdentifier
-VariableReference   ::= VariableIdentifier
+TermReference       ::= "-" Identifier
+VariableReference   ::= "$" Identifier
 CallExpression      ::= Function blank? "(" blank? argument_list blank? ")"
 argument_list       ::= (Argument blank? "," blank?)* Argument?
 Argument            ::= NamedArgument
@@ -80,11 +80,8 @@ DefaultVariant      ::= line_end blank? "*" VariantKey blank_inline? Value
 VariantKey          ::= "[" blank? (NumberLiteral | Identifier) blank? "]"
 
 /* Identifiers */
-Identifier          ::= identifier
-TermIdentifier      ::= "-" identifier
-VariableIdentifier  ::= "$" identifier
+Identifier          ::= [a-zA-Z] [a-zA-Z0-9_-]*
 Function            ::= [A-Z] [A-Z_?-]*
-identifier          ::= [a-zA-Z] [a-zA-Z0-9_-]*
 
 /* Characters */
 backslash           ::= "\\"

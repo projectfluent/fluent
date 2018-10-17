@@ -13,7 +13,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-brand-name"
+                "name": "brand-name"
             },
             "value": {
                 "type": "Pattern",

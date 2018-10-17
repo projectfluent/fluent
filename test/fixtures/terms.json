@@ -5,7 +5,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-term01"
+                "name": "term01"
             },
             "value": {
                 "type": "Pattern",
@@ -40,7 +40,7 @@
             "type": "Term",
             "id": {
                 "type": "Identifier",
-                "name": "-term02"
+                "name": "term02"
             },
             "value": {
                 "type": "Pattern",
