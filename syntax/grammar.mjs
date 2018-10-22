@@ -40,17 +40,27 @@ let Entry = defer(() =>
 let Message = defer(() =>
     sequence(
         Identifier.abstract,
-        maybe(blank_inline),
-        string("="),
-        maybe(blank_inline),
         either(
             sequence(
-                Pattern.abstract,
-                repeat(Attribute).abstract),
+                maybe(blank_inline),
+                string("="),
+                maybe(blank_inline),
+                either(
+                  sequence(
+                    maybe(Pattern).abstract,
+                    repeat1(Attribute).abstract,
+                  ),
+                  Pattern.abstract,
+                ),
+            ),
             sequence(
+                maybe(blank_inline),
                 always(null).abstract,
-                repeat1(Attribute).abstract)))
-    .map(flatten(1))
+                repeat1(Attribute).abstract,
+            ),
+        )
+    )
+    .map(flatten(2))
     .map(keep_abstract)
     .chain(list_into(FTL.Message)));
 
