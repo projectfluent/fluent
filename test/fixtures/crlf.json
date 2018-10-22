@@ -34,17 +34,43 @@
                     }
                 ]
             },
-            "attributes": [],
+            "attributes": [
+                {
+                    "type": "Attribute",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "title"
+                    },
+                    "value": {
+                        "type": "Pattern",
+                        "elements": [
+                            {
+                                "type": "TextElement",
+                                "value": "Title"
+                            }
+                        ]
+                    }
+                }
+            ],
             "comment": null
         },
         {
             "type": "Comment",
-            "content": "ERROR (Missing value or attributes)"
+            "content": "ERROR Unclosed StringLiteral"
         },
         {
             "type": "Junk",
             "annotations": [],
-            "content": "key03\n"
+            "content": "err03 = { \"str\r\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Missing newline after ->."
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "err04 = { $sel -> }\r\n"
         }
     ]
 }
