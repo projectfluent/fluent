@@ -200,7 +200,7 @@ let InlineExpression = defer(() =>
 let StringLiteral = defer(() =>
     sequence(
         string("\""),
-        repeat(quoted_text_char),
+        repeat(quoted_char),
         string("\""))
     .map(element_at(1))
     .map(join)
@@ -374,20 +374,27 @@ let Function =
 /* Characters */
 
 /* Any Unicode character excluding C0 control characters (but including tab),
- * space, surrogate blocks and non-characters (U+FFFE, U+FFFF).
+ * surrogate blocks and non-characters (U+FFFE, U+FFFF).
  * Cf. https://www.w3.org/TR/REC-xml/#NT-Char */
 let regular_char =
     either(
-        charset("\\u{9}\\u{21}-\\u{D7FF}\\u{E000}-\\u{FFFD}"),
+        charset("\\u{9}\\u{20}-\\u{D7FF}\\u{E000}-\\u{FFFD}"),
         charset("\\u{10000}-\\u{10FFFF}"));
 
 /* The opening brace in text starts a placeable. */
-let text_char =
+let special_text_char =
+    string("{");
+
+/* Double quote and backslash need to be escaped in string literals. */
+let special_quoted_char =
     either(
-        and(
-            not(string("{")),
-            regular_char),
-        string("\u0020"));
+        string("\""),
+        string("\\"));
+
+let text_char =
+    and(
+        not(special_text_char),
+        regular_char);
 
 /* Indented text may not start with characters which mark its end. */
 let indented_char =
@@ -398,19 +405,28 @@ let indented_char =
         not(string("}")),
         text_char);
 
-/* Backslash can be used to escape the double quote and the backslash itself.
- * The literal opening brace { is allowed because StringLiterals may not have
- * placeables. \uXXXX Unicode escape sequences are recognized, too. */
-let quoted_text_char =
+let literal_escape =
+    sequence(
+        string("\\"),
+        special_quoted_char)
+    .map(join);
+
+let unicode_escape =
+    sequence(
+        string("\\u"),
+        regex(/[0-9a-fA-F]{4}/))
+    .map(join);
+
+/* The literal opening brace { is allowed in string literals because they may
+ * not have placeables. */
+let quoted_char =
     either(
         and(
-            not(string("\\")),
-            not(string("\"")),
+            not(special_quoted_char),
             text_char),
-        regex(/\\u[0-9a-fA-F]{4}/),
-        string("{"),
-        string("\\\\"),
-        string("\\\""));
+        special_text_char,
+        literal_escape,
+        unicode_escape);
 
 let digit = charset("0-9");
 
