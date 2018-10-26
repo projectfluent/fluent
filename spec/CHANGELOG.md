@@ -14,6 +14,16 @@
     consistent with how `Identifiers` of variables don't include the `$`
     sigil either.
 
+  - Treat backslash (`\`) as a regular character in `TextElements`. (#123)
+
+    Backslash does no longer have special escaping powers when used in
+    `TextElements`. It's still recognized as special in `StringLiterals`,
+    however. `StringLiterals` can be used to insert all special-purpose
+    characters in text. For instance, `{"{"}` will insert the literal opening
+    curly brace (`{`), `{"\u00A0"}` will insert the non-breaking space, and
+    `{"   "}` can be used to make a translation start or end with whitespace,
+    which would otherwise by trimmed by `Pattern.`
+
 ## 0.7.0 (October 15, 2018)
 
   - Relax the indentation requirement. (#87)
