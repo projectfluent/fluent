@@ -154,8 +154,8 @@ function attach_comments(acc, cur) {
     }
 }
 
-const LEADING_BLANK = /^[ \n\r]*/;
-const TRAILING_BLANK = /[ \n\r]*$/;
+const LEADING_BLANK_BLOCK = /^\n*/;
+const TRAILING_BLANK_INLINE = / *$/;
 
 function dedent(elements) {
     let indents = elements.filter(element => element instanceof FTL.Indent);
@@ -170,11 +170,11 @@ function trim_text_at_extremes(element, index, array) {
     if (element instanceof FTL.TextElement) {
         if (index === 0) {
             element.value = element.value.replace(
-                LEADING_BLANK, "");
+                LEADING_BLANK_BLOCK, "");
         }
         if (index === array.length - 1) {
             element.value = element.value.replace(
-                TRAILING_BLANK, "");
+                TRAILING_BLANK_INLINE, "");
         }
     }
     return element;
