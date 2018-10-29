@@ -87,23 +87,22 @@ Function            ::= [A-Z] [A-Z_?-]*
 /* Any Unicode character excluding C0 control characters (but including tab),
  * surrogate blocks and non-characters (U+FFFE, U+FFFF).
  * Cf. https://www.w3.org/TR/REC-xml/#NT-Char */
-regular_char        ::= [\\u{9}\\u{20}-\\u{D7FF}\\u{E000}-\\u{FFFD}]
+any_char            ::= [\\u{9}\\u{20}-\\u{D7FF}\\u{E000}-\\u{FFFD}]
                       | [\\u{10000}-\\u{10FFFF}]
 /* The opening brace in text starts a placeable. */
 special_text_char   ::= "{"
 /* Double quote and backslash need to be escaped in string literals. */
 special_quoted_char ::= "\""
                       | "\\"
-text_char           ::= regular_char - special_text_char
+text_char           ::= any_char - special_text_char
 /* Indented text may not start with characters which mark its end. */
 indented_char       ::= text_char - "}" - "[" - "*" - "."
-literal_escape      ::= "\\" special_quoted_char
+special_escape      ::= "\\" special_quoted_char
 unicode_escape      ::= "\\u" /[0-9a-fA-F]{4}/
 /* The literal opening brace { is allowed in string literals because they may
  * not have placeables. */
-quoted_char         ::= (text_char - special_quoted_char)
-                      | special_text_char
-                      | literal_escape
+quoted_char         ::= (any_char - special_quoted_char)
+                      | special_escape
                       | unicode_escape
 digit               ::= [0-9]
 

@@ -376,7 +376,7 @@ let Function =
 /* Any Unicode character excluding C0 control characters (but including tab),
  * surrogate blocks and non-characters (U+FFFE, U+FFFF).
  * Cf. https://www.w3.org/TR/REC-xml/#NT-Char */
-let regular_char =
+let any_char =
     either(
         charset("\\u{9}\\u{20}-\\u{D7FF}\\u{E000}-\\u{FFFD}"),
         charset("\\u{10000}-\\u{10FFFF}"));
@@ -394,7 +394,7 @@ let special_quoted_char =
 let text_char =
     and(
         not(special_text_char),
-        regular_char);
+        any_char);
 
 /* Indented text may not start with characters which mark its end. */
 let indented_char =
@@ -405,7 +405,7 @@ let indented_char =
         not(string("}")),
         text_char);
 
-let literal_escape =
+let special_escape =
     sequence(
         string("\\"),
         special_quoted_char)
@@ -423,9 +423,8 @@ let quoted_char =
     either(
         and(
             not(special_quoted_char),
-            text_char),
-        special_text_char,
-        literal_escape,
+            any_char),
+        special_escape,
         unicode_escape);
 
 let digit = charset("0-9");
