@@ -111,12 +111,16 @@ export function into(Type) {
     }
 }
 
+// Create a reducer suitable for joining adjacent nodes of the same type, if
+// type is one of types specified.
 function join_adjacent(...types) {
     return function(acc, cur) {
         let prev = acc[acc.length - 1];
         for (let Type of types) {
             if (prev instanceof Type && cur instanceof Type) {
-                join_of_type(Type, prev, cur);
+                // Replace prev with a new node of the same type whose value is
+                // the sum of prev and cur, and discard cur.
+                acc[acc.length - 1] = join_of_type(Type, prev, cur);
                 return acc;
             }
         }
@@ -124,20 +128,21 @@ function join_adjacent(...types) {
     };
 }
 
+// Join values of two or more nodes of the same type. Return a new node.
 function join_of_type(Type, ...elements) {
     // TODO Join annotations and spans.
     switch (Type) {
         case FTL.TextElement:
             return elements.reduce((a, b) =>
-                (a.value += b.value, a));
+                new Type(a.value + b.value));
         case FTL.Comment:
         case FTL.GroupComment:
         case FTL.ResourceComment:
             return elements.reduce((a, b) =>
-                (a.content += `\n${b.content}`, a));
+                new Type(a.content + "\n" + b.content));
         case FTL.Junk:
             return elements.reduce((a, b) =>
-                (a.content += b.content, a));
+                new Type(a.content + b.content));
     }
 }
 
@@ -154,9 +159,7 @@ function attach_comments(acc, cur) {
     }
 }
 
-const LEADING_BLANK_BLOCK = /^\n*/;
-const TRAILING_BLANK_INLINE = / *$/;
-
+// Remove the largest common indentation from a list of TextElements.
 function dedent(elements) {
     let indents = elements.filter(element => element instanceof FTL.Indent);
     let common = Math.min(...indents.map(indent => indent.value.length));
@@ -165,6 +168,9 @@ function dedent(elements) {
     }
     return elements;
 }
+
+const LEADING_BLANK_BLOCK = /^\n*/;
+const TRAILING_BLANK_INLINE = / *$/;
 
 function trim_text_at_extremes(element, index, array) {
     if (element instanceof FTL.TextElement) {
