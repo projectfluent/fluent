@@ -199,9 +199,9 @@ let InlineExpression = defer(() =>
 /* Literals */
 let StringLiteral = defer(() =>
     sequence(
-        quote,
-        repeat(quoted_text_char),
-        quote)
+        string("\""),
+        repeat(quoted_char),
+        string("\""))
     .map(element_at(1))
     .map(join)
     .chain(into(FTL.StringLiteral)));
@@ -370,51 +370,85 @@ let Function =
     .map(join)
     .chain(into(FTL.Function));
 
-/* ---------- */
-/* Characters */
-
-let backslash = string("\\");
-let quote = string("\"");
-
-/* Any Unicode character from BMP excluding C0 control characters, space,
- * surrogate blocks and non-characters (U+FFFE, U+FFFF).
- * Cf. https://www.w3.org/TR/REC-xml/#NT-Char
+/* -------------------------------------------------------------------------- */
+/* Content Characters
+ *
+ * Translation content can be written using most Unicode characters, with the
+ * exception of C0 control characters (but allowing tab), surrogate blocks and
+ * non-characters (U+FFFE, U+FFFF).
  */
-let regular_char =
-    charset("\\u{21}-\\u{D7FF}\\u{E000}-\\u{FFFD}\\u{10000}-\\u{10FFFF}");
 
-let text_char = defer(() =>
+let any_char =
     either(
-        blank_inline,
-        string("\u0009"),
-        regex(/\\u[0-9a-fA-F]{4}/),
-        sequence(
-            backslash,
-            backslash).map(join),
-        sequence(
-            backslash,
-            string("{")).map(join),
-        and(
-            not(backslash),
-            not(string("{")),
-            regular_char)));
+        charset("\\u{9}\\u{20}-\\u{D7FF}\\u{E000}-\\u{FFFD}"),
+        charset("\\u{10000}-\\u{10FFFF}"));
 
-let indented_char = defer(() =>
+/* -------------------------------------------------------------------------- */
+/* Text elements
+ *
+ * The primary storage for content are text elements. Text elements are not
+ * delimited with quotes and may span multiple lines as long as all lines are
+ * indented. The opening brace ({) marks a start of a placeable in the pattern
+ * and may not be used in text elements verbatim. Due to the indentation
+ * requirement some text characters may not appear as the first character on a
+ * new line.
+ */
+
+let special_text_char =
+    string("{");
+
+let text_char =
+    and(
+        not(special_text_char),
+        any_char);
+
+let indented_char =
     and(
         not(string(".")),
         not(string("*")),
         not(string("[")),
         not(string("}")),
-        text_char));
+        text_char);
 
-let quoted_text_char =
+/* -------------------------------------------------------------------------- */
+/* String literals
+ *
+ * For special-purpose content, quoted string literals can be used where text
+ * elements are not a good fit. String literals are delimited with double
+ * quotes and may not contain line breaks. String literals use the backslash
+ * (\) as the escape character. The literal double quote can be inserted via
+ * the \" escape sequence. The literal backslash can be inserted with \\. The
+ * literal opening brace ({) is allowed in string literals because they may not
+ * comprise placeables.
+ */
+
+let special_quoted_char =
+    either(
+        string("\""),
+        string("\\"));
+
+let special_escape =
+    sequence(
+        string("\\"),
+        special_quoted_char)
+    .map(join);
+
+let unicode_escape =
+    sequence(
+        string("\\u"),
+        regex(/[0-9a-fA-F]{4}/))
+    .map(join);
+
+let quoted_char =
     either(
         and(
-            not(quote),
-            text_char),
-        sequence(
-            backslash,
-            quote).map(join));
+            not(special_quoted_char),
+            any_char),
+        special_escape,
+        unicode_escape);
+
+/* ------- */
+/* Numbers */
 
 let digit = charset("0-9");
 
