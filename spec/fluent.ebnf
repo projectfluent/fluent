@@ -95,12 +95,11 @@ Identifier          ::= [a-zA-Z] [a-zA-Z0-9_-]*
 
 /* Content Characters
  *
- * Translation content can be written using most Unicode characters, with the
- * exception of C0 control characters (but allowing tab), surrogate blocks and
- * non-characters (U+FFFE, U+FFFF).
+ * Translation content can be written using any Unicode characters. However,
+ * some characters are considered special depending on the type of content
+ * they're in. See text_char and quoted_char for more information.
  */
-any_char            ::= [\\u{9}\\u{20}-\\u{D7FF}\\u{E000}-\\u{FFFD}]
-                      | [\\u{10000}-\\u{10FFFF}]
+any_char            ::= [\\u{0}-\\u{10FFFF}]
 
 /* Text elements
  *
@@ -113,7 +112,7 @@ any_char            ::= [\\u{9}\\u{20}-\\u{D7FF}\\u{E000}-\\u{FFFD}]
  */
 special_text_char   ::= "{"
                       | "}"
-text_char           ::= any_char - special_text_char
+text_char           ::= any_char - special_text_char - line_end
 indented_char       ::= text_char - "[" - "*" - "."
 
 /* String literals
@@ -130,7 +129,7 @@ special_quoted_char ::= "\""
                       | "\\"
 special_escape      ::= "\\" special_quoted_char
 unicode_escape      ::= "\\u" /[0-9a-fA-F]{4}/
-quoted_char         ::= (any_char - special_quoted_char)
+quoted_char         ::= (any_char - special_quoted_char - line_end)
                       | special_escape
                       | unicode_escape
 

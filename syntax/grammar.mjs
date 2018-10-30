@@ -392,15 +392,13 @@ let Identifier =
 /* -------------------------------------------------------------------------- */
 /* Content Characters
  *
- * Translation content can be written using most Unicode characters, with the
- * exception of C0 control characters (but allowing tab), surrogate blocks and
- * non-characters (U+FFFE, U+FFFF).
+ * Translation content can be written using any Unicode characters. However,
+ * some characters are considered special depending on the type of content
+ * they're in. See text_char and quoted_char for more information.
  */
 
 let any_char =
-    either(
-        charset("\\u{9}\\u{20}-\\u{D7FF}\\u{E000}-\\u{FFFD}"),
-        charset("\\u{10000}-\\u{10FFFF}"));
+    charset("\\u{0}-\\u{10FFFF}");
 
 /* -------------------------------------------------------------------------- */
 /* Text elements
@@ -418,10 +416,11 @@ let special_text_char =
         string("{"),
         string("}"));
 
-let text_char =
+let text_char = defer(() =>
     and(
+        not(line_end),
         not(special_text_char),
-        any_char);
+        any_char));
 
 let indented_char =
     and(
@@ -459,13 +458,14 @@ let unicode_escape =
         regex(/[0-9a-fA-F]{4}/))
     .map(join);
 
-let quoted_char =
+let quoted_char = defer(() =>
     either(
         and(
+            not(line_end),
             not(special_quoted_char),
             any_char),
         special_escape,
-        unicode_escape);
+        unicode_escape));
 
 /* ------- */
 /* Numbers */
