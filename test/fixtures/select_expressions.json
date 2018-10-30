@@ -257,6 +257,15 @@
             "type": "Junk",
             "annotations": [],
             "content": "nested-variant-list =\n    { 1 ->\n       *[one] {\n          *[two] Value\n       }\n    }\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Missing line end after variant list"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "missing-line-end =\n    { 1 ->\n        *[one] One}\n"
         }
     ]
 }
