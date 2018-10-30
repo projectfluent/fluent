@@ -370,33 +370,38 @@ let Function =
     .map(join)
     .chain(into(FTL.Function));
 
-/* ---------- */
-/* Characters */
+/* -------------------------------------------------------------------------- */
+/* Content Characters
+ *
+ * Translation content can be written using most Unicode characters, with the
+ * exception of C0 control characters (but allowing tab), surrogate blocks and
+ * non-characters (U+FFFE, U+FFFF).
+ */
 
-/* Any Unicode character excluding C0 control characters (but including tab),
- * surrogate blocks and non-characters (U+FFFE, U+FFFF).
- * Cf. https://www.w3.org/TR/REC-xml/#NT-Char */
 let any_char =
     either(
         charset("\\u{9}\\u{20}-\\u{D7FF}\\u{E000}-\\u{FFFD}"),
         charset("\\u{10000}-\\u{10FFFF}"));
 
-/* The opening brace in text starts a placeable. */
+/* -------------------------------------------------------------------------- */
+/* Text elements
+ *
+ * The primary storage for content are text elements. Text elements are not
+ * delimited with quotes and may span multiple lines as long as all lines are
+ * indented. The opening brace ({) marks a start of a placeable in the pattern
+ * and may not be used in text elements verbatim. Due to the indentation
+ * requirement some text characters may not appear as the first character on a
+ * new line.
+ */
+
 let special_text_char =
     string("{");
-
-/* Double quote and backslash need to be escaped in string literals. */
-let special_quoted_char =
-    either(
-        string("\""),
-        string("\\"));
 
 let text_char =
     and(
         not(special_text_char),
         any_char);
 
-/* Indented text may not start with characters which mark its end. */
 let indented_char =
     and(
         not(string(".")),
@@ -404,6 +409,23 @@ let indented_char =
         not(string("[")),
         not(string("}")),
         text_char);
+
+/* -------------------------------------------------------------------------- */
+/* String literals
+ *
+ * For special-purpose content, quoted string literals can be used where text
+ * elements are not a good fit. String literals are delimited with double
+ * quotes and may not contain line breaks. String literals use the backslash
+ * (\) as the escape character. The literal double quote can be inserted via
+ * the \" escape sequence. The literal backslash can be inserted with \\. The
+ * literal opening brace ({) is allowed in string literals because they may not
+ * comprise placeables.
+ */
+
+let special_quoted_char =
+    either(
+        string("\""),
+        string("\\"));
 
 let special_escape =
     sequence(
@@ -417,8 +439,6 @@ let unicode_escape =
         regex(/[0-9a-fA-F]{4}/))
     .map(join);
 
-/* The literal opening brace { is allowed in string literals because they may
- * not have placeables. */
 let quoted_char =
     either(
         and(
@@ -426,6 +446,9 @@ let quoted_char =
             any_char),
         special_escape,
         unicode_escape);
+
+/* ------- */
+/* Numbers */
 
 let digit = charset("0-9");
 
