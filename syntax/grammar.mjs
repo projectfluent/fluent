@@ -86,12 +86,14 @@ let CommentLine = defer(() =>
 
 /* ------------------------------------------------------------------------- */
 /* Adjacent junk_lines are joined into FTL.Junk during the AST construction. */
-let junk_line = defer(() =>
+let junk_line =
     sequence(
-        regex(/.*/),
-        line_end)
+        regex(/[^\n]*/),
+        either(
+            string("\u000A"),
+            eof()))
     .map(join)
-    .chain(into(FTL.Junk)));
+    .chain(into(FTL.Junk));
 
 /* --------------------------------- */
 /* Attributes of Messages and Terms. */

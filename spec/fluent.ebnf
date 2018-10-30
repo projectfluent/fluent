@@ -19,7 +19,7 @@ Term                ::= "-" Identifier blank_inline? "=" blank_inline? Value Att
 CommentLine         ::= ("###" | "##" | "#") ("\u0020" /.*/)? line_end
 
 /* Adjacent junk_lines are joined into FTL.Junk during the AST construction. */
-junk_line           ::= /.*/ line_end
+junk_line           ::= /[^\n]*/ ("\u000A" | EOF)
 
 /* Attributes of Messages and Terms. */
 Attribute           ::= line_end blank? "." Identifier blank_inline? "=" blank_inline? Pattern
