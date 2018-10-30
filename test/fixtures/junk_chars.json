@@ -1,0 +1,32 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "Comment",
+            "content": "ERROR       ↓ BEL, U+0007"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "control0 = abc\u0007def\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR     ↓ DEL, U+007F"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "delete = abcdef\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR       ↓ BPM, U+0082"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "control1 = abcdef\n"
+        }
+    ]
+}

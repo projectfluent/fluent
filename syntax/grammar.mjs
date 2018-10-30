@@ -376,14 +376,45 @@ let Function =
 /* Content Characters
  *
  * Translation content can be written using most Unicode characters, with the
- * exception of C0 control characters (but allowing tab), surrogate blocks and
- * non-characters (U+FFFE, U+FFFF).
+ * exception of C0 and C1 control characters (but including TAB), DEL,
+ * surrogate blocks and non-characters. New lines are excluded because they are
+ * forbidden in quoted_text and handled with additional logic in block_text.
  */
 
 let any_char =
     either(
-        charset("\\u{9}\\u{20}-\\u{D7FF}\\u{E000}-\\u{FFFD}"),
-        charset("\\u{10000}-\\u{10FFFF}"));
+        // TAB
+        charset("\\u{9}"),
+        // Basic Latin.
+        charset("\\u{20}-\\u{7E}"),
+        // Skip DEL and C1 controls.
+        // Resume at Latin-1.
+        charset("\\u{A0}-\\u{D7FF}"),
+        // Skip surrogate codepoints.
+        // Resume at the U+E000 PUA.
+        charset("\\u{E000}-\\u{FDCF}"),
+        // Skip the non-character block U+FDD0..FDEF */
+        // Resume at U+FDF0.
+        charset("\\u{FDF0}-\\u{FFFD}"),
+        // Skip U+FFFE and U+FFFF.
+        // Resume at astral planes. The last two codepoints of each plane are
+        // non-characters.
+        charset("\\u{10000}-\\u{1FFFD}"),
+        charset("\\u{20000}-\\u{2FFFD}"),
+        charset("\\u{30000}-\\u{3FFFD}"),
+        charset("\\u{40000}-\\u{4FFFD}"),
+        charset("\\u{50000}-\\u{5FFFD}"),
+        charset("\\u{60000}-\\u{6FFFD}"),
+        charset("\\u{70000}-\\u{7FFFD}"),
+        charset("\\u{80000}-\\u{8FFFD}"),
+        charset("\\u{90000}-\\u{9FFFD}"),
+        charset("\\u{A0000}-\\u{AFFFD}"),
+        charset("\\u{B0000}-\\u{BFFFD}"),
+        charset("\\u{C0000}-\\u{CFFFD}"),
+        charset("\\u{D0000}-\\u{DFFFD}"),
+        charset("\\u{E0000}-\\u{EFFFD}"),
+        charset("\\u{F0000}-\\u{FFFFD}"),
+        charset("\\u{100000}-\\u{10FFFD}"));
 
 /* -------------------------------------------------------------------------- */
 /* Text elements
