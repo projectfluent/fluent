@@ -19,4 +19,4 @@ string-escaped-unicode = {"\\u0041"}
 
 ## Literal braces
 brace-open = An opening {"{"} brace.
-brace-close = A closing } brace.
+brace-close = A closing {"}"} brace.

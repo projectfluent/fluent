@@ -72,6 +72,42 @@
             },
             "attributes": [],
             "comment": null
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Unmatched opening brace"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "unmatched-open1 = { 1\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Unmatched opening brace"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "unmatched-open2 = {{ 1 }\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Unmatched closing brace"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "unmatched-close1 = 1 }\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Unmatched closing brace"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "unmatched-close2 = { 1 }}\n"
         }
     ]
 }

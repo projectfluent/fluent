@@ -34,3 +34,8 @@ nested-variant-list =
           *[two] Value
        }
     }
+
+# ERROR Missing line end after variant list
+missing-line-end =
+    { 1 ->
+        *[one] One}

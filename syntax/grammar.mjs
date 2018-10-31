@@ -397,7 +397,9 @@ let any_char =
  */
 
 let special_text_char =
-    string("{");
+    either(
+        string("{"),
+        string("}"));
 
 let text_char =
     and(
@@ -409,7 +411,6 @@ let indented_char =
         not(string(".")),
         not(string("*")),
         not(string("[")),
-        not(string("}")),
         text_char);
 
 /* -------------------------------------------------------------------------- */

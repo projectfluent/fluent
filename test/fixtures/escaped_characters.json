@@ -259,7 +259,18 @@
                 "elements": [
                     {
                         "type": "TextElement",
-                        "value": "A closing } brace."
+                        "value": "A closing "
+                    },
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringLiteral",
+                            "value": "}"
+                        }
+                    },
+                    {
+                        "type": "TextElement",
+                        "value": " brace."
                     }
                 ]
             },
