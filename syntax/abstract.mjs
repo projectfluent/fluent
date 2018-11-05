@@ -216,20 +216,22 @@ function remove_blank_lines(element) {
     return typeof(element) !== "string";
 }
 
-const KNOWN_ESCAPES = /(?:\\\\|\\\"|\\u([0-9a-fA-F]{4}))/g;
+// Backslash backslash, backslash double quote, uHHHH, UHHHHHH.
+const KNOWN_ESCAPES =
+    /(?:\\\\|\\\"|\\u([0-9a-fA-F]{4})|\\U([0-9a-fA-F]{6}))/g;
 
 function unescape(raw) {
     return raw.replace(KNOWN_ESCAPES, from_escape_sequence);
 }
 
-function from_escape_sequence(match, group1) {
+function from_escape_sequence(match, codepoint4, codepoint6) {
     switch (match) {
         case "\\\\":
             return "\\";
         case "\\\"":
             return "\"";
         default:
-            let codepoint = parseInt(group1, 16);
+            let codepoint = parseInt(codepoint4 || codepoint6, 16);
             if (codepoint <= 0xD7FF || 0xE000 <= codepoint) {
                 // It's a Unicode scalar value.
                 return String.fromCodePoint(codepoint);
