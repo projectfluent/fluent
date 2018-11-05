@@ -2,8 +2,8 @@
 text-backslash-one = Value with \ a backslash
 text-backslash-two = Value with \\ two backslashes
 text-backslash-brace = Value with \{placeable}
-text-backslash-u = \u0041
-text-backslash-backslash-u = \\u0041
+text-backslash-u = \u{41}
+text-backslash-backslash-u = \\u{41}
 
 ## String literals
 quote-in-string = {"\""}
@@ -14,20 +14,25 @@ mismatched-quote = {"\\""}
 unknown-escape = {"\x"}
 
 ## Unicode escapes
-string-unicode-4digits = {"\u0041"}
-escape-unicode-4digits = {"\\u0041"}
-string-unicode-6digits = {"\U01F602"}
-escape-unicode-6digits = {"\\U01F602"}
+string-unicode-1digit = {"\u{9}"}
+string-unicode-2digits = {"\u{09}"}
+string-unicode-3digits = {"\u{009}"}
+string-unicode-4digits = {"\u{0009}"}
+string-unicode-5digits = {"\u{00009}"}
+string-unicode-6digits = {"\u{000009}"}
 
-# OK The trailing "00" is part of the raw value.
-string-too-many-4digits = {"\u004100"}
-# OK The trailing "00" is part of the raw value.
-string-too-many-6digits = {"\U01F60200"}
+escape-unicode-4digits = {"\\u{41}"}
+escape-unicode-6digits = {"\\u{01F602}"}
 
-# ERROR Too few hex digits after \u.
-string-too-few-4digits = {"\u41"}
-# ERROR Too few hex digits after \U.
-string-too-few-6digits = {"\U1F602"}
+# ERROR Too few hex digits.
+string-unicode-0digits = {"\u{}"}
+# ERROR Too many hex digits.
+string-unicode-7digits = {"\U{001F602}"}
+
+# ERROR Missing opening brace.
+string-unicode-missing-open = {"\u9}"}
+# ERROR Missing closing brace.
+string-unicode-missing-close = {"\u{9"}
 
 ## Literal braces
 brace-open = An opening {"{"} brace.

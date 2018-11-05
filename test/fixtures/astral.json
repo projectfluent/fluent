@@ -68,7 +68,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
-                            "value": "\\uD83D\\uDE02"
+                            "value": "\\u{D83D}\\u{DE02}"
                         }
                     }
                 ]
@@ -89,14 +89,14 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
-                            "value": "\\uD83D"
+                            "value": "\\u{D83D}"
                         }
                     },
                     {
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
-                            "value": "\\uDE02"
+                            "value": "\\u{DE02}"
                         }
                     }
                 ]

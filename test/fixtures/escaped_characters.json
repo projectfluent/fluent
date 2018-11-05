@@ -80,7 +80,14 @@
                 "elements": [
                     {
                         "type": "TextElement",
-                        "value": "\\u0041"
+                        "value": "\\u"
+                    },
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "NumberLiteral",
+                            "value": "41"
+                        }
                     }
                 ]
             },
@@ -98,7 +105,14 @@
                 "elements": [
                     {
                         "type": "TextElement",
-                        "value": "\\\\u0041"
+                        "value": "\\\\u"
+                    },
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "NumberLiteral",
+                            "value": "41"
+                        }
                     }
                 ]
             },
@@ -177,7 +191,7 @@
             "type": "Message",
             "id": {
                 "type": "Identifier",
-                "name": "string-unicode-4digits"
+                "name": "string-unicode-1digit"
             },
             "value": {
                 "type": "Pattern",
@@ -186,7 +200,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
-                            "value": "\\u0041"
+                            "value": "\\u{9}"
                         }
                     }
                 ]
@@ -198,7 +212,7 @@
             "type": "Message",
             "id": {
                 "type": "Identifier",
-                "name": "escape-unicode-4digits"
+                "name": "string-unicode-2digits"
             },
             "value": {
                 "type": "Pattern",
@@ -207,7 +221,70 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
-                            "value": "\\\\u0041"
+                            "value": "\\u{09}"
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "string-unicode-3digits"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringLiteral",
+                            "value": "\\u{009}"
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "string-unicode-4digits"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringLiteral",
+                            "value": "\\u{0009}"
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "string-unicode-5digits"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringLiteral",
+                            "value": "\\u{00009}"
                         }
                     }
                 ]
@@ -228,7 +305,28 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
-                            "value": "\\U01F602"
+                            "value": "\\u{000009}"
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "escape-unicode-4digits"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringLiteral",
+                            "value": "\\\\u{41}"
                         }
                     }
                 ]
@@ -249,7 +347,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
-                            "value": "\\\\U01F602"
+                            "value": "\\\\u{01F602}"
                         }
                     }
                 ]
@@ -258,70 +356,40 @@
             "comment": null
         },
         {
-            "type": "Message",
-            "id": {
-                "type": "Identifier",
-                "name": "string-too-many-4digits"
-            },
-            "value": {
-                "type": "Pattern",
-                "elements": [
-                    {
-                        "type": "Placeable",
-                        "expression": {
-                            "type": "StringLiteral",
-                            "value": "\\u004100"
-                        }
-                    }
-                ]
-            },
-            "attributes": [],
-            "comment": {
-                "type": "Comment",
-                "content": "OK The trailing \"00\" is part of the raw value."
-            }
-        },
-        {
-            "type": "Message",
-            "id": {
-                "type": "Identifier",
-                "name": "string-too-many-6digits"
-            },
-            "value": {
-                "type": "Pattern",
-                "elements": [
-                    {
-                        "type": "Placeable",
-                        "expression": {
-                            "type": "StringLiteral",
-                            "value": "\\U01F60200"
-                        }
-                    }
-                ]
-            },
-            "attributes": [],
-            "comment": {
-                "type": "Comment",
-                "content": "OK The trailing \"00\" is part of the raw value."
-            }
-        },
-        {
             "type": "Comment",
-            "content": "ERROR Too few hex digits after \\u."
+            "content": "ERROR Too few hex digits."
         },
         {
             "type": "Junk",
             "annotations": [],
-            "content": "string-too-few-4digits = {\"\\u41\"}\n"
+            "content": "string-unicode-0digits = {\"\\u{}\"}\n"
         },
         {
             "type": "Comment",
-            "content": "ERROR Too few hex digits after \\U."
+            "content": "ERROR Too many hex digits."
         },
         {
             "type": "Junk",
             "annotations": [],
-            "content": "string-too-few-6digits = {\"\\U1F602\"}\n"
+            "content": "string-unicode-7digits = {\"\\U{001F602}\"}\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Missing opening brace."
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "string-unicode-missing-open = {\"\\u9}\"}\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Missing closing brace."
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "string-unicode-missing-close = {\"\\u{9\"}\n"
         },
         {
             "type": "GroupComment",
