@@ -152,7 +152,7 @@ let inline_text = defer(() =>
 let block_text = defer(() =>
     sequence(
         blank_block.chain(into(FTL.TextElement)),
-        blank_inline.chain(into(FTL.Indent)),
+        blank_inline,
         indented_char.chain(into(FTL.TextElement)),
         maybe(inline_text))
     .map(prune));
@@ -174,7 +174,7 @@ let block_placeable = defer(() =>
     sequence(
         blank_block.chain(into(FTL.TextElement)),
         // No indent before a placeable counts as 0 in dedention logic.
-        maybe(blank_inline).map(s => s || "").chain(into(FTL.Indent)),
+        maybe(blank_inline).map(s => s || ""),
         inline_placeable));
 
 /* ------------------------------------------------------------------- */

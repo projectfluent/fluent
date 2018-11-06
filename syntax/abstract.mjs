@@ -159,14 +159,22 @@ function attach_comments(acc, cur) {
     }
 }
 
-// Remove the largest common indentation from a list of TextElements.
+// Remove the largest common indentation from a list of PatternElements.
 function dedent(elements) {
-    let indents = elements.filter(element => element instanceof FTL.Indent);
-    let common = Math.min(...indents.map(indent => indent.value.length));
-    for (let indent of indents) {
-        indent.value = indent.value.slice(common);
+    // Calculate the maximum common indent.
+    let indents = elements.filter(element => typeof element === "string");
+    let common = Math.min(...indents.map(indent => indent.length));
+
+    function trim_indents(element) {
+        if (typeof element === "string") {
+            // Trim the indent and convert it to a proper TextElement.
+            // It will be joined with its adjacents later on.
+            return new FTL.TextElement(element.slice(common));
+        }
+        return element;
     }
-    return elements;
+
+    return elements.map(trim_indents);
 }
 
 const LEADING_BLANK_BLOCK = /^\n*/;
