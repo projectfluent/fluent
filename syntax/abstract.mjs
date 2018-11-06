@@ -159,7 +159,9 @@ function attach_comments(acc, cur) {
     }
 }
 
-// Remove the largest common indentation from a list of PatternElements.
+// Remove the largest common indentation from a list of elements of a Pattern.
+// The indents are parsed in grammar.mjs and passed to abstract.mjs as string
+// primitives along with other PatternElements.
 function dedent(elements) {
     // Calculate the maximum common indent.
     let indents = elements.filter(element => typeof element === "string");
