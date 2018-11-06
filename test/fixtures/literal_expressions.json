@@ -14,6 +14,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
+                            "raw": "abc",
                             "value": "abc"
                         }
                     }

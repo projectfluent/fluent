@@ -82,9 +82,10 @@ export class Placeable extends PatternElement {
 export class Expression extends SyntaxNode {}
 
 export class StringLiteral extends Expression {
-    constructor(value) {
+    constructor(raw, value) {
         super();
         this.type = "StringLiteral";
+        this.raw = raw;
         this.value = value;
     }
 }
