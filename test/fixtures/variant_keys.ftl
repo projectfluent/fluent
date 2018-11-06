@@ -1,37 +1,37 @@
--simple-identifier =
-    {
+simple-identifier =
+    { $sel ->
        *[key] value
     }
 
--identifier-surrounded-by-whitespace =
-    {
+identifier-surrounded-by-whitespace =
+    { $sel ->
        *[     key     ] value
     }
 
--int-number =
-    {
+int-number =
+    { $sel ->
        *[1] value
     }
 
--float-number =
-    {
+float-number =
+    { $sel ->
        *[3.14] value
     }
 
 # ERROR
--invalid-identifier =
-    {
+invalid-identifier =
+    { $sel ->
        *[two words] value
     }
 
 # ERROR
--invalid-int =
-    {
+invalid-int =
+    { $sel ->
        *[1 apple] value
     }
 
 # ERROR
--invalid-int =
-    {
+invalid-int =
+    { $sel ->
        *[3.14 apples] value
     }

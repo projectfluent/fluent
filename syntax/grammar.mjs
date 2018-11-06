@@ -61,7 +61,7 @@ let Term = defer(() =>
         maybe(blank_inline),
         string("="),
         maybe(blank_inline),
-        Value.abstract,
+        Pattern.abstract,
         repeat(Attribute).abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.Term)));
@@ -133,30 +133,14 @@ let Attribute = defer(() =>
     .map(keep_abstract)
     .chain(list_into(FTL.Attribute)));
 
-/* -------------------------------------------------- */
-/* Value types: Pattern and VariantList (deprecated). */
-let Value = defer(() =>
-    either(
-        Pattern,
-        VariantList));
-
+/* ---------------------------------------------------------------- */
+/* Patterns are values of Messages, Terms, Attributes and Variants. */
 let Pattern = defer(() =>
     repeat1(
         PatternElement)
     // Flatten block_text and block_placeable which return lists.
     .map(flatten(1))
     .chain(list_into(FTL.Pattern)));
-
-/* DEPRECATION NOTICE VariantLists have been deprecated in Syntax 0.8. */
-let VariantList = defer(() =>
-    sequence(
-        maybe(blank),
-        string("{"),
-        variant_list.abstract,
-        maybe(blank),
-        string("}"))
-    .map(keep_abstract)
-    .chain(list_into(FTL.VariantList)));
 
 /* ----------------------------------------------------------------- */
 /* TextElement and Placeable can occur inline or as block.
@@ -214,7 +198,6 @@ let InlineExpression = defer(() =>
         NumberLiteral,
         CallExpression,
         AttributeExpression,
-        VariantExpression,
         MessageReference,
         TermReference,
         VariableReference,
@@ -321,14 +304,6 @@ let AttributeExpression = defer(() =>
         Identifier.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.AttributeExpression)));
-
-/* DEPRECATION NOTICE VariantExpressions have been deprecated in Syntax 0.8. */
-let VariantExpression = defer(() =>
-    sequence(
-        TermReference.abstract,
-        VariantKey.abstract)
-    .map(keep_abstract)
-    .chain(list_into(FTL.VariantExpression)));
 
 /* ----------------- */
 /* Block Expressions */
