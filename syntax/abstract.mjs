@@ -48,7 +48,7 @@ export function list_into(Type) {
         case FTL.Pattern:
             return elements =>
                 always(new FTL.Pattern(
-                    elements
+                    dedent(elements)
                         .reduce(join_adjacent(FTL.TextElement), [])
                         .map(trim_text_at_extremes)
                         .filter(remove_empty_text)));
@@ -111,12 +111,16 @@ export function into(Type) {
     }
 }
 
+// Create a reducer suitable for joining adjacent nodes of the same type, if
+// type is one of types specified.
 function join_adjacent(...types) {
     return function(acc, cur) {
         let prev = acc[acc.length - 1];
         for (let Type of types) {
             if (prev instanceof Type && cur instanceof Type) {
-                join_of_type(Type, prev, cur);
+                // Replace prev with a new node of the same type whose value is
+                // the sum of prev and cur, and discard cur.
+                acc[acc.length - 1] = join_of_type(Type, prev, cur);
                 return acc;
             }
         }
@@ -124,20 +128,21 @@ function join_adjacent(...types) {
     };
 }
 
+// Join values of two or more nodes of the same type. Return a new node.
 function join_of_type(Type, ...elements) {
     // TODO Join annotations and spans.
     switch (Type) {
         case FTL.TextElement:
             return elements.reduce((a, b) =>
-                (a.value += b.value, a));
+                new Type(a.value + b.value));
         case FTL.Comment:
         case FTL.GroupComment:
         case FTL.ResourceComment:
             return elements.reduce((a, b) =>
-                (a.content += `\n${b.content}`, a));
+                new Type(a.content + "\n" + b.content));
         case FTL.Junk:
             return elements.reduce((a, b) =>
-                (a.content += b.content, a));
+                new Type(a.content + b.content));
     }
 }
 
@@ -154,18 +159,38 @@ function attach_comments(acc, cur) {
     }
 }
 
-const LEADING_BLANK = /^[ \n\r]*/;
-const TRAILING_BLANK = /[ \n\r]*$/;
+// Remove the largest common indentation from a list of elements of a Pattern.
+// The indents are parsed in grammar.mjs and passed to abstract.mjs as string
+// primitives along with other PatternElements.
+function dedent(elements) {
+    // Calculate the maximum common indent.
+    let indents = elements.filter(element => typeof element === "string");
+    let common = Math.min(...indents.map(indent => indent.length));
+
+    function trim_indents(element) {
+        if (typeof element === "string") {
+            // Trim the indent and convert it to a proper TextElement.
+            // It will be joined with its adjacents later on.
+            return new FTL.TextElement(element.slice(common));
+        }
+        return element;
+    }
+
+    return elements.map(trim_indents);
+}
+
+const LEADING_BLANK_BLOCK = /^\n*/;
+const TRAILING_BLANK_INLINE = / *$/;
 
 function trim_text_at_extremes(element, index, array) {
     if (element instanceof FTL.TextElement) {
         if (index === 0) {
             element.value = element.value.replace(
-                LEADING_BLANK, "");
+                LEADING_BLANK_BLOCK, "");
         }
         if (index === array.length - 1) {
             element.value = element.value.replace(
-                TRAILING_BLANK, "");
+                TRAILING_BLANK_INLINE, "");
         }
     }
     return element;

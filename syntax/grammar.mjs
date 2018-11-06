@@ -5,7 +5,7 @@ import {
     regex, repeat, repeat1, sequence, string
 } from "../lib/combinators.mjs";
 import {
-    element_at, flatten, join, keep_abstract, mutate, print
+    element_at, flatten, join, keep_abstract, mutate, print, prune
 } from "../lib/mappers.mjs";
 
 /* ----------------------------------------------------- */
@@ -154,12 +154,11 @@ let inline_text = defer(() =>
 
 let block_text = defer(() =>
     sequence(
-        blank_block.chain(into(FTL.TextElement)).abstract,
+        blank_block.chain(into(FTL.TextElement)),
         blank_inline,
-        indented_char.chain(into(FTL.TextElement)).abstract,
-        maybe(inline_text.abstract)
-    )
-    .map(keep_abstract));
+        indented_char.chain(into(FTL.TextElement)),
+        maybe(inline_text))
+    .map(prune));
 
 let inline_placeable = defer(() =>
     sequence(
@@ -176,10 +175,10 @@ let inline_placeable = defer(() =>
 
 let block_placeable = defer(() =>
     sequence(
-        blank_block.chain(into(FTL.TextElement)).abstract,
-        maybe(blank_inline),
-        inline_placeable.abstract)
-    .map(keep_abstract));
+        blank_block.chain(into(FTL.TextElement)),
+        // No indent before a placeable counts as 0 in dedention logic.
+        maybe(blank_inline).map(s => s || ""),
+        inline_placeable));
 
 /* ------------------------------------------------------------------- */
 /* Rules for validating expressions in Placeables and as selectors of
