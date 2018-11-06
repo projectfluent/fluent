@@ -285,7 +285,7 @@
                     },
                     {
                         "type": "TextElement",
-                        "value": "\nfour"
+                        "value": "\n    four"
                     }
                 ]
             },
@@ -303,7 +303,7 @@
                 "elements": [
                     {
                         "type": "TextElement",
-                        "value": "four\n"
+                        "value": "    four\n"
                     },
                     {
                         "type": "Placeable",
