@@ -68,6 +68,8 @@ export function list_into(Type) {
                 let invalid_selector_found =
                     selector instanceof FTL.MessageReference
                     || selector instanceof FTL.TermReference
+                    || (selector instanceof FTL.CallExpression
+                        && selector.callee instanceof FTL.TermReference)
                     || selector instanceof FTL.VariantExpression
                     || (selector instanceof FTL.AttributeExpression
                         && selector.ref instanceof FTL.MessageReference);

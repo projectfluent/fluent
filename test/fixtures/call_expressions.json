@@ -35,6 +35,35 @@
             "comment": null
         },
         {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "term-callee"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "CallExpression",
+                            "callee": {
+                                "type": "TermReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "term"
+                                }
+                            },
+                            "positional": [],
+                            "named": []
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
             "type": "Comment",
             "content": "ERROR Equivalent to a MessageReference callee."
         },
@@ -51,15 +80,6 @@
             "type": "Junk",
             "annotations": [],
             "content": "message-callee = {message()}\n"
-        },
-        {
-            "type": "Comment",
-            "content": "ERROR TermReference is not a valid callee."
-        },
-        {
-            "type": "Junk",
-            "annotations": [],
-            "content": "term-callee = {-term()}\n"
         },
         {
             "type": "Comment",
