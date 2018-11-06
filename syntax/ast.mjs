@@ -81,6 +81,12 @@ export class Placeable extends PatternElement {
 // An abstract base class for Expressions.
 export class Expression extends SyntaxNode {}
 
+// The "raw" field contains the exact contents of the string literal,
+// character-for-character. Escape sequences are stored verbatim without
+// processing. The "value" field contains the same contents with escape
+// sequences unescaped to the characters they represent.
+// See grammar.mjs for the definitions of well-formed escape sequences and
+// abstract.mjs for the validation and unescaping logic.
 export class StringLiteral extends Expression {
     constructor(raw, value) {
         super();
