@@ -2,6 +2,62 @@
 
 ## Unreleased
 
+  - Preserve content-indent in multiline `Patterns`. (#162)
+
+    Multiline `Patterns` require to be indented by at least one space. In
+    Syntax 0.7 all leading ident of every line was stripped. In Syntax 0.8
+    only the maximum indent common to all indented lines is removed. This
+    behavior works for all `Patterns`: in `Messages`, `Terms`, `Attributes`
+    and `Variants`.
+
+    ```properties
+    multiline1 =
+        This message has two spaces of indent
+          on the second line of its value.
+    ```
+
+    This behavior also works when the first line of a block `Pattern` is
+    indented relative to the following lines:
+
+    ```properties
+    multiline2 =
+          This message has two spaces of indent
+        on the first line of its value.
+    ```
+
+    Note that only indented lines participate in this behavior. Specifically,
+    if a `Pattern` starts on the same line as the message identifier, then
+    it's not considered as indented, and is excluded from the indent
+    stripping.
+
+    ```properties
+    multiline3 = This message has two spaces of indent
+          on the second line of its value. The first
+        line is not considered indented at all.
+    ```
+
+    If a `Pattern` starts on the same line as the identifier, its first line
+    is subject to the leading-whitespace stripping which is applied to all
+    `Patterns`.
+
+    ```properties
+    # Same value as multiline3 above.
+    multiline4 =     This message has two spaces of indent
+          on the second line of its value. The first
+        line is not considered indented at all.
+    ```
+
+    Note that if a multiline `Pattern` starts on the same line as the
+    identifier and it only consists of one more line of text below it, then
+    the maximum indent common to all _indented_ lines is equal to the indent
+    of the second line, i.e. the only indented line. All indent will be
+    removed in this case. `{" "}` can be used to preserve it explicitly.
+
+    ```properties
+    multiline5 = This message has no indent
+            on the second line of its value.
+    ```
+
   - Support astral Unicode characters. (#174)
 
     Unicode characters from outside of the Basic Multilingual Plane can now
@@ -23,6 +79,17 @@
     curly brace (`{`), `{"\u00A0"}` will insert the non-breaking space, and
     `{"   "}` can be used to make a translation start or end with whitespace,
     which would otherwise by trimmed by `Pattern.`
+
+  - Forbid closing brace in `TextElements`.  (#186)
+
+    Both the opening and the closing brace are now considered special when
+    present in `TextElements`. `{"}"}` can be used to insert a literal
+    closing brace.
+
+  - Don't normalize line endings in `Junk`. (#184)
+
+    Junk represents a literal slice of unparsed content and shouldn't have
+    its line endings normalized to LF.
 
 ## 0.7.0 (October 15, 2018)
 
