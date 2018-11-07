@@ -70,7 +70,12 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "variant-expression = {msg[case]}\nattribute-expression = {-term.attr}\n"
+            "content": "variant-expression = {msg[case]}\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "attribute-expression = {-term.attr}\n"
         }
     ]
 }

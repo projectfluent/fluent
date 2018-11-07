@@ -65,7 +65,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "-term03 =\n    .attr = Attribute\n"
+            "content": "-term03 =\n    .attr = Attribute\n\n"
         },
         {
             "type": "Comment",
@@ -74,7 +74,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "-term04 =                \n    .attr1 = Attribute 1\n"
+            "content": "-term04 =                \n    .attr1 = Attribute 1\n\n"
         },
         {
             "type": "Comment",
@@ -83,7 +83,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "-term05 =\n"
+            "content": "-term05 =\n\n"
         },
         {
             "type": "Comment",
@@ -92,7 +92,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "-term06 =                \n"
+            "content": "-term06 =                \n\n"
         },
         {
             "type": "Comment",

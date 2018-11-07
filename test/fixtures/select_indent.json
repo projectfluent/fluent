@@ -548,7 +548,12 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "select-no-indent-multiline = { $selector ->\n   *[key] Value\nContinued without indent.\n}\n"
+            "content": "select-no-indent-multiline = { $selector ->\n   *[key] Value\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "Continued without indent.\n}\n\n"
         },
         {
             "type": "Message",

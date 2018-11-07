@@ -80,7 +80,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "unmatched-open1 = { 1\n"
+            "content": "unmatched-open1 = { 1\n\n"
         },
         {
             "type": "Comment",
@@ -89,7 +89,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "unmatched-open2 = {{ 1 }\n"
+            "content": "unmatched-open2 = {{ 1 }\n\n"
         },
         {
             "type": "Comment",
@@ -98,7 +98,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "unmatched-close1 = 1 }\n"
+            "content": "unmatched-close1 = 1 }\n\n"
         },
         {
             "type": "Comment",

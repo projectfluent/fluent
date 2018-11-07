@@ -16,7 +16,7 @@ let Resource = defer(() =>
         either(
             Entry,
             blank_block,
-            junk_line))
+            junk))
     .chain(list_into(FTL.Resource)));
 
 /* ------------------------------------------------------------------------- */
@@ -84,16 +84,33 @@ let CommentLine = defer(() =>
     .map(keep_abstract)
     .chain(list_into(FTL.Comment)));
 
-/* ------------------------------------------------------------------------- */
-/* Adjacent junk_lines are joined into FTL.Junk during the AST construction. */
+/* -------------------------------------------------------------------------- */
+/* Junk represents unparsed content.
+ *
+ * Junk is parsed line-by-line until a line is found which looks like it might
+ * be a beginning of a new message, term, or a comment. Any whitespace
+ * following a broken Entry is also considered part of Junk.
+ */
+let junk = defer(() =>
+    sequence(
+        junk_line,
+        repeat(
+            and(
+                not(charset("a-zA-Z")),
+                not(string("-")),
+                not(string("#")),
+                junk_line)))
+    .map(flatten(1))
+    .map(join)
+    .chain(into(FTL.Junk)));
+
 let junk_line =
     sequence(
         regex(/[^\n]*/),
         either(
             string("\u000A"),
             eof()))
-    .map(join)
-    .chain(into(FTL.Junk));
+    .map(join);
 
 /* --------------------------------- */
 /* Attributes of Messages and Terms. */
