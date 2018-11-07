@@ -64,7 +64,8 @@ NumberLiteral       ::= "-"? digit+ ("." digit+)?
 MessageReference    ::= Identifier
 TermReference       ::= "-" Identifier
 VariableReference   ::= "$" Identifier
-CallExpression      ::= Function blank? "(" blank? argument_list blank? ")"
+FunctionReference   ::= Identifier
+CallExpression      ::= FunctionReference blank? "(" blank? argument_list blank? ")"
 argument_list       ::= (Argument blank? "," blank?)* Argument?
 Argument            ::= NamedArgument
                       | InlineExpression
@@ -79,9 +80,8 @@ Variant             ::= line_end blank? VariantKey blank_inline? Value
 DefaultVariant      ::= line_end blank? "*" VariantKey blank_inline? Value
 VariantKey          ::= "[" blank? (NumberLiteral | Identifier) blank? "]"
 
-/* Identifiers */
+/* Identifier */
 Identifier          ::= [a-zA-Z] [a-zA-Z0-9_-]*
-Function            ::= [A-Z] [A-Z_?-]*
 
 /* Content Characters
  *

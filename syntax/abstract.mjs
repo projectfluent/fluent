@@ -72,7 +72,7 @@ export function list_into(Type) {
                     || (selector instanceof FTL.AttributeExpression
                         && selector.ref instanceof FTL.MessageReference);
                 if (invalid_selector_found) {
-                    return never("Invalid selector type: ${selector.type}.");
+                    return never(`Invalid selector type: ${selector.type}.`);
                 }
                 let invalid_variants_found = variants.some(
                     variant => variant.value instanceof FTL.VariantList);
@@ -94,6 +94,16 @@ export function list_into(Type) {
 
 export function into(Type) {
     switch (Type) {
+        case FTL.FunctionReference:
+            const VALID_FUNCTION_NAME = /^[A-Z][A-Z0-9_?-]*$/;
+            return identifier => {
+                if (!VALID_FUNCTION_NAME.test(identifier.name)) {
+                    return never(
+                        `Invalid function name: ${identifier.name}. ` +
+                        "Function names must be upper-case.");
+                }
+                return always(new Type(identifier));
+            };
         case FTL.Placeable:
             return expression => {
                 let invalid_expression_found =
@@ -101,7 +111,7 @@ export function into(Type) {
                     && expression.ref instanceof FTL.TermReference;
                 if (invalid_expression_found) {
                     return never(
-                        "Invalid expression type: ${expression.type}.");
+                        `Invalid expression type: ${expression.type}.`);
                 }
                 return always(new Type(expression));
             };

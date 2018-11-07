@@ -238,9 +238,12 @@ let VariableReference = defer(() =>
     .map(element_at(1))
     .chain(into(FTL.VariableReference)));
 
+let FunctionReference = defer(() =>
+    Identifier.chain(into(FTL.FunctionReference)));
+
 let CallExpression = defer(() =>
     sequence(
-        Function.abstract,
+        FunctionReference.abstract,
         maybe(blank),
         string("("),
         maybe(blank),
@@ -350,8 +353,8 @@ let VariantKey = defer(() =>
         string("]"))
     .map(element_at(2)));
 
-/* ----------- */
-/* Identifiers */
+/* ---------- */
+/* Identifier */
 
 let Identifier =
     sequence(
@@ -361,15 +364,6 @@ let Identifier =
     .map(flatten(1))
     .map(join)
     .chain(into(FTL.Identifier));
-
-let Function =
-    sequence(
-        charset("A-Z"),
-        repeat(
-            charset("A-Z_?-")))
-    .map(flatten(1))
-    .map(join)
-    .chain(into(FTL.Function));
 
 /* -------------------------------------------------------------------------- */
 /* Content Characters
