@@ -126,6 +126,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
+                            "raw": "placeables",
                             "value": "placeables"
                         }
                     },
@@ -137,6 +138,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
+                            "raw": "at",
                             "value": "at"
                         }
                     },
@@ -148,6 +150,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
+                            "raw": "of lines",
                             "value": "of lines"
                         }
                     },
@@ -155,6 +158,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
+                            "raw": ".",
                             "value": "."
                         }
                     }
@@ -176,6 +180,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
+                            "raw": "A multiline value",
                             "value": "A multiline value"
                         }
                     },
@@ -187,6 +192,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
+                            "raw": "with a placeable",
                             "value": "with a placeable"
                         }
                     }
@@ -280,6 +286,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
+                            "raw": ".",
                             "value": "."
                         }
                     },
@@ -309,6 +316,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
+                            "raw": ".",
                             "value": "."
                         }
                     }

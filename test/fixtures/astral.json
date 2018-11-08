@@ -68,7 +68,8 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
-                            "value": "\\uD83D\\uDE02"
+                            "raw": "\\uD83D\\uDE02",
+                            "value": "��"
                         }
                     }
                 ]
@@ -89,14 +90,16 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
-                            "value": "\\uD83D"
+                            "raw": "\\uD83D",
+                            "value": "�"
                         }
                     },
                     {
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
-                            "value": "\\uDE02"
+                            "raw": "\\uDE02",
+                            "value": "�"
                         }
                     }
                 ]
@@ -135,6 +138,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
+                            "raw": "A face 😂 with tears of joy.",
                             "value": "A face 😂 with tears of joy."
                         }
                     }

@@ -86,6 +86,14 @@
     present in `TextElements`. `{"}"}` can be used to insert a literal
     closing brace.
 
+  - Store both the raw and the unescaped value in `StringLiteral`. (#203)
+
+    `StringLiteral.value` has been change to store the unescaped ("cooked")
+    value of the string literal: all known escape sequences are replaced with
+    the characters they represent. `StringLiteral.raw` has been added and
+    stores the raw value as it was typed by the author of the string literal:
+    escapes sequences are not processed in any way.
+
   - Don't normalize line endings in `Junk`. (#184)
 
     Junk represents a literal slice of unparsed content and shouldn't have
