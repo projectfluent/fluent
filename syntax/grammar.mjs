@@ -16,7 +16,7 @@ let Resource = defer(() =>
         either(
             Entry,
             blank_block,
-            junk))
+            Junk))
     .chain(list_into(FTL.Resource)));
 
 /* ------------------------------------------------------------------------- */
@@ -91,7 +91,7 @@ let CommentLine = defer(() =>
  * be a beginning of a new message, term, or a comment. Any whitespace
  * following a broken Entry is also considered part of Junk.
  */
-let junk = defer(() =>
+let Junk = defer(() =>
     sequence(
         junk_line,
         repeat(
