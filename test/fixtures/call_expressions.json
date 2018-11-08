@@ -2,6 +2,79 @@
     "type": "Resource",
     "body": [
         {
+            "type": "GroupComment",
+            "content": "Callees"
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "function-callee"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "CallExpression",
+                            "callee": {
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUNCTION"
+                                }
+                            },
+                            "positional": [],
+                            "named": []
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Equivalent to a MessageReference callee."
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "mixed-case-callee = {Function()}\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR MessageReference is not a valid callee."
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "message-callee = {message()}\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR TermReference is not a valid callee."
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "term-callee = {-term()}\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR VariableReference is not a valid callee."
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "variable-callee = {$variable()}\n"
+        },
+        {
+            "type": "GroupComment",
+            "content": "Arguments"
+        },
+        {
             "type": "Message",
             "id": {
                 "type": "Identifier",
@@ -15,8 +88,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -57,8 +133,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [],
                             "named": [
@@ -106,8 +185,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [],
                             "named": [
@@ -155,8 +237,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -242,8 +327,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -292,8 +380,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [],
                             "named": []
@@ -318,8 +409,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -368,8 +462,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -418,8 +515,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [],
                             "named": []
@@ -444,8 +544,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -475,8 +578,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -506,8 +612,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -540,8 +649,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -574,8 +686,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -608,15 +723,21 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
                                     "type": "CallExpression",
                                     "callee": {
-                                        "type": "Function",
-                                        "name": "OTHER"
+                                        "type": "FunctionReference",
+                                        "id": {
+                                            "type": "Identifier",
+                                            "name": "OTHER"
+                                        }
                                     },
                                     "positional": [],
                                     "named": []
@@ -644,8 +765,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [],
                             "named": [
@@ -682,8 +806,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -720,8 +847,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -751,8 +881,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -790,8 +923,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -829,8 +965,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -864,8 +1003,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [
                                 {
@@ -912,8 +1054,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [],
                             "named": [
@@ -972,8 +1117,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [],
                             "named": [
@@ -1010,8 +1158,11 @@
                         "expression": {
                             "type": "CallExpression",
                             "callee": {
-                                "type": "Function",
-                                "name": "FUN"
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUN"
+                                }
                             },
                             "positional": [],
                             "named": [

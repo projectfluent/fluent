@@ -121,6 +121,14 @@ export class VariableReference extends Expression {
     }
 }
 
+export class FunctionReference extends Expression {
+    constructor(id) {
+        super();
+        this.type = "FunctionReference";
+        this.id = id;
+    }
+}
+
 export class SelectExpression extends Expression {
     constructor(selector, variants) {
         super();
@@ -219,13 +227,6 @@ export class ResourceComment extends BaseComment {
     constructor(content) {
         super(content);
         this.type = "ResourceComment";
-    }
-}
-
-export class Function extends Identifier {
-    constructor(name) {
-        super(name);
-        this.type = "Function";
     }
 }
 
