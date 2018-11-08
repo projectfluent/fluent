@@ -81,7 +81,7 @@
             "type": "Message",
             "id": {
                 "type": "Identifier",
-                "name": "valid-selector"
+                "name": "valid-selector-term-attribute"
             },
             "value": {
                 "type": "Pattern",
@@ -137,7 +137,25 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "invalid-selector =\n    { -term[case] ->\n       *[key] value\n    }\n"
+            "content": "invalid-selector-term-value =\n    { -term ->\n       *[key] value\n    }\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "invalid-selector-term-variant =\n    { -term[case] ->\n       *[key] value\n    }\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "invalid-selector-term-call =\n    { -term(case: \"nominative\") ->\n       *[key] value\n    }\n"
         },
         {
             "type": "Message",

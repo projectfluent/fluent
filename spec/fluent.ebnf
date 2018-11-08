@@ -65,7 +65,9 @@ MessageReference    ::= Identifier
 TermReference       ::= "-" Identifier
 VariableReference   ::= "$" Identifier
 FunctionReference   ::= Identifier
-CallExpression      ::= FunctionReference blank? "(" blank? argument_list blank? ")"
+CallExpression      ::= Callee blank? "(" blank? argument_list blank? ")"
+Callee              ::= FunctionReference
+                      | TermReference
 argument_list       ::= (Argument blank? "," blank?)* Argument?
 Argument            ::= NamedArgument
                       | InlineExpression

@@ -243,7 +243,7 @@ let FunctionReference = defer(() =>
 
 let CallExpression = defer(() =>
     sequence(
-        FunctionReference.abstract,
+        Callee.abstract,
         maybe(blank),
         string("("),
         maybe(blank),
@@ -252,6 +252,11 @@ let CallExpression = defer(() =>
         string(")"))
     .map(keep_abstract)
     .chain(list_into(FTL.CallExpression)));
+
+let Callee =
+    either(
+        FunctionReference,
+        TermReference);
 
 let argument_list = defer(() =>
     sequence(

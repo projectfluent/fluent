@@ -4,14 +4,26 @@ new-messages =
        *[other] {""}Other
     }
 
-valid-selector =
+valid-selector-term-attribute =
     { -term.case ->
        *[key] value
     }
 
 # ERROR
-invalid-selector =
+invalid-selector-term-value =
+    { -term ->
+       *[key] value
+    }
+
+# ERROR
+invalid-selector-term-variant =
     { -term[case] ->
+       *[key] value
+    }
+
+# ERROR
+invalid-selector-term-call =
+    { -term(case: "nominative") ->
        *[key] value
     }
 

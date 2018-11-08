@@ -1,14 +1,13 @@
 ## Callees
 
 function-callee = {FUNCTION()}
+term-callee = {-term()}
 
 # ERROR Equivalent to a MessageReference callee.
 mixed-case-callee = {Function()}
 
 # ERROR MessageReference is not a valid callee.
 message-callee = {message()}
-# ERROR TermReference is not a valid callee.
-term-callee = {-term()}
 # ERROR VariableReference is not a valid callee.
 variable-callee = {$variable()}
 

@@ -54,5 +54,6 @@ Invalid Select Expressions:
 
     SelectExpression.selector > MessageReference
     SelectExpression.selector > TermReference
+    SelectExpression.selector > CallExpression.callee > TermReference
     SelectExpression.selector > VariantExpression
     SelectExpression.selector > AttributeExpression.ref > MessageReference

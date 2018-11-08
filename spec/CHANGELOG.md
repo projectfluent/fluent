@@ -58,6 +58,59 @@
             on the second line of its value.
     ```
 
+  - Introduce parameterized `Terms`. (#176)
+
+    References to `Terms` can now receive parameters which will be used by
+    the runtime as values of variables referenced from within the `Term`.
+    This allows `Terms` to use regular `Patterns` as values, rather than
+    `VariantLists`:
+
+    ```properties
+    # A Term with a VariantList as a value.
+    -thing = {
+       *[definite] the thing
+       *[indefinite] a thing
+    }
+
+    this = This is { -term[indefinite] }.
+    ```
+
+    ```properties
+    # A parametrized Term with a Pattern as a value.
+    -thing = { $article ->
+       *[definite] the thing
+       *[indefinite] a thing
+    }
+
+    this = This is { -thing(article: "indefinite") }.
+    ```
+
+    Since `Patterns` can be nested, this feature allows more complex
+    hierarchies of term values:
+
+    ```properties
+    # A parametrized Term with nested Patterns.
+    -thing = { $article ->
+       *[definite] { $first-letter ->
+           *[lower] the thing
+            [upper] The thing
+        }
+        [indefinite] { $first-letter ->
+           *[lower] a thing
+            [upper] A thing
+        }
+    }
+
+    this = This is { -term(first-letter: "lower", article: "indefinite") }.
+    ```
+
+    Parameters must be named; positional parameters are ignored. If a
+    parameter is omitted then the regular default variant logic applies. The
+    above example could thus be written as `{-term(article: "indefinite")}`
+    and the `lower` variant would be used because it is marked as the default
+    one. If no parameters are specified, the paranthesis can be omitted:
+    `{-term()}` and `{-term}` are functionally the same.
+
   - Support astral Unicode characters. (#174)
 
     Unicode characters from outside of the Basic Multilingual Plane can now
