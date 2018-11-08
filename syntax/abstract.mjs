@@ -57,7 +57,6 @@ export function list_into(Type) {
                 always(new FTL.Resource(
                     entries
                         .reduce(join_adjacent(
-                            FTL.Junk,
                             FTL.Comment,
                             FTL.GroupComment,
                             FTL.ResourceComment), [])
@@ -155,9 +154,6 @@ function join_of_type(Type, ...elements) {
         case FTL.ResourceComment:
             return elements.reduce((a, b) =>
                 new Type(a.content + "\n" + b.content));
-        case FTL.Junk:
-            return elements.reduce((a, b) =>
-                new Type(a.content + b.content));
     }
 }
 

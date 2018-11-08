@@ -56,7 +56,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "    .attr =\n        {\n           *[key] Value\n        }\n"
+            "content": "    .attr =\n        {\n           *[key] Value\n        }\n\n"
         },
         {
             "type": "Comment",
@@ -65,7 +65,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "variant-list-in-message =\n    {\n       *[key] Value\n    }\n"
+            "content": "variant-list-in-message =\n    {\n       *[key] Value\n    }\n\n"
         },
         {
             "type": "Message",
@@ -91,7 +91,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "    .attr =\n        {\n           *[key] Value\n        }\n"
+            "content": "    .attr =\n        {\n           *[key] Value\n        }\n\n"
         },
         {
             "type": "Term",
@@ -200,7 +200,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "nested-select-then-variant-list =\n    {\n       *[one] { 2 ->\n          *[two] {\n             *[three] Value\n          }\n       }\n    }\n"
+            "content": "nested-select-then-variant-list =\n    {\n       *[one] { 2 ->\n          *[two] {\n             *[three] Value\n          }\n       }\n    }\n\n"
         },
         {
             "type": "Comment",

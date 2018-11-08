@@ -1,6 +1,6 @@
 
 /* An FTL file defines a Resource consisting of Entries. */
-Resource            ::= (Entry | blank_block | junk_line)*
+Resource            ::= (Entry | blank_block | Junk)*
 
 /* Entries are the main building blocks of Fluent. They define translations and
  * contextual and semantic information about the translations. During the AST
@@ -18,7 +18,13 @@ Term                ::= "-" Identifier blank_inline? "=" blank_inline? Value Att
  * the AST construction. */
 CommentLine         ::= ("###" | "##" | "#") ("\u0020" /.*/)? line_end
 
-/* Adjacent junk_lines are joined into FTL.Junk during the AST construction. */
+/* Junk represents unparsed content.
+ *
+ * Junk is parsed line-by-line until a line is found which looks like it might
+ * be a beginning of a new message, term, or a comment. Any whitespace
+ * following a broken Entry is also considered part of Junk.
+ */
+Junk                ::= junk_line (junk_line - "#" - "-" - [a-zA-Z])*
 junk_line           ::= /[^\n]*/ ("\u000A" | EOF)
 
 /* Attributes of Messages and Terms. */

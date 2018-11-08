@@ -61,7 +61,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "err03 = { \"str\r\n"
+            "content": "err03 = { \"str\r\n\r\n"
         },
         {
             "type": "Comment",

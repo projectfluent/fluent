@@ -70,7 +70,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "mixed-case-callee = {Function()}\n"
+            "content": "mixed-case-callee = {Function()}\n\n"
         },
         {
             "type": "Comment",
@@ -88,7 +88,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "variable-callee = {$variable()}\n"
+            "content": "variable-callee = {$variable()}\n\n"
         },
         {
             "type": "GroupComment",
@@ -323,7 +323,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "shuffled-args = {FUN(1, x: 1, \"a\", y: \"Y\", msg)}\n"
+            "content": "shuffled-args = {FUN(1, x: 1, \"a\", y: \"Y\", msg)}\n\n"
         },
         {
             "type": "Comment",
@@ -332,7 +332,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "duplicate-named-args = {FUN(x: 1, x: \"X\")}\n"
+            "content": "duplicate-named-args = {FUN(x: 1, x: \"X\")}\n\n\n"
         },
         {
             "type": "GroupComment",
@@ -1063,7 +1063,17 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "one-argument = {FUN(1,,)}\nmissing-arg = {FUN(,)}\nmissing-sparse-arg = {FUN(   ,   )}\n"
+            "content": "one-argument = {FUN(1,,)}\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "missing-arg = {FUN(,)}\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "missing-sparse-arg = {FUN(   ,   )}\n\n\n"
         },
         {
             "type": "GroupComment",

@@ -132,7 +132,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "-invalid-identifier =\n    {\n       *[two words] value\n    }\n"
+            "content": "-invalid-identifier =\n    {\n       *[two words] value\n    }\n\n"
         },
         {
             "type": "Comment",
@@ -141,7 +141,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "-invalid-int =\n    {\n       *[1 apple] value\n    }\n"
+            "content": "-invalid-int =\n    {\n       *[1 apple] value\n    }\n\n"
         },
         {
             "type": "Comment",

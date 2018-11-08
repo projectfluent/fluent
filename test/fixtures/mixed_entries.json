@@ -61,7 +61,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "ą=Invalid identifier\nć=Another one\n"
+            "content": "ą=Invalid identifier\nć=Another one\n\n"
         },
         {
             "type": "Message",
@@ -91,7 +91,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "    .attr = Dangling attribute\n"
+            "content": "    .attr = Dangling attribute\n\n"
         },
         {
             "type": "Message",

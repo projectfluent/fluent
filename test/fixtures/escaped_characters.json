@@ -169,7 +169,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "unknown-escape = {\"\\x\"}\n"
+            "content": "unknown-escape = {\"\\x\"}\n\n"
         },
         {
             "type": "GroupComment",

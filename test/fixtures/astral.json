@@ -154,7 +154,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "err-😂 = Value\n"
+            "content": "err-😂 = Value\n\n"
         },
         {
             "type": "Comment",
@@ -163,7 +163,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "err-invalid-expression = { 😂 }\n"
+            "content": "err-invalid-expression = { 😂 }\n\n"
         },
         {
             "type": "Comment",
