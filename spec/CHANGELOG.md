@@ -91,6 +91,16 @@
     Junk represents a literal slice of unparsed content and shouldn't have
     its line endings normalized to LF.
 
+  - Add the `FunctionReference` production. (#210)
+
+    Function references in `CallExpressions` are now stored as
+    `FunctionReference` AST nodes, with an `id` field which is an
+    `Identifier`.
+
+    The `Function` production and its corresponding AST node have been
+    removed. The logic validating that function names are all upper-case has
+    been moved to `abstract.mjs`.
+
 ## 0.7.0 (October 15, 2018)
 
   - Relax the indentation requirement. (#87)
