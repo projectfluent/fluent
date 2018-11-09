@@ -58,6 +58,12 @@
             on the second line of its value.
     ```
 
+  - Deprecate `VariantLists`. (#204)
+
+    `VariantLists` and `VariantExpression` have been deprecated. They will be
+    removed before Fluent 1.0 is released. Please use parameterized `Terms`
+    instead (see below).
+
   - Introduce parameterized `Terms`. (#176)
 
     References to `Terms` can now receive parameters which will be used by
