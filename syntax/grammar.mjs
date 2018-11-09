@@ -141,6 +141,7 @@ let Pattern = defer(() =>
     .map(flatten(1))
     .chain(list_into(FTL.Pattern)));
 
+/* DEPRECATION NOTICE VariantLists have been deprecated in Syntax 0.8. */
 let VariantList = defer(() =>
     sequence(
         maybe(blank),
@@ -314,6 +315,7 @@ let AttributeExpression = defer(() =>
     .map(keep_abstract)
     .chain(list_into(FTL.AttributeExpression)));
 
+/* DEPRECATION NOTICE VariantExpressions have been deprecated in Syntax 0.8. */
 let VariantExpression = defer(() =>
     sequence(
         TermReference.abstract,
