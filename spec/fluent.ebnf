@@ -34,6 +34,7 @@ Attribute           ::= line_end blank? "." Identifier blank_inline? "=" blank_i
 Value               ::= Pattern
                       | VariantList
 Pattern             ::= PatternElement+
+/* DEPRECATION NOTICE VariantLists have been deprecated in Syntax 0.8. */
 VariantList         ::= blank? "{" variant_list blank? "}"
 
 /* TextElement and Placeable can occur inline or as block.
@@ -79,6 +80,7 @@ Argument            ::= NamedArgument
                       | InlineExpression
 NamedArgument       ::= Identifier blank? ":" blank? (StringLiteral | NumberLiteral)
 AttributeExpression ::= (MessageReference | TermReference) "." Identifier
+/* DEPRECATION NOTICE VariantExpressions have been deprecated in Syntax 0.8. */
 VariantExpression   ::= TermReference VariantKey
 
 /* Block Expressions */
