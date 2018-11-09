@@ -395,6 +395,9 @@ let Identifier =
  * Translation content can be written using any Unicode characters. However,
  * some characters are considered special depending on the type of content
  * they're in. See text_char and quoted_char for more information.
+ *
+ * Some Unicode characters, even if allowed, should be avoided in Fluent
+ * resources. See spec/recommendations.md.
  */
 
 let any_char =

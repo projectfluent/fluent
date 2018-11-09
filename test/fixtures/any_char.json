@@ -19,7 +19,7 @@
             "attributes": [],
             "comment": {
                 "type": "Comment",
-                "content": "ERROR       ↓ BEL, U+0007"
+                "content": "            ↓ BEL, U+0007"
             }
         },
         {
@@ -40,7 +40,7 @@
             "attributes": [],
             "comment": {
                 "type": "Comment",
-                "content": "ERROR     ↓ DEL, U+007F"
+                "content": "          ↓ DEL, U+007F"
             }
         },
         {
@@ -61,7 +61,7 @@
             "attributes": [],
             "comment": {
                 "type": "Comment",
-                "content": "ERROR       ↓ BPM, U+0082"
+                "content": "            ↓ BPM, U+0082"
             }
         }
     ]
