@@ -1,16 +1,3 @@
-## Callees
-
-function-callee = {FUNCTION()}
-term-callee = {-term()}
-
-# ERROR Equivalent to a MessageReference callee.
-mixed-case-callee = {Function()}
-
-# ERROR MessageReference is not a valid callee.
-message-callee = {message()}
-# ERROR VariableReference is not a valid callee.
-variable-callee = {$variable()}
-
 ## Arguments
 
 positional-args = {FUN(1, "a", msg)}
