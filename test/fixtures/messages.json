@@ -243,7 +243,25 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "key08\n"
+            "content": "key08\n\n"
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "KEY09"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value 09"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
         }
     ]
 }

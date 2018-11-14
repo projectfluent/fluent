@@ -206,12 +206,12 @@ let InlineExpression = defer(() =>
     either(
         StringLiteral,
         NumberLiteral,
-        VariableReference,
-        CallExpression, // Must be before MessageReference
+        CallExpression,
         AttributeExpression,
         VariantExpression,
         MessageReference,
         TermReference,
+        VariableReference,
         inline_placeable));
 
 /* -------- */
@@ -256,12 +256,9 @@ let VariableReference = defer(() =>
     .map(element_at(1))
     .chain(into(FTL.VariableReference)));
 
-let FunctionReference = defer(() =>
-    Identifier.chain(into(FTL.FunctionReference)));
-
 let CallExpression = defer(() =>
     sequence(
-        Callee.abstract,
+        CalleeExpression.abstract,
         maybe(blank),
         string("("),
         maybe(blank),
@@ -271,10 +268,14 @@ let CallExpression = defer(() =>
     .map(keep_abstract)
     .chain(list_into(FTL.CallExpression)));
 
-let Callee =
+let CalleeExpression = defer(() =>
     either(
+        AttributeExpression,
         FunctionReference,
-        TermReference);
+        TermReference));
+
+let FunctionReference = defer(() =>
+    Identifier.chain(into(FTL.FunctionReference)));
 
 let argument_list = defer(() =>
     sequence(
