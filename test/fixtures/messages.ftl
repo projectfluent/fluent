@@ -25,3 +25,5 @@ key07 =
 
 # JUNK Missing =
 key08
+
+KEY09 = Value 09

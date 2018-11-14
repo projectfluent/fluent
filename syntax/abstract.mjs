@@ -10,6 +10,16 @@ import {always, never} from "../lib/combinators.mjs";
 
 export function list_into(Type) {
     switch (Type) {
+        case FTL.AttributeExpression:
+            return ([ref, name]) => {
+                let ref_is_valid =
+                    ref instanceof FTL.MessageReference
+                    || ref instanceof FTL.TermReference;
+                if (ref_is_valid) {
+                    return always(new Type(ref, name));
+                }
+                return never(`Invalid ref type: ${ref.type}.`);
+            };
         case FTL.Comment:
             return ([sigil, content = ""]) => {
                 switch (sigil) {
@@ -20,11 +30,17 @@ export function list_into(Type) {
                     case "###":
                         return always(new FTL.ResourceComment(content));
                     default:
-                        return never(`Unknown comment sigil: ${sigil}`);
+                        return never(`Unknown comment sigil: ${sigil}.`);
                 }
             };
         case FTL.CallExpression:
             return ([callee, args]) => {
+                let callee_is_valid =
+                    callee instanceof FTL.FunctionReference
+                    || callee instanceof FTL.TermReference;
+                if (!callee_is_valid) {
+                    return never(`Invalid callee type: ${callee.type}.`);
+                }
                 let positional_args = [];
                 let named_map = new Map();
                 for (let arg of args) {
@@ -64,17 +80,19 @@ export function list_into(Type) {
                         .filter(remove_blank_lines)));
         case FTL.SelectExpression:
             return ([selector, variants]) => {
-                let invalid_selector_found =
-                    selector instanceof FTL.MessageReference
-                    || selector instanceof FTL.TermReference
+                let selector_is_valid =
+                    selector instanceof FTL.StringLiteral
+                    || selector instanceof FTL.NumberLiteral
+                    || selector instanceof FTL.VariableReference
                     || (selector instanceof FTL.CallExpression
-                        && selector.callee instanceof FTL.TermReference)
-                    || selector instanceof FTL.VariantExpression
+                        && selector.callee instanceof FTL.FunctionReference)
                     || (selector instanceof FTL.AttributeExpression
-                        && selector.ref instanceof FTL.MessageReference);
-                if (invalid_selector_found) {
+                        && selector.ref instanceof FTL.TermReference);
+                if (!selector_is_valid) {
                     return never(`Invalid selector type: ${selector.type}.`);
                 }
+
+                // DEPRECATED
                 let invalid_variants_found = variants.some(
                     variant => variant.value instanceof FTL.VariantList);
                 if (invalid_variants_found) {
@@ -82,6 +100,7 @@ export function list_into(Type) {
                         "VariantLists are only allowed inside of " +
                         "other VariantLists.");
                 }
+
                 return always(new Type(selector, variants));
             };
         case FTL.VariantList:
@@ -98,18 +117,19 @@ export function into(Type) {
         case FTL.FunctionReference:
             const VALID_FUNCTION_NAME = /^[A-Z][A-Z0-9_?-]*$/;
             return identifier => {
-                if (!VALID_FUNCTION_NAME.test(identifier.name)) {
-                    return never(
-                        `Invalid function name: ${identifier.name}. ` +
-                        "Function names must be upper-case.");
+                if (VALID_FUNCTION_NAME.test(identifier.name)) {
+                    return always(new Type(identifier));
                 }
-                return always(new Type(identifier));
+                return never(
+                    `Invalid function name: ${identifier.name}. `
+                    + "Function names must be all upper-case ASCII letters.");
             };
         case FTL.Placeable:
             return expression => {
                 let invalid_expression_found =
-                    expression instanceof FTL.AttributeExpression
-                    && expression.ref instanceof FTL.TermReference;
+                    expression instanceof FTL.FunctionReference
+                    || (expression instanceof FTL.AttributeExpression
+                        && expression.ref instanceof FTL.TermReference);
                 if (invalid_expression_found) {
                     return never(
                         `Invalid expression type: ${expression.type}.`);

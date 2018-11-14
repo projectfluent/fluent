@@ -55,12 +55,12 @@ block_placeable     ::= blank_block blank_inline? inline_placeable
  * syntax/abstract.mjs. */
 InlineExpression    ::= StringLiteral
                       | NumberLiteral
-                      | VariableReference
                       | CallExpression
                       | AttributeExpression
                       | VariantExpression
                       | MessageReference
                       | TermReference
+                      | VariableReference
                       | inline_placeable
 
 /* Literals */
@@ -71,10 +71,10 @@ NumberLiteral       ::= "-"? digit+ ("." digit+)?
 MessageReference    ::= Identifier
 TermReference       ::= "-" Identifier
 VariableReference   ::= "$" Identifier
-FunctionReference   ::= Identifier
-CallExpression      ::= Callee blank? "(" blank? argument_list blank? ")"
-Callee              ::= FunctionReference
+CallExpression      ::= CalleeExpression blank? "(" blank? argument_list blank? ")"
+CalleeExpression    ::= FunctionReference
                       | TermReference
+FunctionReference   ::= Identifier
 argument_list       ::= (Argument blank? "," blank?)* Argument?
 Argument            ::= NamedArgument
                       | InlineExpression
