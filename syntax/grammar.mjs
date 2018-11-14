@@ -206,12 +206,10 @@ let InlineExpression = defer(() =>
     either(
         StringLiteral,
         NumberLiteral,
-        VariableReference,
-        CallExpression, // Must be before MessageReference
+        CallExpression,
         AttributeExpression,
         VariantExpression,
-        MessageReference,
-        TermReference,
+        ReferenceExpression,
         inline_placeable));
 
 /* -------- */
@@ -237,8 +235,15 @@ let NumberLiteral = defer(() =>
     .map(join)
     .chain(into(FTL.NumberLiteral)));
 
-/* ------------------ */
-/* Inline Expressions */
+/* --------------------- */
+/* Reference Expressions */
+let ReferenceExpression = defer(() =>
+    either(
+        FunctionReference,
+        MessageReference,
+        TermReference,
+        VariableReference));
+
 let MessageReference = defer(() =>
     Identifier.chain(into(FTL.MessageReference)));
 
@@ -259,9 +264,11 @@ let VariableReference = defer(() =>
 let FunctionReference = defer(() =>
     Identifier.chain(into(FTL.FunctionReference)));
 
+/* ------------------- */
+/* Complex Expressions */
 let CallExpression = defer(() =>
     sequence(
-        Callee.abstract,
+        ReferenceExpression.abstract,
         maybe(blank),
         string("("),
         maybe(blank),
@@ -270,11 +277,6 @@ let CallExpression = defer(() =>
         string(")"))
     .map(keep_abstract)
     .chain(list_into(FTL.CallExpression)));
-
-let Callee =
-    either(
-        FunctionReference,
-        TermReference);
 
 let argument_list = defer(() =>
     sequence(
@@ -307,9 +309,7 @@ let NamedArgument = defer(() =>
 
 let AttributeExpression = defer(() =>
     sequence(
-        either(
-            MessageReference,
-            TermReference).abstract,
+        ReferenceExpression.abstract,
         string("."),
         Identifier.abstract)
     .map(keep_abstract)

@@ -55,31 +55,33 @@ block_placeable     ::= blank_block blank_inline? inline_placeable
  * syntax/abstract.mjs. */
 InlineExpression    ::= StringLiteral
                       | NumberLiteral
-                      | VariableReference
                       | CallExpression
                       | AttributeExpression
                       | VariantExpression
-                      | MessageReference
-                      | TermReference
+                      | ReferenceExpression
                       | inline_placeable
 
 /* Literals */
 StringLiteral       ::= "\"" quoted_char* "\""
 NumberLiteral       ::= "-"? digit+ ("." digit+)?
 
-/* Inline Expressions */
+/* Reference Expressions */
+ReferenceExpression ::= FunctionReference
+                      | MessageReference
+                      | TermReference
+                      | VariableReference
 MessageReference    ::= Identifier
 TermReference       ::= "-" Identifier
 VariableReference   ::= "$" Identifier
 FunctionReference   ::= Identifier
-CallExpression      ::= Callee blank? "(" blank? argument_list blank? ")"
-Callee              ::= FunctionReference
-                      | TermReference
+
+/* Complex Expressions */
+CallExpression      ::= ReferenceExpression blank? "(" blank? argument_list blank? ")"
 argument_list       ::= (Argument blank? "," blank?)* Argument?
 Argument            ::= NamedArgument
                       | InlineExpression
 NamedArgument       ::= Identifier blank? ":" blank? (StringLiteral | NumberLiteral)
-AttributeExpression ::= (MessageReference | TermReference) "." Identifier
+AttributeExpression ::= ReferenceExpression "." Identifier
 /* DEPRECATION NOTICE VariantExpressions have been deprecated in Syntax 0.8. */
 VariantExpression   ::= TermReference VariantKey
 

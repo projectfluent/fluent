@@ -25,3 +25,6 @@ key07 =
 
 # JUNK Missing =
 key08
+
+# JUNK Message names must not be all uppercase ASCII letters.
+KEY09 = Value 09

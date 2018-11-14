@@ -74,28 +74,13 @@
             "comment": null
         },
         {
-            "type": "Message",
-            "id": {
-                "type": "Identifier",
-                "name": "not-call-expression"
-            },
-            "value": {
-                "type": "Pattern",
-                "elements": [
-                    {
-                        "type": "Placeable",
-                        "expression": {
-                            "type": "MessageReference",
-                            "id": {
-                                "type": "Identifier",
-                                "name": "FUN"
-                            }
-                        }
-                    }
-                ]
-            },
-            "attributes": [],
-            "comment": null
+            "type": "Comment",
+            "content": "ERROR Function references are invalid outside of call expressions."
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "not-call-expression = {FUN}\n"
         }
     ]
 }

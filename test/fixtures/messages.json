@@ -243,7 +243,16 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "key08\n"
+            "content": "key08\n\n"
+        },
+        {
+            "type": "Comment",
+            "content": "JUNK Message names must not be all uppercase ASCII letters."
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "KEY09 = Value 09"
         }
     ]
 }
