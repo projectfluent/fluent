@@ -72,7 +72,8 @@ MessageReference    ::= Identifier
 TermReference       ::= "-" Identifier
 VariableReference   ::= "$" Identifier
 CallExpression      ::= CalleeExpression blank? "(" blank? argument_list blank? ")"
-CalleeExpression    ::= FunctionReference
+CalleeExpression    ::= AttributeExpression
+                      | FunctionReference
                       | TermReference
 FunctionReference   ::= Identifier
 argument_list       ::= (Argument blank? "," blank?)* Argument?

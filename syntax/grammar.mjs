@@ -270,6 +270,7 @@ let CallExpression = defer(() =>
 
 let CalleeExpression = defer(() =>
     either(
+        AttributeExpression,
         FunctionReference,
         TermReference));
 

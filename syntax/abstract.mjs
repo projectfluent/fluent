@@ -37,7 +37,9 @@ export function list_into(Type) {
             return ([callee, args]) => {
                 let callee_is_valid =
                     callee instanceof FTL.FunctionReference
-                    || callee instanceof FTL.TermReference;
+                    || callee instanceof FTL.TermReference
+                    || (callee instanceof FTL.AttributeExpression
+                        && callee.ref instanceof FTL.TermReference);
                 if (!callee_is_valid) {
                     return never(`Invalid callee type: ${callee.type}.`);
                 }
@@ -84,10 +86,12 @@ export function list_into(Type) {
                     selector instanceof FTL.StringLiteral
                     || selector instanceof FTL.NumberLiteral
                     || selector instanceof FTL.VariableReference
+                    || (selector instanceof FTL.AttributeExpression
+                        && selector.ref instanceof FTL.TermReference)
                     || (selector instanceof FTL.CallExpression
                         && selector.callee instanceof FTL.FunctionReference)
-                    || (selector instanceof FTL.AttributeExpression
-                        && selector.ref instanceof FTL.TermReference);
+                    || (selector instanceof FTL.CallExpression
+                        && selector.callee instanceof FTL.AttributeExpression);
                 if (!selector_is_valid) {
                     return never(`Invalid selector type: ${selector.type}.`);
                 }
@@ -129,7 +133,9 @@ export function into(Type) {
                 let invalid_expression_found =
                     expression instanceof FTL.FunctionReference
                     || (expression instanceof FTL.AttributeExpression
-                        && expression.ref instanceof FTL.TermReference);
+                        && expression.ref instanceof FTL.TermReference)
+                    || (expression instanceof FTL.CallExpression
+                        && expression.callee instanceof FTL.AttributeExpression);
                 if (invalid_expression_found) {
                     return never(
                         `Invalid expression type: ${expression.type}.`);
