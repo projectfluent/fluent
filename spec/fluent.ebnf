@@ -16,7 +16,8 @@ Term                ::= "-" Identifier blank_inline? "=" blank_inline? Value Att
 
 /* Adjacent comment lines of the same comment type are joined together during
  * the AST construction. */
-CommentLine         ::= ("###" | "##" | "#") ("\u0020" /.*/)? line_end
+CommentLine         ::= ("###" | "##" | "#") ("\u0020" comment_char*)? line_end
+comment_char        ::= any_char - line_end
 
 /* Junk represents unparsed content.
  *

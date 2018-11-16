@@ -78,11 +78,17 @@ let CommentLine = defer(() =>
         maybe(
             sequence(
                 string(" "),
-                regex(/.*/).abstract)),
+                repeat(comment_char)
+                    .map(join).abstract)),
         line_end)
     .map(flatten(1))
     .map(keep_abstract)
     .chain(list_into(FTL.Comment)));
+
+let comment_char = defer(() =>
+    and(
+        not(line_end),
+        any_char));
 
 /* -------------------------------------------------------------------------- */
 /* Junk represents unparsed content.
