@@ -6,40 +6,6 @@
             "content": "Reference expressions in placeables."
         },
         {
-            "type": "Junk",
-            "annotations": [],
-            "content": "<<<<<<< HEAD\n"
-        },
-        {
-            "type": "Message",
-            "id": {
-                "type": "Identifier",
-                "name": "not-call-expression"
-            },
-            "value": {
-                "type": "Pattern",
-                "elements": [
-                    {
-                        "type": "Placeable",
-                        "expression": {
-                            "type": "MessageReference",
-                            "id": {
-                                "type": "Identifier",
-                                "name": "FUN"
-                            }
-                        }
-                    }
-                ]
-            },
-            "attributes": [],
-            "comment": null
-        },
-        {
-            "type": "Junk",
-            "annotations": [],
-            "content": "=======\n"
-        },
-        {
             "type": "Message",
             "id": {
                 "type": "Identifier",
@@ -213,7 +179,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "function-expression-selector = {FUN ->\n   *[key] Value\n}\n>>>>>>> 0bbd3dd... Add callee, member and reference expression tests\n"
+            "content": "function-expression-selector = {FUN ->\n   *[key] Value\n}\n"
         }
     ]
 }

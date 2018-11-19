@@ -1,8 +1,5 @@
 ## Reference expressions in placeables.
 
-<<<<<<< HEAD
-not-call-expression = {FUN}
-=======
 message-reference-placeable = {msg}
 term-reference-placeable = {-term}
 variable-reference-placeable = {$var}
@@ -29,4 +26,3 @@ term-reference-selector = {-term ->
 function-expression-selector = {FUN ->
    *[key] Value
 }
->>>>>>> 0bbd3dd... Add callee, member and reference expression tests
