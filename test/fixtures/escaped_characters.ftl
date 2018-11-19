@@ -14,8 +14,20 @@ mismatched-quote = {"\\""}
 unknown-escape = {"\x"}
 
 ## Unicode escapes
-string-unicode-sequence = {"\u0041"}
-string-escaped-unicode = {"\\u0041"}
+string-unicode-4digits = {"\u0041"}
+escape-unicode-4digits = {"\\u0041"}
+string-unicode-6digits = {"\U01F602"}
+escape-unicode-6digits = {"\\U01F602"}
+
+# OK The trailing "00" is part of the literal value.
+string-too-many-4digits = {"\u004100"}
+# OK The trailing "00" is part of the literal value.
+string-too-many-6digits = {"\U01F60200"}
+
+# ERROR Too few hex digits after \u.
+string-too-few-4digits = {"\u41"}
+# ERROR Too few hex digits after \U.
+string-too-few-6digits = {"\U1F602"}
 
 ## Literal braces
 brace-open = An opening {"{"} brace.

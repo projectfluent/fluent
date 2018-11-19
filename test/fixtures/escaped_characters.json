@@ -179,7 +179,7 @@
             "type": "Message",
             "id": {
                 "type": "Identifier",
-                "name": "string-unicode-sequence"
+                "name": "string-unicode-4digits"
             },
             "value": {
                 "type": "Pattern",
@@ -201,7 +201,7 @@
             "type": "Message",
             "id": {
                 "type": "Identifier",
-                "name": "string-escaped-unicode"
+                "name": "escape-unicode-4digits"
             },
             "value": {
                 "type": "Pattern",
@@ -218,6 +218,118 @@
             },
             "attributes": [],
             "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "string-unicode-6digits"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringLiteral",
+                            "raw": "\\U01F602",
+                            "value": "😂"
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "escape-unicode-6digits"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringLiteral",
+                            "raw": "\\\\U01F602",
+                            "value": "\\U01F602"
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "string-too-many-4digits"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringLiteral",
+                            "raw": "\\u004100",
+                            "value": "A00"
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "content": "OK The trailing \"00\" is part of the literal value."
+            }
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "string-too-many-6digits"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "StringLiteral",
+                            "raw": "\\U01F60200",
+                            "value": "😂00"
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": {
+                "type": "Comment",
+                "content": "OK The trailing \"00\" is part of the literal value."
+            }
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Too few hex digits after \\u."
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "string-too-few-4digits = {\"\\u41\"}\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Too few hex digits after \\U."
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "string-too-few-6digits = {\"\\U1F602\"}\n\n"
         },
         {
             "type": "GroupComment",

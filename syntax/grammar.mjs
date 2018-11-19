@@ -457,9 +457,13 @@ let special_escape =
     .map(join);
 
 let unicode_escape =
-    sequence(
-        string("\\u"),
-        regex(/[0-9a-fA-F]{4}/))
+    either(
+        sequence(
+            string("\\u"),
+            regex(/[0-9a-fA-F]{4}/)),
+        sequence(
+            string("\\U"),
+            regex(/[0-9a-fA-F]{6}/)))
     .map(join);
 
 let quoted_char = defer(() =>
