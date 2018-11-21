@@ -64,7 +64,7 @@
     removed before Fluent 1.0 is released. Please use parameterized `Terms`
     instead (see below).
 
-  - Introduce parameterized `Terms`. (#176)
+  - Introduce parameterized `Terms`. (#176, #212)
 
     References to `Terms` can now receive parameters which will be used by
     the runtime as values of variables referenced from within the `Term`.
@@ -75,7 +75,7 @@
     # A Term with a VariantList as a value.
     -thing = {
        *[definite] the thing
-       *[indefinite] a thing
+        [indefinite] a thing
     }
 
     this = This is { -term[indefinite] }.
@@ -85,7 +85,7 @@
     # A parametrized Term with a Pattern as a value.
     -thing = { $article ->
        *[definite] the thing
-       *[indefinite] a thing
+        [indefinite] a thing
     }
 
     this = This is { -thing(article: "indefinite") }.
@@ -117,11 +117,15 @@
     one. If no parameters are specified, the paranthesis can be omitted:
     `{-term()}` and `{-term}` are functionally the same.
 
-  - Support astral Unicode characters. (#174)
+    Term attributes can be parameterized as well. To access them, use the
+    `-term.attr(param: "value")` syntax.
 
-    Unicode characters from outside of the Basic Multilingual Plane can now
-    be used in values of `TextElements` and `StringLiterals`. This means all
-    characters in the U+10000 to U+10FFFF range. 🎉
+  - Support all Unicode characters in values. 🎉 (#174, #207)
+
+    All Unicode characters can now be used in values of `TextElements` and
+    `StringLiterals`, except those recognized as special by the syntax. Refer
+    to `spec/recommendations.md` for information about character ranges which
+    translation authors are encouraged to avoid.
 
   - Don't store the `-` sigil in `Identifiers` of `Terms`. (#142)
 
@@ -139,7 +143,7 @@
     `{"   "}` can be used to make a translation start or end with whitespace,
     which would otherwise by trimmed by `Pattern.`
 
-  - Forbid closing brace in `TextElements`.  (#186)
+  - Forbid closing brace in `TextElements`. (#186)
 
     Both the opening and the closing brace are now considered special when
     present in `TextElements`. `{"}"}` can be used to insert a literal
@@ -152,6 +156,13 @@
     the characters they represent. `StringLiteral.raw` has been added and
     stores the raw value as it was typed by the author of the string literal:
     escapes sequences are not processed in any way.
+
+  - Add the `\UHHHHHH` escape sequence. (#201)
+
+    In addition to the already-supported `\uHHHH` escape sequence, `\UHHHHHH`
+    is now also recognized and can be used to encode Unicode codepoints in the
+    U+010000 to U+10FFFF range. For example, `{"\U01F602"}` can be used to
+    represent 😂.
 
   - Don't normalize line endings in `Junk`. (#184)
 
