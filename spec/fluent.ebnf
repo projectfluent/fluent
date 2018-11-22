@@ -31,7 +31,7 @@ junk_line           ::= /[^\n]*/ ("\u000A" | EOF)
 /* Attributes of Messages and Terms. */
 Attribute           ::= line_end blank? "." Identifier blank_inline? "=" blank_inline? Pattern
 
-/* Value types: Pattern and VariantList. */
+/* Value types: Pattern and VariantList (deprecated). */
 Value               ::= Pattern
                       | VariantList
 Pattern             ::= PatternElement+
@@ -88,8 +88,8 @@ VariantExpression   ::= TermReference VariantKey
 /* Block Expressions */
 SelectExpression    ::= InlineExpression blank? "->" blank_inline? variant_list
 variant_list        ::= Variant* DefaultVariant Variant* line_end
-Variant             ::= line_end blank? VariantKey blank_inline? Value
-DefaultVariant      ::= line_end blank? "*" VariantKey blank_inline? Value
+Variant             ::= line_end blank? VariantKey blank_inline? Pattern
+DefaultVariant      ::= line_end blank? "*" VariantKey blank_inline? Pattern
 VariantKey          ::= "[" blank? (NumberLiteral | Identifier) blank? "]"
 
 /* Identifier */

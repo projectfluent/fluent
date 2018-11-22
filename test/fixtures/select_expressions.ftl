@@ -39,7 +39,7 @@ nested-select =
        }
     }
 
-# ERROR VariantLists cannot appear in SelectExpressions
+# ERROR VariantLists cannot be Variant values.
 nested-variant-list =
     { 1 ->
        *[one] {

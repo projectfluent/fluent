@@ -96,15 +96,6 @@ export function list_into(Type) {
                     return never(`Invalid selector type: ${selector.type}.`);
                 }
 
-                // DEPRECATED
-                let invalid_variants_found = variants.some(
-                    variant => variant.value instanceof FTL.VariantList);
-                if (invalid_variants_found) {
-                    return never(
-                        "VariantLists are only allowed inside of " +
-                        "other VariantLists.");
-                }
-
                 return always(new Type(selector, variants));
             };
         case FTL.VariantList:
