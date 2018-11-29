@@ -133,8 +133,8 @@ let Attribute = defer(() =>
     .map(keep_abstract)
     .chain(list_into(FTL.Attribute)));
 
-/* ------------------------------------- */
-/* Value types: Pattern and VariantList. */
+/* -------------------------------------------------- */
+/* Value types: Pattern and VariantList (deprecated). */
 let Value = defer(() =>
     either(
         Pattern,
@@ -357,7 +357,7 @@ let Variant = defer(() =>
         maybe(blank),
         VariantKey.abstract,
         maybe(blank_inline),
-        Value.abstract)
+        Pattern.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.Variant)));
 
@@ -368,7 +368,7 @@ let DefaultVariant = defer(() =>
         string("*"),
         VariantKey.abstract,
         maybe(blank_inline),
-        Value.abstract)
+        Pattern.abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.Variant))
     .map(mutate({default: true})));

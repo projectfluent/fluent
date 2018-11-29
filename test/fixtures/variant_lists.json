@@ -94,48 +94,13 @@
             "content": "    .attr =\n        {\n           *[key] Value\n        }\n\n"
         },
         {
-            "type": "Term",
-            "id": {
-                "type": "Identifier",
-                "name": "nested-variant-list-in-term"
-            },
-            "value": {
-                "type": "VariantList",
-                "variants": [
-                    {
-                        "type": "Variant",
-                        "key": {
-                            "type": "Identifier",
-                            "name": "one"
-                        },
-                        "value": {
-                            "type": "VariantList",
-                            "variants": [
-                                {
-                                    "type": "Variant",
-                                    "key": {
-                                        "type": "Identifier",
-                                        "name": "two"
-                                    },
-                                    "value": {
-                                        "type": "Pattern",
-                                        "elements": [
-                                            {
-                                                "type": "TextElement",
-                                                "value": "Value"
-                                            }
-                                        ]
-                                    },
-                                    "default": true
-                                }
-                            ]
-                        },
-                        "default": true
-                    }
-                ]
-            },
-            "attributes": [],
-            "comment": null
+            "type": "Comment",
+            "content": "ERROR VariantLists cannot be Variant values."
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "-nested-variant-list-in-term =\n    {\n       *[one] {\n          *[two] Value\n       }\n    }\n\n"
         },
         {
             "type": "Term",
@@ -195,7 +160,7 @@
         },
         {
             "type": "Comment",
-            "content": "ERROR VariantLists may not appear in SelectExpressions"
+            "content": "ERROR VariantLists cannot be Variant values."
         },
         {
             "type": "Junk",

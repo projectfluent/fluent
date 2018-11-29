@@ -23,6 +23,7 @@ variant-list-in-message-attr = Value
            *[key] Value
         }
 
+# ERROR VariantLists cannot be Variant values.
 -nested-variant-list-in-term =
     {
        *[one] {
@@ -37,7 +38,7 @@ variant-list-in-message-attr = Value
        }
     }
 
-# ERROR VariantLists may not appear in SelectExpressions
+# ERROR VariantLists cannot be Variant values.
 nested-select-then-variant-list =
     {
        *[one] { 2 ->

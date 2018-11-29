@@ -274,7 +274,7 @@
         },
         {
             "type": "Comment",
-            "content": "ERROR VariantLists cannot appear in SelectExpressions"
+            "content": "ERROR VariantLists cannot be Variant values."
         },
         {
             "type": "Junk",
