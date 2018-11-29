@@ -10,16 +10,6 @@ import {always, never} from "../lib/combinators.mjs";
 
 export function list_into(Type) {
     switch (Type) {
-        case FTL.AttributeExpression:
-            return ([ref, name]) => {
-                let ref_is_valid =
-                    ref instanceof FTL.MessageReference
-                    || ref instanceof FTL.TermReference;
-                if (ref_is_valid) {
-                    return always(new Type(ref, name));
-                }
-                return never(`Invalid ref type: ${ref.type}.`);
-            };
         case FTL.Comment:
             return ([sigil, content = ""]) => {
                 switch (sigil) {
@@ -33,35 +23,15 @@ export function list_into(Type) {
                         return never(`Unknown comment sigil: ${sigil}.`);
                 }
             };
-        case FTL.CallExpression:
-            return ([callee, args]) => {
-                let callee_is_valid =
-                    callee instanceof FTL.FunctionReference
-                    || callee instanceof FTL.TermReference
-                    || (callee instanceof FTL.AttributeExpression
-                        && callee.ref instanceof FTL.TermReference);
-                if (!callee_is_valid) {
-                    return never(`Invalid callee type: ${callee.type}.`);
+        case FTL.FunctionReference:
+            const VALID_FUNCTION_NAME = /^[A-Z][A-Z0-9_?-]*$/;
+            return ([identifier, args]) => {
+                if (VALID_FUNCTION_NAME.test(identifier.name)) {
+                    return always(new Type(identifier, args));
                 }
-                let positional_args = [];
-                let named_map = new Map();
-                for (let arg of args) {
-                    if (arg instanceof FTL.NamedArgument) {
-                        let name = arg.name.name;
-                        if (named_map.has(name)) {
-                            return never("Named arguments must be unique.");
-                        }
-                        named_map.set(name, arg);
-                    } else if (named_map.size > 0) {
-                        return never(
-                            "Positional arguments must not follow " +
-                            "named arguments.");
-                    } else {
-                        positional_args.push(arg);
-                    }
-                }
-                let named_args = Array.from(named_map.values());
-                return always(new Type(callee, positional_args, named_args));
+                return never(
+                    `Invalid function name: ${identifier.name}. `
+                    + "Function names must be all upper-case ASCII letters.");
             };
         case FTL.Pattern:
             return elements =>
@@ -86,12 +56,9 @@ export function list_into(Type) {
                     selector instanceof FTL.StringLiteral
                     || selector instanceof FTL.NumberLiteral
                     || selector instanceof FTL.VariableReference
-                    || (selector instanceof FTL.AttributeExpression
-                        && selector.ref instanceof FTL.TermReference)
-                    || (selector instanceof FTL.CallExpression
-                        && selector.callee instanceof FTL.FunctionReference)
-                    || (selector instanceof FTL.CallExpression
-                        && selector.callee instanceof FTL.AttributeExpression);
+                    || selector instanceof FTL.FunctionReference
+                    || (selector instanceof FTL.TermReference
+                        && selector.attribute);
                 if (!selector_is_valid) {
                     return never(`Invalid selector type: ${selector.type}.`);
                 }
@@ -106,27 +73,33 @@ export function list_into(Type) {
 
 export function into(Type) {
     switch (Type) {
-        case FTL.FunctionReference:
-            const VALID_FUNCTION_NAME = /^[A-Z][A-Z0-9_?-]*$/;
-            return identifier => {
-                if (VALID_FUNCTION_NAME.test(identifier.name)) {
-                    return always(new Type(identifier));
+        case FTL.CallArguments:
+            return args => {
+                let positional = [];
+                let named = new Map();
+                for (let arg of args) {
+                    if (arg instanceof FTL.NamedArgument) {
+                        let name = arg.name.name;
+                        if (named.has(name)) {
+                            return never("Named arguments must be unique.");
+                        }
+                        named.set(name, arg);
+                    } else if (named.size > 0) {
+                        return never("Positional arguments must not follow "
+                            + "named arguments");
+                    } else {
+                        positional.push(arg);
+                    }
                 }
-                return never(
-                    `Invalid function name: ${identifier.name}. `
-                    + "Function names must be all upper-case ASCII letters.");
+                return always(new Type(
+                    positional, Array.from(named.values())));
             };
         case FTL.Placeable:
             return expression => {
-                let invalid_expression_found =
-                    expression instanceof FTL.FunctionReference
-                    || (expression instanceof FTL.AttributeExpression
-                        && expression.ref instanceof FTL.TermReference)
-                    || (expression instanceof FTL.CallExpression
-                        && expression.callee instanceof FTL.AttributeExpression);
-                if (invalid_expression_found) {
+                if (expression instanceof FTL.TermReference
+                        && expression.attribute) {
                     return never(
-                        `Invalid expression type: ${expression.type}.`);
+                        "Term attributes may not be used as placeables.");
                 }
                 return always(new Type(expression));
             };
