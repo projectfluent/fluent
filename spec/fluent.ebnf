@@ -11,7 +11,7 @@ Resource            ::= (Entry | blank_block | Junk)*
 Entry               ::= (Message line_end)
                       | (Term line_end)
                       | CommentLine
-Message             ::= Identifier blank_inline? "=" blank_inline? ((Pattern Attribute*) | (Attribute+))
+Message             ::= Identifier ((blank_inline? "=" blank_inline? ((Pattern? Attribute+) | Pattern)) | (blank_inline? Attribute+))
 Term                ::= "-" Identifier blank_inline? "=" blank_inline? Value Attribute*
 
 /* Adjacent comment lines of the same comment type are joined together during
