@@ -1,6 +1,6 @@
 # Summary
 
-* [Hello world](hello.md)
+* [Hello, world!](hello.md)
 * [Writing Text](text.md)
 * [Variables](variables.md)
 * [Referencing Messages](references.md)

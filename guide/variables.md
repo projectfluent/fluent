@@ -1,6 +1,6 @@
 # Interpolation and Variables
 
-Strings in FTL may use special syntax to incorporate small pieces of
+Text in FTL may use special syntax to incorporate small pieces of
 programmable interface. Those pieces are denoted with curly braces `{` and `}`
 and are called placeables.
 
