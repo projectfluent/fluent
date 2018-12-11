@@ -13,26 +13,9 @@ app-title = { -brand-name }
 has-updated = { -brand-name } has been updated.
 ```
 
-## Terms and Variants
+## Parameterized Terms
 
-Values of terms may have multiple [variants](variants.html), including the
-default variant marked with an asterisk (`*`). For instance, variants may
-correspond to different grammatical cases.
-
-```
--brand-name =
-    {
-       *[nominative] Firefox
-        [accusative] Firefoxa
-    }
-
-app-title = { -brand-name }
-restart-app = Zrestartuj { -brand-name[accusative] }.
-```
-
-Use variants to define different _facets_ of the term's value. Variants
-are essentially the same value, just in slightly different forms to make it
-grammatically correct when used inside of other messages.
+TBD
 
 ## Terms and Attributes
 
