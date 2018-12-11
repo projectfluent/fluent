@@ -4,7 +4,7 @@ Another use-case for placeables is referencing one message in another one.
 
 ```
 menu-save = Save
-help-menu-save = Click "{ menu-save }" to save the file.
+help-menu-save = Click { menu-save } to save the file.
 ```
 
 Referencing other messages generally helps to keep certain translations

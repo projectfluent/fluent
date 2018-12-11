@@ -2,6 +2,9 @@
 
 * [Hello, world!](hello.md)
 * [Writing Text](text.md)
+    * [Placeables](placeables.md)
+    * [Special Characters](special.md)
+    * [Multiline Text](multiline.md)
 * [Variables](variables.md)
 * [Referencing Messages](references.md)
 * [Selectors](selectors.md)
