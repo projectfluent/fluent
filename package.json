@@ -1,7 +1,7 @@
 {
   "name": "fluent-spec",
   "description": "Specification and documentation for Fluent",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "scripts": {
     "bench": "node --experimental-modules --harmony-async-iteration ./test/bench.mjs ./test/benchmarks/gecko_strings.ftl",

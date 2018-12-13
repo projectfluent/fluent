@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.8.0 (December 13, 2018)
 
   - Preserve content-indent in multiline `Patterns`. (#162)
 
@@ -62,7 +62,8 @@
 
     `VariantLists` and `VariantExpression` have been deprecated. They will be
     removed before Fluent 1.0 is released. Please use parameterized `Terms`
-    instead (see below).
+    instead (see below). Furthermore, in Syntax 0.8 it's not possible to nest
+    `VaraintLists` anymore (#220).
 
   - Introduce parameterized `Terms`. (#176, #212)
 
