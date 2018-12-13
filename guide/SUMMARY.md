@@ -1,13 +1,16 @@
 # Summary
 
-* [Hello world](hello.md)
+* [Hello, world!](hello.md)
 * [Writing Text](text.md)
+    * [Placeables](placeables.md)
+    * [Special Characters](special.md)
+    * [Multiline Text](multiline.md)
 * [Variables](variables.md)
 * [Referencing Messages](references.md)
 * [Selectors](selectors.md)
-* [Variants](variants.md)
 * [Attributes](attributes.md)
 * [Terms](terms.md)
+* [Variants (Deprecated)](variants.md)
 * [Comments](comments.md)
 * [Built-in Functions](builtins.md)
 * [Functions](functions.md)
