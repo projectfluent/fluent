@@ -16,13 +16,11 @@ update-successul = { -brand-name } has been updated.
 ## Parameterized Terms
 
 Term values follow the same rules as message values. They can be simple text,
-or they can interpolate other expressions, including variables. However, in
-contrast to messages which look for variables in the data passed to the
-translation by the app, terms can only reference variables which have been
-explicitly defined and passed to them in the message from which they are
-referenced. Such references take the form of `-term(…)` where the variables
-available inside of the term are defined between the parentheses, e.g.
-`-term(param: "value")`.
+or they can interpolate other expressions, including variables. However,
+while messages receive data for variables directly from the app, terms
+receive such data from messages in which they are used. Such references take
+the form of `-term(…)` where the variables available inside of the term are
+defined between the parentheses, e.g. `-term(param: "value")`.
 
 ```
 # A contrived example to demonstrate how variables
@@ -55,7 +53,7 @@ Finnish, Hungarian, all Slavic languages), the *about* preposition governs
 the grammatical case of the complement. It might be accusative (German),
 ablative (Latin), or locative (Slavic languages). The grammatical cases can
 be defined as variants of the same tem and referred to via parameterization
-from other messages. This is what's going on in the `about` message above.
+from other messages. This is what happens in the `about` message above.
 
 If no parameters are passed into the term, or if the term is referenced
 without any parentheses, the default variant will be used.

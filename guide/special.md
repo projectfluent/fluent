@@ -2,19 +2,19 @@
 
 In Fluent, text is the most important part of the file. As such, it doesn't
 have any special syntax: you can just write it without any delimiters (e.g.
-quotes). It also doesn't recognize any special escape sequences. Regular text
+quotes) and you can use characters from all Unicode planes. Regular text
 should be enough to store the vast majority of translations. In rare cases
 when it's not, another type of text can be used: quoted text.
 
 ## Quoted Text
 
 Quoted text uses double quotes as delimiters and cannot contain line breaks.
-It can be used similar to how other types of expressions can: inside
-of placeables (e.g. `{"abc"}`). It's rarely needed but can be used to insert
-characters which are otherwise considered special by Fluent in the given
-context. For instance, due to placeables using `{` and `}` as delimiters,
-inserting a literal curly brace into the translation requires special care.
-Quoted text can be effectively used for the purpose:
+Like other types of expressions, it can be used inside of placeables (e.g.
+`{"abc"}`). It's rarely needed but can be used to insert characters which are
+otherwise considered special by Fluent in the given context. For instance,
+due to placeables using `{` and `}` as delimiters, inserting a literal curly
+brace into the translation requires special care. Quoted text can be
+effectively used for the purpose:
 
 ```
 opening-brace = This message features an opening curly brace: {"{"}.
@@ -56,7 +56,8 @@ attribute-how-to =
 ## Escape Sequences
 
 Quoted text supports a small number of escape sequences. The backslash
-character (`\`) is used to start an escape sequence.
+character (`\`) starts an escape sequence in quoted text. In regular text,
+the backslash is just the literal character with no special meaning.
 
 | Escape sequence | Meaning |
 |-----------------|---------|
@@ -66,7 +67,7 @@ character (`\`) is used to start an escape sequence.
 | `\\` | The literal backslash. |
 
 Escape sequences are rarely needed, but Fluent supports them for the sake of
-edge-cases. In real life application using the actual character in the
+edge cases. In real life application using the actual character in the
 regular text should be preferred.
 
 ```

@@ -1,6 +1,6 @@
 # Writing Text
 
-Fluent is a file format desgined for storing translations. In consequence,
+Fluent is a file format designed for storing translations. In consequence,
 text is the most important part of any Fluent file. Messages, terms, variants
 and attributes all store their values as text. In Fluent, text values are
 referred to as _patterns_.
@@ -12,8 +12,8 @@ data passed into the translation from the app. Use the curly braces to start
 and end interpolating another expression inside of a pattern:
 
 ```
-# $title is the title of the bookmark to remove.
-remove-bookmark = Really remove { $title }?
+# $title (String) - The title of the bookmark to remove.
+remove-bookmark = Are you sure you want to remove { $title }?
 ```
 
 Refer to the chapters about [placeables](placeables.html) for more
@@ -21,9 +21,8 @@ information.
 
 ## Multiline Text
 
-Text can span multiple lines. In such cases, Fluent will calculate the
-maximum indent common to _all_ indented lines and remove it from the final
-text value.
+Text can span multiple lines. In such cases, Fluent will calculate the common
+indent of all indented lines and remove it from the final text value.
 
 ```
 multi = Text can also span multiple lines as long as

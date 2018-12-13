@@ -1,15 +1,16 @@
-# Placables
+# Placeables
 
-Text in FTL may use special syntax to incorporate small pieces of
-programmable interface. Those pieces are denoted with curly braces `{` and `}`
-and are called placeables.
+Text in Fluent may use special syntax to incorporate small pieces of
+programmable interface. Those pieces are denoted with curly braces `{` and
+`}` and are called placeables.
 
 It's common to use placeables to interpolate external
-[variables](variables.html) into the translation. Variables are provided by
-the developer and may change on runtime.
+[variables](variables.html) into the translation. Variable values are
+provided by the developer and they will be set on runtime. They may also
+dynamically change as the user uses the localized product.
 
 ```
-# $title is the title of the bookmark to remove.
+# $title (String) - The title of the bookmark to remove.
 remove-bookmark = Really remove { $title }?
 ```
 

@@ -1,7 +1,8 @@
 # Multiline Text
 
 Text can span multiple lines as long as it is indented by at least one space.
-Line breaks inside of multiline text are preserved in the final text value.
+Only the space character (`U+0020`) can be used for indentation. Fluent
+treats tab characters as regular text.
 
 ```
 single = Text can be written in a single line.
@@ -20,7 +21,7 @@ block =
 In almost all cases, patterns start at the first non-blank character and
 end at the last non-blank character. In other words, the leading and
 trailing blanks are ignored. There's one exception to this rule, due to
-another rule; see the `multiline2` message below.
+another rule which we'll cover below (in the `multiline2` example).
 
 ```
 leading-spaces =     This message's value starts with the word "This".
@@ -31,22 +32,35 @@ leading-lines =
     The blank lines under the identifier are ignored.
 ```
 
-In multiline patterns, the maximum indent common to all indented lines is
-ignored when the text value is spread across multiple indented lines.
+Line breaks and blank lines are preserved as long as they are positioned
+inside of multiline text, i.e. there's text before and after them.
+
+```
+blank-lines =
+
+    The blank line above this line is ignored.
+    This is a second line of the value.
+
+    The blank line above this line is preserved.
+```
+
+In multiline patterns, all common indent is removed when the text value is
+spread across multiple indented lines.
 
 ```
 multiline1 =
-    This message has four spaces of indent
+    This message has 4 spaces of indent
         on the second line of its value.
 ```
 
-You can visualize this behavior in the following manner:
+We can visualize this behavior in the following manner and we'll use this
+convention in the rest of this chapter:
 
 ```
 # █ denotes the indent common to all lines (removed from the value).
 # · denotes the indent preserved in the final value.
 multiline1 =
-████This message has four spaces of indent
+████This message has 4 spaces of indent
 ████····on the second line of its value.
 ```
 
@@ -57,10 +71,9 @@ if they're technically in the leading position.
 
 ```
 multiline2 =
-        This message has four spaces of indent
-    on the first line of its value. Only the first
-    four spaces of the indent on the first line are
-    removed as common to all indented lines.
+████··This message starts with 2 spaces on the first
+████first line of its value. The first 4 spaces of indent
+████are removed from all lines.
 ```
 
 Only the indented lines comprising the multiline pattern participate in this
@@ -71,22 +84,22 @@ unindeted one) still has its leading blanks ignored—because patterns start
 on the first non-blank character.
 
 ```
-multiline3 = This message has four spaces of indent
-        on the second line of its value. The first
-    line is not considered indented at all.
+multiline3 = This message has 4 spaces of indent
+████····on the second line of its value. The first
+████line is not considered indented at all.
 
 # Same value as multiline3 above.
-multiline4 =     This message has four spaces of indent
-        on the second line of its value. The first
-    line is not considered indented at all.
+multiline4 =     This message has 4 spaces of indent
+████····on the second line of its value. The first
+████line is not considered indented at all.
 ```
 
 Note that if a multiline pattern starts on the same line as the identifier
-and it only consists of one more line of text below it, then the maximum
-indent common to all _indented_ lines is equal to the indent of the second
-line, i.e. the only indented line. All indent will be removed in this case.
+and it only consists of one more line of text below it, then the indent
+common to all _indented_ lines is equal to the indent of the second line,
+i.e. the only indented line. All indent will be removed in this case.
 
 ```
-multiline5 = This message has no indent
-        on the second line of its value.
+multiline5 = This message ends up having no indent
+████████on the second line of its value.
 ```
