@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="comments.html" />
+    <link rel="next" href="variants.html" />
     
     
     <link rel="prev" href="attributes.html" />
@@ -107,7 +107,7 @@
                 <a href="hello.html">
             
                     
-                    Hello world
+                    Hello, world!
             
                 </a>
             
@@ -125,6 +125,51 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="placeables.html">
+            
+                <a href="placeables.html">
+            
+                    
+                    Placeables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="special.html">
+            
+                <a href="special.html">
+            
+                    
+                    Special Characters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="multiline.html">
+            
+                <a href="multiline.html">
+            
+                    
+                    Multiline Text
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -167,20 +212,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="variants.html">
-            
-                <a href="variants.html">
-            
-                    
-                    Variants
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8" data-path="attributes.html">
+        <li class="chapter " data-level="1.7" data-path="attributes.html">
             
                 <a href="attributes.html">
             
@@ -193,12 +225,25 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9" data-path="terms.html">
+        <li class="chapter active" data-level="1.8" data-path="terms.html">
             
                 <a href="terms.html">
             
                     
                     Terms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="variants.html">
+            
+                <a href="variants.html">
+            
+                    
+                    Variants (Deprecated)
             
                 </a>
             
@@ -414,42 +459,70 @@ They are best used to define vocabulary and glossary items which can be used
 consistently across the localization of the entire product.</p>
 <pre><code>-brand-name = Firefox
 
-app-title = { -brand-name }
-has-updated = { -brand-name } has been updated.
-</code></pre><h2 id="terms-and-variants">Terms and Variants</h2>
-<p>Values of terms may have multiple <a href="variants.html">variants</a>, including the
-default variant marked with an asterisk (<code>*</code>). For instance, variants may
-correspond to different grammatical cases.</p>
+about = About { -brand-name }.
+update-successul = { -brand-name } has been updated.
+</code></pre><h2 id="parameterized-terms">Parameterized Terms</h2>
+<p>Term values follow the same rules as message values. They can be simple text,
+or they can interpolate other expressions, including variables. However,
+while messages receive data for variables directly from the app, terms
+receive such data from messages in which they are used. Such references take
+the form of <code>-term(&#x2026;)</code> where the variables available inside of the term are
+defined between the parentheses, e.g. <code>-term(param: &quot;value&quot;)</code>.</p>
+<pre><code># A contrived example to demonstrate how variables
+# can be passed to terms.
+-https = https://{ $host }
+visit = Visit { -https(host: &quot;example.com&quot;) } for more information.
+</code></pre><p>The above example isn&apos;t very useful and a much better approach in this
+particular case would be to use the full address directly in the <code>visit</code>
+message. There is, however, another use-case which takes full advantage of
+this feature. By passing variables into the term, you can define select
+expressions with multiple variants of the same term value.</p>
 <pre><code>-brand-name =
-    {
+    { $case -&gt;
        *[nominative] Firefox
-        [accusative] Firefoxa
+        [locative] Firefoxa
     }
 
-app-title = { -brand-name }
-restart-app = Zrestartuj { -brand-name[accusative] }.
-</code></pre><p>Use variants to define different <em>facets</em> of the term&apos;s value. Variants
-are essentially the same value, just in slightly different forms to make it
-grammatically correct when used inside of other messages.</p>
-<h2 id="terms-and-attributes">Terms and Attributes</h2>
-<p>Sometimes other translations might vary depending on some grammatical trait
-of a term references in them. Terms can store this grammatical information
-about themselves in <a href="attributes.html">attributes</a>. In the example below the
-form of the past tense of <em>has been updated</em> depends on the grammatical
-gender of <code>-brand-name</code>.</p>
+# &quot;About Firefox.&quot;
+about = Informacje o { -brand-name(case: &quot;locative&quot;) }.
+</code></pre><p>This pattern can be very useful for defining multiple <em>facets</em> of the term,
+which can correspond to grammatical cases or other grammatical or stylistic
+properties of the language. In many inflected languages (e.g. German,
+Finnish, Hungarian, all Slavic languages), the <em>about</em> preposition governs
+the grammatical case of the complement. It might be accusative (German),
+ablative (Latin), or locative (Slavic languages). The grammatical cases can
+be defined as variants of the same tem and referred to via parameterization
+from other messages. This is what happens in the <code>about</code> message above.</p>
+<p>If no parameters are passed into the term, or if the term is referenced
+without any parentheses, the default variant will be used.</p>
+<pre><code>-brand-name =
+    { $case -&gt;
+       *[nominative] Firefox
+        [locative] Firefoxa
+    }
+
+# &quot;Firefox has been successfully updated.&quot;
+update-succesful = { -brand-name } zosta&#x142; pomy&#x15B;lnie zaktualizowany.
+</code></pre><h2 id="terms-and-attributes">Terms and Attributes</h2>
+<p>Sometimes translations might vary depending on some grammatical trait of a
+term references in them. Terms can store this grammatical information about
+themselves in <a href="attributes.html">attributes</a>. In the example below the form of
+the past tense of <em>has been updated</em> depends on the grammatical gender of
+<code>-brand-name</code>.</p>
 <pre><code>-brand-name = Aurora
     .gender = feminine
 
-has-updated =
+update-successful =
     { -brand-name.gender -&gt;
         [masculine] { -brand-name} zosta&#x142; zaktualizowany.
         [feminine] { -brand-name } zosta&#x142;a zaktualizowana.
        *[other] Program { -brand-name } zosta&#x142; zaktualizowany.
     }
 </code></pre><p>Use attributes to describe grammatical traits and properties. Genders,
-animacy, whether the term essage starts with a vowel or not etc. Attributes
+animacy, whether the term message starts with a vowel or not etc. Attributes
 of terms are private and cannot be retrieved by the localization runtime.
-They can only be used as <a href="selectors.html">selectors</a>.</p>
+They can only be used as <a href="selectors.html">selectors</a>. If needed, they can
+also be parameterized using the <code>-term.attr(param: &quot;value&quot;)</code> syntax.</p>
 
                                 
                                 </section>
@@ -482,7 +555,7 @@ They can only be used as <a href="selectors.html">selectors</a>.</p>
                 </a>
                 
                 
-                <a href="comments.html" class="navigation navigation-next " aria-label="Next page: Comments">
+                <a href="variants.html" class="navigation navigation-next " aria-label="Next page: Variants (Deprecated)">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -493,7 +566,7 @@ They can only be used as <a href="selectors.html">selectors</a>.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Terms","level":"1.9","depth":1,"next":{"title":"Comments","level":"1.10","depth":1,"path":"comments.md","ref":"comments.md","articles":[]},"previous":{"title":"Attributes","level":"1.8","depth":1,"path":"attributes.md","ref":"attributes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"terms.md","mtime":"2018-01-29T20:32:55.689Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-24T15:09:50.054Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Terms","level":"1.8","depth":1,"next":{"title":"Variants (Deprecated)","level":"1.9","depth":1,"path":"variants.md","ref":"variants.md","articles":[]},"previous":{"title":"Attributes","level":"1.7","depth":1,"path":"attributes.md","ref":"attributes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"terms.md","mtime":"2018-12-13T14:32:22.756Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T14:47:45.894Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

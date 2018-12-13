@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="variables.html" />
+    <link rel="next" href="placeables.html" />
     
     
     <link rel="prev" href="hello.html" />
@@ -107,7 +107,7 @@
                 <a href="hello.html">
             
                     
-                    Hello world
+                    Hello, world!
             
                 </a>
             
@@ -125,6 +125,51 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="placeables.html">
+            
+                <a href="placeables.html">
+            
+                    
+                    Placeables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="special.html">
+            
+                <a href="special.html">
+            
+                    
+                    Special Characters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="multiline.html">
+            
+                <a href="multiline.html">
+            
+                    
+                    Multiline Text
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -167,20 +212,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="variants.html">
-            
-                <a href="variants.html">
-            
-                    
-                    Variants
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8" data-path="attributes.html">
+        <li class="chapter " data-level="1.7" data-path="attributes.html">
             
                 <a href="attributes.html">
             
@@ -193,12 +225,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="terms.html">
+        <li class="chapter " data-level="1.8" data-path="terms.html">
             
                 <a href="terms.html">
             
                     
                     Terms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="variants.html">
+            
+                <a href="variants.html">
+            
+                    
+                    Variants (Deprecated)
             
                 </a>
             
@@ -406,16 +451,34 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="working-with-text">Working With Text</h1>
-<pre><code>about = About Our Software
-description =
-    Loki is a simple micro-blogging
-    app written entirely in &lt;i&gt;HTML5&lt;/i&gt;.
-    It uses FTL to implement localization.
-</code></pre><p>The value of an FTL message is usually a simple string.  It begins after the
-<code>=</code> and may continue over multiple lines as long as it is indented by at least
-one space.</p>
-<p>Leading and trailing white-space is ignored.</p>
+                                <h1 id="writing-text">Writing Text</h1>
+<p>Fluent is a file format designed for storing translations. In consequence,
+text is the most important part of any Fluent file. Messages, terms, variants
+and attributes all store their values as text. In Fluent, text values are
+referred to as <em>patterns</em>.</p>
+<h2 id="placeables">Placeables</h2>
+<p>In Fluent, text can interpolate values of other messages, as well as external
+data passed into the translation from the app. Use the curly braces to start
+and end interpolating another expression inside of a pattern:</p>
+<pre><code># $title (String) - The title of the bookmark to remove.
+remove-bookmark = Are you sure you want to remove { $title }?
+</code></pre><p>Refer to the chapters about <a href="placeables.html">placeables</a> for more
+information.</p>
+<h2 id="multiline-text">Multiline Text</h2>
+<p>Text can span multiple lines. In such cases, Fluent will calculate the common
+indent of all indented lines and remove it from the final text value.</p>
+<pre><code>multi = Text can also span multiple lines as long as
+    each new line is indented by at least one space.
+    Because all lines in this message are indented
+    by the same amount, all indentation will be
+    removed from the final value.
+
+indents =
+    Indentation common to all indented lines is removed
+    from the final text value.
+      This line has 2 spaces in front of it.
+</code></pre><p>Refer to the chapter about <a href="multiline.html">multiline text</a> for more
+information.</p>
 
                                 
                                 </section>
@@ -443,12 +506,12 @@ one space.</p>
 
             
                 
-                <a href="hello.html" class="navigation navigation-prev " aria-label="Previous page: Hello world">
+                <a href="hello.html" class="navigation navigation-prev " aria-label="Previous page: Hello, world!">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="variables.html" class="navigation navigation-next " aria-label="Next page: Variables">
+                <a href="placeables.html" class="navigation navigation-next " aria-label="Next page: Placeables">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -459,7 +522,7 @@ one space.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Writing Text","level":"1.3","depth":1,"next":{"title":"Variables","level":"1.4","depth":1,"path":"variables.md","ref":"variables.md","articles":[]},"previous":{"title":"Hello world","level":"1.2","depth":1,"path":"hello.md","ref":"hello.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"text.md","mtime":"2017-02-24T15:40:22.722Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-24T15:09:50.054Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Writing Text","level":"1.3","depth":1,"next":{"title":"Placeables","level":"1.3.1","depth":2,"path":"placeables.md","ref":"placeables.md","articles":[]},"previous":{"title":"Hello, world!","level":"1.2","depth":1,"path":"hello.md","ref":"hello.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"text.md","mtime":"2018-12-13T14:32:22.762Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T14:47:45.894Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

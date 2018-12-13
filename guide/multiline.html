@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Learn More · GitBook</title>
+        <title>Multiline Text · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="variables.html" />
     
-    <link rel="prev" href="functions.html" />
+    
+    <link rel="prev" href="special.html" />
     
 
     </head>
@@ -153,7 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="multiline.html">
+        <li class="chapter active" data-level="1.3.3" data-path="multiline.html">
             
                 <a href="multiline.html">
             
@@ -391,7 +393,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.13" data-path="more.html">
+        <li class="chapter " data-level="1.13" data-path="more.html">
             
                 <a href="more.html">
             
@@ -434,7 +436,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Learn More</a>
+        <a href="." >Multiline Text</a>
     </h1>
 </div>
 
@@ -449,12 +451,80 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="dive-deeper">Dive deeper</h1>
-<p>You can experiment with the syntax using <a href="http://projectfluent.org/play" target="_blank">Fluent Playground</a>, an interactive
-editor available in the web browser.</p>
-<p>If you are a tool author, you may be interested in the formal description of
-the syntax available in the <a href="https://github.com/projectfluent/fluent/" target="_blank">projectfluent/fluent</a> repository.</p>
+                                <h1 id="multiline-text">Multiline Text</h1>
+<p>Text can span multiple lines as long as it is indented by at least one space.
+Only the space character (<code>U+0020</code>) can be used for indentation. Fluent
+treats tab characters as regular text.</p>
+<pre><code>single = Text can be written in a single line.
 
+multi = Text can also span multiple lines
+    as long as each new line is indented
+    by at least one space.
+
+block =
+    Sometimes it&apos;s more readable to format
+    multiline text as a &quot;block&quot;, which means
+    starting it on a new line. All lines must
+    be indented by at least one space.
+</code></pre><p>In almost all cases, patterns start at the first non-blank character and
+end at the last non-blank character. In other words, the leading and
+trailing blanks are ignored. There&apos;s one exception to this rule, due to
+another rule which we&apos;ll cover below (in the <code>multiline2</code> example).</p>
+<pre><code>leading-spaces =     This message&apos;s value starts with the word &quot;This&quot;.
+leading-lines =
+
+
+    This message&apos;s value starts with the word &quot;This&quot;.
+    The blank lines under the identifier are ignored.
+</code></pre><p>Line breaks and blank lines are preserved as long as they are positioned
+inside of multiline text, i.e. there&apos;s text before and after them.</p>
+<pre><code>blank-lines =
+
+    The blank line above this line is ignored.
+    This is a second line of the value.
+
+    The blank line above this line is preserved.
+</code></pre><p>In multiline patterns, all common indent is removed when the text value is
+spread across multiple indented lines.</p>
+<pre><code>multiline1 =
+    This message has 4 spaces of indent
+        on the second line of its value.
+</code></pre><p>We can visualize this behavior in the following manner and we&apos;ll use this
+convention in the rest of this chapter:</p>
+<pre><code># &#x2588; denotes the indent common to all lines (removed from the value).
+# &#xB7; denotes the indent preserved in the final value.
+multiline1 =
+&#x2588;&#x2588;&#x2588;&#x2588;This message has 4 spaces of indent
+&#x2588;&#x2588;&#x2588;&#x2588;&#xB7;&#xB7;&#xB7;&#xB7;on the second line of its value.
+</code></pre><p>This behavior also applies when the first line of a text block is indented
+relative to the following lines. This is the only case where a sequence of
+leading blank characters might be preserved as part of the text value, even
+if they&apos;re technically in the leading position.</p>
+<pre><code>multiline2 =
+&#x2588;&#x2588;&#x2588;&#x2588;&#xB7;&#xB7;This message starts with 2 spaces on the first
+&#x2588;&#x2588;&#x2588;&#x2588;first line of its value. The first 4 spaces of indent
+&#x2588;&#x2588;&#x2588;&#x2588;are removed from all lines.
+</code></pre><p>Only the indented lines comprising the multiline pattern participate in this
+behavior. Specifically, if the text starts on the same line as the message
+identifier, then this first line is not considered as indented, and is
+excluded from the dedentation behavior. In such cases, the first line (the
+unindeted one) still has its leading blanks ignored&#x2014;because patterns start
+on the first non-blank character.</p>
+<pre><code>multiline3 = This message has 4 spaces of indent
+&#x2588;&#x2588;&#x2588;&#x2588;&#xB7;&#xB7;&#xB7;&#xB7;on the second line of its value. The first
+&#x2588;&#x2588;&#x2588;&#x2588;line is not considered indented at all.
+
+# Same value as multiline3 above.
+multiline4 =     This message has 4 spaces of indent
+&#x2588;&#x2588;&#x2588;&#x2588;&#xB7;&#xB7;&#xB7;&#xB7;on the second line of its value. The first
+&#x2588;&#x2588;&#x2588;&#x2588;line is not considered indented at all.
+</code></pre><p>Note that if a multiline pattern starts on the same line as the identifier
+and it only consists of one more line of text below it, then the indent
+common to all <em>indented</em> lines is equal to the indent of the second line,
+i.e. the only indented line. All indent will be removed in this case.</p>
+<pre><code>multiline5 = This message ends up having no indent
+&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;on the second line of its value.
+</code></pre>
                                 
                                 </section>
                             
@@ -481,10 +551,14 @@ the syntax available in the <a href="https://github.com/projectfluent/fluent/" t
 
             
                 
-                <a href="functions.html#partial-arguments" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Partial Arguments">
+                <a href="special.html" class="navigation navigation-prev " aria-label="Previous page: Special Characters">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="variables.html" class="navigation navigation-next " aria-label="Next page: Variables">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -493,7 +567,7 @@ the syntax available in the <a href="https://github.com/projectfluent/fluent/" t
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Learn More","level":"1.13","depth":1,"previous":{"title":"Partial Arguments","level":"1.12.5","depth":2,"anchor":"#partial-arguments","path":"functions.md","ref":"functions.md#partial-arguments","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"more.md","mtime":"2018-01-23T10:11:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T14:47:45.894Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Multiline Text","level":"1.3.3","depth":2,"next":{"title":"Variables","level":"1.4","depth":1,"path":"variables.md","ref":"variables.md","articles":[]},"previous":{"title":"Special Characters","level":"1.3.2","depth":2,"path":"special.md","ref":"special.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"multiline.md","mtime":"2018-12-13T14:32:22.732Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T14:47:45.894Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

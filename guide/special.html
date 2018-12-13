@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Learn More · GitBook</title>
+        <title>Special Characters · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="multiline.html" />
     
-    <link rel="prev" href="functions.html" />
+    
+    <link rel="prev" href="placeables.html" />
     
 
     </head>
@@ -140,7 +142,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="special.html">
+        <li class="chapter active" data-level="1.3.2" data-path="special.html">
             
                 <a href="special.html">
             
@@ -391,7 +393,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.13" data-path="more.html">
+        <li class="chapter " data-level="1.13" data-path="more.html">
             
                 <a href="more.html">
             
@@ -434,7 +436,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Learn More</a>
+        <a href="." >Special Characters</a>
     </h1>
 </div>
 
@@ -449,12 +451,106 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="dive-deeper">Dive deeper</h1>
-<p>You can experiment with the syntax using <a href="http://projectfluent.org/play" target="_blank">Fluent Playground</a>, an interactive
-editor available in the web browser.</p>
-<p>If you are a tool author, you may be interested in the formal description of
-the syntax available in the <a href="https://github.com/projectfluent/fluent/" target="_blank">projectfluent/fluent</a> repository.</p>
+                                <h1 id="special-characters">Special Characters</h1>
+<p>In Fluent, text is the most important part of the file. As such, it doesn&apos;t
+have any special syntax: you can just write it without any delimiters (e.g.
+quotes) and you can use characters from all Unicode planes. Regular text
+should be enough to store the vast majority of translations. In rare cases
+when it&apos;s not, another type of text can be used: quoted text.</p>
+<h2 id="quoted-text">Quoted Text</h2>
+<p>Quoted text uses double quotes as delimiters and cannot contain line breaks.
+Like other types of expressions, it can be used inside of placeables (e.g.
+<code>{&quot;abc&quot;}</code>). It&apos;s rarely needed but can be used to insert characters which are
+otherwise considered special by Fluent in the given context. For instance,
+due to placeables using <code>{</code> and <code>}</code> as delimiters, inserting a literal curly
+brace into the translation requires special care. Quoted text can be
+effectively used for the purpose:</p>
+<pre><code>opening-brace = This message features an opening curly brace: {&quot;{&quot;}.
+closing-brace = This message features a closing curly brace: {&quot;}&quot;}.
+</code></pre><p>In the example above the <code>{&quot;{&quot;}</code> syntax can be read as a piece of quoted text
+<code>&quot;{&quot;</code> being interpolated into regular text via the placeable syntax: <code>{&#x2026;}</code>.
+As can be seen from this example, curly braces carry no special meaning in
+quoted text. As a result, quoted text cannot feature any interpolations.</p>
+<p>The same strategy as above can be used to ensure blank space is preserved in
+the translations:</p>
+<pre><code>blank-is-removed =     This message starts with no blanks.
+blank-is-preserved = {&quot;    &quot;}This message starts with 4 spaces.
+</code></pre><p>In very rare cases, you may need to resort to quoted text to use a literal
+dot (<code>.</code>), star (<code>*</code>) or bracket (<code>[</code>) when they are used as the first
+character on a new line. Otherwise, they would start a new attribute or a new
+variant.</p>
+<pre><code>leading-bracket =
+    This message has an opening square bracket
+    at the beginning of the third line:
+    {&quot;[&quot;}.
+</code></pre><pre><code>attribute-how-to =
+    To add an attribute to this messages, write
+    {&quot;.attr = Value&quot;} on a new line.
+    .attr = An actual attribute (not part of the text value above)
+</code></pre><h2 id="escape-sequences">Escape Sequences</h2>
+<p>Quoted text supports a small number of escape sequences. The backslash
+character (<code>\</code>) starts an escape sequence in quoted text. In regular text,
+the backslash is just the literal character with no special meaning.</p>
+<table>
+<thead>
+<tr>
+<th>Escape sequence</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\&quot;</code></td>
+<td>The literal double quote.</td>
+</tr>
+<tr>
+<td><code>\uHHHH</code></td>
+<td>A Unicode character in the U+0000 to U+FFFF range.</td>
+</tr>
+<tr>
+<td><code>\UHHHHHH</code></td>
+<td>Any Unicode character.</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>The literal backslash.</td>
+</tr>
+</tbody>
+</table>
+<p>Escape sequences are rarely needed, but Fluent supports them for the sake of
+edge cases. In real life application using the actual character in the
+regular text should be preferred.</p>
+<pre><code># This is OK, but cryptic and hard to read and edit.
+literal-quote1 = Text in {&quot;\&quot;&quot;}double quotes{&quot;\&quot;&quot;}.
 
+# This is preferred. Just use the actual double quote character.
+literal-quote2 = Text in &quot;double quotes&quot;.
+</code></pre><p>Quoted text should be used sparingly, most often in scenarios which call for
+a special character, or when enclosing a characters in <code>{&quot;</code> and <code>&quot;}</code> makes
+them easier to spot. For instance, the non-breaking space character looks
+like a regular space in most text editors and it&apos;s easy to miss in a
+translation. A Unicode escape sequence inside of a quoted text may be used
+to make it stand out:</p>
+<pre><code>privacy-label = Privacy{&quot;\u00A0&quot;}Policy
+</code></pre><p>A similar approach will make it clear which dash character is used in the
+following example:</p>
+<pre><code># The dash character is an EM DASH but depending on the font face,
+# it might look like an EN DASH.
+which-dash1 = It&apos;s a dash&#x2014;or is it?
+
+# Using a Unicode escape sequence makes the intent clear.
+which-dash2 = It&apos;s a dash{&quot;\u2014&quot;}or is it?
+</code></pre><p>Any Unicode character can be used in regular text values and in quoted text.
+Unless readability calls for using the escape sequence, always prefer the
+actual Unicode character.</p>
+<pre><code># This will work fine, but the codepoint can be considered
+# cryptic by other translators.
+tears-of-joy1 = {&quot;\U01F602&quot;}
+
+# This is preferred. You can instantly see what the Unicode
+# character used here is.
+tears-of-joy2 = &#x1F602;
+</code></pre>
                                 
                                 </section>
                             
@@ -481,10 +577,14 @@ the syntax available in the <a href="https://github.com/projectfluent/fluent/" t
 
             
                 
-                <a href="functions.html#partial-arguments" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Partial Arguments">
+                <a href="placeables.html" class="navigation navigation-prev " aria-label="Previous page: Placeables">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="multiline.html" class="navigation navigation-next " aria-label="Next page: Multiline Text">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -493,7 +593,7 @@ the syntax available in the <a href="https://github.com/projectfluent/fluent/" t
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Learn More","level":"1.13","depth":1,"previous":{"title":"Partial Arguments","level":"1.12.5","depth":2,"anchor":"#partial-arguments","path":"functions.md","ref":"functions.md#partial-arguments","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"more.md","mtime":"2018-01-23T10:11:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T14:47:45.894Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Special Characters","level":"1.3.2","depth":2,"next":{"title":"Multiline Text","level":"1.3.3","depth":2,"path":"multiline.md","ref":"multiline.md","articles":[]},"previous":{"title":"Placeables","level":"1.3.1","depth":2,"path":"placeables.md","ref":"placeables.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"special.md","mtime":"2018-12-13T14:32:22.748Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T14:47:45.894Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
