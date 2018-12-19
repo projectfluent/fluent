@@ -10,7 +10,7 @@ consistently across the localization of the entire product.
 -brand-name = Firefox
 
 about = About { -brand-name }.
-update-successul = { -brand-name } has been updated.
+update-successful = { -brand-name } has been updated.
 ```
 
 ## Parameterized Terms
