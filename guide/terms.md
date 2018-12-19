@@ -66,7 +66,7 @@ without any parentheses, the default variant will be used.
     }
 
 # "Firefox has been successfully updated."
-update-succesful = { -brand-name } został pomyślnie zaktualizowany.
+update-successful = { -brand-name } został pomyślnie zaktualizowany.
 ```
 
 ## Terms and Attributes
