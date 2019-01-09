@@ -61,7 +61,8 @@
                             "id": {
                                 "type": "Identifier",
                                 "name": "placeable"
-                            }
+                            },
+                            "attribute": null
                         }
                     }
                 ]

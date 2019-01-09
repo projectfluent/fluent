@@ -17,16 +17,16 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "CallExpression",
-                            "callee": {
-                                "type": "FunctionReference",
-                                "id": {
-                                    "type": "Identifier",
-                                    "name": "FUNCTION"
-                                }
+                            "type": "FunctionReference",
+                            "id": {
+                                "type": "Identifier",
+                                "name": "FUNCTION"
                             },
-                            "positional": [],
-                            "named": []
+                            "args": {
+                                "type": "CallArguments",
+                                "positional": [],
+                                "named": []
+                            }
                         }
                     }
                 ]
@@ -46,16 +46,17 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "CallExpression",
-                            "callee": {
-                                "type": "TermReference",
-                                "id": {
-                                    "type": "Identifier",
-                                    "name": "term"
-                                }
+                            "type": "TermReference",
+                            "id": {
+                                "type": "Identifier",
+                                "name": "term"
                             },
-                            "positional": [],
-                            "named": []
+                            "attribute": null,
+                            "args": {
+                                "type": "CallArguments",
+                                "positional": [],
+                                "named": []
+                            }
                         }
                     }
                 ]
@@ -126,16 +127,16 @@
                         "expression": {
                             "type": "SelectExpression",
                             "selector": {
-                                "type": "CallExpression",
-                                "callee": {
-                                    "type": "FunctionReference",
-                                    "id": {
-                                        "type": "Identifier",
-                                        "name": "FUNCTION"
-                                    }
+                                "type": "FunctionReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "FUNCTION"
                                 },
-                                "positional": [],
-                                "named": []
+                                "args": {
+                                    "type": "CallArguments",
+                                    "positional": [],
+                                    "named": []
+                                }
                             },
                             "variants": [
                                 {
@@ -177,23 +178,20 @@
                         "expression": {
                             "type": "SelectExpression",
                             "selector": {
-                                "type": "CallExpression",
-                                "callee": {
-                                    "type": "AttributeExpression",
-                                    "ref": {
-                                        "type": "TermReference",
-                                        "id": {
-                                            "type": "Identifier",
-                                            "name": "term"
-                                        }
-                                    },
-                                    "name": {
-                                        "type": "Identifier",
-                                        "name": "attr"
-                                    }
+                                "type": "TermReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "term"
                                 },
-                                "positional": [],
-                                "named": []
+                                "attribute": {
+                                    "type": "Identifier",
+                                    "name": "attr"
+                                },
+                                "args": {
+                                    "type": "CallArguments",
+                                    "positional": [],
+                                    "named": []
+                                }
                             },
                             "variants": [
                                 {

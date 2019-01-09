@@ -21,7 +21,8 @@
                             "id": {
                                 "type": "Identifier",
                                 "name": "msg"
-                            }
+                            },
+                            "attribute": null
                         }
                     }
                 ]
@@ -45,7 +46,9 @@
                             "id": {
                                 "type": "Identifier",
                                 "name": "term"
-                            }
+                            },
+                            "attribute": null,
+                            "args": null
                         }
                     }
                 ]
@@ -93,7 +96,8 @@
                             "id": {
                                 "type": "Identifier",
                                 "name": "FUN"
-                            }
+                            },
+                            "attribute": null
                         }
                     }
                 ]
