@@ -17,15 +17,12 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "AttributeExpression",
-                            "ref": {
-                                "type": "MessageReference",
-                                "id": {
-                                    "type": "Identifier",
-                                    "name": "msg"
-                                }
+                            "type": "MessageReference",
+                            "id": {
+                                "type": "Identifier",
+                                "name": "msg"
                             },
-                            "name": {
+                            "attribute": {
                                 "type": "Identifier",
                                 "name": "attr"
                             }
@@ -66,18 +63,16 @@
                         "expression": {
                             "type": "SelectExpression",
                             "selector": {
-                                "type": "AttributeExpression",
-                                "ref": {
-                                    "type": "TermReference",
-                                    "id": {
-                                        "type": "Identifier",
-                                        "name": "term"
-                                    }
+                                "type": "TermReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "term"
                                 },
-                                "name": {
+                                "attribute": {
                                     "type": "Identifier",
                                     "name": "attr"
-                                }
+                                },
+                                "args": null
                             },
                             "variants": [
                                 {

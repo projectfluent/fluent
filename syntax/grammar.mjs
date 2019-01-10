@@ -196,11 +196,7 @@ let InlineExpression = defer(() =>
     either(
         StringLiteral,
         NumberLiteral,
-        CallExpression,
-        AttributeExpression,
-        MessageReference,
-        TermReference,
-        VariableReference,
+        ReferenceExpression,
         inline_placeable));
 
 /* -------- */
@@ -228,15 +224,33 @@ let NumberLiteral = defer(() =>
 
 /* ------------------ */
 /* Inline Expressions */
+let ReferenceExpression = defer(() =>
+    either(
+        FunctionReference,
+        MessageReference,
+        TermReference,
+        VariableReference));
+
+let FunctionReference = defer(() =>
+    sequence(
+        Identifier,
+        CallArguments)
+    .chain(list_into(FTL.FunctionReference)));
+
 let MessageReference = defer(() =>
-    Identifier.chain(into(FTL.MessageReference)));
+    sequence(
+        Identifier,
+        maybe(AttributeAccessor))
+    .chain(list_into(FTL.MessageReference)));
 
 let TermReference = defer(() =>
     sequence(
         string("-"),
-        Identifier)
-    .map(element_at(1))
-    .chain(into(FTL.TermReference)));
+        Identifier.abstract,
+        maybe(AttributeAccessor).abstract,
+        maybe(CallArguments).abstract)
+    .map(keep_abstract)
+    .chain(list_into(FTL.TermReference)));
 
 let VariableReference = defer(() =>
     sequence(
@@ -245,26 +259,22 @@ let VariableReference = defer(() =>
     .map(element_at(1))
     .chain(into(FTL.VariableReference)));
 
-let CallExpression = defer(() =>
+let AttributeAccessor = defer(() =>
     sequence(
-        CalleeExpression.abstract,
+        string("."),
+        Identifier))
+    .map(element_at(1));
+
+let CallArguments = defer(() =>
+    sequence(
         maybe(blank),
         string("("),
         maybe(blank),
-        argument_list.abstract,
+        argument_list,
         maybe(blank),
         string(")"))
-    .map(keep_abstract)
-    .chain(list_into(FTL.CallExpression)));
-
-let CalleeExpression = defer(() =>
-    either(
-        AttributeExpression,
-        FunctionReference,
-        TermReference));
-
-let FunctionReference = defer(() =>
-    Identifier.chain(into(FTL.FunctionReference)));
+    .map(element_at(3))
+    .chain(into(FTL.CallArguments)));
 
 let argument_list = defer(() =>
     sequence(
@@ -294,16 +304,6 @@ let NamedArgument = defer(() =>
             NumberLiteral).abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.NamedArgument)));
-
-let AttributeExpression = defer(() =>
-    sequence(
-        either(
-            MessageReference,
-            TermReference).abstract,
-        string("."),
-        Identifier.abstract)
-    .map(keep_abstract)
-    .chain(list_into(FTL.AttributeExpression)));
 
 /* ----------------- */
 /* Block Expressions */
