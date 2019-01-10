@@ -43,14 +43,6 @@ export class Term extends Entry {
     }
 }
 
-export class VariantList extends SyntaxNode {
-    constructor(variants) {
-        super();
-        this.type = "VariantList";
-        this.variants = variants;
-    }
-}
-
 export class Pattern extends SyntaxNode {
     constructor(elements) {
         super();
@@ -151,15 +143,6 @@ export class AttributeExpression extends Expression {
         this.type = "AttributeExpression";
         this.ref = ref;
         this.name = name;
-    }
-}
-
-export class VariantExpression extends Expression {
-    constructor(ref, key) {
-        super();
-        this.type = "VariantExpression";
-        this.ref = ref;
-        this.key = key;
     }
 }
 

@@ -98,9 +98,6 @@ export function list_into(Type) {
 
                 return always(new Type(selector, variants));
             };
-        case FTL.VariantList:
-            return ([variants]) =>
-                always(new Type(variants));
         default:
             return elements =>
                 always(new Type(...elements));

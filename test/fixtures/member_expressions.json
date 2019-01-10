@@ -34,47 +34,10 @@
                 ]
             },
             "attributes": [],
-            "comment": null
-        },
-        {
-            "type": "Message",
-            "id": {
-                "type": "Identifier",
-                "name": "term-variant-expression-placeable"
-            },
-            "value": {
-                "type": "Pattern",
-                "elements": [
-                    {
-                        "type": "Placeable",
-                        "expression": {
-                            "type": "VariantExpression",
-                            "ref": {
-                                "type": "TermReference",
-                                "id": {
-                                    "type": "Identifier",
-                                    "name": "term"
-                                }
-                            },
-                            "key": {
-                                "type": "Identifier",
-                                "name": "case"
-                            }
-                        }
-                    }
-                ]
-            },
-            "attributes": [],
-            "comment": null
-        },
-        {
-            "type": "Comment",
-            "content": "ERROR Message values cannot be VariantLists"
-        },
-        {
-            "type": "Junk",
-            "annotations": [],
-            "content": "message-variant-expression-placeable = {msg[case]}\n"
+            "comment": {
+                "type": "Comment",
+                "content": "OK Message attributes may be interpolated in values."
+            }
         },
         {
             "type": "Comment",
@@ -83,7 +46,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "term-attribute-expression-placeable = {-term.attr}\n\n"
+            "content": "term-attribute-expression-placeable = {-term.attr}\n\n\n"
         },
         {
             "type": "GroupComment",
@@ -140,34 +103,19 @@
                 ]
             },
             "attributes": [],
-            "comment": null
+            "comment": {
+                "type": "Comment",
+                "content": "OK Term attributes may be used as selectors."
+            }
         },
         {
             "type": "Comment",
-            "content": "ERROR Message attributes may not be used as selector."
+            "content": "ERROR Message attributes may not be used as selectors."
         },
         {
             "type": "Junk",
             "annotations": [],
             "content": "message-attribute-expression-selector = {msg.attr ->\n   *[key] Value\n}\n"
-        },
-        {
-            "type": "Comment",
-            "content": "ERROR Term values may not be used as selector."
-        },
-        {
-            "type": "Junk",
-            "annotations": [],
-            "content": "term-variant-expression-selector = {-term[case] ->\n   *[key] Value\n}\n"
-        },
-        {
-            "type": "Comment",
-            "content": "ERROR Message values cannot be VariantLists"
-        },
-        {
-            "type": "Junk",
-            "annotations": [],
-            "content": "message-variant-expression-selector = {msg[case] ->\n   *[key] Value\n}\n"
         }
     ]
 }

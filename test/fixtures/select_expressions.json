@@ -132,7 +132,7 @@
         },
         {
             "type": "Comment",
-            "content": "ERROR"
+            "content": "ERROR Term values are not valid selectors"
         },
         {
             "type": "Junk",
@@ -141,21 +141,12 @@
         },
         {
             "type": "Comment",
-            "content": "ERROR"
+            "content": "ERROR CallExpressions on Terms are similar to TermReferences"
         },
         {
             "type": "Junk",
             "annotations": [],
-            "content": "invalid-selector-term-variant =\n    { -term[case] ->\n       *[key] value\n    }\n\n"
-        },
-        {
-            "type": "Comment",
-            "content": "ERROR"
-        },
-        {
-            "type": "Junk",
-            "annotations": [],
-            "content": "invalid-selector-term-call =\n    { -term(case: \"nominative\") ->\n       *[key] value\n    }\n\n"
+            "content": "invalid-selector-term-variant =\n    { -term(case: \"nominative\") ->\n       *[key] value\n    }\n\n"
         },
         {
             "type": "Message",
@@ -171,15 +162,18 @@
                         "expression": {
                             "type": "SelectExpression",
                             "selector": {
-                                "type": "NumberLiteral",
-                                "value": "1"
+                                "type": "VariableReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "sel"
+                                }
                             },
                             "variants": [
                                 {
                                     "type": "Variant",
                                     "key": {
                                         "type": "Identifier",
-                                        "name": "one"
+                                        "name": "key"
                                     },
                                     "value": {
                                         "type": "Pattern",
@@ -218,8 +212,11 @@
                         "expression": {
                             "type": "SelectExpression",
                             "selector": {
-                                "type": "NumberLiteral",
-                                "value": "1"
+                                "type": "VariableReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "sel"
+                                }
                             },
                             "variants": [
                                 {
@@ -236,8 +233,11 @@
                                                 "expression": {
                                                     "type": "SelectExpression",
                                                     "selector": {
-                                                        "type": "NumberLiteral",
-                                                        "value": "2"
+                                                        "type": "VariableReference",
+                                                        "id": {
+                                                            "type": "Identifier",
+                                                            "name": "sel"
+                                                        }
                                                     },
                                                     "variants": [
                                                         {
@@ -274,12 +274,12 @@
         },
         {
             "type": "Comment",
-            "content": "ERROR VariantLists cannot be Variant values."
+            "content": "ERROR Missing selector"
         },
         {
             "type": "Junk",
             "annotations": [],
-            "content": "nested-variant-list =\n    { 1 ->\n       *[one] {\n          *[two] Value\n       }\n    }\n\n"
+            "content": "missing-selector =\n    {\n       *[key] Value\n    }\n\n"
         },
         {
             "type": "Comment",
@@ -288,7 +288,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "missing-line-end =\n    { 1 ->\n        *[one] One}\n"
+            "content": "missing-line-end =\n    { $sel ->\n        *[key] Value}\n"
         }
     ]
 }

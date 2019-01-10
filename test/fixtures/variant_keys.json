@@ -2,30 +2,45 @@
     "type": "Resource",
     "body": [
         {
-            "type": "Term",
+            "type": "Message",
             "id": {
                 "type": "Identifier",
                 "name": "simple-identifier"
             },
             "value": {
-                "type": "VariantList",
-                "variants": [
+                "type": "Pattern",
+                "elements": [
                     {
-                        "type": "Variant",
-                        "key": {
-                            "type": "Identifier",
-                            "name": "key"
-                        },
-                        "value": {
-                            "type": "Pattern",
-                            "elements": [
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "SelectExpression",
+                            "selector": {
+                                "type": "VariableReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "sel"
+                                }
+                            },
+                            "variants": [
                                 {
-                                    "type": "TextElement",
-                                    "value": "value"
+                                    "type": "Variant",
+                                    "key": {
+                                        "type": "Identifier",
+                                        "name": "key"
+                                    },
+                                    "value": {
+                                        "type": "Pattern",
+                                        "elements": [
+                                            {
+                                                "type": "TextElement",
+                                                "value": "value"
+                                            }
+                                        ]
+                                    },
+                                    "default": true
                                 }
                             ]
-                        },
-                        "default": true
+                        }
                     }
                 ]
             },
@@ -33,30 +48,45 @@
             "comment": null
         },
         {
-            "type": "Term",
+            "type": "Message",
             "id": {
                 "type": "Identifier",
                 "name": "identifier-surrounded-by-whitespace"
             },
             "value": {
-                "type": "VariantList",
-                "variants": [
+                "type": "Pattern",
+                "elements": [
                     {
-                        "type": "Variant",
-                        "key": {
-                            "type": "Identifier",
-                            "name": "key"
-                        },
-                        "value": {
-                            "type": "Pattern",
-                            "elements": [
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "SelectExpression",
+                            "selector": {
+                                "type": "VariableReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "sel"
+                                }
+                            },
+                            "variants": [
                                 {
-                                    "type": "TextElement",
-                                    "value": "value"
+                                    "type": "Variant",
+                                    "key": {
+                                        "type": "Identifier",
+                                        "name": "key"
+                                    },
+                                    "value": {
+                                        "type": "Pattern",
+                                        "elements": [
+                                            {
+                                                "type": "TextElement",
+                                                "value": "value"
+                                            }
+                                        ]
+                                    },
+                                    "default": true
                                 }
                             ]
-                        },
-                        "default": true
+                        }
                     }
                 ]
             },
@@ -64,30 +94,45 @@
             "comment": null
         },
         {
-            "type": "Term",
+            "type": "Message",
             "id": {
                 "type": "Identifier",
                 "name": "int-number"
             },
             "value": {
-                "type": "VariantList",
-                "variants": [
+                "type": "Pattern",
+                "elements": [
                     {
-                        "type": "Variant",
-                        "key": {
-                            "type": "NumberLiteral",
-                            "value": "1"
-                        },
-                        "value": {
-                            "type": "Pattern",
-                            "elements": [
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "SelectExpression",
+                            "selector": {
+                                "type": "VariableReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "sel"
+                                }
+                            },
+                            "variants": [
                                 {
-                                    "type": "TextElement",
-                                    "value": "value"
+                                    "type": "Variant",
+                                    "key": {
+                                        "type": "NumberLiteral",
+                                        "value": "1"
+                                    },
+                                    "value": {
+                                        "type": "Pattern",
+                                        "elements": [
+                                            {
+                                                "type": "TextElement",
+                                                "value": "value"
+                                            }
+                                        ]
+                                    },
+                                    "default": true
                                 }
                             ]
-                        },
-                        "default": true
+                        }
                     }
                 ]
             },
@@ -95,30 +140,45 @@
             "comment": null
         },
         {
-            "type": "Term",
+            "type": "Message",
             "id": {
                 "type": "Identifier",
                 "name": "float-number"
             },
             "value": {
-                "type": "VariantList",
-                "variants": [
+                "type": "Pattern",
+                "elements": [
                     {
-                        "type": "Variant",
-                        "key": {
-                            "type": "NumberLiteral",
-                            "value": "3.14"
-                        },
-                        "value": {
-                            "type": "Pattern",
-                            "elements": [
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "SelectExpression",
+                            "selector": {
+                                "type": "VariableReference",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "sel"
+                                }
+                            },
+                            "variants": [
                                 {
-                                    "type": "TextElement",
-                                    "value": "value"
+                                    "type": "Variant",
+                                    "key": {
+                                        "type": "NumberLiteral",
+                                        "value": "3.14"
+                                    },
+                                    "value": {
+                                        "type": "Pattern",
+                                        "elements": [
+                                            {
+                                                "type": "TextElement",
+                                                "value": "value"
+                                            }
+                                        ]
+                                    },
+                                    "default": true
                                 }
                             ]
-                        },
-                        "default": true
+                        }
                     }
                 ]
             },
@@ -132,7 +192,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "-invalid-identifier =\n    {\n       *[two words] value\n    }\n\n"
+            "content": "invalid-identifier =\n    { $sel ->\n       *[two words] value\n    }\n\n"
         },
         {
             "type": "Comment",
@@ -141,7 +201,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "-invalid-int =\n    {\n       *[1 apple] value\n    }\n\n"
+            "content": "invalid-int =\n    { $sel ->\n       *[1 apple] value\n    }\n\n"
         },
         {
             "type": "Comment",
@@ -150,7 +210,7 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "-invalid-int =\n    {\n       *[3.14 apples] value\n    }\n"
+            "content": "invalid-int =\n    { $sel ->\n       *[3.14 apples] value\n    }\n"
         }
     ]
 }

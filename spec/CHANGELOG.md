@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.0 (Unreleased)
+
+  - Remove `VariantLists`. (#204)
+
+    The `VariantLists` and the `VariantExpression` syntax and AST nodes were
+    deprecated in Syntax 0.9 and have now been removed.
+
 ## 0.8.0 (December 13, 2018)
 
   - Preserve content-indent in multiline `Patterns`. (#162)
@@ -73,7 +80,7 @@
     `VariantLists`:
 
     ```properties
-    # A Term with a VariantList as a value.
+    # BEFORE A Term with a VariantList as a value.
     -thing = {
        *[definite] the thing
         [indefinite] a thing
@@ -83,7 +90,7 @@
     ```
 
     ```properties
-    # A parametrized Term with a Pattern as a value.
+    # AFTER A parameterized Term with a Pattern as a value.
     -thing = { $article ->
        *[definite] the thing
         [indefinite] a thing
@@ -96,7 +103,7 @@
     hierarchies of term values:
 
     ```properties
-    # A parametrized Term with nested Patterns.
+    # AFTER A parameterized Term with nested Patterns.
     -thing = { $article ->
        *[definite] { $first-letter ->
            *[lower] the thing

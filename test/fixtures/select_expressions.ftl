@@ -9,45 +9,37 @@ valid-selector-term-attribute =
        *[key] value
     }
 
-# ERROR
+# ERROR Term values are not valid selectors
 invalid-selector-term-value =
     { -term ->
        *[key] value
     }
 
-# ERROR
+# ERROR CallExpressions on Terms are similar to TermReferences
 invalid-selector-term-variant =
-    { -term[case] ->
-       *[key] value
-    }
-
-# ERROR
-invalid-selector-term-call =
     { -term(case: "nominative") ->
        *[key] value
     }
 
 empty-variant =
-    { 1 ->
-       *[one] {""}
+    { $sel ->
+       *[key] {""}
     }
 
 nested-select =
-    { 1 ->
-       *[one] { 2 ->
+    { $sel ->
+       *[one] { $sel ->
           *[two] Value
        }
     }
 
-# ERROR VariantLists cannot be Variant values.
-nested-variant-list =
-    { 1 ->
-       *[one] {
-          *[two] Value
-       }
+# ERROR Missing selector
+missing-selector =
+    {
+       *[key] Value
     }
 
 # ERROR Missing line end after variant list
 missing-line-end =
-    { 1 ->
-        *[one] One}
+    { $sel ->
+        *[key] Value}
