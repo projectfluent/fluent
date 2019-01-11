@@ -45,6 +45,7 @@ We also know about the following community-driven implementations:
 
   - [`Fluent.Net`](https://github.com/blushingpenguin/Fluent.Net) by [@blushingpenguin](https://github.com/blushingpenguin). See [#93](https://github.com/projectfluent/fluent/issues/93) for more info.
   - A Java/Kotlin implementation has been requested in [#158](https://github.com/projectfluent/fluent/issues/158).
+  - [`elm-fluent`](https://github.com/elm-fluent/elm-fluent) by [@spookylukey](https://github.com/spookylukey/)
 
 ## Learn More and Discuss
 
