@@ -36,7 +36,8 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": "123"
+                            "value": 123,
+                            "precision": 0
                         }
                     }
                 ]
@@ -57,7 +58,8 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": "-3.14"
+                            "value": -3.14,
+                            "precision": 2
                         }
                     }
                 ]

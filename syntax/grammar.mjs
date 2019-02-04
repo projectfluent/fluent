@@ -212,14 +212,14 @@ let StringLiteral = defer(() =>
 
 let NumberLiteral = defer(() =>
     sequence(
-        maybe(string("-")),
-        repeat1(digit),
+        maybe(string("-")).abstract,
+        digits.abstract,
         maybe(
             sequence(
                 string("."),
-                repeat1(digit))))
+                digits.abstract)))
     .map(flatten(2))
-    .map(join)
+    .map(keep_abstract)
     .chain(into(FTL.NumberLiteral)));
 
 /* ------------------ */
@@ -459,7 +459,10 @@ let quoted_char = defer(() =>
 /* ------- */
 /* Numbers */
 
-let digit = charset("0-9");
+let digits =
+    repeat1(
+        charset("0-9"))
+    .map(join);
 
 /* ---------- */
 /* Whitespace */
