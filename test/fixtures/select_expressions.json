@@ -20,7 +20,7 @@
                                     "type": "Identifier",
                                     "name": "BUILTIN"
                                 },
-                                "args": {
+                                "arguments": {
                                     "type": "CallArguments",
                                     "positional": [],
                                     "named": []
@@ -101,7 +101,7 @@
                                     "type": "Identifier",
                                     "name": "case"
                                 },
-                                "args": null
+                                "arguments": null
                             },
                             "variants": [
                                 {

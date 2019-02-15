@@ -14,6 +14,11 @@
     the literal, thus allowing the AST to preserve the precision used in the
     source.
 
+  - Rename `args` to `arguments`.
+
+    The `args` field of `MessageReference`, `TermReference`,
+    `FunctionReference`, and `Annotation` has been renamed to `arguments`.
+
 ## 0.8.0 (December 13, 2018)
 
   - Preserve content-indent in multiline `Patterns`. (#162)

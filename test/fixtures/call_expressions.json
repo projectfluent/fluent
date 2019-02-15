@@ -22,7 +22,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -70,7 +70,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [],
                                 "named": [
@@ -124,7 +124,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [],
                                 "named": [
@@ -178,7 +178,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -273,7 +273,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -329,7 +329,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [],
                                 "named": []
@@ -358,7 +358,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -414,7 +414,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -470,7 +470,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [],
                                 "named": []
@@ -499,7 +499,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -534,7 +534,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -569,7 +569,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -607,7 +607,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -617,7 +617,7 @@
                                             "name": "msg"
                                         },
                                         "attribute": null,
-                                        "args": null
+                                        "arguments": null
                                     }
                                 ],
                                 "named": []
@@ -646,7 +646,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -683,7 +683,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -692,7 +692,7 @@
                                             "type": "Identifier",
                                             "name": "OTHER"
                                         },
-                                        "args": {
+                                        "arguments": {
                                             "type": "CallArguments",
                                             "positional": [],
                                             "named": []
@@ -725,7 +725,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [],
                                 "named": [
@@ -767,7 +767,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -809,7 +809,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -844,7 +844,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -889,7 +889,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -934,7 +934,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -974,7 +974,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {
@@ -1037,7 +1037,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [],
                                 "named": [
@@ -1103,7 +1103,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [],
                                 "named": [
@@ -1145,7 +1145,7 @@
                                 "type": "Identifier",
                                 "name": "FUN"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [],
                                 "named": [
