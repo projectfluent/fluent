@@ -65,7 +65,7 @@
                                 "name": "term"
                             },
                             "attribute": null,
-                            "args": null
+                            "arguments": null
                         }
                     }
                 ]
@@ -91,7 +91,7 @@
                                 "name": "term"
                             },
                             "attribute": null,
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [],
                                 "named": []
@@ -121,7 +121,7 @@
                                 "name": "term"
                             },
                             "attribute": null,
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [],
                                 "named": [
@@ -164,7 +164,7 @@
                                 "name": "term"
                             },
                             "attribute": null,
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [
                                     {

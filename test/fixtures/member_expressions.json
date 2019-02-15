@@ -72,7 +72,7 @@
                                     "type": "Identifier",
                                     "name": "attr"
                                 },
-                                "args": null
+                                "arguments": null
                             },
                             "variants": [
                                 {

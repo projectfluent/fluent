@@ -22,7 +22,7 @@
                                 "type": "Identifier",
                                 "name": "FUNCTION"
                             },
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [],
                                 "named": []
@@ -52,7 +52,7 @@
                                 "name": "term"
                             },
                             "attribute": null,
-                            "args": {
+                            "arguments": {
                                 "type": "CallArguments",
                                 "positional": [],
                                 "named": []
@@ -132,7 +132,7 @@
                                     "type": "Identifier",
                                     "name": "FUNCTION"
                                 },
-                                "args": {
+                                "arguments": {
                                     "type": "CallArguments",
                                     "positional": [],
                                     "named": []
@@ -187,7 +187,7 @@
                                     "type": "Identifier",
                                     "name": "attr"
                                 },
-                                "args": {
+                                "arguments": {
                                     "type": "CallArguments",
                                     "positional": [],
                                     "named": []
