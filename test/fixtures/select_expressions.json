@@ -31,7 +31,8 @@
                                     "type": "Variant",
                                     "key": {
                                         "type": "NumberLiteral",
-                                        "value": "0"
+                                        "value": 0,
+                                        "precision": 0
                                     },
                                     "value": {
                                         "type": "Pattern",

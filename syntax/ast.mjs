@@ -89,10 +89,11 @@ export class StringLiteral extends Expression {
 }
 
 export class NumberLiteral extends Expression {
-    constructor(value) {
+    constructor(value, precision) {
         super();
         this.type = "NumberLiteral";
         this.value = value;
+        this.precision = precision;
     }
 }
 

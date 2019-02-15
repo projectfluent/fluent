@@ -18,7 +18,8 @@
                                 "type": "Placeable",
                                 "expression": {
                                     "type": "NumberLiteral",
-                                    "value": "1"
+                                    "value": 1,
+                                    "precision": 0
                                 }
                             }
                         }
@@ -41,7 +42,8 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": "1"
+                            "value": 1,
+                            "precision": 0
                         }
                     }
                 ]
@@ -64,7 +66,8 @@
                             "type": "Placeable",
                             "expression": {
                                 "type": "NumberLiteral",
-                                "value": "1"
+                                "value": 1,
+                                "precision": 0
                             }
                         }
                     }

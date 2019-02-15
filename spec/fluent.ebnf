@@ -57,7 +57,7 @@ InlineExpression    ::= StringLiteral
 
 /* Literals */
 StringLiteral       ::= "\"" quoted_char* "\""
-NumberLiteral       ::= "-"? digit+ ("." digit+)?
+NumberLiteral       ::= "-"? digits ("." digits)?
 
 /* Inline Expressions */
 ReferenceExpression ::= FunctionReference
@@ -130,7 +130,7 @@ quoted_char         ::= (any_char - special_quoted_char - line_end)
                       | unicode_escape
 
 /* Numbers */
-digit               ::= [0-9]
+digits              ::= [0-9]+
 
 /* Whitespace */
 blank_inline        ::= "\u0020"+
