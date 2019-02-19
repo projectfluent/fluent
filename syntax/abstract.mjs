@@ -95,11 +95,16 @@ export function into(Type) {
                     positional, Array.from(named.values())));
             };
         case FTL.NumberLiteral:
-            return ([minus, integer, fraction = ""]) => {
-                let sign = minus ? "-" : "+";
-                let value = parseFloat(sign + integer + "." + fraction);
-                let precision = fraction.length;
-                return always(new Type(value, precision));
+            return ([integer, fraction]) => {
+                if (fraction === null) {
+                    let value = parseInt(integer);
+                    return always(new Type(value, 0, integer));
+                } else {
+                    let raw = integer + "." + fraction;
+                    let value = parseFloat(raw);
+                    let precision = fraction.length;
+                    return always(new Type(value, precision, raw));
+                }
             };
         case FTL.Placeable:
             return expression => {

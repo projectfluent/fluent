@@ -37,7 +37,8 @@
                         "expression": {
                             "type": "NumberLiteral",
                             "value": 123,
-                            "precision": 0
+                            "precision": 0,
+                            "raw": "123"
                         }
                     }
                 ]
@@ -59,7 +60,8 @@
                         "expression": {
                             "type": "NumberLiteral",
                             "value": -3.14,
-                            "precision": 2
+                            "precision": 2,
+                            "raw": "-3.14"
                         }
                     }
                 ]

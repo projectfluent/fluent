@@ -19,7 +19,8 @@
                                 "expression": {
                                     "type": "NumberLiteral",
                                     "value": 1,
-                                    "precision": 0
+                                    "precision": 0,
+                                    "raw": "1"
                                 }
                             }
                         }
@@ -43,7 +44,8 @@
                         "expression": {
                             "type": "NumberLiteral",
                             "value": 1,
-                            "precision": 0
+                            "precision": 0,
+                            "raw": "1"
                         }
                     }
                 ]
@@ -67,7 +69,8 @@
                             "expression": {
                                 "type": "NumberLiteral",
                                 "value": 1,
-                                "precision": 0
+                                "precision": 0,
+                                "raw": "1"
                             }
                         }
                     }

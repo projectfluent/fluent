@@ -212,14 +212,8 @@ let StringLiteral = defer(() =>
 
 let NumberLiteral = defer(() =>
     sequence(
-        maybe(string("-")).abstract,
-        digits.abstract,
-        maybe(
-            sequence(
-                string("."),
-                digits.abstract)))
-    .map(flatten(2))
-    .map(keep_abstract)
+        integer,
+        maybe(fraction))
     .chain(into(FTL.NumberLiteral)));
 
 /* ------------------ */
@@ -463,6 +457,19 @@ let digits =
     repeat1(
         charset("0-9"))
     .map(join);
+
+let integer =
+    sequence(
+        maybe(string("-")),
+        digits)
+    .map(prune)
+    .map(join);
+
+let fraction =
+    sequence(
+        string("."),
+        digits)
+    .map(element_at(1));
 
 /* ---------- */
 /* Whitespace */

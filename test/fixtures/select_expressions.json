@@ -32,7 +32,8 @@
                                     "key": {
                                         "type": "NumberLiteral",
                                         "value": 0,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "0"
                                     },
                                     "value": {
                                         "type": "Pattern",

@@ -115,7 +115,8 @@
                             "selector": {
                                 "type": "NumberLiteral",
                                 "value": 1,
-                                "precision": 0
+                                "precision": 0,
+                                "raw": "1"
                             },
                             "variants": [
                                 {

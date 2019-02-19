@@ -134,7 +134,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 1,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "1"
                                         }
                                     }
                                 ]
@@ -183,7 +184,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 1,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "1"
                                         }
                                     },
                                     {
@@ -195,7 +197,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 2,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "2"
                                         }
                                     }
                                 ]

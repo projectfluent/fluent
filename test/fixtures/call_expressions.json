@@ -28,7 +28,8 @@
                                     {
                                         "type": "NumberLiteral",
                                         "value": 1,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "1"
                                     },
                                     {
                                         "type": "StringLiteral",
@@ -83,7 +84,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 1,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "1"
                                         }
                                     },
                                     {
@@ -137,7 +139,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 1,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "1"
                                         }
                                     },
                                     {
@@ -184,7 +187,8 @@
                                     {
                                         "type": "NumberLiteral",
                                         "value": 1,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "1"
                                     },
                                     {
                                         "type": "StringLiteral",
@@ -210,7 +214,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 1,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "1"
                                         }
                                     },
                                     {
@@ -300,7 +305,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 1,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "1"
                                         }
                                     }
                                 ]
@@ -385,7 +391,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 1,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "1"
                                         }
                                     }
                                 ]
@@ -441,7 +448,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 1,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "1"
                                         }
                                     }
                                 ]
@@ -505,7 +513,8 @@
                                     {
                                         "type": "NumberLiteral",
                                         "value": 1,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "1"
                                     }
                                 ],
                                 "named": []
@@ -738,7 +747,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 1,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "1"
                                         }
                                     }
                                 ]
@@ -815,7 +825,8 @@
                                     {
                                         "type": "NumberLiteral",
                                         "value": 1,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "1"
                                     }
                                 ],
                                 "named": []
@@ -850,17 +861,20 @@
                                     {
                                         "type": "NumberLiteral",
                                         "value": 1,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "1"
                                     },
                                     {
                                         "type": "NumberLiteral",
                                         "value": 2,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "2"
                                     },
                                     {
                                         "type": "NumberLiteral",
                                         "value": 3,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "3"
                                     }
                                 ],
                                 "named": []
@@ -895,17 +909,20 @@
                                     {
                                         "type": "NumberLiteral",
                                         "value": 1,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "1"
                                     },
                                     {
                                         "type": "NumberLiteral",
                                         "value": 2,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "2"
                                     },
                                     {
                                         "type": "NumberLiteral",
                                         "value": 3,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "3"
                                     }
                                 ],
                                 "named": []
@@ -940,12 +957,14 @@
                                     {
                                         "type": "NumberLiteral",
                                         "value": 1,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "1"
                                     },
                                     {
                                         "type": "NumberLiteral",
                                         "value": 2,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "2"
                                     }
                                 ],
                                 "named": []
@@ -980,12 +999,14 @@
                                     {
                                         "type": "NumberLiteral",
                                         "value": 1,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "1"
                                     },
                                     {
                                         "type": "NumberLiteral",
                                         "value": 2,
-                                        "precision": 0
+                                        "precision": 0,
+                                        "raw": "2"
                                     }
                                 ],
                                 "named": []
@@ -1050,7 +1071,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 1,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "1"
                                         }
                                     },
                                     {
@@ -1062,7 +1084,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 2,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "2"
                                         }
                                     },
                                     {
@@ -1074,7 +1097,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 3,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "3"
                                         }
                                     }
                                 ]
@@ -1116,7 +1140,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 1,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "1"
                                         }
                                     }
                                 ]
@@ -1158,7 +1183,8 @@
                                         "value": {
                                             "type": "NumberLiteral",
                                             "value": 1,
-                                            "precision": 0
+                                            "precision": 0,
+                                            "raw": "1"
                                         }
                                     }
                                 ]
