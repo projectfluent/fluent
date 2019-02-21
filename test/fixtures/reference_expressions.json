@@ -105,7 +105,7 @@
             "attributes": [],
             "comment": {
                 "type": "Comment",
-                "content": "ERROR Function references are invalid outside of call expressions."
+                "content": "Function references are invalid outside of call expressions.\nThis parses as a valid MessageReference."
             }
         },
         {
@@ -178,7 +178,7 @@
         },
         {
             "type": "Comment",
-            "content": "ERROR Function references are invalid outside of call expressions."
+            "content": "ERROR Function references are invalid outside of call expressions, and this\nparses as a MessageReference which isn't a valid selector."
         },
         {
             "type": "Junk",

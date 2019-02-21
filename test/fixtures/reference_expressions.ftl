@@ -4,7 +4,8 @@ message-reference-placeable = {msg}
 term-reference-placeable = {-term}
 variable-reference-placeable = {$var}
 
-# ERROR Function references are invalid outside of call expressions.
+# Function references are invalid outside of call expressions.
+# This parses as a valid MessageReference.
 function-reference-placeable = {FUN}
 
 
@@ -22,7 +23,8 @@ message-reference-selector = {msg ->
 term-reference-selector = {-term ->
    *[key] Value
 }
-# ERROR Function references are invalid outside of call expressions.
+# ERROR Function references are invalid outside of call expressions, and this
+# parses as a MessageReference which isn't a valid selector.
 function-expression-selector = {FUN ->
    *[key] Value
 }
