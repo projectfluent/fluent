@@ -168,7 +168,6 @@
                                 "positional": [
                                     {
                                         "type": "StringLiteral",
-                                        "raw": "positional",
                                         "value": "positional"
                                     }
                                 ],

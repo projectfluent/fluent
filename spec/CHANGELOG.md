@@ -7,6 +7,15 @@
     The `VariantLists` and the `VariantExpression` syntax and AST nodes were
     deprecated in Syntax 0.9 and have now been removed.
 
+  - Rename `StringLiteral.raw` to `value`. (#243)
+
+    `StringLiteral.value` contains the exact contents of the string literal,
+    character-for-character. Escape sequences are stored verbatim without
+    processing.
+
+    Implementations may decide how to process the raw value. When they do,
+    however, they must comply with the behavior specified in `Literal.parse`.
+
   - Rename `args` to `arguments`.
 
     The `args` field of `MessageReference`, `TermReference`,
