@@ -14,8 +14,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 0,
-                            "precision": 0
+                            "value": "0"
                         }
                     }
                 ]
@@ -36,8 +35,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 1,
-                            "precision": 0
+                            "value": "1"
                         }
                     }
                 ]
@@ -58,8 +56,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": -1,
-                            "precision": 0
+                            "value": "-1"
                         }
                     }
                 ]
@@ -80,8 +77,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 0,
-                            "precision": 0
+                            "value": "-0"
                         }
                     }
                 ]
@@ -102,8 +98,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 1,
-                            "precision": 0
+                            "value": "01"
                         }
                     }
                 ]
@@ -124,8 +119,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": -1,
-                            "precision": 0
+                            "value": "-01"
                         }
                     }
                 ]
@@ -146,8 +140,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 0,
-                            "precision": 0
+                            "value": "00"
                         }
                     }
                 ]
@@ -168,8 +161,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 0,
-                            "precision": 0
+                            "value": "-00"
                         }
                     }
                 ]
@@ -190,8 +182,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 0,
-                            "precision": 1
+                            "value": "0.0"
                         }
                     }
                 ]
@@ -212,8 +203,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 0.01,
-                            "precision": 2
+                            "value": "0.01"
                         }
                     }
                 ]
@@ -234,8 +224,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 1.03,
-                            "precision": 2
+                            "value": "1.03"
                         }
                     }
                 ]
@@ -256,8 +245,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 1,
-                            "precision": 3
+                            "value": "1.000"
                         }
                     }
                 ]
@@ -278,8 +266,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": -0.01,
-                            "precision": 2
+                            "value": "-0.01"
                         }
                     }
                 ]
@@ -300,8 +287,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": -1.03,
-                            "precision": 2
+                            "value": "-1.03"
                         }
                     }
                 ]
@@ -322,8 +308,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 0,
-                            "precision": 1
+                            "value": "-0.0"
                         }
                     }
                 ]
@@ -344,8 +329,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": -1,
-                            "precision": 3
+                            "value": "-1.000"
                         }
                     }
                 ]
@@ -366,8 +350,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 1.03,
-                            "precision": 2
+                            "value": "01.03"
                         }
                     }
                 ]
@@ -388,8 +371,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 1.03,
-                            "precision": 4
+                            "value": "1.0300"
                         }
                     }
                 ]
@@ -410,8 +392,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": 1.03,
-                            "precision": 4
+                            "value": "01.0300"
                         }
                     }
                 ]
@@ -432,8 +413,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": -1.03,
-                            "precision": 2
+                            "value": "-01.03"
                         }
                     }
                 ]
@@ -454,8 +434,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": -1.03,
-                            "precision": 4
+                            "value": "-1.0300"
                         }
                     }
                 ]
@@ -476,8 +455,7 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "NumberLiteral",
-                            "value": -1.03,
-                            "precision": 4
+                            "value": "-01.0300"
                         }
                     }
                 ]

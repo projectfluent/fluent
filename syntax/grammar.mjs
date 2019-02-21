@@ -212,14 +212,14 @@ let StringLiteral = defer(() =>
 
 let NumberLiteral = defer(() =>
     sequence(
-        maybe(string("-")).abstract,
-        digits.abstract,
+        maybe(string("-")),
+        digits,
         maybe(
             sequence(
                 string("."),
-                digits.abstract)))
-    .map(flatten(2))
-    .map(keep_abstract)
+                digits)))
+    .map(flatten(1))
+    .map(join)
     .chain(into(FTL.NumberLiteral)));
 
 /* ------------------ */

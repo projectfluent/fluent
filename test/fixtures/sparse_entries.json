@@ -114,8 +114,7 @@
                             "type": "SelectExpression",
                             "selector": {
                                 "type": "NumberLiteral",
-                                "value": 1,
-                                "precision": 0
+                                "value": "1"
                             },
                             "variants": [
                                 {

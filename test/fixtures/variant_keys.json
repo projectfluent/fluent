@@ -118,8 +118,7 @@
                                     "type": "Variant",
                                     "key": {
                                         "type": "NumberLiteral",
-                                        "value": 1,
-                                        "precision": 0
+                                        "value": "1"
                                     },
                                     "value": {
                                         "type": "Pattern",
@@ -165,8 +164,7 @@
                                     "type": "Variant",
                                     "key": {
                                         "type": "NumberLiteral",
-                                        "value": 3.14,
-                                        "precision": 2
+                                        "value": "3.14"
                                     },
                                     "value": {
                                         "type": "Pattern",

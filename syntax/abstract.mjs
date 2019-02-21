@@ -94,13 +94,6 @@ export function into(Type) {
                 return always(new Type(
                     positional, Array.from(named.values())));
             };
-        case FTL.NumberLiteral:
-            return ([minus, integer, fraction = ""]) => {
-                let sign = minus ? "-" : "+";
-                let value = parseFloat(sign + integer + "." + fraction);
-                let precision = fraction.length;
-                return always(new Type(value, precision));
-            };
         case FTL.Placeable:
             return expression => {
                 if (expression instanceof FTL.TermReference
