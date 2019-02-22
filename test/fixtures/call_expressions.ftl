@@ -1,3 +1,18 @@
+## Function names
+
+valid-func-name-01 = {FUN1()}
+valid-func-name-02 = {FUN_FUN()}
+valid-func-name-03 = {FUN-FUN()}
+
+# JUNK 0 is not a valid Identifier start
+invalid-func-name-01 = {0FUN()}
+# JUNK Function names may not be lowercase
+invalid-func-name-02 = {fun()}
+# JUNK Function names may not contain lowercase character
+invalid-func-name-03 = {Fun()}
+# JUNK ? is not a valid Identifier character
+invalid-func-name-04 = {FUN?()}
+
 ## Arguments
 
 positional-args = {FUN(1, "a", msg)}

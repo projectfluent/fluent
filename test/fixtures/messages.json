@@ -262,6 +262,105 @@
             },
             "attributes": [],
             "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key-10"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value 10"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key_11"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value 11"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key-12-"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value 12"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key_13_"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "Value 13"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Comment",
+            "content": "JUNK Invalid id"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "0err-14 = Value 14\n\n"
+        },
+        {
+            "type": "Comment",
+            "content": "JUNK Invalid id"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "err-15? = Value 15\n\n"
+        },
+        {
+            "type": "Comment",
+            "content": "JUNK Invalid id"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "err-ąę-16 = Value 16\n"
         }
     ]
 }

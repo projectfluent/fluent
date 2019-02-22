@@ -27,3 +27,17 @@ key07 =
 key08
 
 KEY09 = Value 09
+
+key-10 = Value 10
+key_11 = Value 11
+key-12- = Value 12
+key_13_ = Value 13
+
+# JUNK Invalid id
+0err-14 = Value 14
+
+# JUNK Invalid id
+err-15? = Value 15
+
+# JUNK Invalid id
+err-ąę-16 = Value 16
