@@ -24,7 +24,7 @@ export function list_into(Type) {
                 }
             };
         case FTL.FunctionReference:
-            const VALID_FUNCTION_NAME = /^[A-Z][A-Z0-9_?-]*$/;
+            const VALID_FUNCTION_NAME = /^[A-Z][A-Z0-9_-]*$/;
             return ([identifier, args]) => {
                 if (VALID_FUNCTION_NAME.test(identifier.name)) {
                     return always(new Type(identifier, args));

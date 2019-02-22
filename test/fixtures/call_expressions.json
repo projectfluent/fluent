@@ -3,6 +3,133 @@
     "body": [
         {
             "type": "GroupComment",
+            "content": "Function names"
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "valid-func-name-01"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "FunctionReference",
+                            "id": {
+                                "type": "Identifier",
+                                "name": "FUN1"
+                            },
+                            "arguments": {
+                                "type": "CallArguments",
+                                "positional": [],
+                                "named": []
+                            }
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "valid-func-name-02"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "FunctionReference",
+                            "id": {
+                                "type": "Identifier",
+                                "name": "FUN_FUN"
+                            },
+                            "arguments": {
+                                "type": "CallArguments",
+                                "positional": [],
+                                "named": []
+                            }
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "valid-func-name-03"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "FunctionReference",
+                            "id": {
+                                "type": "Identifier",
+                                "name": "FUN-FUN"
+                            },
+                            "arguments": {
+                                "type": "CallArguments",
+                                "positional": [],
+                                "named": []
+                            }
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Comment",
+            "content": "JUNK 0 is not a valid Identifier start"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "invalid-func-name-01 = {0FUN()}\n"
+        },
+        {
+            "type": "Comment",
+            "content": "JUNK Function names may not be lowercase"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "invalid-func-name-02 = {fun()}\n"
+        },
+        {
+            "type": "Comment",
+            "content": "JUNK Function names may not contain lowercase character"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "invalid-func-name-03 = {Fun()}\n"
+        },
+        {
+            "type": "Comment",
+            "content": "JUNK ? is not a valid Identifier character"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "invalid-func-name-04 = {FUN?()}\n\n"
+        },
+        {
+            "type": "GroupComment",
             "content": "Arguments"
         },
         {
