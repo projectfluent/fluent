@@ -14,9 +14,10 @@
     "generate:fixtures": "make -sC test/fixtures",
     "generate": "npm run --silent generate:ebnf && npm run --silent generate:fixtures",
     "lint": "eslint **/*.mjs",
-    "test:fixtures": "node --experimental-modules test/parser.mjs ./test/fixtures",
     "test:ebnf": "node --experimental-modules test/ebnf.mjs ./syntax/grammar.mjs ./spec/fluent.ebnf",
-    "test": "npm run --silent test:fixtures"
+    "test:fixtures": "node --experimental-modules test/parser.mjs ./test/fixtures",
+    "test:unit": "node --experimental-modules test/literals.mjs",
+    "test": "npm run --silent test:fixtures && npm run --silent test:unit"
   },
   "homepage": "https://projectfluent.org",
   "repository": {

@@ -201,6 +201,7 @@ let InlineExpression = defer(() =>
 
 /* -------- */
 /* Literals */
+export
 let StringLiteral = defer(() =>
     sequence(
         string("\""),
@@ -210,6 +211,7 @@ let StringLiteral = defer(() =>
     .map(join)
     .chain(into(FTL.StringLiteral)));
 
+export
 let NumberLiteral = defer(() =>
     sequence(
         maybe(string("-")),
