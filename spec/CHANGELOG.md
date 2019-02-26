@@ -7,13 +7,6 @@
     The `VariantLists` and the `VariantExpression` syntax and AST nodes were
     deprecated in Syntax 0.9 and have now been removed.
 
-  - Store `NumberLiterals` as floats with precision. (#232)
-
-    The `NumberLiteral.value` field is now a float value rather than a string.
-    A new field called `precision` stores the number of decimal places used in
-    the literal, thus allowing the AST to preserve the precision used in the
-    source.
-
   - Rename `args` to `arguments`.
 
     The `args` field of `MessageReference`, `TermReference`,
