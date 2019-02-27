@@ -103,9 +103,6 @@ export function into(Type) {
                 }
                 return always(new Type(expression));
             };
-        case FTL.StringLiteral:
-            return raw =>
-                always(new Type(raw, unescape(raw)));
         default:
             return (...args) =>
                 always(new Type(...args));
@@ -201,31 +198,4 @@ function remove_empty_text(element) {
 
 function remove_blank_lines(element) {
     return typeof(element) !== "string";
-}
-
-// Backslash backslash, backslash double quote, uHHHH, UHHHHHH.
-const KNOWN_ESCAPES =
-    /(?:\\\\|\\\"|\\u([0-9a-fA-F]{4})|\\U([0-9a-fA-F]{6}))/g;
-
-function unescape(raw) {
-    return raw.replace(KNOWN_ESCAPES, from_escape_sequence);
-}
-
-function from_escape_sequence(match, codepoint4, codepoint6) {
-    switch (match) {
-        case "\\\\":
-            return "\\";
-        case "\\\"":
-            return "\"";
-        default:
-            let codepoint = parseInt(codepoint4 || codepoint6, 16);
-            if (codepoint <= 0xD7FF || 0xE000 <= codepoint) {
-                // It's a Unicode scalar value.
-                return String.fromCodePoint(codepoint);
-            }
-            // Escape sequences reresenting surrogate code points are
-            // well-formed but invalid in Fluent. Replace them with U+FFFD
-            // REPLACEMENT CHARACTER.
-            return "�";
-    }
 }

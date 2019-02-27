@@ -218,7 +218,6 @@
                         "type": "Placeable",
                         "expression": {
                             "type": "StringLiteral",
-                            "raw": "",
                             "value": ""
                         }
                     }

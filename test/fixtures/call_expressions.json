@@ -158,7 +158,6 @@
                                     },
                                     {
                                         "type": "StringLiteral",
-                                        "raw": "a",
                                         "value": "a"
                                     },
                                     {
@@ -219,7 +218,6 @@
                                         },
                                         "value": {
                                             "type": "StringLiteral",
-                                            "raw": "Y",
                                             "value": "Y"
                                         }
                                     }
@@ -272,7 +270,6 @@
                                         },
                                         "value": {
                                             "type": "StringLiteral",
-                                            "raw": "Y",
                                             "value": "Y"
                                         }
                                     }
@@ -311,7 +308,6 @@
                                     },
                                     {
                                         "type": "StringLiteral",
-                                        "raw": "a",
                                         "value": "a"
                                     },
                                     {
@@ -343,7 +339,6 @@
                                         },
                                         "value": {
                                             "type": "StringLiteral",
-                                            "raw": "Y",
                                             "value": "Y"
                                         }
                                     }
@@ -400,7 +395,6 @@
                                 "positional": [
                                     {
                                         "type": "StringLiteral",
-                                        "raw": "a",
                                         "value": "a"
                                     },
                                     {
@@ -484,7 +478,6 @@
                                 "positional": [
                                     {
                                         "type": "StringLiteral",
-                                        "raw": "a",
                                         "value": "a"
                                     },
                                     {
@@ -539,7 +532,6 @@
                                 "positional": [
                                     {
                                         "type": "StringLiteral",
-                                        "raw": "a",
                                         "value": "a"
                                     },
                                     {
@@ -657,7 +649,6 @@
                                 "positional": [
                                     {
                                         "type": "StringLiteral",
-                                        "raw": "a",
                                         "value": "a"
                                     }
                                 ],
