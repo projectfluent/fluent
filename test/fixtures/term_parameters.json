@@ -132,8 +132,8 @@
                                             "name": "arg"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "1"
+                                            "value": "1",
+                                            "type": "NumberLiteral"
                                         }
                                     }
                                 ]
@@ -167,8 +167,8 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "StringLiteral",
-                                        "value": "positional"
+                                        "value": "positional",
+                                        "type": "StringLiteral"
                                     }
                                 ],
                                 "named": [
@@ -179,8 +179,8 @@
                                             "name": "narg1"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "1"
+                                            "value": "1",
+                                            "type": "NumberLiteral"
                                         }
                                     },
                                     {
@@ -190,8 +190,8 @@
                                             "name": "narg2"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "2"
+                                            "value": "2",
+                                            "type": "NumberLiteral"
                                         }
                                     }
                                 ]

@@ -153,12 +153,12 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "1"
+                                        "value": "1",
+                                        "type": "NumberLiteral"
                                     },
                                     {
-                                        "type": "StringLiteral",
-                                        "value": "a"
+                                        "value": "a",
+                                        "type": "StringLiteral"
                                     },
                                     {
                                         "type": "MessageReference",
@@ -206,8 +206,8 @@
                                             "name": "x"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "1"
+                                            "value": "1",
+                                            "type": "NumberLiteral"
                                         }
                                     },
                                     {
@@ -217,8 +217,8 @@
                                             "name": "y"
                                         },
                                         "value": {
-                                            "type": "StringLiteral",
-                                            "value": "Y"
+                                            "value": "Y",
+                                            "type": "StringLiteral"
                                         }
                                     }
                                 ]
@@ -258,8 +258,8 @@
                                             "name": "x"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "1"
+                                            "value": "1",
+                                            "type": "NumberLiteral"
                                         }
                                     },
                                     {
@@ -269,8 +269,8 @@
                                             "name": "y"
                                         },
                                         "value": {
-                                            "type": "StringLiteral",
-                                            "value": "Y"
+                                            "value": "Y",
+                                            "type": "StringLiteral"
                                         }
                                     }
                                 ]
@@ -303,12 +303,12 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "1"
+                                        "value": "1",
+                                        "type": "NumberLiteral"
                                     },
                                     {
-                                        "type": "StringLiteral",
-                                        "value": "a"
+                                        "value": "a",
+                                        "type": "StringLiteral"
                                     },
                                     {
                                         "type": "MessageReference",
@@ -327,8 +327,8 @@
                                             "name": "x"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "1"
+                                            "value": "1",
+                                            "type": "NumberLiteral"
                                         }
                                     },
                                     {
@@ -338,8 +338,8 @@
                                             "name": "y"
                                         },
                                         "value": {
-                                            "type": "StringLiteral",
-                                            "value": "Y"
+                                            "value": "Y",
+                                            "type": "StringLiteral"
                                         }
                                     }
                                 ]
@@ -394,8 +394,8 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "StringLiteral",
-                                        "value": "a"
+                                        "value": "a",
+                                        "type": "StringLiteral"
                                     },
                                     {
                                         "type": "MessageReference",
@@ -414,8 +414,8 @@
                                             "name": "x"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "1"
+                                            "value": "1",
+                                            "type": "NumberLiteral"
                                         }
                                     }
                                 ]
@@ -477,8 +477,8 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "StringLiteral",
-                                        "value": "a"
+                                        "value": "a",
+                                        "type": "StringLiteral"
                                     },
                                     {
                                         "type": "MessageReference",
@@ -497,8 +497,8 @@
                                             "name": "x"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "1"
+                                            "value": "1",
+                                            "type": "NumberLiteral"
                                         }
                                     }
                                 ]
@@ -531,8 +531,8 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "StringLiteral",
-                                        "value": "a"
+                                        "value": "a",
+                                        "type": "StringLiteral"
                                     },
                                     {
                                         "type": "MessageReference",
@@ -551,8 +551,8 @@
                                             "name": "x"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "1"
+                                            "value": "1",
+                                            "type": "NumberLiteral"
                                         }
                                     }
                                 ]
@@ -614,8 +614,8 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "1"
+                                        "value": "1",
+                                        "type": "NumberLiteral"
                                     }
                                 ],
                                 "named": []
@@ -648,8 +648,8 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "StringLiteral",
-                                        "value": "a"
+                                        "value": "a",
+                                        "type": "StringLiteral"
                                     }
                                 ],
                                 "named": []
@@ -845,8 +845,8 @@
                                             "name": "x"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "1"
+                                            "value": "1",
+                                            "type": "NumberLiteral"
                                         }
                                     }
                                 ]
@@ -921,8 +921,8 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "1"
+                                        "value": "1",
+                                        "type": "NumberLiteral"
                                     }
                                 ],
                                 "named": []
@@ -955,16 +955,16 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "1"
+                                        "value": "1",
+                                        "type": "NumberLiteral"
                                     },
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "2"
+                                        "value": "2",
+                                        "type": "NumberLiteral"
                                     },
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "3"
+                                        "value": "3",
+                                        "type": "NumberLiteral"
                                     }
                                 ],
                                 "named": []
@@ -997,16 +997,16 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "1"
+                                        "value": "1",
+                                        "type": "NumberLiteral"
                                     },
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "2"
+                                        "value": "2",
+                                        "type": "NumberLiteral"
                                     },
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "3"
+                                        "value": "3",
+                                        "type": "NumberLiteral"
                                     }
                                 ],
                                 "named": []
@@ -1039,12 +1039,12 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "1"
+                                        "value": "1",
+                                        "type": "NumberLiteral"
                                     },
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "2"
+                                        "value": "2",
+                                        "type": "NumberLiteral"
                                     }
                                 ],
                                 "named": []
@@ -1077,12 +1077,12 @@
                                 "type": "CallArguments",
                                 "positional": [
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "1"
+                                        "value": "1",
+                                        "type": "NumberLiteral"
                                     },
                                     {
-                                        "type": "NumberLiteral",
-                                        "value": "2"
+                                        "value": "2",
+                                        "type": "NumberLiteral"
                                     }
                                 ],
                                 "named": []
@@ -1145,8 +1145,8 @@
                                             "name": "x"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "1"
+                                            "value": "1",
+                                            "type": "NumberLiteral"
                                         }
                                     },
                                     {
@@ -1156,8 +1156,8 @@
                                             "name": "y"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "2"
+                                            "value": "2",
+                                            "type": "NumberLiteral"
                                         }
                                     },
                                     {
@@ -1167,8 +1167,8 @@
                                             "name": "z"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "3"
+                                            "value": "3",
+                                            "type": "NumberLiteral"
                                         }
                                     }
                                 ]
@@ -1208,8 +1208,8 @@
                                             "name": "x"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "1"
+                                            "value": "1",
+                                            "type": "NumberLiteral"
                                         }
                                     }
                                 ]
@@ -1249,8 +1249,8 @@
                                             "name": "x"
                                         },
                                         "value": {
-                                            "type": "NumberLiteral",
-                                            "value": "1"
+                                            "value": "1",
+                                            "type": "NumberLiteral"
                                         }
                                     }
                                 ]

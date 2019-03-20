@@ -13,8 +13,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "0"
+                            "value": "0",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -34,8 +34,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "1"
+                            "value": "1",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -55,8 +55,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "-1"
+                            "value": "-1",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -76,8 +76,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "-0"
+                            "value": "-0",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -97,8 +97,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "01"
+                            "value": "01",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -118,8 +118,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "-01"
+                            "value": "-01",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -139,8 +139,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "00"
+                            "value": "00",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -160,8 +160,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "-00"
+                            "value": "-00",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -181,8 +181,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "0.0"
+                            "value": "0.0",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -202,8 +202,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "0.01"
+                            "value": "0.01",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -223,8 +223,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "1.03"
+                            "value": "1.03",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -244,8 +244,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "1.000"
+                            "value": "1.000",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -265,8 +265,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "-0.01"
+                            "value": "-0.01",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -286,8 +286,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "-1.03"
+                            "value": "-1.03",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -307,8 +307,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "-0.0"
+                            "value": "-0.0",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -328,8 +328,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "-1.000"
+                            "value": "-1.000",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -349,8 +349,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "01.03"
+                            "value": "01.03",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -370,8 +370,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "1.0300"
+                            "value": "1.0300",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -391,8 +391,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "01.0300"
+                            "value": "01.0300",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -412,8 +412,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "-01.03"
+                            "value": "-01.03",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -433,8 +433,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "-1.0300"
+                            "value": "-1.0300",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]
@@ -454,8 +454,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "NumberLiteral",
-                            "value": "-01.0300"
+                            "value": "-01.0300",
+                            "type": "NumberLiteral"
                         }
                     }
                 ]

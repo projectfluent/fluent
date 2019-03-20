@@ -122,8 +122,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringLiteral",
-                            "value": "\\\""
+                            "value": "\\\"",
+                            "type": "StringLiteral"
                         }
                     }
                 ]
@@ -143,8 +143,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringLiteral",
-                            "value": "\\\\"
+                            "value": "\\\\",
+                            "type": "StringLiteral"
                         }
                     }
                 ]
@@ -186,8 +186,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringLiteral",
-                            "value": "\\u0041"
+                            "value": "\\u0041",
+                            "type": "StringLiteral"
                         }
                     }
                 ]
@@ -207,8 +207,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringLiteral",
-                            "value": "\\\\u0041"
+                            "value": "\\\\u0041",
+                            "type": "StringLiteral"
                         }
                     }
                 ]
@@ -228,8 +228,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringLiteral",
-                            "value": "\\U01F602"
+                            "value": "\\U01F602",
+                            "type": "StringLiteral"
                         }
                     }
                 ]
@@ -249,8 +249,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringLiteral",
-                            "value": "\\\\U01F602"
+                            "value": "\\\\U01F602",
+                            "type": "StringLiteral"
                         }
                     }
                 ]
@@ -270,8 +270,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringLiteral",
-                            "value": "\\u004100"
+                            "value": "\\u004100",
+                            "type": "StringLiteral"
                         }
                     }
                 ]
@@ -294,8 +294,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringLiteral",
-                            "value": "\\U01F60200"
+                            "value": "\\U01F60200",
+                            "type": "StringLiteral"
                         }
                     }
                 ]
@@ -344,8 +344,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringLiteral",
-                            "value": "{"
+                            "value": "{",
+                            "type": "StringLiteral"
                         }
                     },
                     {
@@ -373,8 +373,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringLiteral",
-                            "value": "}"
+                            "value": "}",
+                            "type": "StringLiteral"
                         }
                     },
                     {

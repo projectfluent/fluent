@@ -30,8 +30,8 @@
                                 {
                                     "type": "Variant",
                                     "key": {
-                                        "type": "NumberLiteral",
-                                        "value": "0"
+                                        "value": "0",
+                                        "type": "NumberLiteral"
                                     },
                                     "value": {
                                         "type": "Pattern",
@@ -56,8 +56,8 @@
                                             {
                                                 "type": "Placeable",
                                                 "expression": {
-                                                    "type": "StringLiteral",
-                                                    "value": ""
+                                                    "value": "",
+                                                    "type": "StringLiteral"
                                                 }
                                             },
                                             {
@@ -178,8 +178,8 @@
                                             {
                                                 "type": "Placeable",
                                                 "expression": {
-                                                    "type": "StringLiteral",
-                                                    "value": ""
+                                                    "value": "",
+                                                    "type": "StringLiteral"
                                                 }
                                             }
                                         ]

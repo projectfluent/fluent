@@ -48,8 +48,8 @@
                     {
                         "type": "Placeable",
                         "expression": {
-                            "type": "StringLiteral",
-                            "value": ""
+                            "value": "",
+                            "type": "StringLiteral"
                         }
                     }
                 ]
