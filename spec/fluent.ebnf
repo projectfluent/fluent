@@ -52,7 +52,10 @@ block_placeable     ::= blank_block blank_inline? inline_placeable
  * syntax/abstract.mjs. */
 InlineExpression    ::= StringLiteral
                       | NumberLiteral
-                      | ReferenceExpression
+                      | FunctionReference
+                      | MessageReference
+                      | TermReference
+                      | VariableReference
                       | inline_placeable
 
 /* Literals */
@@ -60,10 +63,6 @@ StringLiteral       ::= "\"" quoted_char* "\""
 NumberLiteral       ::= "-"? digits ("." digits)?
 
 /* Inline Expressions */
-ReferenceExpression ::= FunctionReference
-                      | MessageReference
-                      | TermReference
-                      | VariableReference
 FunctionReference   ::= Identifier CallArguments
 MessageReference    ::= Identifier AttributeAccessor?
 TermReference       ::= "-" Identifier AttributeAccessor? CallArguments?

@@ -196,7 +196,10 @@ let InlineExpression = defer(() =>
     either(
         StringLiteral,
         NumberLiteral,
-        ReferenceExpression,
+        FunctionReference,
+        MessageReference,
+        TermReference,
+        VariableReference,
         inline_placeable));
 
 /* -------- */
@@ -226,13 +229,6 @@ let NumberLiteral = defer(() =>
 
 /* ------------------ */
 /* Inline Expressions */
-let ReferenceExpression = defer(() =>
-    either(
-        FunctionReference,
-        MessageReference,
-        TermReference,
-        VariableReference));
-
 let FunctionReference = defer(() =>
     sequence(
         Identifier,
