@@ -10,7 +10,6 @@
 * [Selectors](selectors.md)
 * [Attributes](attributes.md)
 * [Terms](terms.md)
-* [Variants (Deprecated)](variants.md)
 * [Comments](comments.md)
 * [Built-in Functions](builtins.md)
 * [Functions](functions.md)
