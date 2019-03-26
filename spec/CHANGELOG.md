@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.9.0 (Unreleased)
+## 0.9.0 (March 26, 2019)
 
   - Flatten complex reference expressions. (#221)
 
