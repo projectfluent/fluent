@@ -2,6 +2,22 @@
 
 ## 0.9.0 (Unreleased)
 
+  - Flatten complex reference expressions. (#221)
+
+    Reference expressions which may take complex forms, such as a reference
+    to a message's attribute, or a parameterized reference to an attribute of
+    a term, are now stored in a simplified manner. Instead of nesting
+    multiple expression nodes (e.g. `CallExpression` of an
+    `AttributeExpression` of a `TermReference`), all information is available
+    directly in the reference expression.
+
+    This change affects the following AST nodes:
+
+    -  `MessageReference` now has an optional `attribute` field,
+    - `FunctionReference` now has a required `arguments` field,
+    - `TermReference` now has an optional `attribute` field and an optional
+      `arguments` field.
+
   - Remove `VariantLists`. (#204)
 
     The `VariantLists` and the `VariantExpression` syntax and AST nodes were
