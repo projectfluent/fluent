@@ -27,8 +27,8 @@ the modern syntax. Deprecations herald future removals of syntax features.
 
 ## The 1.x
 
-In the 1.x lifetime, no breaking changes are allowed. The syntax and the AST
-must maintain backwards compatibility with 1.0.
+In the 1.x lifetime, there won't be any breaking changes to Fluent Syntax.
+The grammar and the AST must maintain backwards compatibility with 1.0.
 
 The dot releases may introduce new syntax in a backwards compatible way. New
 features are only allowed as extensions to the 1.0 syntax and the AST.
@@ -47,28 +47,20 @@ on, as errors—depending on the grace period chosen for the project.
 
 ## The 2.0
 
-The 2.0 release is a breaking one. It removes the deprecated features of the
-syntax and keeps only the modern ones. Feature-wise, 2.0 is the last 1.x
-release with all deprecations removed.
+In order to clean up the accrued deprecations, a 2.0 version may be published
+in the future, breaking the backward compatibility with 1.x. The 2.0 version
+will define the compatibility strategy for Fluent 2.x and beyond.
 
-We develop Fluent with a future standard in mind. Fluent 2.0 will be a stepping
-stone towards it, achieving the following goals.
+Removing deprecations will achieve the following goals.
 
   - Establish a fresh baseline for subsequent Fluent 2.x releases and the
-    future standard by trimming deprecated features.
+    future standard.
 
   - Improve the learnability of Fluent by reducing the cognitive complexity of
     the syntax.
 
   - Allow implementations to streamline their codebases, which can increase
     their quality and give opportunities for new performance optimizations.
-
-
-## The 2.x and Beyond
-
-The dot releases in the 2.x lifetime will follow the same rules as 1.x. If
-there are compelling reasons to publish them, the subsequent major releases
-(3.0, 4.0, etc.) may be breaking ones; they will follow the same rules as 2.0.
 
 If Fluent succeeds as a future standard, the compatibility strategy will be
 redefined by the standards organization publishing it.
