@@ -7,7 +7,8 @@ primary purposes:
   - (External) Manage early-adopters’ expectations of Fluent Syntax and
     tooling.
 
-  - (Internal) Inform the triage during the 1.x lifecycle, 2.0 and beyond.
+  - (Internal) Contextualize feedback and inform design decisions during the
+    1.x lifecycle and beyond.
 
 
 ## Types of Changes
