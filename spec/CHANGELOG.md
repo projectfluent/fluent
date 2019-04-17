@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.0.0 (April 17, 2019)
+
+Fluent Syntax 1.0 is out! 🎉 With this release, we commit to no braking
+changes to the syntax and to the AST during the 1.x lifetime. The formal
+definition of the grammar can be found in the `spec/` directory, together
+with documents outlining good practices, validation rules, and the
+compatibility strategy for future releases.
+
+  - There are no grammar changes compared to version 0.9 of the specification.
+
+    Version 0.9 served as the release candidate for 1.0. The grammar and the
+    AST of Syntax 1.0 are identical to Syntax 0.9.
+
+  - Added the compatibility strategy document. (#251)
+
+    The goal of this document is to define the strategy for introducing and
+    deprecating syntax features after 1.0.
+
 ## 0.9.0 (March 26, 2019)
 
   - Flatten complex reference expressions. (#221)
