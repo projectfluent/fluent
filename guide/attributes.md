@@ -2,7 +2,7 @@
 
 ```
 login-input = Predefined value
-    .placeholder = example@email.com
+    .placeholder = email@example.com
     .aria-label = Login input value
     .title = Type your login email
 
