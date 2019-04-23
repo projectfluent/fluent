@@ -39,4 +39,17 @@ your-score =
     }
 ```
 
+Using formatting options also allows for selectors using ordinal rather than
+cardinal plurals:
+
+```
+your-rank = { NUMBER($pos, type: "ordinal") ->
+   [1] You finished first!
+   [one] You finished {$pos}st
+   [two] You finished {$pos}nd
+   [few] You finished {$pos}rd
+  *[other] You finished {$pos}th
+}
+```
+
 [CLDR plural category]: http://www.unicode.org/cldr/charts/30/supplemental/language_plural_rules.html
