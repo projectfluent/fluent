@@ -80,7 +80,7 @@ Only the indented lines comprising the multiline pattern participate in this
 behavior. Specifically, if the text starts on the same line as the message
 identifier, then this first line is not considered as indented, and is
 excluded from the dedentation behavior. In such cases, the first line (the
-unindeted one) still has its leading blanks ignored—because patterns start
+unindented one) still has its leading blanks ignored—because patterns start
 on the first non-blank character.
 
 ```
