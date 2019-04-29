@@ -114,3 +114,23 @@ tears-of-joy1 = {"\U01F602"}
 # character used here is.
 tears-of-joy2 = 😂
 ```
+
+----
+#### Note for Developers
+
+If you're writing Fluent inside another programming language that uses
+backslash for escaping, you'll need to use _two_ backslashes to start an escape
+sequence in Fluent's quoted text. The first backslash is parsed by the host
+programming language and makes the second backslash a normal character _in that
+language_. The second backslash can then be correctly parsed by Fluent.
+
+In JavaScript, for instance, the `privacy-label` message from one of the
+previous examples could be added programmatically to a bundle by using two
+backslashes in the source code:
+
+```
+let bundle = new FluentBundle("en");
+bundle.addMessages(`
+privacy-label = Privacy{"\\u00A0"}Policy
+`);
+```
