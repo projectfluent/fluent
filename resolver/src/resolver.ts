@@ -1,13 +1,16 @@
 import * as ast from "./ast";
+import {IResult, Success, Failure} from "./result";
 
 export class Resolver {
     private readonly variables: Map<string, string>;
+    public errors: Array<string>;
 
     constructor(variables: Map<string, string>) {
         this.variables = variables;
+        this.errors = [];
     }
 
-    resolve(node: ast.ISyntaxNode): string {
+    resolve(node: ast.ISyntaxNode): IResult {
         switch (node.type) {
             case ast.SyntaxNode.Identifer:
                 return this.resolveIdentifier(node as ast.IIdentifier);
@@ -22,29 +25,40 @@ export class Resolver {
         }
     }
 
-    resolveIdentifier(node: ast.IIdentifier): string {
-        return node.name;
+    resolveIdentifier(node: ast.IIdentifier): IResult {
+        return new Success(node.name);
     }
 
-    resolveVariableReference(node: ast.IVariableReference): string {
-        let id = this.resolveIdentifier(node.id);
-        let value = this.variables.get(id);
-        if (value !== undefined) {
-            return value;
-        } else {
-            return id;
-        }
-   }
-
-    resolveTextElement(node: ast.ITextElement): string {
-        return node.value;
+    resolveVariableReference(node: ast.IVariableReference): IResult {
+        return this.resolveIdentifier(node.id).then(id => {
+            if (typeof id === "string") {
+                let value = this.variables.get(id);
+                if (value !== undefined) {
+                    return new Success(value);
+                } else {
+                    this.errors.push("Missing variable");
+                    return new Failure(`$${id}`);
+                }
+            } else {
+                this.errors.push("Invalid id");
+                return new Failure(id);
+            }
+        });
     }
 
-    resolvePlaceable(node: ast.IPlaceable): string {
+    resolveTextElement(node: ast.ITextElement): IResult {
+        return new Success(node.value);
+    }
+
+    resolvePlaceable(node: ast.IPlaceable): IResult {
         return this.resolve(node.expression);
     }
 
-    resolvePattern(node: ast.IPattern): string {
-        return node.elements.map(element => this.resolve(element)).join("");
+    resolvePattern(node: ast.IPattern): IResult {
+        return new Success(
+            node.elements
+                .map(element => this.resolve(element).fold(value => value, value => `{${value}}`))
+                .join("")
+        );
     }
 }
