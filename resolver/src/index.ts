@@ -2,32 +2,32 @@ import * as ast from "./ast";
 import {Resolver} from "./resolver";
 
 let message = {
-    "type": "Message",
-    "id": {
-        "type": "Identifer",
-        "name": "hello"
+    type: "Message",
+    id: {
+        type: "Identifer",
+        name: "hello",
     },
-    "value": {
-        "type": "Pattern",
-        "elements": [
+    value: {
+        type: "Pattern",
+        elements: [
             {
-                "type": "TextElement",
-                "value": "Hello, "
+                type: "TextElement",
+                value: "Hello, ",
             },
             {
-                "type": "Placeable",
-                "expression": {
-                    "type": "VariableReference",
-                    "id": {
-                        "type": "Identifier",
-                        "name": "userName"
-                    }
-                }
-            }
-        ]
+                type: "Placeable",
+                expression: {
+                    type: "VariableReference",
+                    id: {
+                        type: "Identifier",
+                        name: "userName",
+                    },
+                },
+            },
+        ],
     },
-    "attributes": [],
-    "comment": null
+    attributes: [],
+    comment: null,
 };
 
 
