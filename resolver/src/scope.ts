@@ -1,7 +1,7 @@
 import * as ast from "./ast";
 import {IResult, Success, Failure} from "./result";
 
-export class Resolver {
+export class Scope {
     private readonly variables: Map<string, string>;
     public errors: Array<string>;
 

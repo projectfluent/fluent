@@ -1,5 +1,5 @@
 import * as ast from "./ast";
-import {Resolver} from "./resolver";
+import {Scope} from "./scope";
 
 let message = {
     type: "Message",
@@ -30,8 +30,7 @@ let message = {
     comment: null,
 };
 
-
 let variables = new Map([["userName", "Anne"]]);
-let resolver = new Resolver(variables);
-let value = resolver.resolve(message.value as ast.IPattern);
+let scope = new Scope(variables);
+let value = scope.resolve(message.value as ast.IPattern);
 console.log(value);
