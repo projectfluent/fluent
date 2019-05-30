@@ -32,9 +32,13 @@ export interface MessageReference extends SyntaxNode {
 
 export interface SelectExpression extends SyntaxNode {
     readonly type: NodeType.SelectExpression;
-    readonly selector: VariableReference;
+    readonly selector: InlineExpression;
     readonly variants: Array<Variant>;
 }
+
+export type InlineExpression = VariableReference | MessageReference;
+
+export type Expression = InlineExpression | SelectExpression;
 
 export interface TextElement extends SyntaxNode {
     readonly type: NodeType.TextElement;
@@ -43,7 +47,7 @@ export interface TextElement extends SyntaxNode {
 
 export interface Placeable extends SyntaxNode {
     readonly type: NodeType.Placeable;
-    readonly expression: VariableReference | MessageReference | SelectExpression;
+    readonly expression: Expression;
 }
 
 export type PatternElement = TextElement | Placeable;

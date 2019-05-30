@@ -14,7 +14,7 @@ export class Scope {
         this.errors = [];
     }
 
-    resolveExpression(node: ast.SyntaxNode): Result<Value> {
+    resolveExpression(node: ast.Expression): Result<Value> {
         switch (node.type) {
             case ast.NodeType.VariableReference:
                 return this.resolveVariableReference(node as ast.VariableReference);
@@ -23,7 +23,7 @@ export class Scope {
             case ast.NodeType.SelectExpression:
                 return this.resolveSelectExpression(node as ast.SelectExpression);
             default:
-                throw new TypeError("Unresolvable node type.");
+                throw new TypeError("Unknown node type.");
         }
     }
 
@@ -75,6 +75,8 @@ export class Scope {
                 return new Success(new StringValue(node.value));
             case ast.NodeType.Placeable:
                 return this.resolveExpression(node.expression);
+            default:
+                throw new TypeError("Unknown node type.");
         }
     }
 
