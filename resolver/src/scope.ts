@@ -20,6 +20,8 @@ export class Scope {
                 return this.resolveVariableReference(node as ast.IVariableReference);
             case ast.SyntaxNode.MessageReference:
                 return this.resolveMessageReference(node as ast.IMessageReference);
+            case ast.SyntaxNode.SelectExpression:
+                return this.resolveSelectExpression(node as ast.ISelectExpression);
             case ast.SyntaxNode.TextElement:
                 return this.resolveTextElement(node as ast.ITextElement);
             case ast.SyntaxNode.Placeable:
@@ -49,6 +51,28 @@ export class Scope {
             this.errors.push(`Unknown message: ${node.id.name}.`);
             return new Failure(new StringValue(`${node.id.name}`));
         }
+    }
+
+    resolveDefaultVariant(node: ast.ISelectExpression): IResult<IValue> {
+        for (let variant of node.variants) {
+            if (variant.default) {
+                return this.resolve(variant.value);
+            }
+        }
+        throw new RangeError("Missing default variant.");
+    }
+
+    resolveSelectExpression(node: ast.ISelectExpression): IResult<IValue> {
+        return this.resolve(node.selector)
+            .then(selector => {
+                for (let variant of node.variants) {
+                    if (variant.key.name === selector.value) {
+                        return this.resolve(variant.value);
+                    }
+                }
+                return this.resolveDefaultVariant(node);
+            })
+            .else(_ => this.resolveDefaultVariant(node));
     }
 
     resolveTextElement(node: ast.ITextElement): IResult<IValue> {

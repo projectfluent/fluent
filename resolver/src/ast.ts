@@ -2,8 +2,10 @@ export enum SyntaxNode {
     Identifer = "Identifier",
     VariableReference = "VariableReference",
     MessageReference = "MessageReference",
+    SelectExpression = "SelectExpression",
     TextElement = "TextElement",
     Placeable = "Placeable",
+    Variant = "Variant",
     Pattern = "Pattern",
     Message = "Message",
 }
@@ -28,6 +30,12 @@ export interface IMessageReference extends ISyntaxNode {
     readonly attribute: IIdentifier | null;
 }
 
+export interface ISelectExpression extends ISyntaxNode {
+    readonly type: SyntaxNode.SelectExpression;
+    readonly selector: IVariableReference;
+    readonly variants: Array<IVariant>;
+}
+
 export interface ITextElement extends ISyntaxNode {
     readonly type: SyntaxNode.TextElement;
     readonly value: string;
@@ -35,7 +43,14 @@ export interface ITextElement extends ISyntaxNode {
 
 export interface IPlaceable extends ISyntaxNode {
     readonly type: SyntaxNode.Placeable;
-    readonly expression: IVariableReference | IMessageReference;
+    readonly expression: IVariableReference | IMessageReference | ISelectExpression;
+}
+
+export interface IVariant extends ISyntaxNode {
+    readonly type: SyntaxNode.Variant;
+    readonly key: IIdentifier;
+    readonly value: IPattern;
+    readonly default: boolean;
 }
 
 export interface IPattern extends ISyntaxNode {
