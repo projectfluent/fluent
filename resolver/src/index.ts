@@ -2,7 +2,7 @@ import * as ast from "./ast";
 import {Scope} from "./scope";
 import {StringValue} from "./value";
 
-let message = {
+let hello = {
     type: "Message",
     id: {
         type: "Identifer",
@@ -21,22 +21,55 @@ let message = {
                     type: "VariableReference",
                     id: {
                         type: "Identifier",
-                        name: "userName",
+                        name: "world",
                     },
                 },
             },
         ],
     },
-    attributes: [],
-    comment: null,
 };
+
+let exclamation = {
+    type: "Message",
+    id: {
+        type: "Identifier",
+        name: "exclamation",
+    },
+    value: {
+        type: "Pattern",
+        elements: [
+            {
+                type: "Placeable",
+                expression: {
+                    type: "MessageReference",
+                    id: {
+                        type: "Identifier",
+                        name: "hello",
+                    },
+                    attribute: null,
+                },
+            },
+            {
+                type: "TextElement",
+                value: "!",
+            },
+        ],
+    },
+};
+
+let messages = new Map(
+    Object.entries({
+        hello: hello as ast.IMessage,
+        exclamation: exclamation as ast.IMessage,
+    })
+);
 
 let variables = new Map(
     Object.entries({
-        username: new StringValue("Anne"),
+        world: new StringValue("World"),
     })
 );
-let scope = new Scope(variables);
-let value = scope.resolve(message.value as ast.IPattern);
+let scope = new Scope(messages, variables);
+let value = scope.resolve(exclamation.value as ast.IPattern);
 console.log(value);
 console.log(scope.errors);

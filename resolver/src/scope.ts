@@ -3,10 +3,12 @@ import {IValue, StringValue} from "./value";
 import {IResult, Success, Failure} from "./result";
 
 export class Scope {
+    private readonly messages: Map<string, ast.IMessage>;
     private readonly variables: Map<string, IValue>;
     public errors: Array<string>;
 
-    constructor(variables: Map<string, IValue>) {
+    constructor(messages: Map<string, ast.IMessage>, variables: Map<string, IValue>) {
+        this.messages = messages;
         this.variables = variables;
         this.errors = [];
     }
@@ -15,6 +17,8 @@ export class Scope {
         switch (node.type) {
             case ast.SyntaxNode.VariableReference:
                 return this.resolveVariableReference(node as ast.IVariableReference);
+            case ast.SyntaxNode.MessageReference:
+                return this.resolveMessageReference(node as ast.IMessageReference);
             case ast.SyntaxNode.TextElement:
                 return this.resolveTextElement(node as ast.ITextElement);
             case ast.SyntaxNode.Placeable:
@@ -31,8 +35,23 @@ export class Scope {
         if (value !== undefined) {
             return new Success(value);
         } else {
-            this.errors.push("Missing variable");
+            this.errors.push(`Unknown variable: $${node.id.name}.`);
             return new Failure(new StringValue(`$${node.id.name}`));
+        }
+    }
+
+    resolveMessageReference(node: ast.IMessageReference): IResult<IValue> {
+        let message = this.messages.get(node.id.name);
+        if (message !== undefined) {
+            if (message.value !== null) {
+                return this.resolve(message.value);
+            } else {
+                this.errors.push(`Message ${node.id.name} has a null value.`);
+                return new Failure(new StringValue(`${node.id.name}`));
+            }
+        } else {
+            this.errors.push(`Unknown message: ${node.id.name}.`);
+            return new Failure(new StringValue(`${node.id.name}`));
         }
     }
 
