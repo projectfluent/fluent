@@ -1,5 +1,6 @@
 import * as ast from "./ast";
 import {Scope} from "./scope";
+import {StringValue} from "./value";
 
 let message = {
     type: "Message",
@@ -30,7 +31,12 @@ let message = {
     comment: null,
 };
 
-let variables = new Map([["userName", "Anne"]]);
+let variables = new Map(
+    Object.entries({
+        username: new StringValue("Anne"),
+    })
+);
 let scope = new Scope(variables);
 let value = scope.resolve(message.value as ast.IPattern);
 console.log(value);
+console.log(scope.errors);
