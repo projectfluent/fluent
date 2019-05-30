@@ -1,13 +1,14 @@
 import * as ast from "./ast";
+import {Message} from "./message";
 import {IValue, StringValue} from "./value";
 import {IResult, Success, Failure} from "./result";
 
 export class Scope {
-    private readonly messages: Map<string, ast.IMessage>;
+    private readonly messages: Map<string, Message>;
     private readonly variables: Map<string, IValue>;
     public errors: Array<string>;
 
-    constructor(messages: Map<string, ast.IMessage>, variables: Map<string, IValue>) {
+    constructor(messages: Map<string, Message>, variables: Map<string, IValue>) {
         this.messages = messages;
         this.variables = variables;
         this.errors = [];
@@ -43,12 +44,7 @@ export class Scope {
     resolveMessageReference(node: ast.IMessageReference): IResult<IValue> {
         let message = this.messages.get(node.id.name);
         if (message !== undefined) {
-            if (message.value !== null) {
-                return this.resolve(message.value);
-            } else {
-                this.errors.push(`Message ${node.id.name} has a null value.`);
-                return new Failure(new StringValue(`${node.id.name}`));
-            }
+            return message.resolveValue(this);
         } else {
             this.errors.push(`Unknown message: ${node.id.name}.`);
             return new Failure(new StringValue(`${node.id.name}`));

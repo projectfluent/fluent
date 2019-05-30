@@ -1,6 +1,7 @@
 import * as ast from "./ast";
 import {Scope} from "./scope";
 import {StringValue} from "./value";
+import {Message} from "./message";
 
 let hello = {
     type: "Message",
@@ -59,8 +60,8 @@ let exclamation = {
 
 let messages = new Map(
     Object.entries({
-        hello: hello as ast.IMessage,
-        exclamation: exclamation as ast.IMessage,
+        hello: new Message(hello as ast.IMessage),
+        exclamation: new Message(exclamation as ast.IMessage),
     })
 );
 
@@ -70,6 +71,9 @@ let variables = new Map(
     })
 );
 let scope = new Scope(messages, variables);
-let value = scope.resolve(exclamation.value as ast.IPattern);
-console.log(value);
-console.log(scope.errors);
+let message = messages.get("exclamation");
+if (message !== undefined) {
+    let value = message.resolveValue(scope);
+    console.log(value);
+    console.log(scope.errors);
+}
