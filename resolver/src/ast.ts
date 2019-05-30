@@ -46,6 +46,8 @@ export interface Placeable extends SyntaxNode {
     readonly expression: VariableReference | MessageReference | SelectExpression;
 }
 
+export type PatternElement = TextElement | Placeable;
+
 export interface Variant extends SyntaxNode {
     readonly type: NodeType.Variant;
     readonly key: Identifier;
@@ -55,7 +57,7 @@ export interface Variant extends SyntaxNode {
 
 export interface Pattern extends SyntaxNode {
     readonly type: NodeType.Pattern;
-    readonly elements: Array<TextElement | Placeable>;
+    readonly elements: Array<PatternElement>;
 }
 
 export interface Message extends SyntaxNode {

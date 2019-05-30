@@ -14,7 +14,7 @@ export class Scope {
         this.errors = [];
     }
 
-    resolve(node: ast.SyntaxNode): Result<Value> {
+    resolveExpression(node: ast.SyntaxNode): Result<Value> {
         switch (node.type) {
             case ast.NodeType.VariableReference:
                 return this.resolveVariableReference(node as ast.VariableReference);
@@ -22,12 +22,6 @@ export class Scope {
                 return this.resolveMessageReference(node as ast.MessageReference);
             case ast.NodeType.SelectExpression:
                 return this.resolveSelectExpression(node as ast.SelectExpression);
-            case ast.NodeType.TextElement:
-                return this.resolveTextElement(node as ast.TextElement);
-            case ast.NodeType.Placeable:
-                return this.resolvePlaceable(node as ast.Placeable);
-            case ast.NodeType.Pattern:
-                return this.resolvePattern(node as ast.Pattern);
             default:
                 throw new TypeError("Unresolvable node type.");
         }
@@ -56,18 +50,18 @@ export class Scope {
     resolveDefaultVariant(node: ast.SelectExpression): Result<Value> {
         for (let variant of node.variants) {
             if (variant.default) {
-                return this.resolve(variant.value);
+                return this.resolvePattern(variant.value);
             }
         }
         throw new RangeError("Missing default variant.");
     }
 
     resolveSelectExpression(node: ast.SelectExpression): Result<Value> {
-        return this.resolve(node.selector)
+        return this.resolveExpression(node.selector)
             .then(selector => {
                 for (let variant of node.variants) {
                     if (variant.key.name === selector.value) {
-                        return this.resolve(variant.value);
+                        return this.resolvePattern(variant.value);
                     }
                 }
                 return this.resolveDefaultVariant(node);
@@ -75,12 +69,13 @@ export class Scope {
             .else(_ => this.resolveDefaultVariant(node));
     }
 
-    resolveTextElement(node: ast.TextElement): Result<Value> {
-        return new Success(new StringValue(node.value));
-    }
-
-    resolvePlaceable(node: ast.Placeable): Result<Value> {
-        return this.resolve(node.expression);
+    resolvePatternElement(node: ast.PatternElement): Result<Value> {
+        switch (node.type) {
+            case ast.NodeType.TextElement:
+                return new Success(new StringValue(node.value));
+            case ast.NodeType.Placeable:
+                return this.resolveExpression(node.expression);
+        }
     }
 
     resolvePattern(node: ast.Pattern): Result<Value> {
@@ -88,7 +83,7 @@ export class Scope {
             new StringValue(
                 node.elements
                     .map(element =>
-                        this.resolve(element)
+                        this.resolvePatternElement(element)
                             .fold(value => value, value => new StringValue(`{${value.value}}`))
                             .format(this)
                     )

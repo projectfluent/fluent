@@ -14,7 +14,7 @@ export class Message {
 
     resolveValue(scope: Scope): Result<Value> {
         if (this.value !== null) {
-            return scope.resolve(this.value);
+            return scope.resolvePattern(this.value);
         } else {
             scope.errors.push(`Message ${this.id} has a null value.`);
             return new Failure(new StringValue(this.id));
