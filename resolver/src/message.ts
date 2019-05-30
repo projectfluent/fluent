@@ -1,18 +1,18 @@
 import * as ast from "./ast";
 import {Scope} from "./scope";
-import {Failure, IResult} from "./result";
-import {IValue, StringValue} from "./value";
+import {Failure, Result} from "./result";
+import {Value, StringValue} from "./value";
 
 export class Message {
     private readonly id: string;
-    private readonly value: ast.IPattern | null;
+    private readonly value: ast.Pattern | null;
 
-    constructor(node: ast.IMessage) {
+    constructor(node: ast.Message) {
         this.id = node.id.name;
         this.value = node.value;
     }
 
-    resolveValue(scope: Scope): IResult<IValue> {
+    resolveValue(scope: Scope): Result<Value> {
         if (this.value !== null) {
             return scope.resolve(this.value);
         } else {

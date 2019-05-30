@@ -1,39 +1,39 @@
 import * as ast from "./ast";
 import {Message} from "./message";
-import {IValue, StringValue} from "./value";
-import {IResult, Success, Failure} from "./result";
+import {Value, StringValue} from "./value";
+import {Result, Success, Failure} from "./result";
 
 export class Scope {
     private readonly messages: Map<string, Message>;
-    private readonly variables: Map<string, IValue>;
+    private readonly variables: Map<string, Value>;
     public errors: Array<string>;
 
-    constructor(messages: Map<string, Message>, variables: Map<string, IValue>) {
+    constructor(messages: Map<string, Message>, variables: Map<string, Value>) {
         this.messages = messages;
         this.variables = variables;
         this.errors = [];
     }
 
-    resolve(node: ast.ISyntaxNode): IResult<IValue> {
+    resolve(node: ast.SyntaxNode): Result<Value> {
         switch (node.type) {
-            case ast.SyntaxNode.VariableReference:
-                return this.resolveVariableReference(node as ast.IVariableReference);
-            case ast.SyntaxNode.MessageReference:
-                return this.resolveMessageReference(node as ast.IMessageReference);
-            case ast.SyntaxNode.SelectExpression:
-                return this.resolveSelectExpression(node as ast.ISelectExpression);
-            case ast.SyntaxNode.TextElement:
-                return this.resolveTextElement(node as ast.ITextElement);
-            case ast.SyntaxNode.Placeable:
-                return this.resolvePlaceable(node as ast.IPlaceable);
-            case ast.SyntaxNode.Pattern:
-                return this.resolvePattern(node as ast.IPattern);
+            case ast.NodeType.VariableReference:
+                return this.resolveVariableReference(node as ast.VariableReference);
+            case ast.NodeType.MessageReference:
+                return this.resolveMessageReference(node as ast.MessageReference);
+            case ast.NodeType.SelectExpression:
+                return this.resolveSelectExpression(node as ast.SelectExpression);
+            case ast.NodeType.TextElement:
+                return this.resolveTextElement(node as ast.TextElement);
+            case ast.NodeType.Placeable:
+                return this.resolvePlaceable(node as ast.Placeable);
+            case ast.NodeType.Pattern:
+                return this.resolvePattern(node as ast.Pattern);
             default:
                 throw new TypeError("Unresolvable node type.");
         }
     }
 
-    resolveVariableReference(node: ast.IVariableReference): IResult<IValue> {
+    resolveVariableReference(node: ast.VariableReference): Result<Value> {
         let value = this.variables.get(node.id.name);
         if (value !== undefined) {
             return new Success(value);
@@ -43,7 +43,7 @@ export class Scope {
         }
     }
 
-    resolveMessageReference(node: ast.IMessageReference): IResult<IValue> {
+    resolveMessageReference(node: ast.MessageReference): Result<Value> {
         let message = this.messages.get(node.id.name);
         if (message !== undefined) {
             return message.resolveValue(this);
@@ -53,7 +53,7 @@ export class Scope {
         }
     }
 
-    resolveDefaultVariant(node: ast.ISelectExpression): IResult<IValue> {
+    resolveDefaultVariant(node: ast.SelectExpression): Result<Value> {
         for (let variant of node.variants) {
             if (variant.default) {
                 return this.resolve(variant.value);
@@ -62,7 +62,7 @@ export class Scope {
         throw new RangeError("Missing default variant.");
     }
 
-    resolveSelectExpression(node: ast.ISelectExpression): IResult<IValue> {
+    resolveSelectExpression(node: ast.SelectExpression): Result<Value> {
         return this.resolve(node.selector)
             .then(selector => {
                 for (let variant of node.variants) {
@@ -75,15 +75,15 @@ export class Scope {
             .else(_ => this.resolveDefaultVariant(node));
     }
 
-    resolveTextElement(node: ast.ITextElement): IResult<IValue> {
+    resolveTextElement(node: ast.TextElement): Result<Value> {
         return new Success(new StringValue(node.value));
     }
 
-    resolvePlaceable(node: ast.IPlaceable): IResult<IValue> {
+    resolvePlaceable(node: ast.Placeable): Result<Value> {
         return this.resolve(node.expression);
     }
 
-    resolvePattern(node: ast.IPattern): IResult<IValue> {
+    resolvePattern(node: ast.Pattern): Result<Value> {
         return new Success(
             new StringValue(
                 node.elements

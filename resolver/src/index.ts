@@ -6,9 +6,9 @@ import {hello, exclamation, select} from "./fixtures";
 
 let messages = new Map(
     Object.entries({
-        hello: new Message(hello as ast.IMessage),
-        exclamation: new Message(exclamation as ast.IMessage),
-        select: new Message(select as ast.IMessage),
+        hello: new Message(hello as ast.Message),
+        exclamation: new Message(exclamation as ast.Message),
+        select: new Message(select as ast.Message),
     })
 );
 

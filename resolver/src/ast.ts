@@ -1,4 +1,4 @@
-export enum SyntaxNode {
+export enum NodeType {
     Identifer = "Identifier",
     VariableReference = "VariableReference",
     MessageReference = "MessageReference",
@@ -10,56 +10,56 @@ export enum SyntaxNode {
     Message = "Message",
 }
 
-export interface ISyntaxNode {
-    readonly type: SyntaxNode;
+export interface SyntaxNode {
+    readonly type: NodeType;
 }
 
-export interface IIdentifier extends ISyntaxNode {
-    readonly type: SyntaxNode.Identifer;
+export interface Identifier extends SyntaxNode {
+    readonly type: NodeType.Identifer;
     readonly name: string;
 }
 
-export interface IVariableReference extends ISyntaxNode {
-    readonly type: SyntaxNode.VariableReference;
-    readonly id: IIdentifier;
+export interface VariableReference extends SyntaxNode {
+    readonly type: NodeType.VariableReference;
+    readonly id: Identifier;
 }
 
-export interface IMessageReference extends ISyntaxNode {
-    readonly type: SyntaxNode.MessageReference;
-    readonly id: IIdentifier;
-    readonly attribute: IIdentifier | null;
+export interface MessageReference extends SyntaxNode {
+    readonly type: NodeType.MessageReference;
+    readonly id: Identifier;
+    readonly attribute: Identifier | null;
 }
 
-export interface ISelectExpression extends ISyntaxNode {
-    readonly type: SyntaxNode.SelectExpression;
-    readonly selector: IVariableReference;
-    readonly variants: Array<IVariant>;
+export interface SelectExpression extends SyntaxNode {
+    readonly type: NodeType.SelectExpression;
+    readonly selector: VariableReference;
+    readonly variants: Array<Variant>;
 }
 
-export interface ITextElement extends ISyntaxNode {
-    readonly type: SyntaxNode.TextElement;
+export interface TextElement extends SyntaxNode {
+    readonly type: NodeType.TextElement;
     readonly value: string;
 }
 
-export interface IPlaceable extends ISyntaxNode {
-    readonly type: SyntaxNode.Placeable;
-    readonly expression: IVariableReference | IMessageReference | ISelectExpression;
+export interface Placeable extends SyntaxNode {
+    readonly type: NodeType.Placeable;
+    readonly expression: VariableReference | MessageReference | SelectExpression;
 }
 
-export interface IVariant extends ISyntaxNode {
-    readonly type: SyntaxNode.Variant;
-    readonly key: IIdentifier;
-    readonly value: IPattern;
+export interface Variant extends SyntaxNode {
+    readonly type: NodeType.Variant;
+    readonly key: Identifier;
+    readonly value: Pattern;
     readonly default: boolean;
 }
 
-export interface IPattern extends ISyntaxNode {
-    readonly type: SyntaxNode.Pattern;
-    readonly elements: Array<ITextElement | IPlaceable>;
+export interface Pattern extends SyntaxNode {
+    readonly type: NodeType.Pattern;
+    readonly elements: Array<TextElement | Placeable>;
 }
 
-export interface IMessage extends ISyntaxNode {
-    readonly type: SyntaxNode.Message;
-    readonly id: IIdentifier;
-    readonly value: IPattern | null;
+export interface Message extends SyntaxNode {
+    readonly type: NodeType.Message;
+    readonly id: Identifier;
+    readonly value: Pattern | null;
 }
