@@ -1,27 +1,18 @@
-import * as ast from "./ast";
-import {Scope} from "./scope";
+import {Bundle} from "./bundle";
 import {StringValue} from "./value";
-import {Message} from "./message";
-import {hello, exclamation, select} from "./fixtures";
-
-let messages = new Map(
-    Object.entries({
-        hello: new Message(hello as ast.Message),
-        exclamation: new Message(exclamation as ast.Message),
-        select: new Message(select as ast.Message),
-    })
-);
 
 let variables = new Map(
     Object.entries({
-        world: new StringValue("World"),
+        worl: new StringValue("World"),
         selector: new StringValue("b"),
     })
 );
-let scope = new Scope(messages, variables);
-let message = messages.get("select");
+
+let bundle = new Bundle();
+
+let message = bundle.getMessage("select");
 if (message !== undefined) {
-    let value = message.resolveValue(scope);
+    let {value, errors} = bundle.formatValue(message, variables);
     console.log(value);
-    console.log(scope.errors);
+    console.log(errors);
 }
