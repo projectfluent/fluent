@@ -6,14 +6,19 @@ export interface Value {
 }
 
 export class NoneValue implements Value {
-    value = null;
+    readonly value = null;
+
     format(scope: Scope) {
         return null;
     }
 }
 
 export class StringValue implements Value {
-    constructor(readonly value: string) {}
+    readonly value: string;
+
+    constructor(value: string) {
+        this.value = value;
+    }
 
     format(scope: Scope) {
         return this.value;
@@ -21,7 +26,11 @@ export class StringValue implements Value {
 }
 
 export class NumberValue implements Value {
-    constructor(readonly value: number) {}
+    readonly value: number;
+
+    constructor(value: number) {
+        this.value = value;
+    }
 
     format(scope: Scope) {
         return this.value.toString();

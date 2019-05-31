@@ -14,7 +14,10 @@ interface Chainer<T> {
 }
 
 export class Success<T> implements Result<T> {
-    constructor(private value: T) {}
+    private readonly value: T;
+    constructor(value: T) {
+        this.value = value;
+    }
     map(fn: Mapper<T>): Result<T> {
         return new Success(fn(this.value));
     }
@@ -30,7 +33,10 @@ export class Success<T> implements Result<T> {
 }
 
 export class Failure<T> implements Result<T> {
-    constructor(private value: T) {}
+    private readonly value: T;
+    constructor(value: T) {
+        this.value = value;
+    }
     map(fn: Mapper<T>): Result<T> {
         return this;
     }
