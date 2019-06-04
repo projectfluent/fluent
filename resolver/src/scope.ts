@@ -58,7 +58,7 @@ export class Scope {
 
     resolveSelectExpression(node: ast.SelectExpression): Result<Value> {
         return this.resolveExpression(node.selector)
-            .then(selector => {
+            .andThen(selector => {
                 for (let variant of node.variants) {
                     if (variant.key.name === selector.value) {
                         return this.resolvePattern(variant.value);
@@ -66,7 +66,7 @@ export class Scope {
                 }
                 return this.resolveDefaultVariant(node);
             })
-            .else(_ => this.resolveDefaultVariant(node));
+            .orElse(_ => this.resolveDefaultVariant(node));
     }
 
     resolvePatternElement(node: ast.PatternElement): Result<Value> {
@@ -86,7 +86,7 @@ export class Scope {
                 node.elements
                     .map(element =>
                         this.resolvePatternElement(element)
-                            .fold(value => value, value => new StringValue(`{${value.value}}`))
+                            .unwrapOrElse(value => new StringValue(`{${value.value}}`))
                             .format(this)
                     )
                     .join("")

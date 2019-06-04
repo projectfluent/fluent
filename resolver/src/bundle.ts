@@ -30,7 +30,7 @@ export class Bundle {
         let scope = this.createScope(variables);
         let result = message.resolveValue(scope);
         console.log(result);
-        let value = result.fold(value => value, _ => new NoneValue()).format(scope);
+        let value = result.unwrapOrElse(() => new NoneValue()).format(scope);
         return {value, errors: scope.errors};
     }
 }
