@@ -1,52 +1,54 @@
-export interface Result<T> {
-    map(fn: Mapper<T>): Result<T>;
-    then(fn: Chainer<T>): Result<T>;
-    else(fn: Chainer<T>): Result<T>;
-    fold(s: Mapper<T>, f: Mapper<T>): T;
+interface IResult<T> {
+    map(fn: IMapper<T>): IResult<T>;
+    then(fn: IChainer<T>): IResult<T>;
+    else(fn: IChainer<T>): IResult<T>;
+    fold(s: IMapper<T>, f: IMapper<T>): T;
 }
 
-interface Mapper<T> {
+interface IMapper<T> {
     (value: T): T;
 }
 
-interface Chainer<T> {
+interface IChainer<T> {
     (value: T): Result<T>;
 }
 
-export class Success<T> implements Result<T> {
+export type Result<T> = Success<T> | Failure<T>;
+
+export class Success<T> implements IResult<T> {
     private readonly value: T;
     constructor(value: T) {
         this.value = value;
     }
-    map(fn: Mapper<T>): Result<T> {
+    map(fn: IMapper<T>) {
         return new Success(fn(this.value));
     }
-    then(fn: Chainer<T>) {
+    then(fn: IChainer<T>) {
         return fn(this.value);
     }
-    else(fn: Chainer<T>) {
+    else(fn: IChainer<T>) {
         return this;
     }
-    fold(s: Mapper<T>, f: Mapper<T>): T {
+    fold(s: IMapper<T>, f: IMapper<T>) {
         return s(this.value);
     }
 }
 
-export class Failure<T> implements Result<T> {
+export class Failure<T> implements IResult<T> {
     private readonly value: T;
     constructor(value: T) {
         this.value = value;
     }
-    map(fn: Mapper<T>): Result<T> {
+    map(fn: IMapper<T>) {
         return this;
     }
-    then(fn: Chainer<T>): Result<T> {
+    then(fn: IChainer<T>) {
         return this;
     }
-    else(fn: Chainer<T>): Result<T> {
+    else(fn: IChainer<T>) {
         return fn(this.value);
     }
-    fold(s: Mapper<T>, f: Mapper<T>) {
+    fold(s: IMapper<T>, f: IMapper<T>) {
         return f(this.value);
     }
 }
