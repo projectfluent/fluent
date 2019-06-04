@@ -1,15 +1,7 @@
 interface IResult<T> {
-    andThen(fn: IChainer<T>): IResult<T>;
-    orElse(fn: IChainer<T>): IResult<T>;
-    unwrapOrElse(fn: IMapper<T>): T;
-}
-
-interface IMapper<T> {
-    (value: T): T;
-}
-
-interface IChainer<T> {
-    (value: T): Result<T>;
+    andThen(fn: (value: T) => IResult<T>): IResult<T>;
+    orElse(fn: (value: T) => IResult<T>): IResult<T>;
+    unwrapOrElse(fn: (value: T) => T): T;
 }
 
 export type Result<T> = Success<T> | Failure<T>;
@@ -19,13 +11,13 @@ export class Success<T> implements IResult<T> {
     constructor(value: T) {
         this.value = value;
     }
-    andThen(fn: IChainer<T>) {
+    andThen(fn: (value: T) => Result<T>): Result<T> {
         return fn(this.value);
     }
-    orElse(fn: IChainer<T>) {
+    orElse(fn: (value: T) => Result<T>): Result<T> {
         return this;
     }
-    unwrapOrElse(fn: IMapper<T>) {
+    unwrapOrElse(fn: (value: T) => T) {
         return this.value;
     }
 }
@@ -35,13 +27,13 @@ export class Failure<T> implements IResult<T> {
     constructor(value: T) {
         this.value = value;
     }
-    andThen(fn: IChainer<T>) {
+    andThen(fn: (value: T) => Result<T>): Result<T> {
         return this;
     }
-    orElse(fn: IChainer<T>) {
+    orElse(fn: (value: T) => Result<T>): Result<T> {
         return fn(this.value);
     }
-    unwrapOrElse(fn: IMapper<T>) {
+    unwrapOrElse(fn: (value: T) => T) {
         return fn(this.value);
     }
 }

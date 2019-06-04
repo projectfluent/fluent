@@ -66,7 +66,7 @@ export class Scope {
                 }
                 return this.resolveDefaultVariant(node);
             })
-            .orElse(_ => this.resolveDefaultVariant(node));
+            .orElse(() => this.resolveDefaultVariant(node));
     }
 
     resolvePatternElement(node: ast.PatternElement): Result<Value> {
