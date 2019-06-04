@@ -2,7 +2,6 @@ import * as ast from "./ast";
 import {Scope} from "./scope";
 import {Value, NoneValue} from "./value";
 import {Message} from "./message";
-import {hello, exclamation, select} from "./fixtures";
 import {ScopeError} from "./error";
 
 export interface Formatted {
@@ -11,13 +10,13 @@ export interface Formatted {
 }
 
 export class Bundle {
-    messages = new Map(
-        Object.entries({
-            hello: new Message(hello as ast.Message),
-            exclamation: new Message(exclamation as ast.Message),
-            select: new Message(select as ast.Message),
-        })
-    );
+    public readonly messages: Map<string, Message> = new Map();
+
+    addResource(resource: Map<string, Message>) {
+        for (let [id, message] of resource) {
+            this.messages.set(id, message);
+        }
+    }
 
     getMessage(id: string) {
         return this.messages.get(id);
@@ -29,9 +28,10 @@ export class Bundle {
 
     formatValue(message: Message, variables: Map<string, Value>): Formatted {
         let scope = this.createScope(variables);
-        let result = message.resolveValue(scope);
-        console.log(result);
-        let value = result.unwrapOrElse(() => new NoneValue()).format(scope);
+        let value = message
+            .resolveValue(scope)
+            .unwrapOrElse(() => new NoneValue())
+            .format(scope);
         return {value, errors: scope.errors};
     }
 }

@@ -33,8 +33,9 @@ export class Scope {
         if (value !== undefined) {
             return new Success(value);
         } else {
-            this.errors.push(new ScopeError(ErrorKind.UnknownVariable, node.id.name));
-            return new Failure(new StringValue(`$${node.id.name}`));
+            let name = `$${node.id.name}`;
+            this.errors.push(new ScopeError(ErrorKind.UnknownVariable, name));
+            return new Failure(new StringValue(name));
         }
     }
 

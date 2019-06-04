@@ -1,3 +1,4 @@
+// hello = Hello, {$world}
 export let hello = {
     type: "Message",
     id: {
@@ -25,6 +26,7 @@ export let hello = {
     },
 };
 
+// exclamation = {hello}!
 export let exclamation = {
     type: "Message",
     id: {
@@ -53,6 +55,10 @@ export let exclamation = {
     },
 };
 
+// select = {$selector ->
+//    *[a] (a) {hello}
+//     [b] (b) {exclamation}
+// }
 export let select = {
     type: "Message",
     id: {

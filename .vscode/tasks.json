@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "watch",
+            "path": "resolver/",
+            "problemMatcher": [
+                "$tsc-watch"
+            ],
+            "isBackground": true
+        }
+    ]
+}
