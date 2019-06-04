@@ -2,11 +2,12 @@ import * as ast from "./ast";
 import {Message} from "./message";
 import {Value, StringValue} from "./value";
 import {Result, Success, Failure} from "./result";
+import {ScopeError, ErrorKind} from "./error";
 
 export class Scope {
     private readonly messages: Map<string, Message>;
     private readonly variables: Map<string, Value>;
-    public errors: Array<string>;
+    public errors: Array<ScopeError>;
 
     constructor(messages: Map<string, Message>, variables: Map<string, Value>) {
         this.messages = messages;
@@ -32,7 +33,7 @@ export class Scope {
         if (value !== undefined) {
             return new Success(value);
         } else {
-            this.errors.push(`Unknown variable: $${node.id.name}.`);
+            this.errors.push(new ScopeError(ErrorKind.UnknownVariable, node.id.name));
             return new Failure(new StringValue(`$${node.id.name}`));
         }
     }
@@ -42,7 +43,7 @@ export class Scope {
         if (message !== undefined) {
             return message.resolveValue(this);
         } else {
-            this.errors.push(`Unknown message: ${node.id.name}.`);
+            this.errors.push(new ScopeError(ErrorKind.UnknownMessage, node.id.name));
             return new Failure(new StringValue(`${node.id.name}`));
         }
     }

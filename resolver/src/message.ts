@@ -2,6 +2,7 @@ import * as ast from "./ast";
 import {Scope} from "./scope";
 import {Failure, Result} from "./result";
 import {Value, StringValue} from "./value";
+import {ScopeError, ErrorKind} from "./error";
 
 export class Message {
     private readonly id: string;
@@ -16,7 +17,7 @@ export class Message {
         if (this.value !== null) {
             return scope.resolvePattern(this.value);
         } else {
-            scope.errors.push(`Message ${this.id} has a null value.`);
+            scope.errors.push(new ScopeError(ErrorKind.MissingValue, this.id));
             return new Failure(new StringValue(this.id));
         }
     }

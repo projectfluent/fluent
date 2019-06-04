@@ -3,10 +3,11 @@ import {Scope} from "./scope";
 import {Value, NoneValue} from "./value";
 import {Message} from "./message";
 import {hello, exclamation, select} from "./fixtures";
+import {ScopeError} from "./error";
 
 export interface Formatted {
     readonly value: string | null;
-    readonly errors: Array<string>;
+    readonly errors: Array<ScopeError>;
 }
 
 export class Bundle {
