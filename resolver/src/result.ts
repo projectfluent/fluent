@@ -1,5 +1,4 @@
 interface IResult<T> {
-    map(fn: IMapper<T>): IResult<T>;
     then(fn: IChainer<T>): IResult<T>;
     else(fn: IChainer<T>): IResult<T>;
     fold(s: IMapper<T>, f: IMapper<T>): T;
@@ -20,9 +19,6 @@ export class Success<T> implements IResult<T> {
     constructor(value: T) {
         this.value = value;
     }
-    map(fn: IMapper<T>) {
-        return new Success(fn(this.value));
-    }
     then(fn: IChainer<T>) {
         return fn(this.value);
     }
@@ -38,9 +34,6 @@ export class Failure<T> implements IResult<T> {
     private readonly value: T;
     constructor(value: T) {
         this.value = value;
-    }
-    map(fn: IMapper<T>) {
-        return this;
     }
     then(fn: IChainer<T>) {
         return this;
