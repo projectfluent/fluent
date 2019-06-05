@@ -11,8 +11,8 @@ let args = process.argv.slice(2);
 
 if (args.length < 1 || 2 < args.length) {
     console.error(
-        "Usage: node -r esm --harmony-async-iteration " +
-        "bench.js FTL_FILE [SAMPLE SIZE = 30]");
+        "Usage: node -r esm --harmony-async-iteration " + "bench.js FTL_FILE [SAMPLE SIZE = 30]"
+    );
     process.exit(1);
 }
 
@@ -72,13 +72,11 @@ function shuffle(...elements) {
 }
 
 function mean(elements) {
-    let miu = elements.reduce((acc, cur) => acc + cur)
-        / elements.length;
+    let miu = elements.reduce((acc, cur) => acc + cur) / elements.length;
     return +miu.toFixed(2);
 }
 
 function stdev(elements, mean) {
-    let sigma = elements.reduce((acc, cur) => acc + (cur - mean) ** 2, 0)
-        / (elements.length - 1);
+    let sigma = elements.reduce((acc, cur) => acc + (cur - mean) ** 2, 0) / (elements.length - 1);
     return +Math.sqrt(sigma).toFixed(2);
 }

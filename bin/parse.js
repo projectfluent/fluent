@@ -52,8 +52,7 @@ function parse_stdin() {
     const lines = [];
 
     rl.on("line", line => lines.push(line));
-    rl.on("close", () =>
-        parse(lines.join("\n") + "\n"));
+    rl.on("close", () => parse(lines.join("\n") + "\n"));
 }
 
 function parse_file(file_path) {
@@ -66,9 +65,9 @@ function parse_file(file_path) {
     });
 }
 
-
 function parse(ftl) {
     Resource.run(ftl).fold(
         ast => console.log(JSON.stringify(ast, null, 4)),
-        err => console.error(err));
+        err => console.error(err)
+    );
 }

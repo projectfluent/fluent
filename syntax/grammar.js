@@ -1,23 +1,27 @@
 import * as FTL from "./ast.js";
 import {list_into, into} from "./abstract.js";
 import {
-    always, and, charset, defer, either, eof, maybe, not,
-    regex, repeat, repeat1, sequence, string
+    always,
+    and,
+    charset,
+    defer,
+    either,
+    eof,
+    maybe,
+    not,
+    regex,
+    repeat,
+    repeat1,
+    sequence,
+    string,
 } from "../lib/combinators.js";
-import {
-    element_at, flatten, join, keep_abstract, mutate, print, prune
-} from "../lib/mappers.js";
+import {element_at, flatten, join, keep_abstract, mutate, print, prune} from "../lib/mappers.js";
 
 /* ----------------------------------------------------- */
 /* An FTL file defines a Resource consisting of Entries. */
-export
-let Resource = defer(() =>
-    repeat(
-        either(
-            Entry,
-            blank_block,
-            Junk))
-    .chain(list_into(FTL.Resource)));
+export let Resource = defer(() =>
+    repeat(either(Entry, blank_block, Junk)).chain(list_into(FTL.Resource))
+);
 
 /* ------------------------------------------------------------------------- */
 /* Entries are the main building blocks of Fluent. They define translations and
@@ -26,16 +30,13 @@ let Resource = defer(() =>
  * the number of #) are joined together. Single-# comments directly preceding
  * Messages and Terms are attached to the Message or Term and are not
  * standalone Entries. */
-export
-let Entry = defer(() =>
+export let Entry = defer(() =>
     either(
-        sequence(
-            Message,
-            line_end).map(element_at(0)),
-        sequence(
-            Term,
-            line_end).map(element_at(0)),
-        CommentLine));
+        sequence(Message, line_end).map(element_at(0)),
+        sequence(Term, line_end).map(element_at(0)),
+        CommentLine
+    )
+);
 
 let Message = defer(() =>
     sequence(
@@ -44,15 +45,14 @@ let Message = defer(() =>
         string("="),
         maybe(blank_inline),
         either(
-            sequence(
-                Pattern.abstract,
-                repeat(Attribute).abstract),
-            sequence(
-                always(null).abstract,
-                repeat1(Attribute).abstract)))
-    .map(flatten(1))
-    .map(keep_abstract)
-    .chain(list_into(FTL.Message)));
+            sequence(Pattern.abstract, repeat(Attribute).abstract),
+            sequence(always(null).abstract, repeat1(Attribute).abstract)
+        )
+    )
+        .map(flatten(1))
+        .map(keep_abstract)
+        .chain(list_into(FTL.Message))
+);
 
 let Term = defer(() =>
     sequence(
@@ -62,33 +62,27 @@ let Term = defer(() =>
         string("="),
         maybe(blank_inline),
         Pattern.abstract,
-        repeat(Attribute).abstract)
-    .map(keep_abstract)
-    .chain(list_into(FTL.Term)));
+        repeat(Attribute).abstract
+    )
+        .map(keep_abstract)
+        .chain(list_into(FTL.Term))
+);
 
 /* -------------------------------------------------------------------------- */
 /* Adjacent comment lines of the same comment type are joined together during
  * the AST construction. */
 let CommentLine = defer(() =>
     sequence(
-        either(
-            string("###"),
-            string("##"),
-            string("#")).abstract,
-        maybe(
-            sequence(
-                string(" "),
-                repeat(comment_char)
-                    .map(join).abstract)),
-        line_end)
-    .map(flatten(1))
-    .map(keep_abstract)
-    .chain(list_into(FTL.Comment)));
+        either(string("###"), string("##"), string("#")).abstract,
+        maybe(sequence(string(" "), repeat(comment_char).map(join).abstract)),
+        line_end
+    )
+        .map(flatten(1))
+        .map(keep_abstract)
+        .chain(list_into(FTL.Comment))
+);
 
-let comment_char = defer(() =>
-    and(
-        not(line_end),
-        any_char));
+let comment_char = defer(() => and(not(line_end), any_char));
 
 /* -------------------------------------------------------------------------- */
 /* Junk represents unparsed content.
@@ -100,23 +94,14 @@ let comment_char = defer(() =>
 let Junk = defer(() =>
     sequence(
         junk_line,
-        repeat(
-            and(
-                not(charset("a-zA-Z")),
-                not(string("-")),
-                not(string("#")),
-                junk_line)))
-    .map(flatten(1))
-    .map(join)
-    .chain(into(FTL.Junk)));
+        repeat(and(not(charset("a-zA-Z")), not(string("-")), not(string("#")), junk_line))
+    )
+        .map(flatten(1))
+        .map(join)
+        .chain(into(FTL.Junk))
+);
 
-let junk_line =
-    sequence(
-        regex(/[^\n]*/),
-        either(
-            string("\u000A"),
-            eof()))
-    .map(join);
+let junk_line = sequence(regex(/[^\n]*/), either(string("\u000A"), eof())).map(join);
 
 /* --------------------------------- */
 /* Attributes of Messages and Terms. */
@@ -129,18 +114,20 @@ let Attribute = defer(() =>
         maybe(blank_inline),
         string("="),
         maybe(blank_inline),
-        Pattern.abstract)
-    .map(keep_abstract)
-    .chain(list_into(FTL.Attribute)));
+        Pattern.abstract
+    )
+        .map(keep_abstract)
+        .chain(list_into(FTL.Attribute))
+);
 
 /* ---------------------------------------------------------------- */
 /* Patterns are values of Messages, Terms, Attributes and Variants. */
 let Pattern = defer(() =>
-    repeat1(
-        PatternElement)
-    // Flatten block_text and block_placeable which return lists.
-    .map(flatten(1))
-    .chain(list_into(FTL.Pattern)));
+    repeat1(PatternElement)
+        // Flatten block_text and block_placeable which return lists.
+        .map(flatten(1))
+        .chain(list_into(FTL.Pattern))
+);
 
 /* ----------------------------------------------------------------- */
 /* TextElement and Placeable can occur inline or as block.
@@ -149,24 +136,23 @@ let Pattern = defer(() =>
  * Adjacent TextElements are joined in AST creation. */
 
 let PatternElement = defer(() =>
-    either(
-        inline_text,
-        block_text,
-        inline_placeable,
-        block_placeable));
+    either(inline_text, block_text, inline_placeable, block_placeable)
+);
 
 let inline_text = defer(() =>
     repeat1(text_char)
-    .map(join)
-    .chain(into(FTL.TextElement)));
+        .map(join)
+        .chain(into(FTL.TextElement))
+);
 
 let block_text = defer(() =>
     sequence(
         blank_block.chain(into(FTL.TextElement)),
         blank_inline,
         indented_char.chain(into(FTL.TextElement)),
-        maybe(inline_text))
-    .map(prune));
+        maybe(inline_text)
+    ).map(prune)
+);
 
 let inline_placeable = defer(() =>
     sequence(
@@ -175,18 +161,23 @@ let inline_placeable = defer(() =>
         either(
             // Order matters!
             SelectExpression,
-            InlineExpression),
+            InlineExpression
+        ),
         maybe(blank),
-        string("}"))
-    .map(element_at(2))
-    .chain(into(FTL.Placeable)));
+        string("}")
+    )
+        .map(element_at(2))
+        .chain(into(FTL.Placeable))
+);
 
 let block_placeable = defer(() =>
     sequence(
         blank_block.chain(into(FTL.TextElement)),
         // No indent before a placeable counts as 0 in dedention logic.
         maybe(blank_inline).map(s => s || ""),
-        inline_placeable));
+        inline_placeable
+    )
+);
 
 /* ------------------------------------------------------------------- */
 /* Rules for validating expressions in Placeables and as selectors of
@@ -200,96 +191,71 @@ let InlineExpression = defer(() =>
         MessageReference,
         TermReference,
         VariableReference,
-        inline_placeable));
+        inline_placeable
+    )
+);
 
 /* -------- */
 /* Literals */
-export
-let StringLiteral = defer(() =>
-    sequence(
-        string("\""),
-        repeat(quoted_char),
-        string("\""))
-    .map(element_at(1))
-    .map(join)
-    .chain(into(FTL.StringLiteral)));
+export let StringLiteral = defer(() =>
+    sequence(string('"'), repeat(quoted_char), string('"'))
+        .map(element_at(1))
+        .map(join)
+        .chain(into(FTL.StringLiteral))
+);
 
-export
-let NumberLiteral = defer(() =>
-    sequence(
-        maybe(string("-")),
-        digits,
-        maybe(
-            sequence(
-                string("."),
-                digits)))
-    .map(flatten(1))
-    .map(join)
-    .chain(into(FTL.NumberLiteral)));
+export let NumberLiteral = defer(() =>
+    sequence(maybe(string("-")), digits, maybe(sequence(string("."), digits)))
+        .map(flatten(1))
+        .map(join)
+        .chain(into(FTL.NumberLiteral))
+);
 
 /* ------------------ */
 /* Inline Expressions */
 let FunctionReference = defer(() =>
-    sequence(
-        Identifier,
-        CallArguments)
-    .chain(list_into(FTL.FunctionReference)));
+    sequence(Identifier, CallArguments).chain(list_into(FTL.FunctionReference))
+);
 
 let MessageReference = defer(() =>
-    sequence(
-        Identifier,
-        maybe(AttributeAccessor))
-    .chain(list_into(FTL.MessageReference)));
+    sequence(Identifier, maybe(AttributeAccessor)).chain(list_into(FTL.MessageReference))
+);
 
 let TermReference = defer(() =>
     sequence(
         string("-"),
         Identifier.abstract,
         maybe(AttributeAccessor).abstract,
-        maybe(CallArguments).abstract)
-    .map(keep_abstract)
-    .chain(list_into(FTL.TermReference)));
+        maybe(CallArguments).abstract
+    )
+        .map(keep_abstract)
+        .chain(list_into(FTL.TermReference))
+);
 
 let VariableReference = defer(() =>
-    sequence(
-        string("$"),
-        Identifier)
-    .map(element_at(1))
-    .chain(into(FTL.VariableReference)));
+    sequence(string("$"), Identifier)
+        .map(element_at(1))
+        .chain(into(FTL.VariableReference))
+);
 
-let AttributeAccessor = defer(() =>
-    sequence(
-        string("."),
-        Identifier))
-    .map(element_at(1));
+let AttributeAccessor = defer(() => sequence(string("."), Identifier)).map(element_at(1));
 
 let CallArguments = defer(() =>
-    sequence(
-        maybe(blank),
-        string("("),
-        maybe(blank),
-        argument_list,
-        maybe(blank),
-        string(")"))
-    .map(element_at(3))
-    .chain(into(FTL.CallArguments)));
+    sequence(maybe(blank), string("("), maybe(blank), argument_list, maybe(blank), string(")"))
+        .map(element_at(3))
+        .chain(into(FTL.CallArguments))
+);
 
 let argument_list = defer(() =>
     sequence(
-        repeat(
-            sequence(
-                Argument.abstract,
-                maybe(blank),
-                string(","),
-                maybe(blank))),
-        maybe(Argument.abstract))
-    .map(flatten(2))
-    .map(keep_abstract));
+        repeat(sequence(Argument.abstract, maybe(blank), string(","), maybe(blank))),
+        maybe(Argument.abstract)
+    )
+        .map(flatten(2))
+        .map(keep_abstract)
+);
 
-let Argument = defer(() =>
-    either(
-        NamedArgument,
-        InlineExpression));
+let Argument = defer(() => either(NamedArgument, InlineExpression));
 
 let NamedArgument = defer(() =>
     sequence(
@@ -297,11 +263,11 @@ let NamedArgument = defer(() =>
         maybe(blank),
         string(":"),
         maybe(blank),
-        either(
-            StringLiteral,
-            NumberLiteral).abstract)
-    .map(keep_abstract)
-    .chain(list_into(FTL.NamedArgument)));
+        either(StringLiteral, NumberLiteral).abstract
+    )
+        .map(keep_abstract)
+        .chain(list_into(FTL.NamedArgument))
+);
 
 /* ----------------- */
 /* Block Expressions */
@@ -311,28 +277,23 @@ let SelectExpression = defer(() =>
         maybe(blank),
         string("->"),
         maybe(blank_inline),
-        variant_list.abstract)
-    .map(keep_abstract)
-    .chain(list_into(FTL.SelectExpression)));
+        variant_list.abstract
+    )
+        .map(keep_abstract)
+        .chain(list_into(FTL.SelectExpression))
+);
 
 let variant_list = defer(() =>
-    sequence(
-        repeat(Variant).abstract,
-        DefaultVariant.abstract,
-        repeat(Variant).abstract,
-        line_end)
-    .map(keep_abstract)
-    .map(flatten(1)));
+    sequence(repeat(Variant).abstract, DefaultVariant.abstract, repeat(Variant).abstract, line_end)
+        .map(keep_abstract)
+        .map(flatten(1))
+);
 
 let Variant = defer(() =>
-    sequence(
-        line_end,
-        maybe(blank),
-        VariantKey.abstract,
-        maybe(blank_inline),
-        Pattern.abstract)
-    .map(keep_abstract)
-    .chain(list_into(FTL.Variant)));
+    sequence(line_end, maybe(blank), VariantKey.abstract, maybe(blank_inline), Pattern.abstract)
+        .map(keep_abstract)
+        .chain(list_into(FTL.Variant))
+);
 
 let DefaultVariant = defer(() =>
     sequence(
@@ -341,30 +302,27 @@ let DefaultVariant = defer(() =>
         string("*"),
         VariantKey.abstract,
         maybe(blank_inline),
-        Pattern.abstract)
-    .map(keep_abstract)
-    .chain(list_into(FTL.Variant))
-    .map(mutate({default: true})));
+        Pattern.abstract
+    )
+        .map(keep_abstract)
+        .chain(list_into(FTL.Variant))
+        .map(mutate({default: true}))
+);
 
 let VariantKey = defer(() =>
     sequence(
         string("["),
         maybe(blank),
-        either(
-            NumberLiteral,
-            Identifier),
+        either(NumberLiteral, Identifier),
         maybe(blank),
-        string("]"))
-    .map(element_at(2)));
+        string("]")
+    ).map(element_at(2))
+);
 
 /* ---------- */
 /* Identifier */
 
-let Identifier =
-    sequence(
-        charset("a-zA-Z"),
-        repeat(
-            charset("a-zA-Z0-9_-")))
+let Identifier = sequence(charset("a-zA-Z"), repeat(charset("a-zA-Z0-9_-")))
     .map(flatten(1))
     .map(join)
     .chain(into(FTL.Identifier));
@@ -380,8 +338,7 @@ let Identifier =
  * resources. See spec/recommendations.md.
  */
 
-let any_char =
-    charset("\\u{0}-\\u{10FFFF}");
+let any_char = charset("\\u{0}-\\u{10FFFF}");
 
 /* -------------------------------------------------------------------------- */
 /* Text elements
@@ -394,23 +351,11 @@ let any_char =
  * new line.
  */
 
-let special_text_char =
-    either(
-        string("{"),
-        string("}"));
+let special_text_char = either(string("{"), string("}"));
 
-let text_char = defer(() =>
-    and(
-        not(line_end),
-        not(special_text_char),
-        any_char));
+let text_char = defer(() => and(not(line_end), not(special_text_char), any_char));
 
-let indented_char =
-    and(
-        not(string(".")),
-        not(string("*")),
-        not(string("[")),
-        text_char);
+let indented_char = and(not(string(".")), not(string("*")), not(string("[")), text_char);
 
 /* -------------------------------------------------------------------------- */
 /* String literals
@@ -424,71 +369,40 @@ let indented_char =
  * comprise placeables.
  */
 
-let special_quoted_char =
-    either(
-        string("\""),
-        string("\\"));
+let special_quoted_char = either(string('"'), string("\\"));
 
-let special_escape =
-    sequence(
-        string("\\"),
-        special_quoted_char)
-    .map(join);
+let special_escape = sequence(string("\\"), special_quoted_char).map(join);
 
-let unicode_escape =
-    either(
-        sequence(
-            string("\\u"),
-            regex(/[0-9a-fA-F]{4}/)),
-        sequence(
-            string("\\U"),
-            regex(/[0-9a-fA-F]{6}/)))
-    .map(join);
+let unicode_escape = either(
+    sequence(string("\\u"), regex(/[0-9a-fA-F]{4}/)),
+    sequence(string("\\U"), regex(/[0-9a-fA-F]{6}/))
+).map(join);
 
 let quoted_char = defer(() =>
-    either(
-        and(
-            not(line_end),
-            not(special_quoted_char),
-            any_char),
-        special_escape,
-        unicode_escape));
+    either(and(not(line_end), not(special_quoted_char), any_char), special_escape, unicode_escape)
+);
 
 /* ------- */
 /* Numbers */
 
-let digits =
-    repeat1(
-        charset("0-9"))
-    .map(join);
+let digits = repeat1(charset("0-9")).map(join);
 
 /* ---------- */
 /* Whitespace */
-let blank_inline =
-    repeat1(
-        string("\u0020"))
-    .map(join);
+let blank_inline = repeat1(string("\u0020")).map(join);
 
-let line_end =
-    either(
-        // Normalize CRLF to LF.
-        string("\u000D\u000A").map(() => "\n"),
-        string("\u000A"),
-        eof());
+let line_end = either(
+    // Normalize CRLF to LF.
+    string("\u000D\u000A").map(() => "\n"),
+    string("\u000A"),
+    eof()
+);
 
-let blank_block =
-    repeat1(
-        sequence(
-            maybe(blank_inline),
-            line_end.abstract))
+let blank_block = repeat1(sequence(maybe(blank_inline), line_end.abstract))
     .map(flatten(1))
     // Discard the indents and only keep the newlines
     // for multiline Patterns.
     .map(keep_abstract)
     .map(join);
 
-let blank =
-    repeat1(
-        either(
-            blank_inline,
-            line_end));
+let blank = repeat1(either(blank_inline, line_end));

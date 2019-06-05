@@ -97,18 +97,17 @@ export class StringLiteral extends Literal {
 
     parse() {
         // Backslash backslash, backslash double quote, uHHHH, UHHHHHH.
-        const KNOWN_ESCAPES =
-            /(?:\\\\|\\\"|\\u([0-9a-fA-F]{4})|\\U([0-9a-fA-F]{6}))/g;
+        const KNOWN_ESCAPES = /(?:\\\\|\\\"|\\u([0-9a-fA-F]{4})|\\U([0-9a-fA-F]{6}))/g;
 
         function from_escape_sequence(match, codepoint4, codepoint6) {
             switch (match) {
                 case "\\\\":
                     return "\\";
-                case "\\\"":
-                    return "\"";
+                case '\\"':
+                    return '"';
                 default:
                     let codepoint = parseInt(codepoint4 || codepoint6, 16);
-                    if (codepoint <= 0xD7FF || 0xE000 <= codepoint) {
+                    if (codepoint <= 0xd7ff || 0xe000 <= codepoint) {
                         // It's a Unicode scalar value.
                         return String.fromCodePoint(codepoint);
                     }
@@ -133,9 +132,7 @@ export class NumberLiteral extends Literal {
     parse() {
         let value = parseFloat(this.value);
         let decimal_position = this.value.indexOf(".");
-        let precision = decimal_position > 0
-            ? this.value.length - decimal_position - 1
-            : 0;
+        let precision = decimal_position > 0 ? this.value.length - decimal_position - 1 : 0;
         return {value, precision};
     }
 }
