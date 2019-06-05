@@ -13,7 +13,8 @@
     "generate:ebnf": "node -r esm bin/ebnf.js ./syntax/grammar.js > ./spec/fluent.ebnf",
     "generate:fixtures": "make -sC test/fixtures",
     "generate": "npm run --silent generate:ebnf && npm run --silent generate:fixtures",
-    "lint": "eslint **/*.js",
+    "lint": "prettier --check **/*.js",
+    "pretty": "prettier --write **/*.js",
     "test:ebnf": "node -r esm test/ebnf.js ./syntax/grammar.js ./spec/fluent.ebnf",
     "test:fixtures": "node -r esm test/parser.js ./test/fixtures",
     "test:unit": "node -r esm test/literals.js",
@@ -33,12 +34,12 @@
     "babylon": "^6.18.0",
     "cli-color": "^1.2.0",
     "difflib": "^0.2.4",
-    "eslint": "^4.19.1",
     "fluent": "^0.6.4",
     "fluent-syntax": "^0.7.0",
     "gh-pages": "^1.1.0",
     "gitbook-cli": "^2.3.0",
-    "json-diff": "^0.5.2"
+    "json-diff": "^0.5.2",
+    "prettier": "^1.17.1"
   },
   "dependencies": {
     "esm": "^3.2.25",

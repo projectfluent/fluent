@@ -30,35 +30,41 @@ export function list_into(Type) {
                     return always(new Type(identifier, args));
                 }
                 return never(
-                    `Invalid function name: ${identifier.name}. `
-                    + "Function names must be all upper-case ASCII letters.");
+                    `Invalid function name: ${identifier.name}. ` +
+                        "Function names must be all upper-case ASCII letters."
+                );
             };
         case FTL.Pattern:
             return elements =>
-                always(new FTL.Pattern(
-                    dedent(elements)
-                        .reduce(join_adjacent(FTL.TextElement), [])
-                        .map(trim_text_at_extremes)
-                        .filter(remove_empty_text)));
+                always(
+                    new FTL.Pattern(
+                        dedent(elements)
+                            .reduce(join_adjacent(FTL.TextElement), [])
+                            .map(trim_text_at_extremes)
+                            .filter(remove_empty_text)
+                    )
+                );
         case FTL.Resource:
             return entries =>
-                always(new FTL.Resource(
-                    entries
-                        .reduce(join_adjacent(
-                            FTL.Comment,
-                            FTL.GroupComment,
-                            FTL.ResourceComment), [])
-                        .reduce(attach_comments, [])
-                        .filter(remove_blank_lines)));
+                always(
+                    new FTL.Resource(
+                        entries
+                            .reduce(
+                                join_adjacent(FTL.Comment, FTL.GroupComment, FTL.ResourceComment),
+                                []
+                            )
+                            .reduce(attach_comments, [])
+                            .filter(remove_blank_lines)
+                    )
+                );
         case FTL.SelectExpression:
             return ([selector, variants]) => {
                 let selector_is_valid =
-                    selector instanceof FTL.StringLiteral
-                    || selector instanceof FTL.NumberLiteral
-                    || selector instanceof FTL.VariableReference
-                    || selector instanceof FTL.FunctionReference
-                    || (selector instanceof FTL.TermReference
-                        && selector.attribute);
+                    selector instanceof FTL.StringLiteral ||
+                    selector instanceof FTL.NumberLiteral ||
+                    selector instanceof FTL.VariableReference ||
+                    selector instanceof FTL.FunctionReference ||
+                    (selector instanceof FTL.TermReference && selector.attribute);
                 if (!selector_is_valid) {
                     return never(`Invalid selector type: ${selector.type}.`);
                 }
@@ -66,8 +72,7 @@ export function list_into(Type) {
                 return always(new Type(selector, variants));
             };
         default:
-            return elements =>
-                always(new Type(...elements));
+            return elements => always(new Type(...elements));
     }
 }
 
@@ -85,27 +90,22 @@ export function into(Type) {
                         }
                         named.set(name, arg);
                     } else if (named.size > 0) {
-                        return never("Positional arguments must not follow "
-                            + "named arguments");
+                        return never("Positional arguments must not follow " + "named arguments");
                     } else {
                         positional.push(arg);
                     }
                 }
-                return always(new Type(
-                    positional, Array.from(named.values())));
+                return always(new Type(positional, Array.from(named.values())));
             };
         case FTL.Placeable:
             return expression => {
-                if (expression instanceof FTL.TermReference
-                        && expression.attribute) {
-                    return never(
-                        "Term attributes may not be used as placeables.");
+                if (expression instanceof FTL.TermReference && expression.attribute) {
+                    return never("Term attributes may not be used as placeables.");
                 }
                 return always(new Type(expression));
             };
         default:
-            return (...args) =>
-                always(new Type(...args));
+            return (...args) => always(new Type(...args));
     }
 }
 
@@ -131,21 +131,17 @@ function join_of_type(Type, ...elements) {
     // TODO Join annotations and spans.
     switch (Type) {
         case FTL.TextElement:
-            return elements.reduce((a, b) =>
-                new Type(a.value + b.value));
+            return elements.reduce((a, b) => new Type(a.value + b.value));
         case FTL.Comment:
         case FTL.GroupComment:
         case FTL.ResourceComment:
-            return elements.reduce((a, b) =>
-                new Type(a.content + "\n" + b.content));
+            return elements.reduce((a, b) => new Type(a.content + "\n" + b.content));
     }
 }
 
 function attach_comments(acc, cur) {
     let prev = acc[acc.length - 1];
-    if (prev instanceof FTL.Comment
-        && (cur instanceof FTL.Message
-            || cur instanceof FTL.Term)) {
+    if (prev instanceof FTL.Comment && (cur instanceof FTL.Message || cur instanceof FTL.Term)) {
         cur.comment = prev;
         acc[acc.length - 1] = cur;
         return acc;
@@ -180,22 +176,19 @@ const TRAILING_BLANK_INLINE = / *$/;
 function trim_text_at_extremes(element, index, array) {
     if (element instanceof FTL.TextElement) {
         if (index === 0) {
-            element.value = element.value.replace(
-                LEADING_BLANK_BLOCK, "");
+            element.value = element.value.replace(LEADING_BLANK_BLOCK, "");
         }
         if (index === array.length - 1) {
-            element.value = element.value.replace(
-                TRAILING_BLANK_INLINE, "");
+            element.value = element.value.replace(TRAILING_BLANK_INLINE, "");
         }
     }
     return element;
 }
 
 function remove_empty_text(element) {
-    return !(element instanceof FTL.TextElement)
-        || element.value !== "";
+    return !(element instanceof FTL.TextElement) || element.value !== "";
 }
 
 function remove_blank_lines(element) {
-    return typeof(element) !== "string";
+    return typeof element !== "string";
 }

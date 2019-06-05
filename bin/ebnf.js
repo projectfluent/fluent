@@ -52,8 +52,7 @@ function from_stdin() {
     const lines = [];
 
     rl.on("line", line => lines.push(line));
-    rl.on("close", () =>
-        print_ebnf(lines.join("\n") + "\n"));
+    rl.on("close", () => print_ebnf(lines.join("\n") + "\n"));
 }
 
 function from_file(file_path) {

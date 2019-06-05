@@ -6,8 +6,7 @@ import {readdir, readfile, diff, PASS, FAIL} from "./util.js";
 const fixtures_dir = process.argv[2];
 
 if (!fixtures_dir) {
-    console.error(
-        "Usage: node -r esm parser.js FIXTURE");
+    console.error("Usage: node -r esm parser.js FIXTURE");
     process.exit(1);
 }
 
@@ -20,8 +19,7 @@ async function main(fixtures_dir) {
         fixtures_dir = path.dirname(fixtures_dir);
     } else {
         let files = await readdir(fixtures_dir);
-        var ftls = files.filter(
-            filename => filename.endsWith(".ftl"));
+        var ftls = files.filter(filename => filename.endsWith(".ftl"));
     }
 
     // Collect all AssertionErrors.
@@ -43,9 +41,7 @@ async function main(fixtures_dir) {
             continue;
         }
 
-        Resource.run(ftl_source).fold(
-            assert_equal,
-            err => assert.fail(err));
+        Resource.run(ftl_source).fold(assert_equal, err => assert.fail(err));
 
         function assert_equal(ast) {
             try {
@@ -95,9 +91,7 @@ ${err.message}
 }
 
 function exit_summary(error_count) {
-    const message = error_count
-        ? `Tests ${FAIL}: ${error_count}.`
-        : `All tests ${PASS}.`;
+    const message = error_count ? `Tests ${FAIL}: ${error_count}.` : `All tests ${PASS}.`;
     console.log(`
 ========================================================================
 ${message}
