@@ -1,8 +1,8 @@
 import * as assert from "assert";
 import {hello, exclamation, select} from "./fixtures";
-import {Bundle} from "../src/bundle";
-import {StringValue} from "../src/value";
-import {ScopeError, ErrorKind} from "../src/error";
+import {Bundle} from "../../resolver/bundle";
+import {StringValue} from "../../resolver/value";
+import {ScopeError, ErrorKind} from "../../resolver/error";
 
 suite("Sample suite", function() {
     suiteSetup(function() {

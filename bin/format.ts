@@ -1,10 +1,10 @@
 import parseArgs from "minimist";
-import { fromStdin, fromFile } from "../../../lib/input";
-import { Resource as ResourceParser } from "../../../syntax/grammar";
-import { Resource, NodeType, GroupComment } from "../ast";
-import { Bundle } from "../bundle";
-import { ErrorKind } from "../error";
-import { Value, StringValue, NumberValue } from "../value";
+import {fromStdin, fromFile} from "../lib/input";
+import {Resource as ResourceParser} from "../syntax/grammar";
+import {Resource, NodeType, GroupComment} from "../resolver/ast";
+import {Bundle} from "../resolver/bundle";
+import {ErrorKind} from "../resolver/error";
+import {Value, StringValue, NumberValue} from "../resolver/value";
 
 const argv = parseArgs(process.argv.slice(2), {
     boolean: ["help", "group"],
@@ -77,7 +77,7 @@ function formatResource(resource: Resource, variables: Variables) {
         }
         let message = bundle.getMessage(entry.id.name);
         if (message) {
-            let { value, errors } = bundle.formatValue(message, variables);
+            let {value, errors} = bundle.formatValue(message, variables);
             results.push({
                 value,
                 errors: errors.map(error => ({

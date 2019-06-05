@@ -6,6 +6,5 @@
         "esModuleInterop": true,
         "allowJs": true,
         "outDir": "./build"
-    },
-    "include": ["./syntax/**/*", "./resolver/**/*", "./bin/**/*", "./lib/**/*"]
+    }
 }
