@@ -19,7 +19,7 @@
         "test:fixtures": "node -r esm test/parser.js ./test/fixtures",
         "test:unit": "node -r esm test/literals.js",
         "test:resolver": "mocha -u tdd -r ts-node/register ./test/resolver/**/*_test.ts",
-        "test": "npm run --silent test:fixtures && npm run --silent test:unit",
+        "test": "npm run --silent test:fixtures && npm run --silent test:unit && npm run --silent test:resolver",
         "watch": "tsc --watch"
     },
     "homepage": "https://projectfluent.org",
