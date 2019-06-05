@@ -1,7 +1,7 @@
 import fs from "fs";
 import readline from "readline";
 import parse_args from "minimist";
-import {Resource} from "../syntax/grammar.mjs";
+import {Resource} from "../syntax/grammar.js";
 
 const argv = parse_args(process.argv.slice(2), {
     boolean: ["help"],
@@ -26,14 +26,14 @@ if (file_path === "-") {
 
 function exit_help(exit_code) {
     console.log(`
-    Usage: node --experimental-modules parse.mjs [OPTIONS] <FILE>
+    Usage: node -r esm parse.js [OPTIONS] <FILE>
 
     When FILE is "-", read text from stdin.
 
     Examples:
 
-        node --experimental-modules parse.mjs path/to/file.ftl
-        cat path/to/file.ftl | node --experimental-modules parse.mjs -
+        node -r esm parse.js path/to/file.ftl
+        cat path/to/file.ftl | node -r esm parse.js -
 
     Options:
 

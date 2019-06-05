@@ -233,7 +233,7 @@ compatibility strategy for future releases.
 
     The `Function` production and its corresponding AST node have been
     removed. The logic validating that function names are all upper-case has
-    been moved to `abstract.mjs`.
+    been moved to `abstract.js`.
 
 ## 0.7.0 (October 15, 2018)
 
@@ -282,11 +282,11 @@ compatibility strategy for future releases.
     correctness at a cost of reduced performance.
 
     The ASDL description of the AST has been removed in favor of
-    `syntax/ast.mjs` which defines the actual AST nodes returned by the
+    `syntax/ast.js` which defines the actual AST nodes returned by the
     reference parser.
 
     The EBNF is now auto-generated from the reference parser's
-    `syntax/grammar.mjs` file. It provides an easy to read overview of the
+    `syntax/grammar.js` file. It provides an easy to read overview of the
     grammar and will continue to be updated in the future.
 
     Going forward, all changes to the grammar will be implemented in the
