@@ -4,6 +4,7 @@ import parseArgs from "minimist";
 import {Resource as ResourceParser} from "../lib/parser";
 import {Resource} from "../ast";
 import {Bundle} from "../bundle";
+import {ErrorKind} from "../error";
 
 const argv = parseArgs(process.argv.slice(2), {
     boolean: ["help"],
@@ -57,14 +58,22 @@ function format(resource: Resource) {
     let bundle = new Bundle();
     bundle.addResource(resource);
 
+    let results = [];
     for (let entry of resource.body) {
         let message = bundle.getMessage(entry.id.name);
         if (message) {
             let {value, errors} = bundle.formatValue(message, new Map());
-            console.log(value);
-            console.log(errors);
+            results.push({
+                value,
+                errors: errors.map(error => ({
+                    kind: ErrorKind[error.kind],
+                    arg: error.arg,
+                })),
+            });
         }
     }
+
+    console.log(JSON.stringify(results, null, 4));
 }
 
 function parseStdin() {
