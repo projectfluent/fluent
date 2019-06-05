@@ -2,7 +2,7 @@ import {Scope} from "./scope";
 import {Value, NoneValue} from "./value";
 import {Message} from "./message";
 import {ScopeError} from "./error";
-import {Resource} from "./ast";
+import {Resource, NodeType} from "./ast";
 
 export interface Formatted {
     readonly value: string | null;
@@ -14,7 +14,9 @@ export class Bundle {
 
     addResource(resource: Resource) {
         for (let message of resource.body) {
-            this.messages.set(message.id.name, new Message(message));
+            if (message.type === NodeType.Message) {
+                this.messages.set(message.id.name, new Message(message));
+            }
         }
     }
 

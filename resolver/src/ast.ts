@@ -8,6 +8,7 @@ export enum NodeType {
     Variant = "Variant",
     Pattern = "Pattern",
     Message = "Message",
+    GroupComment = "GroupComment",
     Resource = "Resource",
 }
 
@@ -71,7 +72,12 @@ export interface Message extends SyntaxNode {
     readonly value: Pattern | null;
 }
 
+export interface GroupComment extends SyntaxNode {
+    readonly type: NodeType.GroupComment;
+    readonly content: string;
+}
+
 export interface Resource extends SyntaxNode {
-    readonly type: NodeType.Message;
-    readonly body: Array<Message>;
+    readonly type: NodeType.Resource;
+    readonly body: Array<Message | GroupComment>;
 }

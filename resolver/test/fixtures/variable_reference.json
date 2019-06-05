@@ -1,0 +1,15 @@
+[
+    {
+        "value": "Hello, {$world}!",
+        "errors": [
+            {
+                "kind": "UnknownVariable",
+                "arg": "$world"
+            }
+        ]
+    },
+    {
+        "value": "Hello, World!",
+        "errors": []
+    }
+]
