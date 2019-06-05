@@ -18,7 +18,9 @@
     "test:ebnf": "node -r esm test/ebnf.js ./syntax/grammar.js ./spec/fluent.ebnf",
     "test:fixtures": "node -r esm test/parser.js ./test/fixtures",
     "test:unit": "node -r esm test/literals.js",
-    "test": "npm run --silent test:fixtures && npm run --silent test:unit"
+    "test:resolver": "mocha -u tdd -r ts-node/register ./resolver/test/**/*_test.ts",
+    "test": "npm run --silent test:fixtures && npm run --silent test:unit",
+    "watch": "tsc --watch"
   },
   "homepage": "https://projectfluent.org",
   "repository": {
@@ -31,6 +33,9 @@
     "url": "https://github.com/projectfluent/fluent/issues"
   },
   "devDependencies": {
+    "@types/minimist": "^1.2.0",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.0.4",
     "babylon": "^6.18.0",
     "cli-color": "^1.2.0",
     "difflib": "^0.2.4",
@@ -39,7 +44,10 @@
     "gh-pages": "^1.1.0",
     "gitbook-cli": "^2.3.0",
     "json-diff": "^0.5.2",
-    "prettier": "^1.17.1"
+    "prettier": "^1.17.1",
+    "mocha": "^6.1.4",
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.1"
   },
   "dependencies": {
     "esm": "^3.2.25",

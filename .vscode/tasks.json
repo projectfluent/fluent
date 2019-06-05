@@ -4,7 +4,6 @@
         {
             "type": "npm",
             "script": "watch",
-            "path": "resolver/",
             "problemMatcher": [
                 "$tsc-watch"
             ],
