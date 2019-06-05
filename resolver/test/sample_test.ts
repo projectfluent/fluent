@@ -1,23 +1,15 @@
 import * as assert from "assert";
 import {hello, exclamation, select} from "./fixtures";
-import * as ast from "../src/ast";
-import {Message} from "../src/message";
 import {Bundle} from "../src/bundle";
 import {StringValue} from "../src/value";
 import {ScopeError, ErrorKind} from "../src/error";
 
-let resource = new Map(
-    Object.entries({
-        hello: new Message(hello as ast.Message),
-        exclamation: new Message(exclamation as ast.Message),
-        select: new Message(select as ast.Message),
-    })
-);
-
 suite("Sample suite", function() {
     suiteSetup(function() {
         this.bundle = new Bundle();
-        this.bundle.addResource(resource);
+        this.bundle.addResource({
+            body: [hello, exclamation, select],
+        });
     });
 
     test("hello with a variable", function() {

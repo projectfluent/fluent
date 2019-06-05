@@ -10,6 +10,7 @@
   "author": "Mozilla <l10n-drivers@mozilla.org>",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@types/minimist": "^1.2.0",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.0.4",
     "mocha": "^6.1.4",

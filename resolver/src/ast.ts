@@ -8,6 +8,7 @@ export enum NodeType {
     Variant = "Variant",
     Pattern = "Pattern",
     Message = "Message",
+    Resource = "Resource",
 }
 
 export interface SyntaxNode {
@@ -68,4 +69,9 @@ export interface Message extends SyntaxNode {
     readonly type: NodeType.Message;
     readonly id: Identifier;
     readonly value: Pattern | null;
+}
+
+export interface Resource extends SyntaxNode {
+    readonly type: NodeType.Message;
+    readonly body: Array<Message>;
 }

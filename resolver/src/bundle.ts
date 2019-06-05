@@ -1,8 +1,8 @@
-import * as ast from "./ast";
 import {Scope} from "./scope";
 import {Value, NoneValue} from "./value";
 import {Message} from "./message";
 import {ScopeError} from "./error";
+import {Resource} from "./ast";
 
 export interface Formatted {
     readonly value: string | null;
@@ -12,9 +12,9 @@ export interface Formatted {
 export class Bundle {
     public readonly messages: Map<string, Message> = new Map();
 
-    addResource(resource: Map<string, Message>) {
-        for (let [id, message] of resource) {
-            this.messages.set(id, message);
+    addResource(resource: Resource) {
+        for (let message of resource.body) {
+            this.messages.set(message.id.name, new Message(message));
         }
     }
 
