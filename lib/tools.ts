@@ -14,12 +14,16 @@ export function parseString(input: string) {
 }
 
 type Variables = Map<string, Value>;
+type FormatResult = {
+    value: string | null;
+    errors: Array<{kind: string; arg: string}>;
+};
 
 export function formatResource(resource: Resource, variables: Variables) {
     let bundle = new Bundle();
     bundle.addResource(resource);
 
-    let results = [];
+    let results: Array<FormatResult> = [];
     for (let entry of resource.body) {
         if (entry.type !== NodeType.Message) {
             continue;
@@ -33,7 +37,7 @@ export function formatResource(resource: Resource, variables: Variables) {
                     kind: ErrorKind[error.kind],
                     arg: error.arg,
                 })),
-            });
+            } as FormatResult);
         }
     }
     return results;
@@ -79,11 +83,13 @@ export function formatGroups(resource: Resource) {
         }
     }
 
-    let results = [];
+    let results: Array<FormatResult> = [];
     for (let group of groups) {
         let groupResults = formatResource(group.resource, group.variables);
-        let lastResult = groupResults.pop();
-        results.push(lastResult);
+        if (groupResults.length > 0) {
+            let lastResult = groupResults[groupResults.length - 1];
+            results.push(lastResult);
+        }
     }
 
     return results;

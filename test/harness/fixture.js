@@ -52,7 +52,7 @@ export async function test_fixtures(fixtures_dir, compare_fn) {
     exit_summary(errors.size);
 }
 
-export function validate_json(actual_ast, expected_serialized) {
+export function validate_as_json(actual_ast, expected_serialized) {
     const actual_json = JSON.parse(JSON.stringify(actual_ast));
     const expected_json = JSON.parse(expected_serialized);
     assert.deepEqual(actual_json, expected_json);

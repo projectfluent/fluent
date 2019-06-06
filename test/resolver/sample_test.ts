@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import {hello, exclamation, select} from "./fixtures";
+import {hello, exclamation, select} from "./sample_fixtures";
 import {Bundle} from "../../resolver/bundle";
 import {StringValue} from "../../resolver/value";
 import {ScopeError, ErrorKind} from "../../resolver/error";
