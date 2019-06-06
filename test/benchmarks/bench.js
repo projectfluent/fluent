@@ -1,11 +1,10 @@
-import fs from "fs";
 import perf from "perf_hooks";
 const {PerformanceObserver, performance} = perf;
 
 import {parse} from "fluent-syntax";
 import {_parse} from "fluent";
-import {Resource} from "../syntax/grammar.js";
-import {readfile} from "./util.js";
+import {Resource} from "../../syntax/grammar.js";
+import {readfile} from "../harness/util.js";
 
 let args = process.argv.slice(2);
 

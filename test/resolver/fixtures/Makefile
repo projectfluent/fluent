@@ -5,7 +5,7 @@ all: $(AST_FIXTURES)
 
 .PHONY: $(AST_FIXTURES)
 $(AST_FIXTURES): %.json: %.ftl
-	@node ../../dist/bin/format.js --group $< \
+	@node ../../../build/bin/format.js --group $< \
 		2> /dev/null \
 		1> $@;
-	@echo "$< → $@"
+	@echo "resolver/$< → $@"

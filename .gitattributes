@@ -1,3 +1,3 @@
 *.ftl eol=lf
-test/fixtures/crlf.ftl eol=crlf
-test/fixtures/cr.ftl eol=cr
+test/syntax/fixtures/crlf.ftl eol=crlf
+test/syntax/fixtures/cr.ftl eol=cr

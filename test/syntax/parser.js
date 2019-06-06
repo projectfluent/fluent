@@ -1,7 +1,7 @@
 import assert from "assert";
 import path from "path";
-import {Resource} from "../syntax/grammar.js";
-import {readdir, readfile, diff, PASS, FAIL} from "./util.js";
+import {Resource} from "../../syntax/grammar.js";
+import {readdir, readfile, diff, PASS, FAIL} from "../harness/util.js";
 
 const fixtures_dir = process.argv[2];
 

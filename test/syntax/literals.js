@@ -1,6 +1,5 @@
-/* eslint quotes: "off" */
-import suite from "./suite.js";
-import {StringLiteral, NumberLiteral} from "../syntax/grammar.js";
+import suite from "../harness/suite.js";
+import {StringLiteral, NumberLiteral} from "../../syntax/grammar.js";
 
 if (process.argv.length > 2) {
     console.error("Usage: node -r esm literals.js");
