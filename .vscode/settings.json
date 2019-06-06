@@ -1,3 +1,9 @@
 {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.formatOnSave": true
+    },
+    "[typescript]": {
+        "editor.formatOnSave": true
+    }
 }
