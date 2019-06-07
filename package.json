@@ -31,18 +31,18 @@
     "url": "https://github.com/projectfluent/fluent/issues"
   },
   "devDependencies": {
-    "babylon": "^6.18.0",
-    "cli-color": "^1.2.0",
-    "difflib": "^0.2.4",
-    "fluent": "^0.6.4",
-    "fluent-syntax": "^0.7.0",
-    "gh-pages": "^1.1.0",
-    "gitbook-cli": "^2.3.0",
-    "json-diff": "^0.5.2",
-    "prettier": "^1.17.1"
+    "babylon": "6.18.0",
+    "cli-color": "1.2.0",
+    "difflib": "0.2.4",
+    "fluent": "0.6.4",
+    "fluent-syntax": "0.7.0",
+    "gh-pages": "1.1.0",
+    "gitbook-cli": "2.3.0",
+    "json-diff": "0.5.2",
+    "prettier": "1.17.1"
   },
   "dependencies": {
-    "esm": "^3.2.25",
-    "minimist": "^1.2.0"
+    "esm": "3.2.25",
+    "minimist": "1.2.0"
   }
 }
