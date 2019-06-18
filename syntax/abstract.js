@@ -1,12 +1,12 @@
 /*
  * AST Validation
  *
- * The parse result of the grammar.mjs parser is a well-formed AST which is
+ * The parse result of the grammar.js parser is a well-formed AST which is
  * validated according to the rules documented in `spec/valid.md`.
  */
 
-import * as FTL from "./ast.mjs";
-import {always, never} from "../lib/combinators.mjs";
+import * as FTL from "./ast.js";
+import {always, never} from "../lib/combinators.js";
 
 export function list_into(Type) {
     switch (Type) {
@@ -155,7 +155,7 @@ function attach_comments(acc, cur) {
 }
 
 // Remove the largest common indentation from a list of elements of a Pattern.
-// The indents are parsed in grammar.mjs and passed to abstract.mjs as string
+// The indents are parsed in grammar.js and passed to abstract.js as string
 // primitives along with other PatternElements.
 function dedent(elements) {
     // Calculate the maximum common indent.

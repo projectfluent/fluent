@@ -1,13 +1,13 @@
 import assert from "assert";
 import path from "path";
-import {Resource} from "../syntax/grammar.mjs";
-import {readdir, readfile, diff, PASS, FAIL} from "./util.mjs";
+import {Resource} from "../syntax/grammar.js";
+import {readdir, readfile, diff, PASS, FAIL} from "./util.js";
 
 const fixtures_dir = process.argv[2];
 
 if (!fixtures_dir) {
     console.error(
-        "Usage: node --experimental-modules parser.mjs FIXTURE");
+        "Usage: node -r esm parser.js FIXTURE");
     process.exit(1);
 }
 

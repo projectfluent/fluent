@@ -1,12 +1,12 @@
-import * as FTL from "./ast.mjs";
-import {list_into, into} from "./abstract.mjs";
+import * as FTL from "./ast.js";
+import {list_into, into} from "./abstract.js";
 import {
     always, and, charset, defer, either, eof, maybe, not,
     regex, repeat, repeat1, sequence, string
-} from "../lib/combinators.mjs";
+} from "../lib/combinators.js";
 import {
     element_at, flatten, join, keep_abstract, mutate, print, prune
-} from "../lib/mappers.mjs";
+} from "../lib/mappers.js";
 
 /* ----------------------------------------------------- */
 /* An FTL file defines a Resource consisting of Entries. */
@@ -191,7 +191,7 @@ let block_placeable = defer(() =>
 /* ------------------------------------------------------------------- */
 /* Rules for validating expressions in Placeables and as selectors of
  * SelectExpressions are documented in spec/valid.md and enforced in
- * syntax/abstract.mjs. */
+ * syntax/abstract.js. */
 let InlineExpression = defer(() =>
     either(
         StringLiteral,

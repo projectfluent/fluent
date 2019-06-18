@@ -1,13 +1,13 @@
 import color from "cli-color";
 import difflib from "difflib";
-import ebnf from "../lib/ebnf.mjs";
-import {readfile, PASS, FAIL} from "./util.mjs";
+import ebnf from "../lib/ebnf.js";
+import {readfile, PASS, FAIL} from "./util.js";
 
 let args = process.argv.slice(2);
 
 if (args.length !== 2) {
     console.error(
-        "Usage: node --experimental-modules ebnf.mjs " +
+        "Usage: node -r esm ebnf.js " +
         "GRAMMAR_FILE EXPECTED_EBNF");
     process.exit(1);
 }
