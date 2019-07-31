@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "bench": "node -r esm --harmony-async-iteration ./syntax/benchmarks/bench.js ./syntax/benchmarks/gecko_strings.ftl",
+        "bench": "node -r esm ./syntax/benchmarks/bench.js ./syntax/benchmarks/gecko_strings.ftl",
         "build:impls": "tsc",
         "build:guide": "gitbook build guide build/guide",
         "build": "npm run --silent build:impls && npm run --silent build:guide",
@@ -34,6 +34,8 @@
         "url": "https://github.com/projectfluent/fluent/issues"
     },
     "devDependencies": {
+        "@fluent/bundle": "^0.14.0",
+        "@fluent/syntax": "^0.14.0",
         "@types/commonmark": "^0.27.4",
         "@types/minimist": "^1.2.0",
         "@types/node": "^12.0.4",
@@ -43,8 +45,6 @@
         "difflib": "^0.2.4",
         "eslint": "^6.1.0",
         "esm": "^3.2.25",
-        "fluent": "^0.6.4",
-        "fluent-syntax": "^0.7.0",
         "gh-pages": "^1.1.0",
         "gitbook-cli": "^2.3.0",
         "json-diff": "^0.5.2",
