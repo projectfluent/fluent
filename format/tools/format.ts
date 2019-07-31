@@ -21,7 +21,8 @@ const [filePath] = argv._;
 if (filePath === "-") {
     fromStdin(print);
 } else if (filePath) {
-    fromFile(filePath, print);
+    let source = fromFile(filePath);
+    print(source);
 } else {
     exitHelp(1);
 }

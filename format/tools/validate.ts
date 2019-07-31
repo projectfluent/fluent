@@ -1,5 +1,6 @@
+import {execSync} from "child_process";
 import parseArgs from "minimist";
-import {fromFile} from "../lib/input";
+import {files, fromFile} from "../lib/input";
 import {validate} from "../lib/validate";
 
 const argv = parseArgs(process.argv.slice(2), {
@@ -11,11 +12,21 @@ const argv = parseArgs(process.argv.slice(2), {
 
 let [exePath, mdPath] = argv._;
 if (exePath && mdPath) {
-    fromFile(mdPath, source => validate(exePath, mdPath, source));
+    for (let file of files(mdPath, ".md")) {
+        let source = fromFile(file);
+        validate(format, file, source);
+    }
 } else if (argv.help) {
     exitHelp(0);
 } else {
     exitHelp(1);
+}
+
+function format(input: string) {
+    return execSync(exePath, {
+        input,
+        encoding: "utf8",
+    });
 }
 
 function exitHelp(exitCode: number) {

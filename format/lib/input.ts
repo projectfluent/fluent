@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 import readline from "readline";
 
 export function fromStdin(callback: (value: string) => void) {
@@ -14,14 +15,22 @@ export function fromStdin(callback: (value: string) => void) {
     rl.on("close", () => callback(lines.join("\n") + "\n"));
 }
 
-export function fromFile(filePath: string, callback: (value: string) => void) {
-    fs.readFile(filePath, "utf8", (err: NodeJS.ErrnoException | null, content: string | Buffer) => {
-        if (err) {
-            throw err;
-        }
+export function fromFile(filePath: string) {
+    return fs.readFileSync(filePath, "utf8");
+}
 
-        if (typeof content === "string") {
-            callback(content);
-        }
-    });
+export function* files(destination: string, ext: string) {
+    let files;
+    if (destination.endsWith(ext)) {
+        files = [destination];
+    } else {
+        files = fs
+            .readdirSync(destination)
+            .filter(filename => filename.endsWith(ext))
+            .map(filename => path.join(destination, filename));
+    }
+
+    for (let file of files) {
+        yield file;
+    }
 }
