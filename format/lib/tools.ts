@@ -1,8 +1,8 @@
-import {NodeType} from "../format/ast";
-import {Bundle} from "../format/bundle";
-import {ErrorKind} from "../format/error";
-import {Resource} from "../format/resource";
-import {Value} from "../format/value";
+import {NodeType} from "../resolver/ast";
+import {Bundle} from "../resolver/bundle";
+import {ErrorKind} from "../resolver/error";
+import {Resource} from "../resolver/resource";
+import {Value} from "../resolver/value";
 
 type Variables = Map<string, Value>;
 

@@ -1,4 +1,4 @@
-import {Resource as ResourceParser} from "../syntax/parser/grammar";
+import {Resource as ResourceParser} from "../../syntax/parser/grammar";
 import {Entry} from "./ast";
 
 export class Resource {

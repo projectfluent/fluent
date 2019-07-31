@@ -1,7 +1,7 @@
 import parseArgs from "minimist";
-import {Resource} from "../format/resource";
 import {fromFile, fromStdin} from "../lib/input";
 import {formatMessage, formatResource} from "../lib/tools";
+import {Resource} from "../resolver/resource";
 
 const argv = parseArgs(process.argv.slice(2), {
     boolean: ["help"],
