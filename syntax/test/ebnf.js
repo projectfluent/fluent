@@ -1,7 +1,7 @@
 import color from "cli-color";
 import difflib from "difflib";
-import { FAIL, PASS, readfile } from "../../test/harness/util.js";
-import ebnf from "../lib/ebnf.js/index.js";
+import { FAIL, PASS, readfile } from "../lib/util.js";
+import ebnf from "../lib/ebnf.js";
 
 let args = process.argv.slice(2);
 

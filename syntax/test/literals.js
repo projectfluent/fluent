@@ -1,5 +1,5 @@
 import { NumberLiteral, StringLiteral } from "../../syntax/parser/grammar.js";
-import suite from "../../test/harness/suite.js";
+import suite from "../lib/suite.js";
 
 if (process.argv.length > 2) {
     console.error("Usage: node -r esm literals.js");

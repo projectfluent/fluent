@@ -16,7 +16,7 @@
         "generate": "npm run --silent generate:ebnf && npm run --silent generate:fixtures",
         "lint": "prettier --check '**/*.ts'",
         "pretty": "prettier --write '**/*.ts'",
-        "test:ebnf": "node -r esm ./syntax/tools/ebnf.js ./syntax/parser/grammar.js ./syntax/spec/fluent.ebnf",
+        "test:ebnf": "node -r esm ./syntax/test/ebnf.js ./syntax/parser/grammar.js ./syntax/spec/fluent.ebnf",
         "test:fixtures": "node -r esm ./syntax/test/parser.js ./syntax/test/fixtures",
         "test:unit": "node -r esm ./syntax/test/literals.js",
         "test": "npm run --silent test:fixtures && npm run --silent test:unit",
