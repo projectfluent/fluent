@@ -1,14 +1,12 @@
 import color from "cli-color";
 import difflib from "difflib";
-import ebnf from "../lib/ebnf.js";
-import {readfile, PASS, FAIL} from "./util.js";
+import ebnf from "../../lib/ebnf.js";
+import {readfile, PASS, FAIL} from "../harness/util.js";
 
 let args = process.argv.slice(2);
 
 if (args.length !== 2) {
-    console.error(
-        "Usage: node -r esm ebnf.js " +
-        "GRAMMAR_FILE EXPECTED_EBNF");
+    console.error("Usage: node -r esm ebnf.js " + "GRAMMAR_FILE EXPECTED_EBNF");
     process.exit(1);
 }
 
@@ -18,12 +16,10 @@ async function main(grammar_mjs, fluent_ebnf) {
     let grammar_source = await readfile(grammar_mjs);
     let grammar_ebnf = await readfile(fluent_ebnf);
 
-    let diffs = difflib.unifiedDiff(
-        lines(grammar_ebnf),
-        lines(ebnf(grammar_source)), {
-            fromfile: "Expected",
-            tofile: "Actual",
-        });
+    let diffs = difflib.unifiedDiff(lines(grammar_ebnf), lines(ebnf(grammar_source)), {
+        fromfile: "Expected",
+        tofile: "Actual",
+    });
 
     for (let diff of diffs) {
         if (diff.startsWith("+")) {

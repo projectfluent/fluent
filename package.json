@@ -1,47 +1,56 @@
 {
-  "name": "fluent-spec",
-  "description": "Specification and documentation for Fluent",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "bench": "node -r esm --harmony-async-iteration ./test/bench.js ./test/benchmarks/gecko_strings.ftl",
-    "build:guide": "gitbook build guide build/guide",
-    "build": "npm run --silent build:guide",
-    "ci": "npm run --silent lint && npm test && npm run --silent test:ebnf",
-    "clean": "rm -rf build",
-    "deploy": "gh-pages -d build",
-    "generate:ebnf": "node -r esm bin/ebnf.js ./syntax/grammar.js > ./spec/fluent.ebnf",
-    "generate:fixtures": "make -sC test/fixtures",
-    "generate": "npm run --silent generate:ebnf && npm run --silent generate:fixtures",
-    "lint": "eslint **/*.js",
-    "test:ebnf": "node -r esm test/ebnf.js ./syntax/grammar.js ./spec/fluent.ebnf",
-    "test:fixtures": "node -r esm test/parser.js ./test/fixtures",
-    "test:unit": "node -r esm test/literals.js",
-    "test": "npm run --silent test:fixtures && npm run --silent test:unit"
-  },
-  "homepage": "https://projectfluent.org",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/projectfluent/fluent.git"
-  },
-  "author": "Mozilla <l10n-drivers@mozilla.org>",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/projectfluent/fluent/issues"
-  },
-  "devDependencies": {
-    "babylon": "^6.18.0",
-    "cli-color": "^1.2.0",
-    "difflib": "^0.2.4",
-    "eslint": "^4.19.1",
-    "fluent": "^0.6.4",
-    "fluent-syntax": "^0.7.0",
-    "gh-pages": "^1.1.0",
-    "gitbook-cli": "^2.3.0",
-    "json-diff": "^0.5.2"
-  },
-  "dependencies": {
-    "esm": "^3.2.25",
-    "minimist": "^1.2.0"
-  }
+    "name": "fluent-spec",
+    "description": "Specification and documentation for Fluent",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "bench": "node -r esm --harmony-async-iteration ./test/benchmarks/bench.js ./test/benchmarks/gecko_strings.ftl",
+        "build:guide": "gitbook build guide build/guide",
+        "build": "npm run --silent build:guide",
+        "ci": "npm run --silent lint && npm test && npm run --silent test:ebnf",
+        "clean": "rm -rf build",
+        "deploy": "gh-pages -d build",
+        "generate:ebnf": "node -r esm bin/ebnf.js ./syntax/grammar.js > ./spec/fluent.ebnf",
+        "generate:fixtures": "make -sC test/syntax/fixtures",
+        "generate": "npm run --silent generate:ebnf && npm run --silent generate:fixtures",
+        "lint": "prettier --check '**/*.ts'",
+        "pretty": "prettier --write '**/*.ts'",
+        "test:ebnf": "node -r esm test/syntax/ebnf.js ./syntax/grammar.js ./spec/fluent.ebnf",
+        "test:fixtures": "node -r esm test/syntax/parser.js ./test/syntax/fixtures",
+        "test:unit": "node -r esm test/syntax/literals.js",
+        "test:format": "mocha -u tdd -r ts-node/register ./test/format/**/*_test.ts",
+        "test": "npm run --silent test:fixtures && npm run --silent test:unit && npm run --silent test:format",
+        "watch": "tsc --watch"
+    },
+    "homepage": "https://projectfluent.org",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/projectfluent/fluent.git"
+    },
+    "author": "Mozilla <l10n-drivers@mozilla.org>",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/projectfluent/fluent/issues"
+    },
+    "devDependencies": {
+        "@types/minimist": "^1.2.0",
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^12.0.4",
+        "babylon": "^6.18.0",
+        "cli-color": "^1.2.0",
+        "difflib": "^0.2.4",
+        "fluent": "^0.6.4",
+        "fluent-syntax": "^0.7.0",
+        "gh-pages": "^1.1.0",
+        "gitbook-cli": "^2.3.0",
+        "json-diff": "^0.5.2",
+        "prettier": "^1.17.1",
+        "mocha": "^6.1.4",
+        "ts-node": "^8.2.0",
+        "typescript": "^3.5.1"
+    },
+    "dependencies": {
+        "esm": "^3.2.25",
+        "minimist": "^1.2.0"
+    }
 }

@@ -1,9 +1,7 @@
 import assert from "assert";
-import color from "cli-color";
 import {diff, PASS, FAIL} from "./util.js";
 
-export default
-function suite(fn) {
+export default function suite(fn) {
     let errors = new Map();
     fn(create_tester(errors));
 
@@ -45,9 +43,7 @@ ${diff(err.expected, err.actual)}
 }
 
 function exit_summary(error_count) {
-    const message = error_count
-        ? `Tests ${FAIL}: ${error_count}.`
-        : `All tests ${PASS}.`;
+    const message = error_count ? `Tests ${FAIL}: ${error_count}.` : `All tests ${PASS}.`;
     console.log(`
 ========================================================================
 ${message}
