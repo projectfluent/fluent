@@ -12,7 +12,7 @@
         "clean": "rm -rf build",
         "deploy": "gh-pages -d build",
         "generate:ebnf": "node -r esm ./syntax/tools/ebnf.js ./syntax/parser/grammar.js > ./syntax/spec/fluent.ebnf",
-        "generate:fixtures": "make -sC syntax/test/fixtures",
+        "generate:fixtures": "make -sC ./syntax/test/fixtures",
         "generate": "npm run --silent generate:ebnf && npm run --silent generate:fixtures",
         "lint": "eslint ./syntax/**/*.js && prettier --check '**/*.ts'",
         "pretty": "prettier --write '**/*.ts'",

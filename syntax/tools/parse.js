@@ -1,7 +1,7 @@
 import fs from "fs";
 import readline from "readline";
 import parse_args from "minimist";
-import {Resource} from "../syntax/grammar.js";
+import {Resource} from "../parser/grammar.js";
 
 const argv = parse_args(process.argv.slice(2), {
     boolean: ["help"],
