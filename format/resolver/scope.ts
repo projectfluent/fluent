@@ -5,21 +5,19 @@ import {NoneValue, StringValue, Value} from "./value";
 
 export class Scope {
     private readonly messages: Map<string, Message>;
-    private readonly variables: Map<string, Value>;
     public errors: Array<ScopeError>;
 
     constructor(messages: Map<string, Message>, variables: Map<string, Value>) {
         this.messages = messages;
-        this.variables = variables;
         this.errors = [];
     }
 
     resolveExpression(node: ast.Expression): Value {
         switch (node.type) {
             case ast.NodeType.StringLiteral:
-                return this.resolveStringLiteral(node as ast.StringLiteral);
+                return this.resolveStringLiteral(node);
             case ast.NodeType.MessageReference:
-                return this.resolveMessageReference(node as ast.MessageReference);
+                return this.resolveMessageReference(node);
             default:
                 throw new TypeError("Unknown node type.");
         }
