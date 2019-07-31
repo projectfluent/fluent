@@ -1,27 +1,15 @@
 import assert from "assert";
 import path from "path";
-import {Resource} from "../syntax/grammar.js";
 import {readdir, readfile, diff, PASS, FAIL} from "./util.js";
 
-const fixtures_dir = process.argv[2];
-
-if (!fixtures_dir) {
-    console.error(
-        "Usage: node -r esm parser.js FIXTURE");
-    process.exit(1);
-}
-
-main(fixtures_dir);
-
-async function main(fixtures_dir) {
+export async function test_fixtures(fixtures_dir, compare_fn) {
     if (fixtures_dir.endsWith(".ftl")) {
         // Actually, this is a filepath, split the path and the dir.
         var ftls = [path.basename(fixtures_dir)];
         fixtures_dir = path.dirname(fixtures_dir);
     } else {
         let files = await readdir(fixtures_dir);
-        var ftls = files.filter(
-            filename => filename.endsWith(".ftl"));
+        var ftls = files.filter(filename => filename.endsWith(".ftl"));
     }
 
     // Collect all AssertionErrors.
@@ -30,31 +18,25 @@ async function main(fixtures_dir) {
     // Parse each FTL fixture and compare against the expected AST.
     for (const file_name of ftls) {
         const ftl_path = path.join(fixtures_dir, file_name);
-        const ast_path = ftl_path.replace(/ftl$/, "json");
+        const res_path = ftl_path.replace(/ftl$/, "json");
 
         process.stdout.write(`${ftl_path} `);
 
         try {
             var ftl_source = await readfile(ftl_path);
-            var expected_ast = await readfile(ast_path);
+            var expected_result = await readfile(res_path);
         } catch (err) {
             errors.set(ftl_path, err);
             console.log(FAIL);
             continue;
         }
 
-        Resource.run(ftl_source).fold(
-            assert_equal,
-            err => assert.fail(err));
-
-        function assert_equal(ast) {
-            try {
-                validate(ast, expected_ast);
-                console.log(PASS);
-            } catch (err) {
-                errors.set(ftl_path, err);
-                console.log(FAIL);
-            }
+        try {
+            compare_fn(ftl_source, expected_result);
+            console.log(PASS);
+        } catch (err) {
+            errors.set(ftl_path, err);
+            console.log(FAIL);
         }
     }
 
@@ -70,7 +52,7 @@ async function main(fixtures_dir) {
     exit_summary(errors.size);
 }
 
-function validate(actual_ast, expected_serialized) {
+export function validate_json(actual_ast, expected_serialized) {
     const actual_json = JSON.parse(JSON.stringify(actual_ast));
     const expected_json = JSON.parse(expected_serialized);
     assert.deepEqual(actual_json, expected_json);
@@ -95,9 +77,7 @@ ${err.message}
 }
 
 function exit_summary(error_count) {
-    const message = error_count
-        ? `Tests ${FAIL}: ${error_count}.`
-        : `All tests ${PASS}.`;
+    const message = error_count ? `Tests ${FAIL}: ${error_count}.` : `All tests ${PASS}.`;
     console.log(`
 ========================================================================
 ${message}
