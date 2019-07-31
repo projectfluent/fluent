@@ -13,6 +13,7 @@ suite(tester => {
 
     // Unescape raw value of StringLiterals.
     {
+        /* eslint-disable quotes */
         test(StringLiteral.run(`"abc"`), {value: "abc"});
         test(StringLiteral.run(`"\\""`), {value: '"'});
         test(StringLiteral.run(`"\\\\"`), {value: "\\"});
@@ -30,6 +31,7 @@ suite(tester => {
         // Literal braces.
         test(StringLiteral.run(`"{"`), {value: "{"});
         test(StringLiteral.run(`"}"`), {value: "}"});
+        /* eslint-enable quotes */
     }
 
     // Parse float value and precision of NumberLiterals.

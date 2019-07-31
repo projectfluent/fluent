@@ -1,0 +1,24 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "rules": {
+        "brace-style": ["error", "1tbs"],
+        "eqeqeq": ["error", "always"],
+        "indent": ["error", 4, {
+            "CallExpression": {"arguments": 1},
+            "MemberExpression": "off",
+            "SwitchCase": 1
+        }],
+        "quotes": ["error", "double"],
+        "semi": ["error", "always"],
+        "space-infix-ops": ["error"],
+        "no-tabs": "error",
+        "no-undef": "error"
+    }
+}
