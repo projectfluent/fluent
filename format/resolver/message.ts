@@ -1,4 +1,4 @@
-import {Pattern} from "./ast";
+import {Pattern} from "../../syntax/parser/ast";
 
 export interface Message {
     readonly id: string;

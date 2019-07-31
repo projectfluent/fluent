@@ -1,4 +1,4 @@
-import {NodeType, Pattern} from "./ast";
+import {Pattern} from "../../syntax/parser/ast";
 import {ScopeError} from "./error";
 import {Message} from "./message";
 import {Resource} from "./resource";
@@ -15,7 +15,7 @@ export class Bundle {
 
     addResource(resource: Resource) {
         for (let message of resource.body) {
-            if (message.type === NodeType.Message) {
+            if (message.type === "Message") {
                 let attributes: Record<string, Pattern> = {};
                 for (let attribute of message.attributes) {
                     attributes[attribute.id.name] = attribute.value;

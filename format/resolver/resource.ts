@@ -1,5 +1,5 @@
+import {Entry} from "../../syntax/parser/ast";
 import {Resource as ResourceParser} from "../../syntax/parser/grammar";
-import {Entry} from "./ast";
 
 export class Resource {
     public readonly body: Array<Entry>;

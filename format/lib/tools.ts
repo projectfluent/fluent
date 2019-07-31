@@ -1,4 +1,3 @@
-import {NodeType} from "../resolver/ast";
 import {Bundle} from "../resolver/bundle";
 import {ErrorKind} from "../resolver/error";
 import {Resource} from "../resolver/resource";
@@ -12,7 +11,7 @@ export function formatResource(resource: Resource, variables: Variables) {
 
     let results = [];
     for (let entry of resource.body) {
-        if (entry.type !== NodeType.Message) {
+        if (entry.type !== "Message") {
             continue;
         }
         let message = bundle.getMessage(entry.id.name);

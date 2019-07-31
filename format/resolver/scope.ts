@@ -1,4 +1,4 @@
-import * as ast from "./ast";
+import * as ast from "../../syntax/parser/ast";
 import {ErrorKind, ScopeError} from "./error";
 import {Message} from "./message";
 import {NoneValue, StringValue, Value} from "./value";
@@ -14,9 +14,9 @@ export class Scope {
 
     resolveExpression(node: ast.Expression): Value {
         switch (node.type) {
-            case ast.NodeType.StringLiteral:
+            case "StringLiteral":
                 return this.resolveStringLiteral(node);
-            case ast.NodeType.MessageReference:
+            case "MessageReference":
                 return this.resolveMessageReference(node);
             default:
                 throw new TypeError("Unknown node type.");
@@ -43,9 +43,9 @@ export class Scope {
 
     resolvePatternElement(node: ast.PatternElement): Value {
         switch (node.type) {
-            case ast.NodeType.TextElement:
+            case "TextElement":
                 return new StringValue(node.value);
-            case ast.NodeType.Placeable:
+            case "Placeable":
                 return this.resolveExpression(node.expression);
             default:
                 throw new TypeError("Unknown node type.");
