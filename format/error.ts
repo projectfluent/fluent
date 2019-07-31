@@ -1,5 +1,4 @@
 export enum ErrorKind {
-    UnknownVariable,
     UnknownMessage,
     MissingValue,
 }

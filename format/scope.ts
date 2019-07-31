@@ -16,25 +16,10 @@ export class Scope {
 
     resolveExpression(node: ast.Expression): Value {
         switch (node.type) {
-            case ast.NodeType.VariableReference:
-                return this.resolveVariableReference(node as ast.VariableReference);
             case ast.NodeType.MessageReference:
                 return this.resolveMessageReference(node as ast.MessageReference);
-            case ast.NodeType.SelectExpression:
-                return this.resolveSelectExpression(node as ast.SelectExpression);
             default:
                 throw new TypeError("Unknown node type.");
-        }
-    }
-
-    resolveVariableReference(node: ast.VariableReference): Value {
-        let value = this.variables.get(node.id.name);
-        if (value !== undefined) {
-            return value;
-        } else {
-            let name = `$${node.id.name}`;
-            this.errors.push(new ScopeError(ErrorKind.UnknownVariable, name));
-            return new NoneValue(name);
         }
     }
 
@@ -49,29 +34,6 @@ export class Scope {
             this.errors.push(new ScopeError(ErrorKind.MissingValue, node.id.name));
             return new NoneValue(`${node.id.name}`);
         }
-    }
-
-    resolveDefaultVariant(node: ast.SelectExpression): Value {
-        for (let variant of node.variants) {
-            if (variant.default) {
-                return this.resolvePattern(variant.value);
-            }
-        }
-        throw new RangeError("Missing default variant.");
-    }
-
-    resolveSelectExpression(node: ast.SelectExpression): Value {
-        let selector = this.resolveExpression(node.selector);
-        if (selector instanceof NoneValue) {
-            return this.resolveDefaultVariant(node);
-        }
-
-        for (let variant of node.variants) {
-            if (variant.key.name === selector.value) {
-                return this.resolvePattern(variant.value);
-            }
-        }
-        return this.resolveDefaultVariant(node);
     }
 
     resolvePatternElement(node: ast.PatternElement): Value {
