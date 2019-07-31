@@ -30,3 +30,18 @@ test =
     "errors": []
 }
 ```
+
+## Escape Sequences
+
+Escape sequences are not supported in `TextElements`.
+
+```properties
+test = \U01F602
+```
+
+```json
+{
+    "value": "\\U01F602",
+    "errors": []
+}
+```

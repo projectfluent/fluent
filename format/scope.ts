@@ -16,11 +16,18 @@ export class Scope {
 
     resolveExpression(node: ast.Expression): Value {
         switch (node.type) {
+            case ast.NodeType.StringLiteral:
+                return this.resolveStringLiteral(node as ast.StringLiteral);
             case ast.NodeType.MessageReference:
                 return this.resolveMessageReference(node as ast.MessageReference);
             default:
                 throw new TypeError("Unknown node type.");
         }
+    }
+
+    resolveStringLiteral(node: ast.StringLiteral): Value {
+        let {value} = node.parse();
+        return new StringValue(value);
     }
 
     resolveMessageReference(node: ast.MessageReference): Value {

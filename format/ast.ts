@@ -1,5 +1,6 @@
 export enum NodeType {
     Identifer = "Identifier",
+    StringLiteral = "StringLiteral",
     MessageReference = "MessageReference",
     TextElement = "TextElement",
     Placeable = "Placeable",
@@ -18,13 +19,19 @@ export interface Identifier extends SyntaxNode {
     readonly name: string;
 }
 
+export interface StringLiteral extends SyntaxNode {
+    readonly type: NodeType.StringLiteral;
+    readonly value: string;
+    parse(): {value: string};
+}
+
 export interface MessageReference extends SyntaxNode {
     readonly type: NodeType.MessageReference;
     readonly id: Identifier;
     readonly attribute: Identifier | null;
 }
 
-export type InlineExpression = MessageReference;
+export type InlineExpression = StringLiteral | MessageReference;
 
 export type Expression = InlineExpression;
 
