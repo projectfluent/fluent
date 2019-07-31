@@ -1,6 +1,6 @@
 import assert from "assert";
-import {Resource} from "../../syntax/grammar.js";
-import {test_fixtures, validate_json} from "../harness/fixture.js";
+import { Resource } from "../../syntax/parser/grammar.js";
+import { test_fixtures, validate_json } from "../../test/harness/fixture.js";
 
 const fixtures_dir = process.argv[2];
 
