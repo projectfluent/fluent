@@ -31,3 +31,13 @@ export function formatResource(resource: Resource, variables: Variables) {
     }
     return results;
 }
+
+export function formatMessage(resource: Resource, variables: Variables, id: string) {
+    let bundle = new Bundle();
+    bundle.addResource(resource);
+
+    let message = bundle.getMessage(id);
+    if (message && message.value) {
+        return bundle.formatPattern(message.value, variables);
+    }
+}

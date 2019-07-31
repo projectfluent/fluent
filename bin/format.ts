@@ -1,13 +1,14 @@
 import parseArgs from "minimist";
 import {Resource} from "../format/resource";
 import {fromFile, fromStdin} from "../lib/input";
-import {formatResource} from "../lib/tools";
+import {formatMessage, formatResource} from "../lib/tools";
 
 const argv = parseArgs(process.argv.slice(2), {
-    boolean: ["help", "group"],
+    boolean: ["help"],
+    string: ["message"],
     alias: {
         help: "h",
-        group: "g",
+        message: "m",
     },
 });
 
@@ -38,13 +39,19 @@ function exitHelp(exitCode: number) {
 
     Options:
 
-        -h, --help      Display help and quit.
+        -h, --help         Display help and quit.
+        -m, --message ID   Format only the message called ID.
 `);
     process.exit(exitCode);
 }
 
 function print(source: string) {
     let resource = new Resource(source);
-    let results = formatResource(resource, new Map());
+    let results;
+    if (argv.message) {
+        results = formatMessage(resource, new Map(), argv.message);
+    } else {
+        results = formatResource(resource, new Map());
+    }
     console.log(JSON.stringify(results, null, 4));
 }
