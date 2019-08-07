@@ -29,14 +29,15 @@ duplicate-named-args = {FUN(x: 1, x: "X")}
 
 ## Whitespace around arguments
 
-sparse-inline-call = {FUN(  "a"  , msg,   x: 1   )}
+sparse-inline-call = {FUN     (  "a"  , msg,   x: 1   )}
 empty-inline-call = {FUN(  )}
 multiline-call = {FUN(
         "a",
         msg,
         x: 1
     )}
-sparse-multiline-call = {FUN(
+sparse-multiline-call = {FUN
+    (
 
         "a"    ,
         msg
