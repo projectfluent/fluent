@@ -168,7 +168,16 @@
         {
             "type": "Junk",
             "annotations": [],
-            "content": "unknown-escape = {\"\\x\"}\n\n"
+            "content": "unknown-escape = {\"\\x\"}\n"
+        },
+        {
+            "type": "Comment",
+            "content": "ERROR Multiline literal"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "invalid-multiline-literal = {\"\n \"}\n\n"
         },
         {
             "type": "GroupComment",
