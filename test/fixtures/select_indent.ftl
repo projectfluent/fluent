@@ -15,6 +15,7 @@ select-1tbs-indent = {
 select-allman-inline =
 { $selector ->
    *[key] Value
+    [other] Other
 }
 
 select-allman-newline =

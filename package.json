@@ -7,7 +7,7 @@
     "bench": "node -r esm --harmony-async-iteration ./test/bench.js ./test/benchmarks/gecko_strings.ftl",
     "build:guide": "gitbook build guide build/guide",
     "build": "npm run --silent build:guide",
-    "ci": "npm run --silent lint && npm test && npm run --silent test:ebnf",
+    "ci": "npm run --silent lint && npm test && npm run --silent test:ebnf && npm run --silent test:validate",
     "clean": "rm -rf build",
     "deploy": "gh-pages -d build",
     "generate:ebnf": "node -r esm bin/ebnf.js ./syntax/grammar.js > ./spec/fluent.ebnf",
@@ -15,9 +15,10 @@
     "generate": "npm run --silent generate:ebnf && npm run --silent generate:fixtures",
     "lint": "eslint **/*.js",
     "test:ebnf": "node -r esm test/ebnf.js ./syntax/grammar.js ./spec/fluent.ebnf",
-    "test:fixtures": "node -r esm test/parser.js ./test/fixtures",
+    "test:fixtures": "node -r esm --stack-size=500000000 test/parser.js ./test/fixtures",
+    "test:validate": "node -r esm --stack-size=500000000 test/validator.js ./test/fixtures",
     "test:unit": "node -r esm test/literals.js",
-    "test": "npm run --silent test:fixtures && npm run --silent test:unit"
+    "test": "npm run --silent test:fixtures && npm run --silent test:unit && npm run --silent test:validate"
   },
   "homepage": "https://projectfluent.org",
   "repository": {
