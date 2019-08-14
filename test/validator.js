@@ -19,6 +19,12 @@ async function main() {
     process.exit(Number(changed));
 }
 
+/**
+ * Modify grammar.js
+ *
+ * Both not() and maybe() match empty productions. Use them
+ * interchangably to see if we're still passing tests.
+ */
 async function modify_grammar() {
     let changed = false;
     let grammar = await readfile(GRAMMAR);
@@ -49,6 +55,13 @@ async function modify_grammar() {
     return changed;
 }
 
+/**
+ * Modify abstract.js
+ *
+ * Test if the constraints to selector expressions are all tested.
+ * Invert existing instanceof checks, and allow more AST nodes
+ * that can be returned by InlineExpression.
+ */
 async function validate_selector() {
     let changed = false;
     let abstract = await readfile(ABSTRACT);
