@@ -2,11 +2,14 @@ import * as FTL from "./ast.js";
 import {list_into, into} from "./abstract.js";
 import {
     always, and, charset, defer, either, eof, maybe, not,
-    regex, repeat, repeat1, sequence, string
+    regex, repeat0, repeat, repeat1, sequence, string
 } from "../lib/combinators.js";
 import {
     element_at, flatten, join, keep_abstract, mutate, print, prune
 } from "../lib/mappers.js";
+
+// repeat0 is only imported for validation tests.
+repeat0;
 
 /* ----------------------------------------------------- */
 /* An FTL file defines a Resource consisting of Entries. */

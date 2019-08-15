@@ -22,33 +22,60 @@ async function main() {
 /**
  * Modify grammar.js
  *
- * Both not() and maybe() match empty productions. Use them
- * interchangably to see if we're still passing tests.
+ * The combinator parsers can cover multiple variants.
+ * For example, `repeat()` is the same as `maybe(repeat1)`.
+ * And `maybe()` is `not() or once()`.
+ * Now, when you replace several options with just one, you should
+ * get test failures.
+ * In the same way, if you add options to a more restricted production,
+ * you should also get test failures.
  */
 async function modify_grammar() {
     let changed = false;
     let grammar = await readfile(GRAMMAR);
-    let to_replace = /(not|maybe)\(/g;
+    let to_replace = /(not|maybe|repeat1?)\(/g;
     let m, iteration = 0;
     while (m = to_replace.exec(grammar)) {
-        let replacement, new_grammar = grammar.slice(0, m.index);
+        let replacement, replacements;
         switch (m[1]) {
             case "not":
-                replacement = "maybe";
+                replacements = ["maybe"];
                 break;
             case "maybe":
-                replacement = "not";
+                replacements = ["not", "sequence"];
+                break;
+            case "repeat":
+                if (iteration === 0) {
+                    // skip Resource
+                    replacements = [];
+                } else {
+                    replacements = ["repeat0", "repeat1"];
+                }
+                break;
+            case "repeat1":
+                let further = /repeat1/g;
+                further.lastIndex = m.index + "repeat1".length;
+                if (further.test(grammar)) {
+                    replacements = ["repeat"];
+                } else {
+                    // ignore blank, which is the last production
+                    replacements = [];
+                }
                 break;
         }
-        new_grammar += replacement;
-        new_grammar += grammar.slice(m.index + m[1].length);
-        await writefile(GRAMMAR, new_grammar);
-        console.log(`Grammar validation iteration ${++iteration}`);
-        const keep_change = verify_fixtures();
-        if (keep_change) {
-            grammar = new_grammar;
-            changed = true;
-            console.log("new grammar");
+        for (replacement of replacements) {
+            let new_grammar = grammar.slice(0, m.index);
+            new_grammar += replacement;
+            new_grammar += grammar.slice(m.index + m[1].length);
+            await writefile(GRAMMAR, new_grammar);
+            console.log(`Grammar validation iteration ${++iteration}`);
+            const keep_change = verify_fixtures();
+            if (keep_change) {
+                grammar = new_grammar;
+                changed = true;
+                console.log("new grammar");
+                break;
+            }
         }
     }
     await writefile(GRAMMAR, grammar);

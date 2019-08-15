@@ -22,13 +22,13 @@ invalid-selector-term-variant =
     }
 
 # ERROR Nested expressions are not valid selectors
-invalid-selector-select-expression =
+invalid-selector-nested-expression =
     { { 3 } ->
         *[key] default
     }
 
 # ERROR Select expressions are not valid selectors
-invalid-selector-nested-expression =
+invalid-selector-select-expression =
     { { $sel ->
         *[key] value
         } ->
@@ -37,6 +37,11 @@ invalid-selector-nested-expression =
 
 empty-variant =
     { $sel ->
+       *[key] {""}
+    }
+
+reduced-whitespace =
+    {FOO()->
        *[key] {""}
     }
 

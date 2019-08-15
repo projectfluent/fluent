@@ -58,6 +58,25 @@
         {
             "type": "ResourceComment",
             "content": "Resource Comment"
+        },
+        {
+            "type": "Comment",
+            "content": "Errors"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "#error\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "##error\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "###error\n"
         }
     ]
 }

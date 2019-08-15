@@ -18,6 +18,12 @@ key04 =
 key05 =                
     .attr1 = Attribute 1
 
+no-whitespace=Value
+    .attr1=Attribute 1
+
+extra-whitespace    =  Value
+    .attr1   =      Attribute 1
+
 key06 = {""}
 
 # JUNK Missing value
