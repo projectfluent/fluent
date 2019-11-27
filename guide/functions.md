@@ -164,7 +164,7 @@ today = Today is { $day }
 
 ```javascript
 ctx.format('today', {
-  day: Intl.MessageDateTimeArgument(new Date(), {
+  day: new FluentDateTime(new Date(), {
     weekday: 'long'
   })
 })
