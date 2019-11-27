@@ -26,7 +26,7 @@ validate your work:
     npm test                   # Test the parser against JSON AST fixtures.
     npm run lint               # Lint the parser code.
 
-    npm run generate:ebnf      # Generate the EBNF from syntax/grammar.mjs.
+    npm run generate:ebnf      # Generate the EBNF from syntax/grammar.js.
     npm run generate:fixtures  # Generate test fixtures (FTL → JSON AST).
 
     npm run build:guide        # Build the HTML version of the Guide.
@@ -47,6 +47,8 @@ We also know about the following community-driven implementations:
   - A Java/Kotlin implementation has been requested in [#158](https://github.com/projectfluent/fluent/issues/158).
   - [`elm-fluent`](https://github.com/elm-fluent/elm-fluent) by [@spookylukey](https://github.com/spookylukey/)
   - [`Fluent`](https://github.com/alabamenhu/Fluent) as a Perl 6 module by [@alabamenhu](https://github.com/alabamenhu/)
+  - A Lua implementation effort is underway at [`fluent-lua`](https://github.com/alerque/fluent-lua) by [@alerque](https://github.com/alerque).
+  - A D implementation effort is underway at [`fluentd`](https://github.com/SirNickolas/fluentd) by [@SirNickolas](https://github.com/SirNickolas).
 
 ## Learn More and Discuss
 

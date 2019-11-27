@@ -4,12 +4,12 @@ Fluent Syntax distinguishes between well-formed and valid resources.
 
   - Well-formed Fluent resources conform to the Fluent grammar described by
   the Fluent EBNF (`spec/fluent.ebnf`). The EBNF is auto-generated from
-  `syntax/grammar.mjs`.
+  `syntax/grammar.js`.
 
   - Valid Fluent resources must be well-formed and are additionally checked
   for semantic correctness. The validation process may reject syntax which is
   well-formed. The validation rules are expressed in code in
-  `syntax/abstract.mjs`.
+  `syntax/abstract.js`.
 
 For example, the `message.attr(param: "value")` syntax is _well-formed_.
 `message.attr` is an `AttributeExpression` which may be the callee of a

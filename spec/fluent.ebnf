@@ -49,7 +49,7 @@ block_placeable     ::= blank_block blank_inline? inline_placeable
 
 /* Rules for validating expressions in Placeables and as selectors of
  * SelectExpressions are documented in spec/valid.md and enforced in
- * syntax/abstract.mjs. */
+ * syntax/abstract.js. */
 InlineExpression    ::= StringLiteral
                       | NumberLiteral
                       | FunctionReference

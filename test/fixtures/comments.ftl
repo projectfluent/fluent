@@ -9,7 +9,12 @@ foo = Foo
 -term = Term
 
 # Another standalone
-#
+# 
 #      with indent
 ## Group Comment
 ### Resource Comment
+
+# Errors
+#error
+##error
+###error

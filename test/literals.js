@@ -1,9 +1,9 @@
 /* eslint quotes: "off" */
-import suite from "./suite.mjs";
-import {StringLiteral, NumberLiteral} from "../syntax/grammar.mjs";
+import suite from "./suite.js";
+import {StringLiteral, NumberLiteral} from "../syntax/grammar.js";
 
 if (process.argv.length > 2) {
-    console.error("Usage: node --experimental-modules literals.mjs");
+    console.error("Usage: node -r esm literals.js");
     process.exit(1);
 }
 
@@ -71,4 +71,3 @@ suite(tester => {
         test(NumberLiteral.run("-01.0300"), {value: -1.03, precision: 4});
     };
 });
-

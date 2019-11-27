@@ -12,6 +12,9 @@ backslash-in-string = {"\\"}
 mismatched-quote = {"\\""}
 # ERROR Unknown escape
 unknown-escape = {"\x"}
+# ERROR Multiline literal
+invalid-multiline-literal = {"
+ "}
 
 ## Unicode escapes
 string-unicode-4digits = {"\u0041"}

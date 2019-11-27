@@ -53,7 +53,7 @@ Time elapsed: 12,345.678s.
 In Canadian English, however, the result would be:
 
 ```
-Time elapsed: 12 345,678s.
+Time elapsed: 12 345.678s.
 ```
 
 ## Explicit Formatting

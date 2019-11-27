@@ -1,6 +1,6 @@
 import assert from "assert";
 import color from "cli-color";
-import {diff, PASS, FAIL} from "./util.mjs";
+import {diff, PASS, FAIL} from "./util.js";
 
 export default
 function suite(fn) {

@@ -21,3 +21,9 @@
 
 # JUNK Missing =
 -term07
+
+-term08=Value
+    .attr=Attribute
+
+-term09   =  Value
+    .attr  =   Attribute
