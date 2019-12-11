@@ -18,7 +18,7 @@
     "test:fixtures": "node -r esm --stack-size=500000000 test/parser.js ./test/fixtures",
     "test:validate": "node -r esm --stack-size=500000000 test/validator.js ./test/fixtures",
     "test:unit": "node -r esm test/literals.js",
-    "test": "npm run --silent test:fixtures && npm run --silent test:unit && npm run --silent test:validate"
+    "test": "npm run --silent test:fixtures && npm run --silent test:unit"
   },
   "homepage": "https://projectfluent.org",
   "repository": {
