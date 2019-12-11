@@ -32,14 +32,14 @@
   },
   "devDependencies": {
     "babylon": "^6.18.0",
-    "cli-color": "^1.2.0",
+    "cli-color": "^2.0.0",
     "difflib": "^0.2.4",
-    "eslint": "^4.19.1",
-    "fluent": "^0.6.4",
-    "fluent-syntax": "^0.7.0",
-    "gh-pages": "^1.1.0",
-    "gitbook-cli": "^2.3.0",
-    "json-diff": "^0.5.2"
+    "eslint": "^6.7.2",
+    "@fluent/bundle": "^0.14.0",
+    "@fluent/syntax": "^0.14.0",
+    "gh-pages": "^2.1.1",
+    "gitbook-cli": "^2.3.2",
+    "json-diff": "^0.5.4"
   },
   "dependencies": {
     "esm": "^3.2.25",
