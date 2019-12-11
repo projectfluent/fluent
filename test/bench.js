@@ -1,9 +1,8 @@
-import fs from "fs";
 import perf from "perf_hooks";
 const {PerformanceObserver, performance} = perf;
 
-import {parse} from "fluent-syntax";
-import {_parse} from "fluent";
+import {parse} from "@fluent/syntax";
+import {FluentResource} from "@fluent/bundle";
 import {Resource} from "../syntax/grammar.js";
 import {readfile} from "./util.js";
 
@@ -11,8 +10,7 @@ let args = process.argv.slice(2);
 
 if (args.length < 1 || 2 < args.length) {
     console.error(
-        "Usage: node -r esm --harmony-async-iteration " +
-        "bench.js FTL_FILE [SAMPLE SIZE = 30]");
+        "Usage: node -r esm bench.js FTL_FILE [SAMPLE SIZE = 30]");
     process.exit(1);
 }
 
@@ -32,7 +30,7 @@ async function main(ftl_file, sample_size = 30) {
     let subjects = new Map([
         ["Reference", new Subject("Reference", () => Resource.run(ftl))],
         ["Tooling", new Subject("Tooling", () => parse(ftl))],
-        ["Runtime", new Subject("Runtime", () => _parse(ftl))],
+        ["Runtime", new Subject("Runtime", () => new FluentResource(ftl))],
     ]);
 
     new PerformanceObserver(items => {

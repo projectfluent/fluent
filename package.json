@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "bench": "node -r esm --harmony-async-iteration ./test/bench.js ./test/benchmarks/gecko_strings.ftl",
+    "bench": "node -r esm ./test/bench.js ./test/benchmarks/gecko_strings.ftl",
     "build:guide": "gitbook build guide build/guide",
     "build": "npm run --silent build:guide",
     "ci": "npm run --silent lint && npm test && npm run --silent test:ebnf && npm run --silent test:validate",
@@ -18,7 +18,7 @@
     "test:fixtures": "node -r esm --stack-size=500000000 test/parser.js ./test/fixtures",
     "test:validate": "node -r esm --stack-size=500000000 test/validator.js ./test/fixtures",
     "test:unit": "node -r esm test/literals.js",
-    "test": "npm run --silent test:fixtures && npm run --silent test:unit && npm run --silent test:validate"
+    "test": "npm run --silent test:fixtures && npm run --silent test:unit"
   },
   "homepage": "https://projectfluent.org",
   "repository": {
@@ -30,16 +30,19 @@
   "bugs": {
     "url": "https://github.com/projectfluent/fluent/issues"
   },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "devDependencies": {
     "babylon": "^6.18.0",
-    "cli-color": "^1.2.0",
+    "cli-color": "^2.0.0",
     "difflib": "^0.2.4",
-    "eslint": "^4.19.1",
-    "fluent": "^0.6.4",
-    "fluent-syntax": "^0.7.0",
-    "gh-pages": "^1.1.0",
-    "gitbook-cli": "^2.3.0",
-    "json-diff": "^0.5.2"
+    "eslint": "^6.7.2",
+    "@fluent/bundle": "^0.14.0",
+    "@fluent/syntax": "^0.14.0",
+    "gh-pages": "^2.1.1",
+    "gitbook-cli": "^2.3.2",
+    "json-diff": "^0.5.4"
   },
   "dependencies": {
     "esm": "^3.2.25",
