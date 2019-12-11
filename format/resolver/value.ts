@@ -1,7 +1,7 @@
 import {Scope} from "./scope";
 
 export interface Value {
-    readonly value: null | string | number;
+    readonly value: unknown;
     format(scope: Scope): string;
 }
 
