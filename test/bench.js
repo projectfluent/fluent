@@ -10,8 +10,7 @@ let args = process.argv.slice(2);
 
 if (args.length < 1 || 2 < args.length) {
     console.error(
-        "Usage: node -r esm --harmony-async-iteration " +
-        "bench.js FTL_FILE [SAMPLE SIZE = 30]");
+        "Usage: node -r esm bench.js FTL_FILE [SAMPLE SIZE = 30]");
     process.exit(1);
 }
 
