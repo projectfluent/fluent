@@ -29,12 +29,16 @@ The `format/resolver` directory contains the reference implementation of
 
 ## Development
 
+The reference resolver is written in TypeScript and must be compiled before
+tests are run. The reference parser is currently still written in JavaScript.
+
 While working on the reference implementations, use the following commands to
 test and validate your work:
 
+    npm run watch              # Run the TypeScript compiler watcher.
     npm test                   # Test the parser against JSON AST fixtures,
                                # and test the resolver using the examples
-                               # from the spec.
+                               # from the spec (the resolver must be compiled).
 
     npm run lint               # Lint the parser and the resolver code.
     npm run pretty             # Prettify the resolver code.
@@ -42,6 +46,7 @@ test and validate your work:
     npm run generate:ebnf      # Generate the EBNF from syntax/grammar.js.
     npm run generate:fixtures  # Generate test fixtures (FTL → JSON AST).
 
+    npm run build:impls        # Compile the resolver.
     npm run build:guide        # Build the HTML version of the Guide.
 
     npm run bench              # Run the performance benchmark on large FTL.
