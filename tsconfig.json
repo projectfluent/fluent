@@ -4,6 +4,10 @@
         "module": "commonjs",
         "strict": true,
         "esModuleInterop": true,
+        "rootDir": "./format",
         "outDir": "./build"
-    }
+    },
+    "include": [
+        "./format/**/*.ts"
+    ]
 }
