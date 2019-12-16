@@ -2,14 +2,6 @@ import fs from "fs";
 import color from "cli-color";
 import json_diff from "json-diff";
 
-export function readfile(path) {
-    return new Promise(function(resolve, reject) {
-        fs.readFile(path, function(err, file) {
-            return err ? reject(err) : resolve(file.toString());
-        });
-    });
-}
-
 export function writefile(path, contents) {
     return new Promise(function(resolve, reject) {
         fs.writeFile(path, contents, function(err) {

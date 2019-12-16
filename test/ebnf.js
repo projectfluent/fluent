@@ -1,7 +1,8 @@
+import fs from "fs";
 import color from "cli-color";
 import difflib from "difflib";
 import ebnf from "../lib/ebnf.js";
-import {readfile, PASS, FAIL} from "./util.js";
+import {PASS, FAIL} from "./util.js";
 
 let args = process.argv.slice(2);
 
@@ -14,9 +15,9 @@ if (args.length !== 2) {
 
 main(...args);
 
-async function main(grammar_mjs, fluent_ebnf) {
-    let grammar_source = await readfile(grammar_mjs);
-    let grammar_ebnf = await readfile(fluent_ebnf);
+function main(grammar_mjs, fluent_ebnf) {
+    let grammar_source = fs.readFileSync(grammar_mjs, "utf8");
+    let grammar_ebnf = fs.readFileSync(fluent_ebnf, "utf8");
 
     let diffs = difflib.unifiedDiff(
         lines(grammar_ebnf),

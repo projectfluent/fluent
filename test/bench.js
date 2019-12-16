@@ -1,10 +1,10 @@
+import fs from "fs";
 import perf from "perf_hooks";
 const {PerformanceObserver, performance} = perf;
 
 import {parse} from "@fluent/syntax";
 import {FluentResource} from "@fluent/bundle";
 import {Resource} from "../syntax/grammar.js";
-import {readfile} from "./util.js";
 
 let args = process.argv.slice(2);
 
@@ -24,8 +24,8 @@ class Subject {
     }
 }
 
-async function main(ftl_file, sample_size = 30) {
-    let ftl = await readfile(ftl_file);
+function main(ftl_file, sample_size = 30) {
+    let ftl = fs.readFileSync(ftl_file, "utf8");
 
     let subjects = new Map([
         ["Reference", new Subject("Reference", () => Resource.run(ftl))],

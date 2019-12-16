@@ -2,7 +2,7 @@ import assert from "assert";
 import path from "path";
 import fs from "fs";
 import {Resource} from "../syntax/grammar.js";
-import {readfile, diff, PASS, FAIL} from "./util.js";
+import {diff, PASS, FAIL} from "./util.js";
 
 const bail = process.argv[2] === "--bail";
 const fixtures_dir = process.argv[bail ? 3 : 2];
@@ -15,7 +15,7 @@ if (!fixtures_dir) {
 
 main(fixtures_dir);
 
-async function main(fixtures_dir) {
+function main(fixtures_dir) {
     if (fixtures_dir.endsWith(".ftl")) {
         // Actually, this is a filepath, split the path and the dir.
         var ftls = [path.basename(fixtures_dir)];
@@ -37,8 +37,8 @@ async function main(fixtures_dir) {
         process.stdout.write(`${ftl_path} `);
 
         try {
-            var ftl_source = await readfile(ftl_path);
-            var expected_ast = await readfile(ast_path);
+            var ftl_source = fs.readFileSync(ftl_path, "utf8");
+            var expected_ast = fs.readFileSync(ast_path, "utf8");
         } catch (err) {
             errors.set(ftl_path, err);
             console.log(FAIL);

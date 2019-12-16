@@ -1,6 +1,7 @@
+import fs from "fs";
 import assert from "assert";
 import child_process from "child_process";
-import {readfile, writefile} from "./util.js";
+import {writefile} from "./util.js";
 import * as FTL from "../syntax/ast.js";
 
 const ABSTRACT = `${__dirname}/../syntax/abstract.js`;
@@ -31,7 +32,7 @@ async function main() {
  */
 async function modify_grammar() {
     let changed = false;
-    let grammar = await readfile(GRAMMAR);
+    let grammar = fs.readFileSync(GRAMMAR, "utf8");
     let to_replace = /(not|maybe|repeat1?)\(/g;
     let m, iteration = 0;
     while (m = to_replace.exec(grammar)) {
@@ -90,7 +91,7 @@ async function modify_grammar() {
  */
 async function validate_selector() {
     let changed = false;
-    let abstract = await readfile(ABSTRACT);
+    let abstract = fs.readFileSync(ABSTRACT, "utf8");
     let expressions =
         Object.values(FTL)
         .filter(node => FTL.Expression.isPrototypeOf(node))
