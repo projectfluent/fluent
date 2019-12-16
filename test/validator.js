@@ -1,7 +1,6 @@
 import fs from "fs";
 import assert from "assert";
 import child_process from "child_process";
-import {writefile} from "./util.js";
 import * as FTL from "../syntax/ast.js";
 
 const ABSTRACT = `${__dirname}/../syntax/abstract.js`;
@@ -10,9 +9,9 @@ const FIXTURES = `${__dirname}/fixtures`;
 
 main();
 
-async function main() {
-    let changed = await modify_grammar();
-    changed |= await validate_selector();
+function main() {
+    let changed = modify_grammar();
+    changed |= validate_selector();
     if (changed) {
         child_process.execSync("git diff syntax",  { stdio: "inherit" });
     }
@@ -30,7 +29,7 @@ async function main() {
  * In the same way, if you add options to a more restricted production,
  * you should also get test failures.
  */
-async function modify_grammar() {
+function modify_grammar() {
     let changed = false;
     let grammar = fs.readFileSync(GRAMMAR, "utf8");
     let to_replace = /(not|maybe|repeat1?)\(/g;
@@ -67,7 +66,7 @@ async function modify_grammar() {
             let new_grammar = grammar.slice(0, m.index);
             new_grammar += replacement;
             new_grammar += grammar.slice(m.index + m[1].length);
-            await writefile(GRAMMAR, new_grammar);
+            fs.writeFileSync(GRAMMAR, new_grammar);
             console.log(`Grammar validation iteration ${++iteration}`);
             const keep_change = verify_fixtures();
             if (keep_change) {
@@ -78,7 +77,7 @@ async function modify_grammar() {
             }
         }
     }
-    await writefile(GRAMMAR, grammar);
+    fs.writeFileSync(GRAMMAR, grammar);
     return changed;
 }
 
@@ -89,7 +88,7 @@ async function modify_grammar() {
  * Invert existing instanceof checks, and allow more AST nodes
  * that can be returned by InlineExpression.
  */
-async function validate_selector() {
+function validate_selector() {
     let changed = false;
     let abstract = fs.readFileSync(ABSTRACT, "utf8");
     let expressions =
@@ -115,7 +114,7 @@ async function validate_selector() {
             m[0],
             `!(selector instanceof FTL.${m[1]})`
         );
-        await writefile(ABSTRACT, [head, new_valid, tail].join(""));
+        fs.writeFileSync(ABSTRACT, [head, new_valid, tail].join(""));
         console.log(`Abstract validation iteration ${++iteration}`);
         const keep_change = verify_fixtures();
         if (keep_change) {
@@ -130,7 +129,7 @@ async function validate_selector() {
         }
         let new_valid = `
                     selector instanceof FTL.${node} ||${valid_selector}`;
-        await writefile(ABSTRACT, [head, new_valid, tail].join(""));
+        fs.writeFileSync(ABSTRACT, [head, new_valid, tail].join(""));
         console.log(`Abstract validation iteration ${++iteration}`);
         const keep_change = verify_fixtures();
         if (keep_change) {
@@ -139,7 +138,7 @@ async function validate_selector() {
             console.log("new abstract");
         }
     }
-    await writefile(ABSTRACT, [head, valid_selector, tail].join(""));
+    fs.writeFileSync(ABSTRACT, [head, valid_selector, tail].join(""));
     return changed;
 }
 
