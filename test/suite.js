@@ -1,9 +1,11 @@
 import assert from "assert";
 import {diffString} from "json-diff";
-import {PASS, FAIL} from "./util.js";
+import color from "cli-color";
 
-export default
-function suite(fn) {
+export const PASS = color.green("PASS");
+export const FAIL = color.red("FAIL");
+
+export default function suite(fn) {
     let errors = new Map();
     fn(create_tester(errors));
 
@@ -35,7 +37,16 @@ function create_tester(errors) {
     };
 }
 
-function print_assert_error(title, err) {
+export function print_generic_error(ftl_path, err) {
+    console.log(`
+========================================================================
+${FAIL} ${ftl_path}
+------------------------------------------------------------------------
+${err.message}
+`);
+}
+
+export function print_assert_error(title, err) {
     console.log(`
 ========================================================================
 ${FAIL} ${title}
@@ -44,7 +55,7 @@ ${diffString(err.expected, err.actual)}
 `);
 }
 
-function exit_summary(error_count) {
+export function exit_summary(error_count) {
     const message = error_count
         ? `Tests ${FAIL}: ${error_count}.`
         : `All tests ${PASS}.`;

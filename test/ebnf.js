@@ -2,7 +2,7 @@ import fs from "fs";
 import color from "cli-color";
 import difflib from "difflib";
 import ebnf from "../lib/ebnf.js";
-import {PASS, FAIL} from "./util.js";
+import {PASS, FAIL} from "./suite.js";
 
 let args = process.argv.slice(2);
 

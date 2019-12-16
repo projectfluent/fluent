@@ -1,9 +1,9 @@
 import assert from "assert";
 import path from "path";
 import fs from "fs";
-import {diffString} from "json-diff";
 import {Resource} from "../syntax/grammar.js";
-import {PASS, FAIL} from "./util.js";
+import {print_generic_error, print_assert_error, exit_summary, PASS, FAIL}
+    from "./suite.js";
 
 const bail = process.argv[2] === "--bail";
 const fixtures_dir = process.argv[bail ? 3 : 2];
@@ -77,33 +77,4 @@ function validate(actual_ast, expected_serialized) {
     const actual_json = JSON.parse(JSON.stringify(actual_ast));
     const expected_json = JSON.parse(expected_serialized);
     assert.deepEqual(actual_json, expected_json);
-}
-
-function print_assert_error(ftl_path, err) {
-    console.log(`
-========================================================================
-${FAIL} ${ftl_path}
-------------------------------------------------------------------------
-${diffString(err.expected, err.actual)}
-`);
-}
-
-function print_generic_error(ftl_path, err) {
-    console.log(`
-========================================================================
-${FAIL} ${ftl_path}
-------------------------------------------------------------------------
-${err.message}
-`);
-}
-
-function exit_summary(error_count) {
-    const message = error_count
-        ? `Tests ${FAIL}: ${error_count}.`
-        : `All tests ${PASS}.`;
-    console.log(`
-========================================================================
-${message}
-`);
-    process.exit(Number(error_count > 0));
 }
