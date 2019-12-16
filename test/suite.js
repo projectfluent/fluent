@@ -1,6 +1,6 @@
 import assert from "assert";
-import color from "cli-color";
-import {diff, PASS, FAIL} from "./util.js";
+import {diffString} from "json-diff";
+import {PASS, FAIL} from "./util.js";
 
 export default
 function suite(fn) {
@@ -40,7 +40,7 @@ function print_assert_error(title, err) {
 ========================================================================
 ${FAIL} ${title}
 ------------------------------------------------------------------------
-${diff(err.expected, err.actual)}
+${diffString(err.expected, err.actual)}
 `);
 }
 

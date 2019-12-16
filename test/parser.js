@@ -1,8 +1,9 @@
 import assert from "assert";
 import path from "path";
 import fs from "fs";
+import {diffString} from "json-diff";
 import {Resource} from "../syntax/grammar.js";
-import {diff, PASS, FAIL} from "./util.js";
+import {PASS, FAIL} from "./util.js";
 
 const bail = process.argv[2] === "--bail";
 const fixtures_dir = process.argv[bail ? 3 : 2];
@@ -83,7 +84,7 @@ function print_assert_error(ftl_path, err) {
 ========================================================================
 ${FAIL} ${ftl_path}
 ------------------------------------------------------------------------
-${diff(err.expected, err.actual)}
+${diffString(err.expected, err.actual)}
 `);
 }
 
