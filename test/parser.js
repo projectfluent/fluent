@@ -1,7 +1,8 @@
 import assert from "assert";
 import path from "path";
+import fs from "fs";
 import {Resource} from "../syntax/grammar.js";
-import {readdir, readfile, diff, PASS, FAIL} from "./util.js";
+import {readfile, diff, PASS, FAIL} from "./util.js";
 
 const bail = process.argv[2] === "--bail";
 const fixtures_dir = process.argv[bail ? 3 : 2];
@@ -20,7 +21,7 @@ async function main(fixtures_dir) {
         var ftls = [path.basename(fixtures_dir)];
         fixtures_dir = path.dirname(fixtures_dir);
     } else {
-        let files = await readdir(fixtures_dir);
+        let files = fs.readdirSync(fixtures_dir);
         var ftls = files.filter(
             filename => filename.endsWith(".ftl"));
     }

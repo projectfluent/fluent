@@ -1,7 +1,6 @@
 import assert from "assert";
-import path from "path";
 import child_process from "child_process";
-import {readdir, readfile, writefile, PASS, FAIL} from "./util.js";
+import {readfile, writefile} from "./util.js";
 import * as FTL from "../syntax/ast.js";
 
 const ABSTRACT = `${__dirname}/../syntax/abstract.js`;
