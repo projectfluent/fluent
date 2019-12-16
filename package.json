@@ -1,51 +1,51 @@
 {
-  "name": "fluent-spec",
-  "description": "Specification and documentation for Fluent",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "bench": "node -r esm ./test/bench.js ./test/benchmarks/gecko_strings.ftl",
-    "build:guide": "gitbook build guide build/guide",
-    "build": "npm run --silent build:guide",
-    "ci": "npm run --silent lint && npm test && npm run --silent test:ebnf && npm run --silent test:validate",
-    "clean": "rm -rf build",
-    "deploy": "gh-pages -d build",
-    "generate:ebnf": "node -r esm bin/ebnf.js ./syntax/grammar.js > ./spec/fluent.ebnf",
-    "generate:fixtures": "make -sC test/fixtures",
-    "generate": "npm run --silent generate:ebnf && npm run --silent generate:fixtures",
-    "lint": "eslint **/*.js",
-    "test:ebnf": "node -r esm test/ebnf.js ./syntax/grammar.js ./spec/fluent.ebnf",
-    "test:fixtures": "node -r esm --stack-size=500000000 test/parser.js ./test/fixtures",
-    "test:validate": "node -r esm --stack-size=500000000 test/validator.js ./test/fixtures",
-    "test:unit": "node -r esm test/literals.js",
-    "test": "npm run --silent test:fixtures && npm run --silent test:unit"
-  },
-  "homepage": "https://projectfluent.org",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/projectfluent/fluent.git"
-  },
-  "author": "Mozilla <l10n-drivers@mozilla.org>",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/projectfluent/fluent/issues"
-  },
-  "engines": {
-    "node": ">=12.0.0"
-  },
-  "devDependencies": {
-    "babylon": "^6.18.0",
-    "cli-color": "^2.0.0",
-    "difflib": "^0.2.4",
-    "eslint": "^6.7.2",
-    "@fluent/bundle": "^0.14.0",
-    "@fluent/syntax": "^0.14.0",
-    "gh-pages": "^2.1.1",
-    "gitbook-cli": "^2.3.2",
-    "json-diff": "^0.5.4"
-  },
-  "dependencies": {
-    "esm": "^3.2.25",
-    "minimist": "^1.2.0"
-  }
+    "name": "fluent-spec",
+    "description": "Specification and documentation for Fluent",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "bench": "node -r esm ./test/bench.js ./test/benchmarks/gecko_strings.ftl",
+        "build:guide": "gitbook build guide build/guide",
+        "build": "npm run --silent build:guide",
+        "ci": "npm run --silent lint && npm test && npm run --silent test:ebnf && npm run --silent test:validate",
+        "clean": "rm -rf build",
+        "deploy": "gh-pages -d build",
+        "generate:ebnf": "node -r esm bin/ebnf.js ./syntax/grammar.js > ./spec/fluent.ebnf",
+        "generate:fixtures": "make -sC test/fixtures",
+        "generate": "npm run --silent generate:ebnf && npm run --silent generate:fixtures",
+        "lint": "eslint **/*.js",
+        "test:ebnf": "node -r esm test/ebnf.js ./syntax/grammar.js ./spec/fluent.ebnf",
+        "test:fixtures": "node -r esm --stack-size=500000000 test/parser.js ./test/fixtures",
+        "test:validate": "node -r esm --stack-size=500000000 test/validator.js ./test/fixtures",
+        "test:unit": "node -r esm test/literals.js",
+        "test": "npm run --silent test:fixtures && npm run --silent test:unit"
+    },
+    "homepage": "https://projectfluent.org",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/projectfluent/fluent.git"
+    },
+    "author": "Mozilla <l10n-drivers@mozilla.org>",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/projectfluent/fluent/issues"
+    },
+    "engines": {
+        "node": ">=12.0.0"
+    },
+    "devDependencies": {
+        "babylon": "^6.18.0",
+        "cli-color": "^2.0.0",
+        "difflib": "^0.2.4",
+        "eslint": "^6.7.2",
+        "@fluent/bundle": "^0.14.0",
+        "@fluent/syntax": "^0.14.0",
+        "gh-pages": "^2.1.1",
+        "gitbook-cli": "^2.3.2",
+        "json-diff": "^0.5.4"
+    },
+    "dependencies": {
+        "esm": "^3.2.25",
+        "minimist": "^1.2.0"
+    }
 }
