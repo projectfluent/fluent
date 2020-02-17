@@ -83,7 +83,7 @@ the past tense of _has been updated_ depends on the grammatical gender of
 
 update-successful =
     { -brand-name.gender ->
-        [masculine] { -brand-name} został zaktualizowany.
+        [masculine] { -brand-name } został zaktualizowany.
         [feminine] { -brand-name } została zaktualizowana.
        *[other] Program { -brand-name } został zaktualizowany.
     }
