@@ -5,7 +5,7 @@ all: $(AST_FIXTURES)
 
 .PHONY: $(AST_FIXTURES)
 $(AST_FIXTURES): %.json: %.ftl
-	node -r esm ../../tools/parse.js $< \
+	node ../../tools/parse.js $< \
 		2> /dev/null \
 		1> $@;
 	@echo "syntax/$< → $@"

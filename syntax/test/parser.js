@@ -5,7 +5,7 @@ import { test_fixtures, validate_json } from "../lib/fixture.js";
 const fixtures_dir = process.argv[2];
 
 if (!fixtures_dir) {
-    console.error("Usage: node -r esm parser.js FIXTURE");
+    console.error("Usage: node parser.js FIXTURE");
     process.exit(1);
 }
 

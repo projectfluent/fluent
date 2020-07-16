@@ -1,6 +1,6 @@
 import fs from "fs";
 import color from "cli-color";
-import {diffString} from "json-diff";
+import jsonDiff from "json-diff";
 
 export function readdir(path) {
     return new Promise(function(resolve, reject) {
@@ -18,6 +18,6 @@ export function readfile(path) {
     });
 }
 
-export const diff = diffString;
+export const diff = jsonDiff.diffString;
 export const PASS = color.green("PASS");
 export const FAIL = color.red("FAIL");

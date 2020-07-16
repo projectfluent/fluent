@@ -26,14 +26,14 @@ if (file_path === "-") {
 
 function exit_help(exit_code) {
     console.log(`
-    Usage: node -r esm ebnf.js [OPTIONS] <FILE>
+    Usage: node ebnf.js [OPTIONS] <FILE>
 
     When FILE is "-", read text from stdin.
 
     Examples:
 
-        node -r esm ebnf.js path/to/grammar.js
-        cat path/to/grammar.js | node -r esm ebnf.js -
+        node ebnf.js path/to/grammar.js
+        cat path/to/grammar.js | node ebnf.js -
 
     Options:
 

@@ -1,5 +1,5 @@
-import { FluentResource } from "@fluent/bundle";
-import { parse } from "@fluent/syntax";
+import runtime from "@fluent/bundle";
+import tooling from "@fluent/syntax";
 import perf from "perf_hooks";
 import { Resource } from "../parser/grammar.js";
 import { readfile } from "../lib/util.js";
@@ -9,10 +9,7 @@ const {PerformanceObserver, performance} = perf;
 let args = process.argv.slice(2);
 
 if (args.length < 1 || 2 < args.length) {
-    console.error(
-        "Usage: node -r esm " +
-        "bench.js FTL_FILE [SAMPLE SIZE = 30]"
-    );
+    console.error("Usage: node bench.js FTL_FILE [SAMPLE SIZE = 30]");
     process.exit(1);
 }
 
@@ -31,8 +28,8 @@ async function main(ftl_file, sample_size = 30) {
 
     let subjects = new Map([
         ["Reference", new Subject("Reference", () => Resource.run(ftl))],
-        ["Tooling", new Subject("Tooling", () => parse(ftl))],
-        ["Runtime", new Subject("Runtime", () => new FluentResource(ftl))],
+        ["Tooling", new Subject("Tooling", () => tooling.parse(ftl))],
+        ["Runtime", new Subject("Runtime", () => new runtime.FluentResource(ftl))],
     ]);
 
     new PerformanceObserver(items => {

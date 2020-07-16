@@ -1,12 +1,12 @@
 import {deepStrictEqual} from "assert";
-import {Parser as MarkdownParser} from "commonmark";
-import {diffString} from "json-diff";
+import commonmark from "commonmark";
+import jsonDiff from "json-diff";
 
 type formatFn = (stdin: string) => string;
 
 export function validate(fn: formatFn, spec: string, source: string) {
     // https://github.com/commonmark/commonmark.js/blob/master/README.md#usage
-    let reader = new MarkdownParser();
+    let reader = new commonmark.Parser();
     let parsed = reader.parse(source);
     let walker = parsed.walker();
 
@@ -26,7 +26,7 @@ export function validate(fn: formatFn, spec: string, source: string) {
                     console.log(`${spec} Example ${counter++} PASS`);
                 } catch (err) {
                     console.log(`${spec} Example ${counter++} FAIL`);
-                    console.log(diffString(err.actual, err.expected));
+                    console.log(jsonDiff.diffString(err.actual, err.expected));
                 }
                 actual = null;
             }
