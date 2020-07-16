@@ -3,6 +3,7 @@
     "description": "Specification and documentation for Fluent",
     "version": "1.0.0",
     "private": true,
+    "type": "module",
     "scripts": {
         "bench": "node -r esm ./syntax/benchmarks/bench.js ./syntax/benchmarks/gecko_strings.ftl",
         "build:impls": "tsc",

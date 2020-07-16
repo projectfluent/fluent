@@ -1,7 +1,7 @@
 import {execSync} from "child_process";
 import parseArgs from "minimist";
-import {files, fromFile} from "../lib/input";
-import {validate} from "../lib/validate";
+import {files, fromFile} from "../lib/input.js";
+import {validate} from "../lib/validate.js";
 
 const argv = parseArgs(process.argv.slice(2), {
     boolean: ["help"],

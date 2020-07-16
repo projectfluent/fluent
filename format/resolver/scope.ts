@@ -1,7 +1,7 @@
-import * as ast from "../../syntax/parser/ast";
-import {ErrorKind, ScopeError} from "./error";
-import {Message} from "./message";
-import {NoneValue, StringValue, Value} from "./value";
+import * as ast from "../../syntax/parser/ast.js";
+import {ErrorKind, ScopeError} from "./error.js";
+import {Message} from "./message.js";
+import {NoneValue, StringValue, Value} from "./value.js";
 
 export class Scope {
     private readonly messages: Map<string, Message>;

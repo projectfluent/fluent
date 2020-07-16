@@ -1,7 +1,7 @@
-import {files, fromFile} from "../lib/input";
-import {formatMessage} from "../lib/tools";
-import {validate} from "../lib/validate";
-import {Resource} from "../resolver/resource";
+import {files, fromFile} from "../lib/input.js";
+import {formatMessage} from "../lib/tools.js";
+import {validate} from "../lib/validate.js";
+import {Resource} from "../resolver/resource.js";
 
 const specs = process.argv[2];
 

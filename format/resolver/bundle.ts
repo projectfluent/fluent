@@ -1,9 +1,9 @@
-import {Pattern} from "../../syntax/parser/ast";
-import {ScopeError} from "./error";
-import {Message} from "./message";
-import {Resource} from "./resource";
-import {Scope} from "./scope";
-import {Value} from "./value";
+import {Pattern} from "../../syntax/parser/ast.js";
+import {ScopeError} from "./error.js";
+import {Message} from "./message.js";
+import {Resource} from "./resource.js";
+import {Scope} from "./scope.js";
+import {Value} from "./value.js";
 
 export interface FormatResult {
     readonly value: string;

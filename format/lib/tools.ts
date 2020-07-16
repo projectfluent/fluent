@@ -1,7 +1,7 @@
-import {Bundle} from "../resolver/bundle";
-import {ErrorKind} from "../resolver/error";
-import {Resource} from "../resolver/resource";
-import {Value} from "../resolver/value";
+import {Bundle} from "../resolver/bundle.js";
+import {ErrorKind} from "../resolver/error.js";
+import {Resource} from "../resolver/resource.js";
+import {Value} from "../resolver/value.js";
 
 type Variables = Map<string, Value>;
 

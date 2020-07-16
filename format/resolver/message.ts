@@ -1,4 +1,4 @@
-import {Pattern} from "../../syntax/parser/ast";
+import {Pattern} from "../../syntax/parser/ast.js";
 
 export interface Message {
     readonly id: string;

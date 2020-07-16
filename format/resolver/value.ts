@@ -1,4 +1,4 @@
-import {Scope} from "./scope";
+import {Scope} from "./scope.js";
 
 export interface Value {
     readonly value: unknown;
