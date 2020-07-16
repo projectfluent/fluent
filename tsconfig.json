@@ -3,9 +3,7 @@
         "target": "es2019",
         "module": "commonjs",
         "strict": true,
-        "esModuleInterop": true,
-        "rootDir": "./format",
-        "outDir": "./build"
+        "esModuleInterop": true
     },
     "include": [
         "./format/**/*.ts"
