@@ -4,8 +4,5 @@
         "module": "es2015",
         "strict": true,
         "esModuleInterop": true
-    },
-    "include": [
-        "./format/**/*.ts"
-    ]
+    }
 }

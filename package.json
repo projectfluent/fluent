@@ -9,9 +9,9 @@
     },
     "scripts": {
         "bench": "node ./syntax/benchmarks/bench.js ./syntax/benchmarks/gecko_strings.ftl",
-        "build:impls": "tsc",
+        "build:format": "tsc -p format/tsconfig.json",
         "build:guide": "gitbook build guide build/guide",
-        "build": "npm run --silent build:impls && npm run --silent build:guide",
+        "build": "npm run --silent build:format && npm run --silent build:guide",
         "ci": "npm run --silent lint && npm test && npm run --silent test:ebnf",
         "clean": "rm -rf build",
         "deploy": "gh-pages -d build",
