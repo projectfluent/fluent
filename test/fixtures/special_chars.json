@@ -1,0 +1,82 @@
+{
+    "type": "Resource",
+    "body": [
+        {
+            "type": "GroupComment",
+            "content": "OK"
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "bracket-inline"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "[Value]"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "dot-inline"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": ".Value"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "star-inline"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "TextElement",
+                        "value": "*Value"
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
+            "type": "GroupComment",
+            "content": "ERRORS"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "bracket-newline =\n    [Value]\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "dot-newline =\n    .Value\n"
+        },
+        {
+            "type": "Junk",
+            "annotations": [],
+            "content": "star-newline =\n    *Value\n"
+        }
+    ]
+}
