@@ -109,7 +109,7 @@ Example:
 ```
 emails = Number of unread emails { $unreadEmails }
 
-emails2 = Number of unread emails { NUMBER($undeadEmails) }
+emails2 = Number of unread emails { NUMBER($unreadEmails) }
 ```
 
 Numbers used as selectors in select expressions will match the number exactly
