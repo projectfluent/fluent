@@ -543,8 +543,8 @@ languages-customize-select-language =
 languages-customize-add =
     .label = Add
     .accesskey = A
-// Variables:
-//   $num - default value of the `dom.ipc.processCount` pref.
+# Variables:
+#   $num - default value of the `dom.ipc.processCount` pref.
 default-content-process-count
     .label = { $num } (default)
 # This Source Code Form is subject to the terms of the Mozilla Public
