@@ -47,6 +47,7 @@ We also know about the following community-driven implementations:
   - A Java/Kotlin implementation has been requested in [#158](https://github.com/projectfluent/fluent/issues/158).
   - [`elm-fluent`](https://github.com/elm-fluent/elm-fluent) by [@spookylukey](https://github.com/spookylukey/)
   - [`Fluent`](https://github.com/alabamenhu/Fluent) as a Perl 6 module by [@alabamenhu](https://github.com/alabamenhu/)
+  - [`fluent-dart`](https://github.com/ryanhz/fluent-dart) as a Dart runtime implementation by [@ryanhz](https://github.com/ryanhz).
   - A Lua implementation effort is underway at [`fluent-lua`](https://github.com/alerque/fluent-lua) by [@alerque](https://github.com/alerque).
   - A D implementation effort is underway at [`fluentd`](https://github.com/SirNickolas/fluentd) by [@SirNickolas](https://github.com/SirNickolas).
 
