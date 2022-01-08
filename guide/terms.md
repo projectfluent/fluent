@@ -52,7 +52,7 @@ properties of the language. In many inflected languages (e.g. German,
 Finnish, Hungarian, all Slavic languages), the *about* preposition governs
 the grammatical case of the complement. It might be accusative (German),
 ablative (Latin), or locative (Slavic languages). The grammatical cases can
-be defined as variants of the same tem and referred to via parameterization
+be defined as variants of the same term and referred to via parameterization
 from other messages. This is what happens in the `about` message above.
 
 If no parameters are passed into the term, or if the term is referenced
