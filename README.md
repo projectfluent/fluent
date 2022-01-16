@@ -51,6 +51,7 @@ We also know about the following community-driven implementations:
   - [`fluent-compiler`](https://github.com/django-ftl/fluent-compiler) - an alternative Python implementation by [@spookylukey](https://github.com/spookylukey/).
   - A Lua implementation effort is underway at [`fluent-lua`](https://github.com/alerque/fluent-lua) by [@alerque](https://github.com/alerque).
   - A D implementation effort is underway at [`fluentd`](https://github.com/SirNickolas/fluentd) by [@SirNickolas](https://github.com/SirNickolas).
+  - [`fluent.go`](https://github.com/lus/fluent.go) - a Golang implementation by [@lus](https://github.com/lus)
 
 ## Learn More and Discuss
 
