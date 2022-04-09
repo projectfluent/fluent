@@ -46,6 +46,6 @@
     },
     "dependencies": {
         "esm": "^3.2.25",
-        "minimist": "^1.2.3"
+        "minimist": "^1.2.6"
     }
 }
