@@ -364,7 +364,7 @@ expressions with multiple variants of the same term value.</p>
 <pre><code>-brand-name =
     { $case -&gt;
        *[nominative] Firefox
-        [locative] Firefoxa
+        [locative] Firefoksie
     }
 
 # &quot;About Firefox.&quot;
@@ -375,14 +375,14 @@ properties of the language. In many inflected languages (e.g. German,
 Finnish, Hungarian, all Slavic languages), the <em>about</em> preposition governs
 the grammatical case of the complement. It might be accusative (German),
 ablative (Latin), or locative (Slavic languages). The grammatical cases can
-be defined as variants of the same tem and referred to via parameterization
+be defined as variants of the same term and referred to via parameterization
 from other messages. This is what happens in the <code>about</code> message above.</p>
 <p>If no parameters are passed into the term, or if the term is referenced
 without any parentheses, the default variant will be used.</p>
 <pre><code>-brand-name =
     { $case -&gt;
        *[nominative] Firefox
-        [locative] Firefoxa
+        [locative] Firefoksie
     }
 
 # &quot;Firefox has been successfully updated.&quot;
@@ -398,7 +398,7 @@ the past tense of <em>has been updated</em> depends on the grammatical gender of
 
 update-successful =
     { -brand-name.gender -&gt;
-        [masculine] { -brand-name} zosta&#x142; zaktualizowany.
+        [masculine] { -brand-name } zosta&#x142; zaktualizowany.
         [feminine] { -brand-name } zosta&#x142;a zaktualizowana.
        *[other] Program { -brand-name } zosta&#x142; zaktualizowany.
     }
@@ -450,7 +450,7 @@ also be parameterized using the <code>-term.attr(param: &quot;value&quot;)</code
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Terms","level":"1.8","depth":1,"next":{"title":"Comments","level":"1.9","depth":1,"path":"comments.md","ref":"comments.md","articles":[]},"previous":{"title":"Attributes","level":"1.7","depth":1,"path":"attributes.md","ref":"attributes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"terms.md","mtime":"2019-01-09T18:08:00.336Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-29T18:23:05.349Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Terms","level":"1.8","depth":1,"next":{"title":"Comments","level":"1.9","depth":1,"path":"comments.md","ref":"comments.md","articles":[]},"previous":{"title":"Attributes","level":"1.7","depth":1,"path":"attributes.md","ref":"attributes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"terms.md","mtime":"2022-02-11T08:26:03.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-26T18:21:22.930Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
