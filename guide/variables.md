@@ -43,7 +43,7 @@ time-elapsed = Time elapsed: { $duration }s.
 ```
 
 For the `$duration` variable value of `12345.678`, the following message will be
-displayed in the product, assuming the language is set to British, Canadian, or American
+displayed in the product, assuming the language is set to British or American
 English. Note the use of comma as the thousands separator.
 
 ```
