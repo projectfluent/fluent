@@ -50,7 +50,7 @@ English. Note the use of comma as the thousands separator.
 Time elapsed: 12,345.678s.
 ```
 
-In South Africian English, however, the result would be:
+In South African English, however, the result would be:
 
 ```
 Time elapsed: 12 345,678s.
