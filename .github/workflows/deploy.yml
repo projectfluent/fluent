@@ -1,0 +1,35 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Triggers the workflow on push or pull request events but
+  # only for the default branch.
+  push:
+    branches:
+      - master
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Install Rust packages
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://rossmacarthur.github.io/install/crate.sh | bash -s -- --repo "rust-lang/mdBook" --bin mdbook --to ~/.cargo/bin
+      - name: Install gh-pages
+        run: |
+          npm install gh-pages@"~6.1.1"
+      - name: Build book
+        run: |
+            mdbook --version
+            mdbook build
+      - name: Set Git config
+        run: |
+          git config --global user.email "actions@users.noreply.github.com"
+          git config --global user.name 'Automation'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+      - name: Deploy to GitHub pages
+        run: |
+          npx gh-pages --message "Deploy docs" --no-history --dist build

@@ -1,0 +1,11 @@
+[book]
+multilingual = false
+src = "guide"
+
+[build]
+build-dir = "build"
+create-missing = false
+
+[output.html]
+git-repository-url = "https://github.com/projectfluent/fluent/"
+edit-url-template = "https://github.com/projectfluent/fluent/edit/master/{path}"

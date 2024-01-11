@@ -1,5 +1,6 @@
 # Summary
 
+* [Introduction](README.md)
 * [Hello, world!](hello.md)
 * [Writing Text](text.md)
     * [Placeables](placeables.md)
