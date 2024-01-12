@@ -7,5 +7,7 @@ build-dir = "build"
 create-missing = false
 
 [output.html]
-git-repository-url = "https://github.com/projectfluent/fluent/"
+additional-css = ["guide/css/custom.css"]
 edit-url-template = "https://github.com/projectfluent/fluent/edit/master/{path}"
+git-repository-url = "https://github.com/projectfluent/fluent/"
+no-section-label = true
