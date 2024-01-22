@@ -34,15 +34,15 @@
     },
     "devDependencies": {
         "babylon": "^6.18.0",
-        "cli-color": "^2.0.0",
+        "cli-color": "^2.0.3",
         "difflib": "^0.2.4",
-        "eslint": "^6.7.2",
-        "@fluent/bundle": "^0.14.0",
-        "@fluent/syntax": "^0.14.0",
-        "json-diff": "^0.5.4"
+        "eslint": "^8.5.6",
+        "@fluent/bundle": "^0.18.0",
+        "@fluent/syntax": "^0.18.0",
+        "json-diff": "^1.0.6"
     },
     "dependencies": {
         "esm": "^3.2.25",
-        "minimist": "^1.2.3"
+        "minimist": "^1.2.8"
     }
 }
