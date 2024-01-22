@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Triggers the workflow on push or pull request events but
+  # only for the default branch.
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/deploy.yml'
+      - 'book.toml'
+      - 'guide/**'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    env:
+      MDBOOK_VERSION: v0.4.36
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Install mdbook
+        run: |
+          mkdir installed-bins
+          curl -Lf "https://github.com/rust-lang/mdBook/releases/download/$MDBOOK_VERSION/mdbook-$MDBOOK_VERSION-x86_64-unknown-linux-gnu.tar.gz" | tar -xz --directory=./installed-bins
+          echo `pwd`/installed-bins >> $GITHUB_PATH
+      - name: Install gh-pages
+        run: |
+          npm install gh-pages@"~6.1.1"
+      - name: Build book
+        run: |
+            mdbook --version
+            mdbook build
+      - name: Set Git config
+        run: |
+          git config --global user.email "actions@users.noreply.github.com"
+          git config --global user.name 'Automation'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+      - name: Deploy to GitHub pages
+        run: |
+          npx gh-pages --message "Deploy docs" --no-history --dist build

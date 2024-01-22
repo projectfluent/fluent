@@ -5,11 +5,10 @@
     "private": true,
     "scripts": {
         "bench": "node -r esm ./test/bench.js ./test/benchmarks/gecko_strings.ftl",
-        "build:guide": "gitbook build guide build/guide",
+        "build:guide": "mdbook build",
         "build": "npm run --silent build:guide",
         "ci": "npm run --silent lint && npm test && npm run --silent test:ebnf && npm run --silent test:validate",
         "clean": "rm -rf build",
-        "deploy": "gh-pages -d build",
         "generate:ebnf": "node -r esm bin/ebnf.js ./syntax/grammar.js > ./spec/fluent.ebnf",
         "generate:fixtures": "make -sC test/fixtures",
         "generate": "npm run --silent generate:ebnf && npm run --silent generate:fixtures",
@@ -40,8 +39,6 @@
         "eslint": "^6.7.2",
         "@fluent/bundle": "^0.14.0",
         "@fluent/syntax": "^0.14.0",
-        "gh-pages": "^2.1.1",
-        "gitbook-cli": "^2.3.2",
         "json-diff": "^0.5.4"
     },
     "dependencies": {
