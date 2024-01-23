@@ -40,4 +40,4 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
       - name: Deploy to GitHub pages
         run: |
-          npx gh-pages --message "Deploy docs" --no-history --dist build
+          npx gh-pages --message "Deploy docs" --dist build
