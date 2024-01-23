@@ -1,341 +1,186 @@
-
 <!DOCTYPE HTML>
-<html lang="" >
+<html lang="en" class="light" dir="ltr">
     <head>
+        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Comments · GitBook</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Comments</title>
+
+
+        <!-- Custom HTML head -->
+        
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        
-        
-        
-    
-    <link rel="stylesheet" href="gitbook/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
 
-    
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-        
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
-    
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
 
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
 
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="builtins.html" />
-    
-    
-    <link rel="prev" href="terms.html" />
-    
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="guide/css/custom.css">
 
     </head>
-    <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
-            
-                <nav role="navigation">
-                
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
 
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
 
-<ul class="summary">
-    
-    
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
 
-    
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
 
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    Introduction
-            
-                </a>
-            
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="hello.html">
-            
-                <a href="hello.html">
-            
-                    
-                    Hello, world!
-            
-                </a>
-            
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
 
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="text.html">
-            
-                <a href="text.html">
-            
-                    
-                    Writing Text
-            
-                </a>
-            
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="hello.html">Hello, world!</a></li><li class="chapter-item expanded "><a href="text.html">Writing Text</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="placeables.html">Placeables</a></li><li class="chapter-item expanded "><a href="special.html">Special Characters</a></li><li class="chapter-item expanded "><a href="multiline.html">Multiline Text</a></li></ol></li><li class="chapter-item expanded "><a href="variables.html">Variables</a></li><li class="chapter-item expanded "><a href="references.html">Referencing Messages</a></li><li class="chapter-item expanded "><a href="selectors.html">Selectors</a></li><li class="chapter-item expanded "><a href="attributes.html">Attributes</a></li><li class="chapter-item expanded "><a href="terms.html">Terms</a></li><li class="chapter-item expanded "><a href="comments.html" class="active">Comments</a></li><li class="chapter-item expanded "><a href="builtins.html">Built-in Functions</a></li><li class="chapter-item expanded "><a href="functions.html">Functions</a></li><li class="chapter-item expanded "><a href="more.html">Learn More</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
 
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" data-path="placeables.html">
-            
-                <a href="placeables.html">
-            
-                    
-                    Placeables
-            
-                </a>
-            
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2" data-path="special.html">
-            
-                <a href="special.html">
-            
-                    
-                    Special Characters
-            
-                </a>
-            
+        <div id="page-wrapper" class="page-wrapper">
 
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" data-path="multiline.html">
-            
-                <a href="multiline.html">
-            
-                    
-                    Multiline Text
-            
-                </a>
-            
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
 
-            
-        </li>
-    
+                    <h1 class="menu-title"></h1>
 
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="variables.html">
-            
-                <a href="variables.html">
-            
-                    
-                    Variables
-            
-                </a>
-            
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/projectfluent/fluent/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/projectfluent/fluent/edit/master/guide/comments.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
 
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="references.html">
-            
-                <a href="references.html">
-            
-                    
-                    Referencing Messages
-            
-                </a>
-            
+                    </div>
+                </div>
 
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="selectors.html">
-            
-                <a href="selectors.html">
-            
-                    
-                    Selectors
-            
-                </a>
-            
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
 
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="attributes.html">
-            
-                <a href="attributes.html">
-            
-                    
-                    Attributes
-            
-                </a>
-            
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
 
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8" data-path="terms.html">
-            
-                <a href="terms.html">
-            
-                    
-                    Terms
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.9" data-path="comments.html">
-            
-                <a href="comments.html">
-            
-                    
-                    Comments
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.10" data-path="builtins.html">
-            
-                <a href="builtins.html">
-            
-                    
-                    Built-in Functions
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.11" data-path="functions.html">
-            
-                <a href="functions.html">
-            
-                    
-                    Functions
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.12" data-path="more.html">
-            
-                <a href="more.html">
-            
-                    
-                    Learn More
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Comments</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <h1 id="comments">Comments</h1>
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="comments"><a class="header" href="#comments">Comments</a></h1>
 <p>Comments in Fluent start with <code>#</code>, <code>##</code>, or <code>###</code>, and can be used to
 document messages and to define the outline of the file.</p>
 <p>Single-hash comments (<code>#</code>) can be standalone or can be bound to messages. If
@@ -352,7 +197,7 @@ group comment or at the end of the file.</p>
 <p>Triple-hash comments (<code>###</code>) are also always standalone and apply to the
 entire file; they are file-level comments. They can be used to provide
 information about the purpose or the context of the entire file.</p>
-<pre><code class="lang-properties"># This Source Code Form is subject to the terms of the Mozilla Public
+<pre><code class="language-properties"># This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
@@ -373,85 +218,57 @@ screenshots-description =
 # creating-page-title-default.
 creating-page-title = Creating { $title }
 creating-page-title-default = page
-creating-page-wait-message = Saving your shot&#x2026;
+creating-page-wait-message = Saving your shot…
 </code></pre>
 
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
+                    </main>
 
-                        </div>
-                    </div>
-                
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="terms.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="builtins.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
             </div>
 
-            
-                
-                <a href="terms.html" class="navigation navigation-prev " aria-label="Previous page: Terms">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="builtins.html" class="navigation navigation-next " aria-label="Next page: Built-in Functions">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="terms.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="builtins.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
     </div>
-
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Comments","level":"1.9","depth":1,"next":{"title":"Built-in Functions","level":"1.10","depth":1,"path":"builtins.md","ref":"builtins.md","articles":[]},"previous":{"title":"Terms","level":"1.8","depth":1,"path":"terms.md","ref":"terms.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"comments.md","mtime":"2021-07-16T12:53:26.217Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-26T18:21:22.930Z"},"basePath":".","book":{"language":""}});
-        });
-    </script>
-</div>
-
-        
-    <script src="gitbook/gitbook.js"></script>
-    <script src="gitbook/theme.js"></script>
-    
-        
-        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-
     </body>
 </html>
-
