@@ -3,7 +3,7 @@ multilingual = false
 src = "guide"
 
 [build]
-build-dir = "build"
+build-dir = "build/guide"
 create-missing = false
 
 [output.html]
