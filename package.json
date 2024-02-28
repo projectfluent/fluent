@@ -38,7 +38,7 @@
         "cli-color": "^2.0.0",
         "difflib": "^0.2.4",
         "eslint": "^8.57.0",
-        "json-diff": "^0.5.4"
+        "json-diff": "^1.0.6"
     },
     "dependencies": {
         "minimist": "^1.2.3"
