@@ -10,7 +10,7 @@ const fixtures_dir = process.argv[bail ? 3 : 2];
 
 if (!fixtures_dir) {
     console.error(
-        "Usage: node -r esm parser.js [--bail] FIXTURE");
+        "Usage: node parser.js [--bail] FIXTURE");
     process.exit(1);
 }
 

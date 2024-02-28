@@ -26,14 +26,14 @@ if (file_path === "-") {
 
 function exit_help(exit_code) {
     console.log(`
-    Usage: node -r esm parse.js [OPTIONS] <FILE>
+    Usage: node parse.js [OPTIONS] <FILE>
 
     When FILE is "-", read text from stdin.
 
     Examples:
 
-        node -r esm parse.js path/to/file.ftl
-        cat path/to/file.ftl | node -r esm parse.js -
+        node parse.js path/to/file.ftl
+        cat path/to/file.ftl | node parse.js -
 
     Options:
 
