@@ -52,4 +52,4 @@ your-rank = { NUMBER($pos, type: "ordinal") ->
 }
 ```
 
-[CLDR plural category]: http://www.unicode.org/cldr/charts/30/supplemental/language_plural_rules.html
+[CLDR plural category]: https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html
