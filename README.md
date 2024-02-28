@@ -44,6 +44,7 @@ This repository contains the reference implementation of the parser. Other imple
 We also know about the following community-driven implementations:
 
   - [`Fluent.Net`](https://github.com/blushingpenguin/Fluent.Net) by [@blushingpenguin](https://github.com/blushingpenguin). See [#93](https://github.com/projectfluent/fluent/issues/93) for more info.
+  - [`Linguini`](https://github.com/Ygg01/Linguini) a .NET library by [@Ygg01](https://github.com/Ygg01)
   - A Java/Kotlin implementation has been requested in [#158](https://github.com/projectfluent/fluent/issues/158).
   - [`elm-fluent`](https://github.com/elm-fluent/elm-fluent) by [@spookylukey](https://github.com/spookylukey/)
   - [`Fluent`](https://github.com/alabamenhu/Fluent) as a Perl 6 module by [@alabamenhu](https://github.com/alabamenhu/)
