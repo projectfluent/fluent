@@ -8,7 +8,7 @@ let args = process.argv.slice(2);
 
 if (args.length !== 2) {
     console.error(
-        "Usage: node -r esm ebnf.js " +
+        "Usage: node ebnf.js " +
         "GRAMMAR_FILE EXPECTED_EBNF");
     process.exit(1);
 }

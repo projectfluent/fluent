@@ -1,11 +1,12 @@
 import fs from "fs";
 import assert from "assert";
-import child_process from "child_process";
+import {execSync} from "child_process";
+import {resolve} from "path";
 import * as FTL from "../syntax/ast.js";
 
-const ABSTRACT = `${__dirname}/../syntax/abstract.js`;
-const GRAMMAR = `${__dirname}/../syntax/grammar.js`;
-const FIXTURES = `${__dirname}/fixtures`;
+const ABSTRACT = resolve("syntax/abstract.js");
+const GRAMMAR = resolve("syntax/grammar.js");
+const FIXTURES = resolve("test/fixtures");
 
 main();
 
@@ -13,7 +14,7 @@ function main() {
     let changed = modify_grammar();
     changed |= validate_selector();
     if (changed) {
-        child_process.execSync("git diff syntax",  { stdio: "inherit" });
+        execSync("git diff syntax", {stdio: "inherit"});
     }
     process.exit(Number(changed));
 }
@@ -33,8 +34,9 @@ function modify_grammar() {
     let changed = false;
     let grammar = fs.readFileSync(GRAMMAR, "utf8");
     let to_replace = /(not|maybe|repeat1?)\(/g;
-    let m, iteration = 0;
-    while (m = to_replace.exec(grammar)) {
+    let m,
+        iteration = 0;
+    while ((m = to_replace.exec(grammar))) {
         let replacement, replacements;
         switch (m[1]) {
             case "not":
@@ -91,10 +93,9 @@ function modify_grammar() {
 function validate_selector() {
     let changed = false;
     let abstract = fs.readFileSync(ABSTRACT, "utf8");
-    let expressions =
-        Object.values(FTL)
-        .filter(node => FTL.Expression.isPrototypeOf(node))
-        .map(node => node.name);
+    let expressions = Object.values(FTL)
+        .filter((node) => FTL.Expression.isPrototypeOf(node))
+        .map((node) => node.name);
     // This is a bit hacky, a Placeable can be a PatternElement and
     // an expression, and is only typed to be the former.
     expressions.push("Placeable");
@@ -106,14 +107,13 @@ function validate_selector() {
     assert.strictEqual([head, valid_selector, tail].join(""), abstract);
     // Literals are abstract, and SelectExpression can only appear
     // inside a Placeable.
-    let m, iteration = 0, checked_types = ["Literal", "SelectExpression"];
+    let m,
+        iteration = 0,
+        checked_types = ["Literal", "SelectExpression"];
     const instances = /selector instanceof FTL.([a-zA-Z]+)/g;
-    while (m = instances.exec(valid_selector)) {
+    while ((m = instances.exec(valid_selector))) {
         checked_types.push(m[1]);
-        let new_valid = valid_selector.replace(
-            m[0],
-            `!(selector instanceof FTL.${m[1]})`
-        );
+        let new_valid = valid_selector.replace(m[0], `!(selector instanceof FTL.${m[1]})`);
         fs.writeFileSync(ABSTRACT, [head, new_valid, tail].join(""));
         console.log(`Abstract validation iteration ${++iteration}`);
         const keep_change = verify_fixtures();
@@ -144,9 +144,9 @@ function validate_selector() {
 
 function verify_fixtures() {
     try {
-        child_process.execSync("node -r esm --stack-size=500000000 test/parser.js --bail " + FIXTURES);
+        execSync("node test/parser.js --bail " + FIXTURES);
         return true;
-    } catch(e) {
+    } catch (e) {
         return false;
     }
 }

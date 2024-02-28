@@ -3,21 +3,20 @@
     "description": "Specification and documentation for Fluent",
     "version": "1.0.0",
     "private": true,
+    "type": "module",
     "scripts": {
-        "bench": "node -r esm ./test/bench.js ./test/benchmarks/gecko_strings.ftl",
+        "bench": "node ./test/bench.js ./test/benchmarks/gecko_strings.ftl",
         "build:guide": "mdbook build",
-        "build": "npm run --silent build:guide",
-        "ci": "npm run --silent lint && npm test && npm run --silent test:ebnf && npm run --silent test:validate",
         "clean": "rm -rf build",
-        "generate:ebnf": "node -r esm bin/ebnf.js ./syntax/grammar.js > ./spec/fluent.ebnf",
+        "generate:ebnf": "node bin/ebnf.js ./syntax/grammar.js > ./spec/fluent.ebnf",
         "generate:fixtures": "make -sC test/fixtures",
-        "generate": "npm run --silent generate:ebnf && npm run --silent generate:fixtures",
+        "generate": "npm run generate:ebnf && npm run generate:fixtures",
         "lint": "eslint **/*.js",
-        "test:ebnf": "node -r esm test/ebnf.js ./syntax/grammar.js ./spec/fluent.ebnf",
-        "test:fixtures": "node -r esm --stack-size=500000000 test/parser.js ./test/fixtures",
-        "test:validate": "node -r esm --stack-size=500000000 test/validator.js ./test/fixtures",
-        "test:unit": "node -r esm test/literals.js",
-        "test": "npm run --silent test:fixtures && npm run --silent test:unit"
+        "test:ebnf": "node test/ebnf.js ./syntax/grammar.js ./spec/fluent.ebnf",
+        "test:fixtures": "node test/parser.js ./test/fixtures",
+        "test:validate": "node test/validator.js ./test/fixtures",
+        "test:unit": "node test/literals.js",
+        "test": "npm run test:fixtures && npm run test:unit"
     },
     "homepage": "https://projectfluent.org",
     "repository": {
@@ -33,16 +32,15 @@
         "node": ">=12.0.0"
     },
     "devDependencies": {
+        "@fluent/bundle": "^0.18.0",
+        "@fluent/syntax": "^0.19.0",
         "babylon": "^6.18.0",
         "cli-color": "^2.0.0",
         "difflib": "^0.2.4",
-        "eslint": "^6.7.2",
-        "@fluent/bundle": "^0.14.0",
-        "@fluent/syntax": "^0.14.0",
-        "json-diff": "^0.5.4"
+        "eslint": "^8.57.0",
+        "json-diff": "^1.0.6"
     },
     "dependencies": {
-        "esm": "^3.2.25",
         "minimist": "^1.2.3"
     }
 }
