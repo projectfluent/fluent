@@ -80,11 +80,11 @@ unindented-closing-paren = {FUN(
 one-argument = {FUN(1,)}
 many-arguments = {FUN(1, 2, 3,)}
 inline-sparse-args = {FUN(  1,  2,  3,  )}
-mulitline-args = {FUN(
+multiline-args = {FUN(
         1,
         2,
     )}
-mulitline-sparse-args = {FUN(
+multiline-sparse-args = {FUN(
 
         1
         ,
