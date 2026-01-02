@@ -25,16 +25,15 @@ the [CLDR plural category][] for the number. The possible categories are:
 `zero`, `one`, `two`, `few`, `many`, and `other`. For instance, English has
 two plural categories: `one` and `other`.
 
-If the translation requires a number to be formatted in a particular
-non-default manner, the selector should use the same formatting options. The
-formatted number will then be used to choose the correct CLDR plural category
-which, for some languages, might be different than the category of the
-unformatted number:
+If the translation requires a variant for a specific value,
+it will be matched according to its numerical value.
+This applies even if the number will be formatted differently, e.g. with trailing zeros.
+Selection on non-integral numbers should be avoided.
 
 ```
 your-score =
     { NUMBER($score, minimumFractionDigits: 1) ->
-        [0.0]   You scored zero points. What happened?
+        [0] You scored zero points. What happened?
        *[other] You scored { NUMBER($score, minimumFractionDigits: 1) } points.
     }
 ```
