@@ -30,6 +30,10 @@ are only available to developers when they pre-format variables passed as
 arguments to translations (see [Partially-formatted
 variables](#partially-formatted-variables) below).
 
+Any inline expression may be used as a positional argument,
+but named argument values are limited to literal values in Fluent 1.0.
+In Fluent 1.1, a variable reference may also be used as a named argument value.
+
 ## Built-in Functions
 
 Built-in functions are very generic and should be applicable to any translation

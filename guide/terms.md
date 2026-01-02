@@ -20,7 +20,8 @@ or they can interpolate other expressions, including variables. However,
 while messages receive data for variables directly from the app, terms
 receive such data from messages in which they are used. Such references take
 the form of `-term(…)` where the variables available inside of the term are
-defined between the parentheses, e.g. `-term(param: "value")`.
+defined between the parentheses, e.g. `-term(param: "value")` or
+`-term(param: $arg)` (starting from Fluent 1.1).
 
 ```
 # A contrived example to demonstrate how variables

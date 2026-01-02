@@ -202,6 +202,51 @@
             },
             "attributes": [],
             "comment": null
+        },
+        {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "key05"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "TermReference",
+                            "id": {
+                                "type": "Identifier",
+                                "name": "term"
+                            },
+                            "attribute": null,
+                            "arguments": {
+                                "type": "CallArguments",
+                                "positional": [],
+                                "named": [
+                                    {
+                                        "type": "NamedArgument",
+                                        "name": {
+                                            "type": "Identifier",
+                                            "name": "arg"
+                                        },
+                                        "value": {
+                                            "type": "VariableReference",
+                                            "id": {
+                                                "type": "Identifier",
+                                                "name": "foo"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
         }
     ]
 }

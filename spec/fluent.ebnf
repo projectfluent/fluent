@@ -72,7 +72,7 @@ CallArguments       ::= blank? "(" blank? argument_list blank? ")"
 argument_list       ::= (Argument blank? "," blank?)* Argument?
 Argument            ::= NamedArgument
                       | InlineExpression
-NamedArgument       ::= Identifier blank? ":" blank? (StringLiteral | NumberLiteral)
+NamedArgument       ::= Identifier blank? ":" blank? (StringLiteral | NumberLiteral | VariableReference)
 
 /* Block Expressions */
 SelectExpression    ::= InlineExpression blank? "->" blank_inline? variant_list

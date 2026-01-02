@@ -302,7 +302,8 @@ let NamedArgument = defer(() =>
         maybe(blank),
         either(
             StringLiteral,
-            NumberLiteral).abstract)
+            NumberLiteral,
+            VariableReference).abstract)
     .map(keep_abstract)
     .chain(list_into(FTL.NamedArgument)));
 

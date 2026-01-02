@@ -352,6 +352,58 @@
             "comment": null
         },
         {
+            "type": "Message",
+            "id": {
+                "type": "Identifier",
+                "name": "variable-args"
+            },
+            "value": {
+                "type": "Pattern",
+                "elements": [
+                    {
+                        "type": "Placeable",
+                        "expression": {
+                            "type": "FunctionReference",
+                            "id": {
+                                "type": "Identifier",
+                                "name": "FUN"
+                            },
+                            "arguments": {
+                                "type": "CallArguments",
+                                "positional": [
+                                    {
+                                        "type": "VariableReference",
+                                        "id": {
+                                            "type": "Identifier",
+                                            "name": "foo"
+                                        }
+                                    }
+                                ],
+                                "named": [
+                                    {
+                                        "type": "NamedArgument",
+                                        "name": {
+                                            "type": "Identifier",
+                                            "name": "arg"
+                                        },
+                                        "value": {
+                                            "type": "VariableReference",
+                                            "id": {
+                                                "type": "Identifier",
+                                                "name": "bar"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "attributes": [],
+            "comment": null
+        },
+        {
             "type": "Comment",
             "content": "ERROR Positional arg must not follow keyword args"
         },
