@@ -55,6 +55,7 @@ We also know about the following community-driven implementations:
   - A D implementation effort is underway at [`fluentd`](https://github.com/SirNickolas/fluentd) by [@SirNickolas](https://github.com/SirNickolas).
   - [`fluent.go`](https://github.com/lus/fluent.go) - a Golang implementation by [@lus](https://github.com/lus)
   - [`fluent-php`](https://github.com/Ennexa/fluent-php) - a PHP module providing bindings wrapping the Rust library by [@Ennexa](https://github.com/Ennexa)
+  - [`fluent`](https://hackage.haskell.org/package/fluent) - a pure Haskell implementation by [IDA](https://digital-autonomy.institute)
 
 ## Learn More and Discuss
 
